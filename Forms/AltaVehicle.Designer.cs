@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.t_via = new System.Windows.Forms.TextBox();
+            this.tipus_t = new System.Windows.Forms.TextBox();
             this.model_t = new System.Windows.Forms.TextBox();
             this.t_vehicle_l = new System.Windows.Forms.Label();
             this.matricula_t = new System.Windows.Forms.TextBox();
@@ -43,13 +43,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // t_via
+            // tipus_t
             // 
-            this.t_via.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_via.Location = new System.Drawing.Point(367, 240);
-            this.t_via.Name = "t_via";
-            this.t_via.Size = new System.Drawing.Size(199, 20);
-            this.t_via.TabIndex = 7;
+            this.tipus_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tipus_t.Location = new System.Drawing.Point(367, 240);
+            this.tipus_t.Name = "tipus_t";
+            this.tipus_t.Size = new System.Drawing.Size(199, 20);
+            this.tipus_t.TabIndex = 7;
             // 
             // model_t
             // 
@@ -160,6 +160,7 @@
             this.guardar_e.TabIndex = 48;
             this.guardar_e.Text = "Guardar";
             this.guardar_e.UseVisualStyleBackColor = true;
+            this.guardar_e.Click += new System.EventHandler(this.guardar_e_Click);
             // 
             // pictureBox1
             // 
@@ -184,7 +185,7 @@
             this.Controls.Add(this.color_t);
             this.Controls.Add(this.color_l);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.t_via);
+            this.Controls.Add(this.tipus_t);
             this.Controls.Add(this.model_t);
             this.Controls.Add(this.t_vehicle_l);
             this.Controls.Add(this.matricula_t);
@@ -201,7 +202,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox t_via;
+        private System.Windows.Forms.TextBox tipus_t;
         private System.Windows.Forms.TextBox model_t;
         private System.Windows.Forms.Label t_vehicle_l;
         private System.Windows.Forms.TextBox matricula_t;
