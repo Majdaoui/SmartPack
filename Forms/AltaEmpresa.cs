@@ -1,16 +1,15 @@
-﻿
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace SmartPack
 {
-    public partial class AltaEmpresa: TitleForm
+    public partial class AltaEmpresa : TitleForm
     {
         public AltaEmpresa()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            this.MaximizeBox = false; 
+            this.MaximizeBox = false;
             this.MinimizeBox = true;
         }
         protected override void OnPaint(PaintEventArgs e)
@@ -36,37 +35,64 @@ namespace SmartPack
                 string.IsNullOrWhiteSpace(t_cp) || string.IsNullOrWhiteSpace(tpoble) ||
                 string.IsNullOrWhiteSpace(tprovincia))
             {
-                MessageBox.Show("Tots els camps són obligatoris ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Message messatgel = new Message("Revisa els camps són obligatoris ", "Error");
+                messatgel.ShowDialog();
+                //MessageBox.Show("Tots els camps són obligatoris ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+
             if (!Regex.IsMatch(tcif, "^[a-zA-Z0-9]+$"))
             {
-                MessageBox.Show("El CIF/NIEF només pot tenir lletres i números ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Message messatgel = new Message("El CIF/NIEF només pot tenir lletres i números. ", "Error");
+                messatgel.ShowDialog();
+                //MessageBox.Show("El CIF/NIEF només pot tenir lletres i números ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             else if (ValidarIdentificacion(tcif))
             {
-                MessageBox.Show("El CIF/NIEF no és vàlid, el seu format no és correcte ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Message messatgel = new Message("El CIF/NIEF no és vàlid, el seu format no és correcte. ", "Error");
+                messatgel.ShowDialog();
+                //MessageBox.Show("El CIF/NIEF no és vàlid, el seu format no és correcte ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!Regex.IsMatch(ttef, "^[0-9]{9,15}$"))
             {
-                MessageBox.Show("El telèfon ha de tenir entres 9 i 15 dígits", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Message messatgel = new Message("El telèfon ha de tenir entres 9 i 15 dígits.", "Error");
+                messatgel.ShowDialog();
+                //MessageBox.Show("El telèfon ha de tenir entres 9 i 15 dígits", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (!Regex.IsMatch(t_cp, "^[0-9]{5}$"))
             {
-                MessageBox.Show("El códi postal ha de tenir 5 dñigits", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Message messatgel = new Message("El códi postal ha de tenir 5 dígits.", "Error");
+                messatgel.ShowDialog();
+                //MessageBox.Show("El códi postal ha de tenir 5 dñigits", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (!Regex.IsMatch(temail, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
             {
-                MessageBox.Show("El email no és vàlid ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Message messatgel = new Message("El email no és vàlid ", "Error");
+                messatgel.ShowDialog();
+                //MessageBox.Show("El email no és vàlid ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            var empresa = new
+            {
+                cif = tcif,
+                nom_empresa = tnom_e,
+                email = temail,
+                telefon = ttef,
+                tvia = t_tvia,
+                carrer = tnom_via,
+                cp = t_cp,
+                poblacio = tpoble,
+                provincia = tprovincia
+            };
+            Message messatge = new Message("Empresa registrada correctament", "info");
+            messatge.ShowDialog();
         }
         public static bool ValidarIdentificacion(string doc)
         {
@@ -103,7 +129,5 @@ namespace SmartPack
             char control = "JABCDEFGHI"[(10 - suma % 10) % 10];
             return char.IsDigit(cif[cif.Length - 1]) ? cif[cif.Length - 1] == control : cif[cif.Length - 1] == control;
         }
-
     }
-    
 }

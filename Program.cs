@@ -10,7 +10,7 @@ namespace SmartPack
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Alta());
+            Application.Run(new Sessio());
         }
     }
 }

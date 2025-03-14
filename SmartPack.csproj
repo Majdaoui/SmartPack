@@ -147,11 +147,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Sesiones.cs">
+    <Compile Include="Classes\GestioSessins.cs" />
+    <Compile Include="Message.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Sesiones.Designer.cs">
-      <DependentUpon>Sesiones.cs</DependentUpon>
+    <Compile Include="Message.Designer.cs">
+      <DependentUpon>Message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CanviContrasenya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CanviContrasenya.Designer.cs">
+      <DependentUpon>CanviContrasenya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sessio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sessio.Designer.cs">
+      <DependentUpon>Sessio.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RecuperarContrasenya.cs">
       <SubType>Form</SubType>
@@ -182,6 +195,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Message.resx">
+      <DependentUpon>Message.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alta.resx">
       <DependentUpon>Alta.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,8 +207,11 @@
     <EmbeddedResource Include="Forms\AltaVehicle.resx">
       <DependentUpon>AltaVehicle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Sesiones.resx">
-      <DependentUpon>Sesiones.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CanviContrasenya.resx">
+      <DependentUpon>CanviContrasenya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sessio.resx">
+      <DependentUpon>Sessio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RecuperarContrasenya.resx">
       <DependentUpon>RecuperarContrasenya.cs</DependentUpon>
@@ -210,6 +229,7 @@
     <EmbeddedResource Include="Themes\TitleForm.resx">
       <DependentUpon>TitleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".editorconfig" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -252,8 +272,6 @@
   <ItemGroup>
     <None Include="Resources\account_username_people_avatar_profile_person_user_icon_258905.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

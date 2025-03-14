@@ -37,7 +37,7 @@ namespace SmartPack
             this.label2 = new System.Windows.Forms.Label();
             this.nom = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.dni = new System.Windows.Forms.TextBox();
+            this.dni_c = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.t_via = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -124,13 +124,13 @@ namespace SmartPack
             this.label3.Text = "DIN/NIE";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dni
+            // dni_c
             // 
-            this.dni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dni.Location = new System.Drawing.Point(188, 225);
-            this.dni.Name = "dni";
-            this.dni.Size = new System.Drawing.Size(199, 20);
-            this.dni.TabIndex = 3;
+            this.dni_c.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dni_c.Location = new System.Drawing.Point(188, 225);
+            this.dni_c.Name = "dni_c";
+            this.dni_c.Size = new System.Drawing.Size(199, 20);
+            this.dni_c.TabIndex = 3;
             // 
             // label4
             // 
@@ -322,16 +322,16 @@ namespace SmartPack
             // 
             // bRegistre
             // 
-            this.bRegistre.BackColor = System.Drawing.Color.Transparent;
+            this.bRegistre.BackColor = System.Drawing.Color.AntiqueWhite;
             this.bRegistre.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.bRegistre.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.bRegistre.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.bRegistre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bRegistre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bRegistre.ForeColor = System.Drawing.Color.Black;
-            this.bRegistre.Location = new System.Drawing.Point(356, 456);
+            this.bRegistre.Location = new System.Drawing.Point(347, 442);
             this.bRegistre.Name = "bRegistre";
-            this.bRegistre.Size = new System.Drawing.Size(96, 33);
+            this.bRegistre.Size = new System.Drawing.Size(136, 44);
             this.bRegistre.TabIndex = 4;
             this.bRegistre.Text = "Registrar";
             this.bRegistre.UseVisualStyleBackColor = false;
@@ -348,7 +348,7 @@ namespace SmartPack
             // email_t
             // 
             this.email_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.email_t.Location = new System.Drawing.Point(188, 355);
+            this.email_t.Location = new System.Drawing.Point(189, 351);
             this.email_t.Name = "email_t";
             this.email_t.Size = new System.Drawing.Size(199, 20);
             this.email_t.TabIndex = 9;
@@ -370,7 +370,7 @@ namespace SmartPack
             this.email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.email.ForeColor = System.Drawing.Color.White;
-            this.email.Location = new System.Drawing.Point(55, 355);
+            this.email.Location = new System.Drawing.Point(55, 351);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(128, 20);
             this.email.TabIndex = 7;
@@ -393,6 +393,7 @@ namespace SmartPack
             this.rol.Name = "rol";
             this.rol.Size = new System.Drawing.Size(199, 26);
             this.rol.TabIndex = 12;
+            this.rol.SelectedIndexChanged += new System.EventHandler(this.rol_SelectedIndexChanged);
             this.rol.DpiChangedAfterParent += new System.EventHandler(this.bRegistre_Click);
             // 
             // l_rol
@@ -442,7 +443,7 @@ namespace SmartPack
             // contrasenya_t
             // 
             this.contrasenya_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.contrasenya_t.Location = new System.Drawing.Point(188, 379);
+            this.contrasenya_t.Location = new System.Drawing.Point(189, 376);
             this.contrasenya_t.Name = "contrasenya_t";
             this.contrasenya_t.Size = new System.Drawing.Size(199, 20);
             this.contrasenya_t.TabIndex = 20;
@@ -452,7 +453,7 @@ namespace SmartPack
             this.contrasenya.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.contrasenya.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contrasenya.ForeColor = System.Drawing.Color.White;
-            this.contrasenya.Location = new System.Drawing.Point(55, 379);
+            this.contrasenya.Location = new System.Drawing.Point(55, 376);
             this.contrasenya.Name = "contrasenya";
             this.contrasenya.Size = new System.Drawing.Size(128, 20);
             this.contrasenya.TabIndex = 19;
@@ -544,7 +545,7 @@ namespace SmartPack
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BorderColor = System.Drawing.Color.MediumBlue;
             this.ClientSize = new System.Drawing.Size(843, 517);
             this.Controls.Add(this.panel1);
@@ -582,7 +583,7 @@ namespace SmartPack
             this.Controls.Add(this.t_via);
             this.Controls.Add(this.lplanta);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dni);
+            this.Controls.Add(this.dni_c);
             this.Controls.Add(this.n_via);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cognom_p);
@@ -608,7 +609,7 @@ namespace SmartPack
         private Label label2;
         private TextBox nom;
         private Label label3;
-        private TextBox dni;
+        private TextBox dni_c;
         private Label label4;
         private TextBox t_via;
         private Label label5;

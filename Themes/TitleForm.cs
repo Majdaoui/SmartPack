@@ -18,7 +18,8 @@ namespace SmartPack
         public Color BorderColor
         {
             get { return _borderColor; }
-            set { 
+            set
+            {
                 _borderColor = value;
                 this.Invalidate();
             }
@@ -79,13 +80,13 @@ namespace SmartPack
                 }
             }
 
-            using(SolidBrush sb = new SolidBrush(_borderColor))
+            using (SolidBrush sb = new SolidBrush(_borderColor))
             {
                 using (Pen p = new Pen(sb, 1))
                 {
                     g.DrawRectangle(p, new Rectangle(0, 0, this.Width - 1, this.Height - 1));
                 }
-            }            
+            }
         }
 
         // Función para arrastrar el formulario

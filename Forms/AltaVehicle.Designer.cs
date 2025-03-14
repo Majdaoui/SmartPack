@@ -46,17 +46,19 @@
             // tipus_t
             // 
             this.tipus_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tipus_t.Location = new System.Drawing.Point(367, 240);
+            this.tipus_t.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipus_t.Location = new System.Drawing.Point(368, 245);
             this.tipus_t.Name = "tipus_t";
-            this.tipus_t.Size = new System.Drawing.Size(199, 20);
+            this.tipus_t.Size = new System.Drawing.Size(199, 24);
             this.tipus_t.TabIndex = 7;
             // 
             // model_t
             // 
             this.model_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.model_t.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model_t.Location = new System.Drawing.Point(367, 215);
             this.model_t.Name = "model_t";
-            this.model_t.Size = new System.Drawing.Size(199, 20);
+            this.model_t.Size = new System.Drawing.Size(199, 24);
             this.model_t.TabIndex = 8;
             // 
             // t_vehicle_l
@@ -64,9 +66,9 @@
             this.t_vehicle_l.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.t_vehicle_l.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.t_vehicle_l.ForeColor = System.Drawing.Color.White;
-            this.t_vehicle_l.Location = new System.Drawing.Point(234, 240);
+            this.t_vehicle_l.Location = new System.Drawing.Point(234, 245);
             this.t_vehicle_l.Name = "t_vehicle_l";
-            this.t_vehicle_l.Size = new System.Drawing.Size(128, 20);
+            this.t_vehicle_l.Size = new System.Drawing.Size(128, 24);
             this.t_vehicle_l.TabIndex = 4;
             this.t_vehicle_l.Text = "Tipus de Vehicle";
             this.t_vehicle_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -74,9 +76,10 @@
             // matricula_t
             // 
             this.matricula_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.matricula_t.Location = new System.Drawing.Point(367, 190);
+            this.matricula_t.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.matricula_t.Location = new System.Drawing.Point(367, 185);
             this.matricula_t.Name = "matricula_t";
-            this.matricula_t.Size = new System.Drawing.Size(199, 20);
+            this.matricula_t.Size = new System.Drawing.Size(199, 24);
             this.matricula_t.TabIndex = 9;
             // 
             // model_l
@@ -86,7 +89,7 @@
             this.model_l.ForeColor = System.Drawing.Color.White;
             this.model_l.Location = new System.Drawing.Point(234, 215);
             this.model_l.Name = "model_l";
-            this.model_l.Size = new System.Drawing.Size(128, 20);
+            this.model_l.Size = new System.Drawing.Size(128, 24);
             this.model_l.TabIndex = 5;
             this.model_l.Text = "Model";
             this.model_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -96,9 +99,9 @@
             this.matricula_l.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.matricula_l.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matricula_l.ForeColor = System.Drawing.Color.White;
-            this.matricula_l.Location = new System.Drawing.Point(234, 190);
+            this.matricula_l.Location = new System.Drawing.Point(233, 185);
             this.matricula_l.Name = "matricula_l";
-            this.matricula_l.Size = new System.Drawing.Size(128, 20);
+            this.matricula_l.Size = new System.Drawing.Size(128, 24);
             this.matricula_l.TabIndex = 6;
             this.matricula_l.Text = "Matricula";
             this.matricula_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -127,9 +130,10 @@
             // color_t
             // 
             this.color_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.color_t.Location = new System.Drawing.Point(367, 266);
+            this.color_t.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.color_t.Location = new System.Drawing.Point(368, 275);
             this.color_t.Name = "color_t";
-            this.color_t.Size = new System.Drawing.Size(199, 20);
+            this.color_t.Size = new System.Drawing.Size(199, 24);
             this.color_t.TabIndex = 47;
             // 
             // color_l
@@ -137,9 +141,9 @@
             this.color_l.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.color_l.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.color_l.ForeColor = System.Drawing.Color.White;
-            this.color_l.Location = new System.Drawing.Point(234, 266);
+            this.color_l.Location = new System.Drawing.Point(234, 274);
             this.color_l.Name = "color_l";
-            this.color_l.Size = new System.Drawing.Size(128, 20);
+            this.color_l.Size = new System.Drawing.Size(128, 24);
             this.color_l.TabIndex = 46;
             this.color_l.Text = "Color";
             this.color_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
