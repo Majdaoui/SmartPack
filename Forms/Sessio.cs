@@ -18,6 +18,8 @@ namespace SmartPack
 
         private void pregunta_b_Click(object sender, EventArgs e)
         {
+            mysqlAPI.test();
+            return;
             RecuperarContrasenya formRContrasenya = new RecuperarContrasenya();
             formRContrasenya.Show();
         }

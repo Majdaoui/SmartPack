@@ -63,6 +63,26 @@ namespace SmartPack.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap account_username_people_avatar_profile_person_user_icon_258905 {
+            get {
+                object obj = ResourceManager.GetObject("account_username_people_avatar_profile_person_user_icon_258905", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cerrar {
+            get {
+                object obj = ResourceManager.GetObject("cerrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap contrasena {
             get {
                 object obj = ResourceManager.GetObject("contrasena", resourceCulture);
@@ -73,9 +93,29 @@ namespace SmartPack.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete_user_9977120 {
+            get {
+                object obj = ResourceManager.GetObject("delete-user_9977120", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap freepik__retouch__32632 {
             get {
                 object obj = ResourceManager.GetObject("freepik__retouch__32632", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconAdv {
+            get {
+                object obj = ResourceManager.GetObject("iconAdv", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,6 +173,26 @@ namespace SmartPack.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_icono_blau {
+            get {
+                object obj = ResourceManager.GetObject("logo_icono_blau", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_icono_taronja {
+            get {
+                object obj = ResourceManager.GetObject("logo_icono_taronja", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_transparent {
             get {
                 object obj = ResourceManager.GetObject("logo_transparent", resourceCulture);
@@ -163,9 +223,29 @@ namespace SmartPack.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap password_manager_11135277 {
+            get {
+                object obj = ResourceManager.GetObject("password-manager_11135277", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngtree_blue_abstract_background_and_wallpaper_hd_image_1442198 {
             get {
                 object obj = ResourceManager.GetObject("pngtree-blue-abstract-background-and-wallpaper-hd-image_1442198", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reset_password_11135314 {
+            get {
+                object obj = ResourceManager.GetObject("reset-password_11135314", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

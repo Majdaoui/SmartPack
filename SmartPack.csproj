@@ -147,11 +147,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ClassVehicle.cs" />
+    <Compile Include="Classes\ClassEmpresa.cs" />
+    <Compile Include="Classes\ClassUsuari.cs" />
     <Compile Include="Classes\GestioSessins.cs" />
-    <Compile Include="Message.cs">
+    <Compile Include="Classes\mysqlAPI.cs" />
+    <Compile Include="Forms\AreaUsuari.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Message.Designer.cs">
+    <Compile Include="Forms\AreaUsuari.Designer.cs">
+      <DependentUpon>AreaUsuari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Message.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Message.Designer.cs">
       <DependentUpon>Message.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CanviContrasenya.cs">
@@ -171,6 +181,11 @@
     </Compile>
     <Compile Include="Forms\RecuperarContrasenya.Designer.cs">
       <DependentUpon>RecuperarContrasenya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Themes\TitleForm.cs">
       <SubType>Form</SubType>
@@ -195,7 +210,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Message.resx">
+    <EmbeddedResource Include="Forms\AreaUsuari.resx">
+      <DependentUpon>AreaUsuari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Message.resx">
       <DependentUpon>Message.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alta.resx">
@@ -218,14 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Themes\TitleForm.resx">
       <DependentUpon>TitleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,9 +257,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\orange-blue-background.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\freepik__retouch__32632.jpeg" />

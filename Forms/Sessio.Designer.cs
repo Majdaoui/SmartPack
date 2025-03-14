@@ -64,7 +64,7 @@ namespace SmartPack
             pregunta_b.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             pregunta_b.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             pregunta_b.ForeColor = System.Drawing.Color.Black;
-            pregunta_b.Location = new System.Drawing.Point(180, 128);
+            pregunta_b.Location = new System.Drawing.Point(181, 129);
             pregunta_b.Name = "pregunta_b";
             pregunta_b.Size = new System.Drawing.Size(226, 30);
             pregunta_b.TabIndex = 65;
@@ -154,7 +154,7 @@ namespace SmartPack
             this.registrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.registrer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registrer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.registrer.Location = new System.Drawing.Point(375, 247);
+            this.registrer.Location = new System.Drawing.Point(376, 247);
             this.registrer.Name = "registrer";
             this.registrer.Size = new System.Drawing.Size(142, 44);
             this.registrer.TabIndex = 60;
@@ -180,7 +180,7 @@ namespace SmartPack
             this.groupBox1.Controls.Add(this.contrasenya_is);
             this.groupBox1.Location = new System.Drawing.Point(116, 155);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(555, 309);
+            this.groupBox1.Size = new System.Drawing.Size(556, 311);
             this.groupBox1.TabIndex = 61;
             this.groupBox1.TabStop = false;
             // 
@@ -229,7 +229,7 @@ namespace SmartPack
             this.pictureBox2.Image = global::SmartPack.Properties.Resources.internet_locked_padlock_password_secure_security_unlock_icon_127083;
             this.pictureBox2.Location = new System.Drawing.Point(473, 91);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(44, 35);
+            this.pictureBox2.Size = new System.Drawing.Size(45, 37);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 63;
             this.pictureBox2.TabStop = false;
@@ -273,7 +273,8 @@ namespace SmartPack
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
-            this.ClientSize = new System.Drawing.Size(845, 517);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(846, 519);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox3);

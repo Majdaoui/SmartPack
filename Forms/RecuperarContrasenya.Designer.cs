@@ -123,6 +123,7 @@ namespace SmartPack
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(594, 331);
             this.Controls.Add(this.R_contrasenya);
             this.Controls.Add(this.pictureBox2);
