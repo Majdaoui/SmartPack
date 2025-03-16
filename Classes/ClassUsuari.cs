@@ -22,7 +22,7 @@ namespace SmartPack.Classes
         public string provincia { get; set; }
         public string cp { get; set; }
         public string email { get; set; }
-        public string contrasenya { get; set; }
+        public string password { get; set; } /*contrasenya */
         public string comentaris { get; set; }
 
     }

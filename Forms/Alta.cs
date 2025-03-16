@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -20,8 +21,11 @@ namespace SmartPack
             base.OnPaint(e);
         }
 
-        private void bRegistre_Click(object sender, EventArgs e)
+        private async void bRegistre_Click(object sender, EventArgs e)
         {
+
+            dbAPI.GetPassword();
+
             string tnom = nom.Text.Trim();
             string tcognom_p = cognom_p.Text.Trim();
             string tcognom_s = cognom_s.Text.Trim();
@@ -36,12 +40,12 @@ namespace SmartPack
             string tprovincia = provincia_t.Text;
             string tcp = cp.Text.Trim();
             string temail = email_t.Text.Trim();
-            string tcontrasenya = contrasenya_t.Text.Trim();
-            string fcontrasenya = r_contrasenya.Text.Trim();
+            string tpassword = contrasenya_t.Text.Trim();
+            string fpassword = r_contrasenya.Text.Trim();
             string tobservacions = observacions_t.Text;
-            var trol = rol.Items;
+            var trol = rol_c.Text;
             bool esEmpresa = si_t.Checked;
-            Message message = new Message("", "");
+           // Message message = new Message("", "");
 
 
             if (string.IsNullOrWhiteSpace(tnom) || string.IsNullOrWhiteSpace(tcognom_p) ||
@@ -49,74 +53,84 @@ namespace SmartPack
                 string.IsNullOrWhiteSpace(tt_via) || string.IsNullOrWhiteSpace(tnum) ||
                 string.IsNullOrWhiteSpace(tnom_via) || string.IsNullOrWhiteSpace(tpoblacio) ||
                 string.IsNullOrWhiteSpace(tprovincia) || string.IsNullOrWhiteSpace(tcp) ||
-                string.IsNullOrWhiteSpace(temail) || string.IsNullOrWhiteSpace(tcontrasenya) ||
-                string.IsNullOrWhiteSpace(fcontrasenya))
+                string.IsNullOrWhiteSpace(temail) || string.IsNullOrWhiteSpace(tpassword) ||
+                string.IsNullOrWhiteSpace(fpassword))
             {
-                Message message1 = new Message("Revisa els camps són obligatoris", "error");
-                message.ShowDialog();
-                //MessageBox.Show("Todos los campos son obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                using (Message message1 = new Message("Revisa els camps són obligatoris", "error"))
+                { 
+                    message1.ShowDialog(); return; 
+                }
+                
             }
 
             if (!Regex.IsMatch(tnom, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"))
             {
-                Message message1 = new Message("El nom només pot tenir lletres.", "error");
-                message.ShowDialog();
-                //MessageBox.Show("El nombre solo puede contener letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                using (Message message1 = new Message("El nom només pot tenir lletres.", "error"))
+                { 
+                    message1.ShowDialog(); return;
+                }
+                
             }
 
             if (!Regex.IsMatch(tcognom_p, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"))
             {
-                Message message1 = new Message("El cognom només pot tenir lletres", "error");
-                message.ShowDialog();
-                //MessageBox.Show("El apellido solo puede contener letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                using (Message message1 = new Message("El cognom només pot tenir lletres", "error"))
+                { 
+                    message1.ShowDialog(); return; 
+                }
+                
             }
             if (!EsDniNieValido(tdni))
             {
-                Message message1 = new Message("Format de DNI/NIE inválid. Ha de tenir entre 9 y 10 caràcters.", "error");
-                message1.ShowDialog();
-                //MessageBox.Show("Formato de DNI/NIE inválido. Debe tener entre 9 y 10 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                using (Message message1 = new Message("Format de DNI/NIE inválid. Ha de tenir entre 9 y 10 caràcters.", "error"))
+                { 
+                    message1.ShowDialog(); return; 
+                }
+                
             }
             if (!Regex.IsMatch(ttelefon, "^[0-9]{9,15}$"))
             {
-                Message message1 = new Message("El telèfono ha de tenir només números i tenir entre 9 y 15 dígits", "error");
-                message1.ShowDialog();
-                //MessageBox.Show("El teléfono debe contener solo números y tener entre 9 y 15 dígitos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                using (Message message1 = new Message("El telèfono ha de tenir només números i tenir entre 9 y 15 dígits", "error"))
+                { 
+                    message1.ShowDialog(); return;
+                }
             }
             if (!Regex.IsMatch(tcp, "^[0-9]{5}$"))
             {
-                Message message1 = new Message("Format de Códi Postal invàlid", "error");
-                message1.ShowDialog();
-                //MessageBox.Show("Formato de Códi Postal inválido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                using (Message message1 = new Message("Format de Códi Postal invàlid", "error")) 
+                { 
+                    message1.ShowDialog(); return; 
+                }
+               
             }
             bool isValidFormat = System.Text.RegularExpressions.Regex.IsMatch(temail, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
 
             if (!isValidFormat)
             {
-                Message message1 = new Message("Format Email invàlid ", "error");
-                message1.ShowDialog();
-               // MessageBox.Show("Formato de correo electrónico inválido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                using (Message message1 = new Message("Format Email invàlid ", "error")) 
+                {
+                    message1.ShowDialog();
+                    return;
+                }
+                   
             }
-            if (!ValidarContrasenya(tcontrasenya))
+            if (!ValidarContrasenya(tpassword))
             {
-                Message message1 = new Message("La contrasenya ha de tenir almenys 8 caràcters, una lletra majúscula, un número i un caràcter especial", "error");
-                message1.ShowDialog();
-                //MessageBox.Show("La contrasenya ha de tenir almenys 8 caràcters, una lletra majúscula, un número i un caràcter especial", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                using (Message message1 = new Message("La contrasenya ha de tenir almenys 8 caràcters, una lletra majúscula, un número i un caràcter especial", "error"))
+                {
+                    message1.ShowDialog();
+                    return;
+                }
             }
 
-            if (tcontrasenya != fcontrasenya)
+            if (tpassword != fpassword)
             {
-                Message message1 = new Message("Les contrasenyes no coincideixen", "error");
-                message1.ShowDialog();
-                //MessageBox.Show("Las contraseñas no coinciden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                using (Message message1 = new Message("Les contrasenyes no coincideixen", "error"))
+                {
+                    message1.ShowDialog();
+                    return;
+                }
+                
             }
 
             if (esEmpresa)
@@ -124,13 +138,9 @@ namespace SmartPack
                 AltaEmpresa formEmpresa = new AltaEmpresa();
                 formEmpresa.Show();
             }
-            if (rol.SelectedItem.ToString() == "Transportista")
-            {
-                AltaVehicle formVehicle = new AltaVehicle();
-                formVehicle.Show();
-            }
 
-            var user = new
+            
+            object user = new
             {
                 nom = tnom,
                 pcognom = tcognom_p,
@@ -146,14 +156,44 @@ namespace SmartPack
                 provincia = tprovincia,
                 cp = tcp,
                 email = temail,
-                contrasenya = tcontrasenya
+                password = tpassword,
+                rol = trol,
+                comentaris = tobservacions
             };
-            Message msg = new Message("Usuari registrat correctament", "info");
-            msg.ShowDialog();
-            //MessageBox.Show("Usuari registrat correctament", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var consulta = new
+            {
+                email = temail
+            };
 
+
+            if (await dbAPI.ExecuteDB(consulta, "login"))
+            {
+                using (Message msg = new Message("Usuari ja registrat", "error"))
+                {
+                    msg.ShowDialog();
+                    return;
+                }
+            }
+            else
+            {
+                bool st = await dbAPI.ExecuteDB(user, "registrar");
+                if (st)
+                {
+                    using (Message msg = new Message("Usuari registrat correctament", "info"))
+                    {
+                        msg.ShowDialog();
+                    }
+                }
+                else
+                {
+                    using (Message msg = new Message("Error durant el procès de registre", "error"))
+                    {
+                        msg.ShowDialog();
+                    }
+                }
+            } 
         }
-        private bool EsDniNieValido(string doc)
+        public static bool EsDniNieValido(string doc)
         {
             string letras = "TRWAGMYFPDXBNJZSQVHLCKE";
             if (!Regex.IsMatch(doc, @"^([XYZ]|[XYZ][A-Z])?\d{7,8}[A-Za-z]$")) return false;
@@ -166,15 +206,19 @@ namespace SmartPack
             char letraCalculada = letras[numero % 23];
             return letraCalculada == letraIngresada;
         }
-        public static bool ValidarContrasenya(string contrasenya)
+        public static bool ValidarContrasenya(string password)
         {
-            if (string.IsNullOrEmpty(contrasenya)) return false;
-            return Regex.IsMatch(contrasenya, @"^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$");
+            if (string.IsNullOrEmpty(password)) return false;
+            return Regex.IsMatch(password, @"^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$");
         }
 
         private void rol_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (rol_c.Text == "Transportista")
+            {
+                AltaVehicle formVehicle = new AltaVehicle();
+                formVehicle.Show();
+            }
         }
     }
 }

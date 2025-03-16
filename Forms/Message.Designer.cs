@@ -28,37 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.message_l = new System.Windows.Forms.Label();
             this.picIcono = new System.Windows.Forms.PictureBox();
             this.acceptar = new System.Windows.Forms.Button();
             this.cancelar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.message_l = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // message_l
-            // 
-            this.message_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.message_l.AutoSize = true;
-            this.message_l.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.message_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.message_l.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.message_l.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.message_l.Location = new System.Drawing.Point(44, 128);
-            this.message_l.Margin = new System.Windows.Forms.Padding(3);
-            this.message_l.MaximumSize = new System.Drawing.Size(400, 50);
-            this.message_l.MinimumSize = new System.Drawing.Size(280, 50);
-            this.message_l.Name = "message_l";
-            this.message_l.Size = new System.Drawing.Size(280, 50);
-            this.message_l.TabIndex = 0;
-            // 
             // picIcono
             // 
             this.picIcono.BackColor = System.Drawing.Color.Transparent;
-            this.picIcono.Location = new System.Drawing.Point(156, 74);
+            this.picIcono.Location = new System.Drawing.Point(248, 63);
             this.picIcono.Name = "picIcono";
             this.picIcono.Size = new System.Drawing.Size(48, 48);
             this.picIcono.TabIndex = 1;
@@ -73,7 +55,7 @@
             this.acceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.acceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.acceptar.ForeColor = System.Drawing.Color.Black;
-            this.acceptar.Location = new System.Drawing.Point(138, 184);
+            this.acceptar.Location = new System.Drawing.Point(179, 261);
             this.acceptar.Name = "acceptar";
             this.acceptar.Size = new System.Drawing.Size(90, 32);
             this.acceptar.TabIndex = 5;
@@ -90,7 +72,7 @@
             this.cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelar.ForeColor = System.Drawing.Color.Black;
-            this.cancelar.Location = new System.Drawing.Point(234, 184);
+            this.cancelar.Location = new System.Drawing.Point(275, 261);
             this.cancelar.Name = "cancelar";
             this.cancelar.Size = new System.Drawing.Size(90, 32);
             this.cancelar.TabIndex = 6;
@@ -109,6 +91,15 @@
             this.pictureBox1.TabIndex = 28;
             this.pictureBox1.TabStop = false;
             // 
+            // message_l
+            // 
+            this.message_l.Location = new System.Drawing.Point(32, 130);
+            this.message_l.Multiline = true;
+            this.message_l.Name = "message_l";
+            this.message_l.ReadOnly = true;
+            this.message_l.Size = new System.Drawing.Size(475, 115);
+            this.message_l.TabIndex = 29;
+            // 
             // Message
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,12 +107,12 @@
             this.AutoSize = true;
             this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(384, 234);
+            this.ClientSize = new System.Drawing.Size(541, 313);
+            this.Controls.Add(this.message_l);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cancelar);
             this.Controls.Add(this.acceptar);
             this.Controls.Add(this.picIcono);
-            this.Controls.Add(this.message_l);
             this.Name = "Message";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Message";
@@ -133,11 +124,10 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.Label message_l;
         private System.Windows.Forms.PictureBox picIcono;
         private System.Windows.Forms.Button acceptar;
         private System.Windows.Forms.Button cancelar;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox message_l;
     }
 }

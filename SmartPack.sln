@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPack", "SmartPack.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "..\UnitTest\UnitTest.csproj", "{DFB2CCF7-EFF3-423B-A971-8E16544DF980}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPackTests", "..\SmartPackTests\SmartPackTests.csproj", "{F669F53F-DEE6-4B7F-A366-7612B927728D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DFB2CCF7-EFF3-423B-A971-8E16544DF980}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFB2CCF7-EFF3-423B-A971-8E16544DF980}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFB2CCF7-EFF3-423B-A971-8E16544DF980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F669F53F-DEE6-4B7F-A366-7612B927728D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F669F53F-DEE6-4B7F-A366-7612B927728D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F669F53F-DEE6-4B7F-A366-7612B927728D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F669F53F-DEE6-4B7F-A366-7612B927728D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

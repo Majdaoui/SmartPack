@@ -85,9 +85,6 @@ namespace SmartPack
             this.contrasenya_is.Size = new System.Drawing.Size(337, 35);
             this.contrasenya_is.TabIndex = 52;
             this.contrasenya_is.TabStop = false;
-            this.contrasenya_is.Text = "Contrasenya";
-            this.contrasenya_is.Enter += new System.EventHandler(this.Contrasenya_Enter);
-            this.contrasenya_is.Leave += new System.EventHandler(this.Contrasenya_Leave);
             // 
             // email_is
             // 
@@ -100,9 +97,6 @@ namespace SmartPack
             this.email_is.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.email_is.Size = new System.Drawing.Size(337, 35);
             this.email_is.TabIndex = 53;
-            this.email_is.Text = "Email";
-            this.email_is.Enter += new System.EventHandler(this.Email_Enter);
-            this.email_is.Leave += new System.EventHandler(this.Email_Leave);
             // 
             // panel1
             // 
@@ -229,7 +223,7 @@ namespace SmartPack
             this.pictureBox2.Image = global::SmartPack.Properties.Resources.internet_locked_padlock_password_secure_security_unlock_icon_127083;
             this.pictureBox2.Location = new System.Drawing.Point(473, 91);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(45, 37);
+            this.pictureBox2.Size = new System.Drawing.Size(45, 35);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 63;
             this.pictureBox2.TabStop = false;
@@ -293,6 +287,7 @@ namespace SmartPack
         }
 
         #endregion
+
         private System.Windows.Forms.TextBox contrasenya_is;
         private System.Windows.Forms.TextBox email_is;
         private System.Windows.Forms.Panel panel1;
@@ -318,42 +313,7 @@ namespace SmartPack
         }
 
         private System.Windows.Forms.PictureBox pictureBox3;
-        private void Contrasenya_Enter(object sender, EventArgs e)
-        {
-            if (contrasenya_is.Text == "Contrasenya")
-            {
-                contrasenya_is.Text = "";
-                contrasenya_is.ForeColor = Color.Black; // Color normal al escribir
-                contrasenya_is.UseSystemPasswordChar = true; // Ocultar caracteres como contraseña
-            }
-        }
-
-        private void Contrasenya_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(contrasenya_is.Text))
-            {
-                contrasenya_is.UseSystemPasswordChar = false; // Mostrar texto normal
-                contrasenya_is.Text = "Contrasenya";
-                contrasenya_is.ForeColor = Color.Gray; // Color de placeholder
-            }
-        }
-        private void Email_Enter(object sender, EventArgs e)
-        {
-            if (email_is.Text == "Email")
-            {
-                email_is.Text = "";
-                email_is.ForeColor = Color.Black;
-            }
-        }
-
-        private void Email_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(email_is.Text))
-            {
-                email_is.Text = "Email";
-                email_is.ForeColor = Color.Gray;
-            }
-        }
+      
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

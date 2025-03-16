@@ -35,48 +35,54 @@ namespace SmartPack
                 string.IsNullOrWhiteSpace(t_cp) || string.IsNullOrWhiteSpace(tpoble) ||
                 string.IsNullOrWhiteSpace(tprovincia))
             {
-                Message messatgel = new Message("Revisa els camps són obligatoris ", "Error");
-                messatgel.ShowDialog();
-                //MessageBox.Show("Tots els camps són obligatoris ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (Message messatgel = new Message("Revisa els camps són obligatoris ", "Error"))
+                {
+                    messatgel.ShowDialog();
+                }
                 return;
             }
 
 
             if (!Regex.IsMatch(tcif, "^[a-zA-Z0-9]+$"))
             {
-                Message messatgel = new Message("El CIF/NIEF només pot tenir lletres i números. ", "Error");
-                messatgel.ShowDialog();
-                //MessageBox.Show("El CIF/NIEF només pot tenir lletres i números ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (Message messatgel = new Message("El CIF/NIEF només pot tenir lletres i números. ", "Error"))
+                {
+                    messatgel.ShowDialog();
+                }
                 return;
             }
 
             else if (ValidarIdentificacion(tcif))
             {
-                Message messatgel = new Message("El CIF/NIEF no és vàlid, el seu format no és correcte. ", "Error");
-                messatgel.ShowDialog();
-                //MessageBox.Show("El CIF/NIEF no és vàlid, el seu format no és correcte ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (Message messatgel = new Message("El CIF/NIEF no és vàlid, el seu format no és correcte. ", "Error"))
+                {
+                    messatgel.ShowDialog();
+                }
                 return;
             }
 
             if (!Regex.IsMatch(ttef, "^[0-9]{9,15}$"))
             {
-                Message messatgel = new Message("El telèfon ha de tenir entres 9 i 15 dígits.", "Error");
-                messatgel.ShowDialog();
-                //MessageBox.Show("El telèfon ha de tenir entres 9 i 15 dígits", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (Message messatgel = new Message("El telèfon ha de tenir entres 9 i 15 dígits.", "Error"))
+                {
+                    messatgel.ShowDialog();
+                }
                 return;
             }
             if (!Regex.IsMatch(t_cp, "^[0-9]{5}$"))
             {
-                Message messatgel = new Message("El códi postal ha de tenir 5 dígits.", "Error");
-                messatgel.ShowDialog();
-                //MessageBox.Show("El códi postal ha de tenir 5 dñigits", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (Message messatgel = new Message("El códi postal ha de tenir 5 dígits.", "Error"))
+                {
+                    messatgel.ShowDialog();
+                }
                 return;
             }
             if (!Regex.IsMatch(temail, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
             {
-                Message messatgel = new Message("El email no és vàlid ", "Error");
-                messatgel.ShowDialog();
-                //MessageBox.Show("El email no és vàlid ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (Message messatgel = new Message("El email no és vàlid ", "Error"))
+                {
+                    messatgel.ShowDialog();
+                }
                 return;
             }
             var empresa = new

@@ -12,16 +12,29 @@ namespace SmartPack
 {
     public partial class Message: TitleForm
     {
-        public Message(string msg, string tipy)
+
+        private void Init()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = true;
             this.DoubleBuffered = true;
-            this.message_l.Text = msg;
-            this.message_l.TextAlign = ContentAlignment.MiddleCenter;
             picIcono.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+        public Message(string msg, string tipy)
+        {
+            Init();
+            if (!string.IsNullOrEmpty(msg) && !string.IsNullOrEmpty(tipy))
+            {
+                SetMessage(msg, tipy);
+            }
+        }
+
+        public void SetMessage(string msg, string tipy)
+        {
+            this.message_l.Text = msg;
+            var l = acceptar.Location;
             switch (tipy.ToLower())
             {
                 case "error":
@@ -30,8 +43,10 @@ namespace SmartPack
                     acceptar.Text = "OK";
                     acceptar.Visible = true;
                     cancelar.Visible = false;
+                    acceptar.Location = new Point((this.Width / 2 - acceptar.Width / 2), l.Y);
                     break;
                 case "confirmacio":
+                    acceptar.Location = l;
                     picIcono.Image = Properties.Resources.iconConfirm;
                     this.BackColor = Color.Green;
                     cancelar.Visible = true;
@@ -40,6 +55,7 @@ namespace SmartPack
                     acceptar.Visible = true;
                     break;
                 case "advertencia":
+                    acceptar.Location = new Point((this.Width / 2 - acceptar.Width / 2), l.Y);
                     picIcono.Image = Properties.Resources.iconAdv;
                     this.BackColor = Color.Orange;
                     acceptar.Text = "OK";
@@ -47,6 +63,7 @@ namespace SmartPack
                     cancelar.Visible = false;
                     break;
                 case "info":
+                    acceptar.Location = new Point((this.Width / 2 - acceptar.Width / 2), l.Y);
                     picIcono.Image = Properties.Resources.iconInfo;
                     this.BackColor = Color.Blue;
                     acceptar.Text = "OK";
