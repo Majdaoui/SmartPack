@@ -23,5 +23,11 @@ namespace SmartPack.Forms
             this.PerformLayout();
 
         }
+
+        private void Bcanvi_contrasenya_Click(object sender, EventArgs e)
+        {
+            CanviContrasenya canviContrasenya = new CanviContrasenya();
+            canviContrasenya.ShowDialog();
+        }
     }
 }

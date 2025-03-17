@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SmartPack
@@ -195,17 +196,22 @@ namespace SmartPack
         }
         public static bool EsDniNieValido(string doc)
         {
-            string letras = "TRWAGMYFPDXBNJZSQVHLCKE";
-            if (!Regex.IsMatch(doc, @"^([XYZ]|[XYZ][A-Z])?\d{7,8}[A-Za-z]$")) return false;
-            string numeroStr = doc.Substring(0, doc.Length - 1);
-            char letraIngresada = char.ToUpper(doc[doc.Length - 1]);
-            if (numeroStr[0] == 'X') numeroStr = "0" + numeroStr.Substring(1);
-            else if (numeroStr[0] == 'Y') numeroStr = "1" + numeroStr.Substring(1);
-            else if (numeroStr[0] == 'Z') numeroStr = "2" + numeroStr.Substring(1);
-            int numero = int.Parse(numeroStr);
-            char letraCalculada = letras[numero % 23];
-            return letraCalculada == letraIngresada;
+            if (Regex.IsMatch(doc, @"^\d{8}[A-Za-z]{1}$"))
+            {
+                return true;
+            }
+
+            // Validación para el NIE: letra inicial (X, Y, Z) + 7 dígitos + letra final
+            if (Regex.IsMatch(doc, @"^[XYZ]\d{7}[A-Za-z]{1}$"))
+            {
+                return true;
+            }
+
+            // Si no cumple con ninguno de los formatos, es inválido
+            return false;
         }
+
+
         public static bool ValidarContrasenya(string password)
         {
             if (string.IsNullOrEmpty(password)) return false;

@@ -64,8 +64,8 @@ namespace SmartPack
             }
             else
             {
-                AreaUsuari formAreaUsuari = new AreaUsuari();
-                formAreaUsuari.Show();
+                Principal principal = new Principal();
+                principal.Show();
             }
         }
     }

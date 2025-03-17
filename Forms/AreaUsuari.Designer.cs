@@ -31,39 +31,41 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.title = new System.Windows.Forms.Label();
-            this.observacions_t = new System.Windows.Forms.TextBox();
-            this.observacions = new System.Windows.Forms.Label();
-            this.telephon = new System.Windows.Forms.TextBox();
-            this.telefon = new System.Windows.Forms.Label();
-            this.cognom_s = new System.Windows.Forms.TextBox();
-            this.segon_cognom = new System.Windows.Forms.Label();
-            this.l_rol = new System.Windows.Forms.Label();
-            this.email_t = new System.Windows.Forms.TextBox();
-            this.email = new System.Windows.Forms.Label();
-            this.bRegistre = new System.Windows.Forms.Button();
-            this.provincia_t = new System.Windows.Forms.TextBox();
-            this.poblacio_t = new System.Windows.Forms.TextBox();
-            this.cp = new System.Windows.Forms.TextBox();
-            this.porta = new System.Windows.Forms.TextBox();
-            this.provincia = new System.Windows.Forms.Label();
-            this.poblacio = new System.Windows.Forms.Label();
-            this.planta = new System.Windows.Forms.TextBox();
-            this.num = new System.Windows.Forms.TextBox();
-            this.lcp = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.nom_via = new System.Windows.Forms.TextBox();
-            this.t_via = new System.Windows.Forms.TextBox();
-            this.lplanta = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dni_c = new System.Windows.Forms.TextBox();
-            this.n_via = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cognom_p = new System.Windows.Forms.TextBox();
-            this.nom = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.primer_cognom = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.observacions_usuari = new System.Windows.Forms.TextBox();
+            this.observacions_u = new System.Windows.Forms.Label();
+            this.telefon_usuari = new System.Windows.Forms.TextBox();
+            this.telefon_u = new System.Windows.Forms.Label();
+            this.cognom_s_usuari = new System.Windows.Forms.TextBox();
+            this.s_cognom_u = new System.Windows.Forms.Label();
+            this.l_rol_u = new System.Windows.Forms.Label();
+            this.email_usuari = new System.Windows.Forms.TextBox();
+            this.email_u = new System.Windows.Forms.Label();
+            this.bGuardar = new System.Windows.Forms.Button();
+            this.provincia_usuari = new System.Windows.Forms.TextBox();
+            this.poblacio_usuari = new System.Windows.Forms.TextBox();
+            this.cp_usuari = new System.Windows.Forms.TextBox();
+            this.porta_usuari = new System.Windows.Forms.TextBox();
+            this.provincia_u = new System.Windows.Forms.Label();
+            this.poblacio_u = new System.Windows.Forms.Label();
+            this.planta_usuari = new System.Windows.Forms.TextBox();
+            this.num_usuari = new System.Windows.Forms.TextBox();
+            this.lcp_u = new System.Windows.Forms.Label();
+            this.porta_u = new System.Windows.Forms.Label();
+            this.nom_via_usuari = new System.Windows.Forms.TextBox();
+            this.t_via_usuari = new System.Windows.Forms.TextBox();
+            this.lplanta_u = new System.Windows.Forms.Label();
+            this.num_u = new System.Windows.Forms.Label();
+            this.dni_usuari = new System.Windows.Forms.TextBox();
+            this.n_via_u = new System.Windows.Forms.Label();
+            this.tvia_u = new System.Windows.Forms.Label();
+            this.cognom_p_usuari = new System.Windows.Forms.TextBox();
+            this.nom_usuari = new System.Windows.Forms.TextBox();
+            this.dni_u = new System.Windows.Forms.Label();
+            this.p_cognom_u = new System.Windows.Forms.Label();
+            this.nom_u = new System.Windows.Forms.Label();
+            this.Rol_Usuari = new System.Windows.Forms.TextBox();
+            this.bDesactivar = new System.Windows.Forms.Button();
+            this.Bcanvi_contrasenya = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,381 +101,418 @@
             this.title.Text = "Àrea Personal";
             this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // observacions_t
-            // 
-            this.observacions_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.observacions_t.Location = new System.Drawing.Point(176, 402);
-            this.observacions_t.Name = "observacions_t";
-            this.observacions_t.Size = new System.Drawing.Size(633, 20);
-            this.observacions_t.TabIndex = 66;
-            // 
-            // observacions
-            // 
-            this.observacions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.observacions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.observacions.ForeColor = System.Drawing.Color.White;
-            this.observacions.Location = new System.Drawing.Point(43, 402);
-            this.observacions.Name = "observacions";
-            this.observacions.Size = new System.Drawing.Size(128, 20);
-            this.observacions.TabIndex = 65;
-            this.observacions.Text = "Observacions";
-            this.observacions.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // telephon
-            // 
-            this.telephon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.telephon.Location = new System.Drawing.Point(610, 348);
-            this.telephon.MaxLength = 9;
-            this.telephon.Name = "telephon";
-            this.telephon.Size = new System.Drawing.Size(199, 20);
-            this.telephon.TabIndex = 64;
-            // 
-            // telefon
-            // 
-            this.telefon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.telefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.telefon.ForeColor = System.Drawing.Color.White;
-            this.telefon.Location = new System.Drawing.Point(433, 348);
-            this.telefon.Name = "telefon";
-            this.telefon.Size = new System.Drawing.Size(171, 20);
-            this.telefon.TabIndex = 63;
-            this.telefon.Text = "Telèfon";
-            this.telefon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // cognom_s
-            // 
-            this.cognom_s.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cognom_s.Location = new System.Drawing.Point(610, 222);
-            this.cognom_s.Name = "cognom_s";
-            this.cognom_s.Size = new System.Drawing.Size(199, 20);
-            this.cognom_s.TabIndex = 60;
-            // 
-            // segon_cognom
-            // 
-            this.segon_cognom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.segon_cognom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.segon_cognom.ForeColor = System.Drawing.Color.White;
-            this.segon_cognom.Location = new System.Drawing.Point(433, 222);
-            this.segon_cognom.Name = "segon_cognom";
-            this.segon_cognom.Size = new System.Drawing.Size(171, 20);
-            this.segon_cognom.TabIndex = 59;
-            this.segon_cognom.Text = "Segon Cognom";
-            this.segon_cognom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // l_rol
-            // 
-            this.l_rol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.l_rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_rol.ForeColor = System.Drawing.Color.White;
-            this.l_rol.Location = new System.Drawing.Point(43, 168);
-            this.l_rol.Name = "l_rol";
-            this.l_rol.Size = new System.Drawing.Size(128, 20);
-            this.l_rol.TabIndex = 58;
-            this.l_rol.Text = "Tipus de compte: ";
-            this.l_rol.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // email_t
-            // 
-            this.email_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.email_t.Location = new System.Drawing.Point(177, 348);
-            this.email_t.Name = "email_t";
-            this.email_t.Size = new System.Drawing.Size(199, 20);
-            this.email_t.TabIndex = 57;
-            // 
-            // email
-            // 
-            this.email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.email.ForeColor = System.Drawing.Color.White;
-            this.email.Location = new System.Drawing.Point(43, 348);
-            this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(128, 20);
-            this.email.TabIndex = 55;
-            this.email.Text = "Email";
-            this.email.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // bRegistre
-            // 
-            this.bRegistre.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.bRegistre.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.bRegistre.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.bRegistre.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.bRegistre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bRegistre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bRegistre.ForeColor = System.Drawing.Color.Black;
-            this.bRegistre.Location = new System.Drawing.Point(335, 439);
-            this.bRegistre.Name = "bRegistre";
-            this.bRegistre.Size = new System.Drawing.Size(136, 44);
-            this.bRegistre.TabIndex = 53;
-            this.bRegistre.Text = "Registrar";
-            this.bRegistre.UseVisualStyleBackColor = false;
-            // 
-            // provincia_t
-            // 
-            this.provincia_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.provincia_t.Location = new System.Drawing.Point(610, 323);
-            this.provincia_t.Name = "provincia_t";
-            this.provincia_t.Size = new System.Drawing.Size(199, 20);
-            this.provincia_t.TabIndex = 50;
-            // 
-            // poblacio_t
-            // 
-            this.poblacio_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.poblacio_t.Location = new System.Drawing.Point(176, 323);
-            this.poblacio_t.Name = "poblacio_t";
-            this.poblacio_t.Size = new System.Drawing.Size(199, 20);
-            this.poblacio_t.TabIndex = 49;
-            // 
-            // cp
-            // 
-            this.cp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cp.Location = new System.Drawing.Point(610, 298);
-            this.cp.Name = "cp";
-            this.cp.Size = new System.Drawing.Size(199, 20);
-            this.cp.TabIndex = 52;
-            // 
-            // porta
-            // 
-            this.porta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.porta.Location = new System.Drawing.Point(176, 298);
-            this.porta.Name = "porta";
-            this.porta.Size = new System.Drawing.Size(199, 20);
-            this.porta.TabIndex = 51;
-            // 
-            // provincia
-            // 
-            this.provincia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.provincia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.provincia.ForeColor = System.Drawing.Color.White;
-            this.provincia.Location = new System.Drawing.Point(433, 323);
-            this.provincia.Name = "provincia";
-            this.provincia.Size = new System.Drawing.Size(171, 20);
-            this.provincia.TabIndex = 34;
-            this.provincia.Text = "Provincia";
-            this.provincia.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // poblacio
-            // 
-            this.poblacio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.poblacio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.poblacio.ForeColor = System.Drawing.Color.White;
-            this.poblacio.Location = new System.Drawing.Point(43, 323);
-            this.poblacio.Name = "poblacio";
-            this.poblacio.Size = new System.Drawing.Size(128, 20);
-            this.poblacio.TabIndex = 35;
-            this.poblacio.Text = "Població";
-            this.poblacio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // planta
-            // 
-            this.planta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.planta.Location = new System.Drawing.Point(611, 272);
-            this.planta.Name = "planta";
-            this.planta.Size = new System.Drawing.Size(199, 20);
-            this.planta.TabIndex = 44;
-            // 
-            // num
-            // 
-            this.num.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.num.Location = new System.Drawing.Point(176, 272);
-            this.num.Name = "num";
-            this.num.Size = new System.Drawing.Size(199, 20);
-            this.num.TabIndex = 43;
-            // 
-            // lcp
-            // 
-            this.lcp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.lcp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lcp.ForeColor = System.Drawing.Color.White;
-            this.lcp.Location = new System.Drawing.Point(433, 298);
-            this.lcp.Name = "lcp";
-            this.lcp.Size = new System.Drawing.Size(171, 20);
-            this.lcp.TabIndex = 36;
-            this.lcp.Text = "Codi Postal";
-            this.lcp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(43, 298);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 20);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "Porta";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // nom_via
-            // 
-            this.nom_via.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nom_via.Location = new System.Drawing.Point(610, 247);
-            this.nom_via.Name = "nom_via";
-            this.nom_via.Size = new System.Drawing.Size(199, 20);
-            this.nom_via.TabIndex = 48;
-            // 
-            // t_via
-            // 
-            this.t_via.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_via.Location = new System.Drawing.Point(176, 247);
-            this.t_via.Name = "t_via";
-            this.t_via.Size = new System.Drawing.Size(199, 20);
-            this.t_via.TabIndex = 45;
-            // 
-            // lplanta
-            // 
-            this.lplanta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.lplanta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lplanta.ForeColor = System.Drawing.Color.White;
-            this.lplanta.Location = new System.Drawing.Point(433, 272);
-            this.lplanta.Name = "lplanta";
-            this.lplanta.Size = new System.Drawing.Size(171, 20);
-            this.lplanta.TabIndex = 32;
-            this.lplanta.Text = "Planta";
-            this.lplanta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(43, 272);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 20);
-            this.label5.TabIndex = 33;
-            this.label5.Text = "Número";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // dni_c
-            // 
-            this.dni_c.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dni_c.Location = new System.Drawing.Point(176, 222);
-            this.dni_c.Name = "dni_c";
-            this.dni_c.Size = new System.Drawing.Size(199, 20);
-            this.dni_c.TabIndex = 42;
-            // 
-            // n_via
-            // 
-            this.n_via.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.n_via.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.n_via.ForeColor = System.Drawing.Color.White;
-            this.n_via.Location = new System.Drawing.Point(433, 247);
-            this.n_via.Name = "n_via";
-            this.n_via.Size = new System.Drawing.Size(171, 20);
-            this.n_via.TabIndex = 37;
-            this.n_via.Text = "Nom de la Via";
-            this.n_via.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(43, 247);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 20);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "Tipus de Via";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // cognom_p
-            // 
-            this.cognom_p.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cognom_p.Location = new System.Drawing.Point(610, 197);
-            this.cognom_p.Name = "cognom_p";
-            this.cognom_p.Size = new System.Drawing.Size(199, 20);
-            this.cognom_p.TabIndex = 46;
-            // 
-            // nom
-            // 
-            this.nom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nom.Location = new System.Drawing.Point(176, 197);
-            this.nom.Name = "nom";
-            this.nom.Size = new System.Drawing.Size(199, 20);
-            this.nom.TabIndex = 47;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(43, 222);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 20);
-            this.label3.TabIndex = 39;
-            this.label3.Text = "DIN/NIE";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // primer_cognom
-            // 
-            this.primer_cognom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.primer_cognom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.primer_cognom.ForeColor = System.Drawing.Color.White;
-            this.primer_cognom.Location = new System.Drawing.Point(433, 197);
-            this.primer_cognom.Name = "primer_cognom";
-            this.primer_cognom.Size = new System.Drawing.Size(171, 20);
-            this.primer_cognom.TabIndex = 38;
-            this.primer_cognom.Text = "Primer Cognom";
-            this.primer_cognom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(43, 197);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 20);
-            this.label2.TabIndex = 41;
-            this.label2.Text = "Nom";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(177, 168);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 20);
-            this.textBox1.TabIndex = 67;
+            // observacions_usuari
+            // 
+            this.observacions_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.observacions_usuari.Location = new System.Drawing.Point(176, 402);
+            this.observacions_usuari.Name = "observacions_usuari";
+            this.observacions_usuari.Size = new System.Drawing.Size(633, 20);
+            this.observacions_usuari.TabIndex = 66;
+            // 
+            // observacions_u
+            // 
+            this.observacions_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.observacions_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.observacions_u.ForeColor = System.Drawing.Color.White;
+            this.observacions_u.Location = new System.Drawing.Point(43, 402);
+            this.observacions_u.Name = "observacions_u";
+            this.observacions_u.Size = new System.Drawing.Size(128, 20);
+            this.observacions_u.TabIndex = 65;
+            this.observacions_u.Text = "Observacions";
+            this.observacions_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // telefon_usuari
+            // 
+            this.telefon_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.telefon_usuari.Location = new System.Drawing.Point(610, 348);
+            this.telefon_usuari.MaxLength = 9;
+            this.telefon_usuari.Name = "telefon_usuari";
+            this.telefon_usuari.Size = new System.Drawing.Size(199, 20);
+            this.telefon_usuari.TabIndex = 64;
+            // 
+            // telefon_u
+            // 
+            this.telefon_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.telefon_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.telefon_u.ForeColor = System.Drawing.Color.White;
+            this.telefon_u.Location = new System.Drawing.Point(433, 348);
+            this.telefon_u.Name = "telefon_u";
+            this.telefon_u.Size = new System.Drawing.Size(171, 20);
+            this.telefon_u.TabIndex = 63;
+            this.telefon_u.Text = "Telèfon";
+            this.telefon_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cognom_s_usuari
+            // 
+            this.cognom_s_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cognom_s_usuari.Location = new System.Drawing.Point(610, 222);
+            this.cognom_s_usuari.Name = "cognom_s_usuari";
+            this.cognom_s_usuari.Size = new System.Drawing.Size(199, 20);
+            this.cognom_s_usuari.TabIndex = 60;
+            // 
+            // s_cognom_u
+            // 
+            this.s_cognom_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.s_cognom_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.s_cognom_u.ForeColor = System.Drawing.Color.White;
+            this.s_cognom_u.Location = new System.Drawing.Point(433, 222);
+            this.s_cognom_u.Name = "s_cognom_u";
+            this.s_cognom_u.Size = new System.Drawing.Size(171, 20);
+            this.s_cognom_u.TabIndex = 59;
+            this.s_cognom_u.Text = "Segon Cognom";
+            this.s_cognom_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // l_rol_u
+            // 
+            this.l_rol_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.l_rol_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_rol_u.ForeColor = System.Drawing.Color.White;
+            this.l_rol_u.Location = new System.Drawing.Point(43, 168);
+            this.l_rol_u.Name = "l_rol_u";
+            this.l_rol_u.Size = new System.Drawing.Size(128, 20);
+            this.l_rol_u.TabIndex = 58;
+            this.l_rol_u.Text = "Tipus de compte: ";
+            this.l_rol_u.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // email_usuari
+            // 
+            this.email_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.email_usuari.Location = new System.Drawing.Point(177, 348);
+            this.email_usuari.Name = "email_usuari";
+            this.email_usuari.Size = new System.Drawing.Size(199, 20);
+            this.email_usuari.TabIndex = 57;
+            // 
+            // email_u
+            // 
+            this.email_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.email_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email_u.ForeColor = System.Drawing.Color.White;
+            this.email_u.Location = new System.Drawing.Point(43, 348);
+            this.email_u.Name = "email_u";
+            this.email_u.Size = new System.Drawing.Size(128, 20);
+            this.email_u.TabIndex = 55;
+            this.email_u.Text = "Email";
+            this.email_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // bGuardar
+            // 
+            this.bGuardar.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bGuardar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bGuardar.ForeColor = System.Drawing.Color.Black;
+            this.bGuardar.Location = new System.Drawing.Point(335, 439);
+            this.bGuardar.Name = "bGuardar";
+            this.bGuardar.Size = new System.Drawing.Size(136, 44);
+            this.bGuardar.TabIndex = 53;
+            this.bGuardar.Text = "Guardar";
+            this.bGuardar.UseVisualStyleBackColor = false;
+            // 
+            // provincia_usuari
+            // 
+            this.provincia_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.provincia_usuari.Location = new System.Drawing.Point(610, 323);
+            this.provincia_usuari.Name = "provincia_usuari";
+            this.provincia_usuari.Size = new System.Drawing.Size(199, 20);
+            this.provincia_usuari.TabIndex = 50;
+            // 
+            // poblacio_usuari
+            // 
+            this.poblacio_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.poblacio_usuari.Location = new System.Drawing.Point(176, 323);
+            this.poblacio_usuari.Name = "poblacio_usuari";
+            this.poblacio_usuari.Size = new System.Drawing.Size(199, 20);
+            this.poblacio_usuari.TabIndex = 49;
+            // 
+            // cp_usuari
+            // 
+            this.cp_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cp_usuari.Location = new System.Drawing.Point(610, 298);
+            this.cp_usuari.Name = "cp_usuari";
+            this.cp_usuari.Size = new System.Drawing.Size(199, 20);
+            this.cp_usuari.TabIndex = 52;
+            // 
+            // porta_usuari
+            // 
+            this.porta_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.porta_usuari.Location = new System.Drawing.Point(176, 298);
+            this.porta_usuari.Name = "porta_usuari";
+            this.porta_usuari.Size = new System.Drawing.Size(199, 20);
+            this.porta_usuari.TabIndex = 51;
+            // 
+            // provincia_u
+            // 
+            this.provincia_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.provincia_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.provincia_u.ForeColor = System.Drawing.Color.White;
+            this.provincia_u.Location = new System.Drawing.Point(433, 323);
+            this.provincia_u.Name = "provincia_u";
+            this.provincia_u.Size = new System.Drawing.Size(171, 20);
+            this.provincia_u.TabIndex = 34;
+            this.provincia_u.Text = "Provincia";
+            this.provincia_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // poblacio_u
+            // 
+            this.poblacio_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.poblacio_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.poblacio_u.ForeColor = System.Drawing.Color.White;
+            this.poblacio_u.Location = new System.Drawing.Point(43, 323);
+            this.poblacio_u.Name = "poblacio_u";
+            this.poblacio_u.Size = new System.Drawing.Size(128, 20);
+            this.poblacio_u.TabIndex = 35;
+            this.poblacio_u.Text = "Població";
+            this.poblacio_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // planta_usuari
+            // 
+            this.planta_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.planta_usuari.Location = new System.Drawing.Point(611, 272);
+            this.planta_usuari.Name = "planta_usuari";
+            this.planta_usuari.Size = new System.Drawing.Size(199, 20);
+            this.planta_usuari.TabIndex = 44;
+            // 
+            // num_usuari
+            // 
+            this.num_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.num_usuari.Location = new System.Drawing.Point(176, 272);
+            this.num_usuari.Name = "num_usuari";
+            this.num_usuari.Size = new System.Drawing.Size(199, 20);
+            this.num_usuari.TabIndex = 43;
+            // 
+            // lcp_u
+            // 
+            this.lcp_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.lcp_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lcp_u.ForeColor = System.Drawing.Color.White;
+            this.lcp_u.Location = new System.Drawing.Point(433, 298);
+            this.lcp_u.Name = "lcp_u";
+            this.lcp_u.Size = new System.Drawing.Size(171, 20);
+            this.lcp_u.TabIndex = 36;
+            this.lcp_u.Text = "Codi Postal";
+            this.lcp_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // porta_u
+            // 
+            this.porta_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.porta_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.porta_u.ForeColor = System.Drawing.Color.White;
+            this.porta_u.Location = new System.Drawing.Point(43, 298);
+            this.porta_u.Name = "porta_u";
+            this.porta_u.Size = new System.Drawing.Size(128, 20);
+            this.porta_u.TabIndex = 31;
+            this.porta_u.Text = "Porta";
+            this.porta_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // nom_via_usuari
+            // 
+            this.nom_via_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nom_via_usuari.Location = new System.Drawing.Point(610, 247);
+            this.nom_via_usuari.Name = "nom_via_usuari";
+            this.nom_via_usuari.Size = new System.Drawing.Size(199, 20);
+            this.nom_via_usuari.TabIndex = 48;
+            // 
+            // t_via_usuari
+            // 
+            this.t_via_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.t_via_usuari.Location = new System.Drawing.Point(176, 247);
+            this.t_via_usuari.Name = "t_via_usuari";
+            this.t_via_usuari.Size = new System.Drawing.Size(199, 20);
+            this.t_via_usuari.TabIndex = 45;
+            // 
+            // lplanta_u
+            // 
+            this.lplanta_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.lplanta_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lplanta_u.ForeColor = System.Drawing.Color.White;
+            this.lplanta_u.Location = new System.Drawing.Point(433, 272);
+            this.lplanta_u.Name = "lplanta_u";
+            this.lplanta_u.Size = new System.Drawing.Size(171, 20);
+            this.lplanta_u.TabIndex = 32;
+            this.lplanta_u.Text = "Planta";
+            this.lplanta_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // num_u
+            // 
+            this.num_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.num_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.num_u.ForeColor = System.Drawing.Color.White;
+            this.num_u.Location = new System.Drawing.Point(43, 272);
+            this.num_u.Name = "num_u";
+            this.num_u.Size = new System.Drawing.Size(128, 20);
+            this.num_u.TabIndex = 33;
+            this.num_u.Text = "Número";
+            this.num_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // dni_usuari
+            // 
+            this.dni_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dni_usuari.Location = new System.Drawing.Point(176, 222);
+            this.dni_usuari.Name = "dni_usuari";
+            this.dni_usuari.Size = new System.Drawing.Size(199, 20);
+            this.dni_usuari.TabIndex = 42;
+            // 
+            // n_via_u
+            // 
+            this.n_via_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.n_via_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.n_via_u.ForeColor = System.Drawing.Color.White;
+            this.n_via_u.Location = new System.Drawing.Point(433, 247);
+            this.n_via_u.Name = "n_via_u";
+            this.n_via_u.Size = new System.Drawing.Size(171, 20);
+            this.n_via_u.TabIndex = 37;
+            this.n_via_u.Text = "Nom de la Via";
+            this.n_via_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tvia_u
+            // 
+            this.tvia_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.tvia_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tvia_u.ForeColor = System.Drawing.Color.White;
+            this.tvia_u.Location = new System.Drawing.Point(43, 247);
+            this.tvia_u.Name = "tvia_u";
+            this.tvia_u.Size = new System.Drawing.Size(128, 20);
+            this.tvia_u.TabIndex = 40;
+            this.tvia_u.Text = "Tipus de Via";
+            this.tvia_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cognom_p_usuari
+            // 
+            this.cognom_p_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cognom_p_usuari.Location = new System.Drawing.Point(610, 197);
+            this.cognom_p_usuari.Name = "cognom_p_usuari";
+            this.cognom_p_usuari.Size = new System.Drawing.Size(199, 20);
+            this.cognom_p_usuari.TabIndex = 46;
+            // 
+            // nom_usuari
+            // 
+            this.nom_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nom_usuari.Location = new System.Drawing.Point(176, 197);
+            this.nom_usuari.Name = "nom_usuari";
+            this.nom_usuari.Size = new System.Drawing.Size(199, 20);
+            this.nom_usuari.TabIndex = 47;
+            // 
+            // dni_u
+            // 
+            this.dni_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.dni_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dni_u.ForeColor = System.Drawing.Color.White;
+            this.dni_u.Location = new System.Drawing.Point(43, 222);
+            this.dni_u.Name = "dni_u";
+            this.dni_u.Size = new System.Drawing.Size(128, 20);
+            this.dni_u.TabIndex = 39;
+            this.dni_u.Text = "DIN/NIE";
+            this.dni_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // p_cognom_u
+            // 
+            this.p_cognom_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.p_cognom_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.p_cognom_u.ForeColor = System.Drawing.Color.White;
+            this.p_cognom_u.Location = new System.Drawing.Point(433, 197);
+            this.p_cognom_u.Name = "p_cognom_u";
+            this.p_cognom_u.Size = new System.Drawing.Size(171, 20);
+            this.p_cognom_u.TabIndex = 38;
+            this.p_cognom_u.Text = "Primer Cognom";
+            this.p_cognom_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // nom_u
+            // 
+            this.nom_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.nom_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nom_u.ForeColor = System.Drawing.Color.White;
+            this.nom_u.Location = new System.Drawing.Point(43, 197);
+            this.nom_u.Name = "nom_u";
+            this.nom_u.Size = new System.Drawing.Size(128, 20);
+            this.nom_u.TabIndex = 41;
+            this.nom_u.Text = "Nom";
+            this.nom_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Rol_Usuari
+            // 
+            this.Rol_Usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Rol_Usuari.Location = new System.Drawing.Point(177, 168);
+            this.Rol_Usuari.Name = "Rol_Usuari";
+            this.Rol_Usuari.Size = new System.Drawing.Size(199, 20);
+            this.Rol_Usuari.TabIndex = 67;
+            // 
+            // bDesactivar
+            // 
+            this.bDesactivar.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bDesactivar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bDesactivar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bDesactivar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bDesactivar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bDesactivar.ForeColor = System.Drawing.Color.Black;
+            this.bDesactivar.Location = new System.Drawing.Point(486, 439);
+            this.bDesactivar.Name = "bDesactivar";
+            this.bDesactivar.Size = new System.Drawing.Size(179, 44);
+            this.bDesactivar.TabIndex = 68;
+            this.bDesactivar.Text = "Disactivar Compta";
+            this.bDesactivar.UseVisualStyleBackColor = false;
+            // 
+            // Bcanvi_contrasenya
+            // 
+            this.Bcanvi_contrasenya.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.Bcanvi_contrasenya.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Bcanvi_contrasenya.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.Bcanvi_contrasenya.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.Bcanvi_contrasenya.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Bcanvi_contrasenya.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bcanvi_contrasenya.ForeColor = System.Drawing.Color.Black;
+            this.Bcanvi_contrasenya.Location = new System.Drawing.Point(127, 439);
+            this.Bcanvi_contrasenya.Name = "Bcanvi_contrasenya";
+            this.Bcanvi_contrasenya.Size = new System.Drawing.Size(191, 44);
+            this.Bcanvi_contrasenya.TabIndex = 69;
+            this.Bcanvi_contrasenya.Text = "Canviar Contrasenya";
+            this.Bcanvi_contrasenya.UseVisualStyleBackColor = false;
+            this.Bcanvi_contrasenya.Click += new System.EventHandler(this.Bcanvi_contrasenya_Click);
             // 
             // AreaUsuari
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(857, 512);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.observacions_t);
-            this.Controls.Add(this.observacions);
-            this.Controls.Add(this.telephon);
-            this.Controls.Add(this.telefon);
-            this.Controls.Add(this.cognom_s);
-            this.Controls.Add(this.segon_cognom);
-            this.Controls.Add(this.l_rol);
-            this.Controls.Add(this.email_t);
-            this.Controls.Add(this.email);
-            this.Controls.Add(this.bRegistre);
-            this.Controls.Add(this.provincia_t);
-            this.Controls.Add(this.poblacio_t);
-            this.Controls.Add(this.cp);
-            this.Controls.Add(this.porta);
-            this.Controls.Add(this.provincia);
-            this.Controls.Add(this.poblacio);
-            this.Controls.Add(this.planta);
-            this.Controls.Add(this.num);
-            this.Controls.Add(this.lcp);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.nom_via);
-            this.Controls.Add(this.t_via);
-            this.Controls.Add(this.lplanta);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.dni_c);
-            this.Controls.Add(this.n_via);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.cognom_p);
-            this.Controls.Add(this.nom);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.primer_cognom);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Bcanvi_contrasenya);
+            this.Controls.Add(this.bDesactivar);
+            this.Controls.Add(this.Rol_Usuari);
+            this.Controls.Add(this.observacions_usuari);
+            this.Controls.Add(this.observacions_u);
+            this.Controls.Add(this.telefon_usuari);
+            this.Controls.Add(this.telefon_u);
+            this.Controls.Add(this.cognom_s_usuari);
+            this.Controls.Add(this.s_cognom_u);
+            this.Controls.Add(this.l_rol_u);
+            this.Controls.Add(this.email_usuari);
+            this.Controls.Add(this.email_u);
+            this.Controls.Add(this.bGuardar);
+            this.Controls.Add(this.provincia_usuari);
+            this.Controls.Add(this.poblacio_usuari);
+            this.Controls.Add(this.cp_usuari);
+            this.Controls.Add(this.porta_usuari);
+            this.Controls.Add(this.provincia_u);
+            this.Controls.Add(this.poblacio_u);
+            this.Controls.Add(this.planta_usuari);
+            this.Controls.Add(this.num_usuari);
+            this.Controls.Add(this.lcp_u);
+            this.Controls.Add(this.porta_u);
+            this.Controls.Add(this.nom_via_usuari);
+            this.Controls.Add(this.t_via_usuari);
+            this.Controls.Add(this.lplanta_u);
+            this.Controls.Add(this.num_u);
+            this.Controls.Add(this.dni_usuari);
+            this.Controls.Add(this.n_via_u);
+            this.Controls.Add(this.tvia_u);
+            this.Controls.Add(this.cognom_p_usuari);
+            this.Controls.Add(this.nom_usuari);
+            this.Controls.Add(this.dni_u);
+            this.Controls.Add(this.p_cognom_u);
+            this.Controls.Add(this.nom_u);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.title);
@@ -490,39 +529,39 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label title;
-        private System.Windows.Forms.TextBox observacions_t;
-        private System.Windows.Forms.Label observacions;
-        private System.Windows.Forms.TextBox telephon;
-        private System.Windows.Forms.Label telefon;
-        private System.Windows.Forms.TextBox cognom_s;
-        private System.Windows.Forms.Label segon_cognom;
-        private System.Windows.Forms.Label l_rol;
-        private System.Windows.Forms.TextBox email_t;
-        private System.Windows.Forms.Label email;
-        private System.Windows.Forms.Button bRegistre;
-        private System.Windows.Forms.TextBox provincia_t;
-        private System.Windows.Forms.TextBox poblacio_t;
-        private System.Windows.Forms.TextBox cp;
-        private System.Windows.Forms.TextBox porta;
-        private System.Windows.Forms.Label provincia;
-        private System.Windows.Forms.Label poblacio;
-        private System.Windows.Forms.TextBox planta;
-        private System.Windows.Forms.TextBox num;
-        private System.Windows.Forms.Label lcp;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox nom_via;
-        private System.Windows.Forms.TextBox t_via;
-        private System.Windows.Forms.Label lplanta;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox dni_c;
-        private System.Windows.Forms.Label n_via;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox cognom_p;
-        private System.Windows.Forms.TextBox nom;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label primer_cognom;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox observacions_usuari;
+        private System.Windows.Forms.Label observacions_u;
+        private System.Windows.Forms.TextBox telefon_usuari;
+        private System.Windows.Forms.Label telefon_u;
+        private System.Windows.Forms.TextBox cognom_s_usuari;
+        private System.Windows.Forms.Label s_cognom_u;
+        private System.Windows.Forms.Label l_rol_u;
+        private System.Windows.Forms.TextBox email_usuari;
+        private System.Windows.Forms.Label email_u;
+        private System.Windows.Forms.Button bGuardar;
+        private System.Windows.Forms.TextBox provincia_usuari;
+        private System.Windows.Forms.TextBox poblacio_usuari;
+        private System.Windows.Forms.TextBox cp_usuari;
+        private System.Windows.Forms.TextBox porta_usuari;
+        private System.Windows.Forms.Label provincia_u;
+        private System.Windows.Forms.Label poblacio_u;
+        private System.Windows.Forms.TextBox planta_usuari;
+        private System.Windows.Forms.TextBox num_usuari;
+        private System.Windows.Forms.Label lcp_u;
+        private System.Windows.Forms.Label porta_u;
+        private System.Windows.Forms.TextBox nom_via_usuari;
+        private System.Windows.Forms.TextBox t_via_usuari;
+        private System.Windows.Forms.Label lplanta_u;
+        private System.Windows.Forms.Label num_u;
+        private System.Windows.Forms.TextBox dni_usuari;
+        private System.Windows.Forms.Label n_via_u;
+        private System.Windows.Forms.Label tvia_u;
+        private System.Windows.Forms.TextBox cognom_p_usuari;
+        private System.Windows.Forms.TextBox nom_usuari;
+        private System.Windows.Forms.Label dni_u;
+        private System.Windows.Forms.Label p_cognom_u;
+        private System.Windows.Forms.Label nom_u;
+        private System.Windows.Forms.TextBox Rol_Usuari;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox3;
@@ -532,7 +571,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bDesactivar;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
@@ -559,7 +598,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Bcanvi_contrasenya;
         private System.Windows.Forms.Button button3;
     }
 }
