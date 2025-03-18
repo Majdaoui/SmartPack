@@ -1,4 +1,7 @@
-﻿namespace SmartPack.Forms
+﻿using System;
+using System.Windows.Forms;
+
+namespace SmartPack.Forms
 {
     partial class Principal
     {
@@ -93,11 +96,14 @@
             this.Controls.Add(this.title);
             this.Name = "Principal";
             this.Text = "Principal";
+            //this.Load += new System.EventHandler(this.Principal_Load);
+            this.FormClosing += new FormClosingEventHandler(Principal_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
 
         #endregion
 

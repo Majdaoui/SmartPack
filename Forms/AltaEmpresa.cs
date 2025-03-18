@@ -124,16 +124,22 @@ namespace SmartPack
             return (primeraLletra == 'X' ? "0" : primeraLletra == 'Y' ? "1" : "2") + numero + nie[8];
         }
 
+
+        public static bool IsValidCIF(string cif)
+        {
+            var regex = new Regex(@"^[A-Z]\d{8}$");
+            return regex.IsMatch(cif);
+        }
+
+
         private static bool ValidarCIF(string cif)
         {
-            int suma = 0, factor = 2;
-            for (int i = 1; i < 8; i++, factor = 3 - factor)
+            if(string.IsNullOrEmpty(cif) || cif.Length < 9)
             {
-                int valor = (cif[i] - '0') * factor;
-                suma += valor % 10 + valor / 10;
+                return false;
             }
-            char control = "JABCDEFGHI"[(10 - suma % 10) % 10];
-            return char.IsDigit(cif[cif.Length - 1]) ? cif[cif.Length - 1] == control : cif[cif.Length - 1] == control;
+            return IsValidCIF(cif);
         }
+
     }
 }
