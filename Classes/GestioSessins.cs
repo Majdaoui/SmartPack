@@ -8,7 +8,8 @@ namespace SmartPack.Classes
 {
     public class GestioSessins
     {
-        public static string usuari { get; set; } = "";
-        public static string contrasenya { get; set; } = "";
+        public static string user { get; set; } = "";
+        public static string password { get; set; } = "";
+        public static string token { get; set; } = "";
     }
 }

@@ -35,6 +35,7 @@ namespace SmartPack.Forms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.title = new System.Windows.Forms.Label();
             this.Messatge = new System.Windows.Forms.TextBox();
+            this.Perfil = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,6 +84,16 @@ namespace SmartPack.Forms
             this.Messatge.Text = "Aquest projecte està en construcció.\r\nGràcies per la seva paciència.\r\n\r\n";
             this.Messatge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // Perfil
+            // 
+            this.Perfil.BackColor = System.Drawing.Color.Transparent;
+            this.Perfil.Location = new System.Drawing.Point(0, 0);
+            this.Perfil.Name = "Perfil";
+            this.Perfil.Size = new System.Drawing.Size(827, 24);
+            this.Perfil.TabIndex = 35;
+            this.Perfil.Text = "El Meu Compte";
+            //this.Perfil.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked_1);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -94,10 +105,11 @@ namespace SmartPack.Forms
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.title);
+            this.Controls.Add(this.Perfil);
+            this.MainMenuStrip = this.Perfil;
             this.Name = "Principal";
             this.Text = "Principal";
-            //this.Load += new System.EventHandler(this.Principal_Load);
-            this.FormClosing += new FormClosingEventHandler(Principal_FormClosing);
+            //this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.logout);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -111,5 +123,6 @@ namespace SmartPack.Forms
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.TextBox Messatge;
+        private MenuStrip Perfil;
     }
 }

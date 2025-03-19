@@ -1,5 +1,5 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using SmartPack.Classes;
+using System;
 
 namespace SmartPack.Forms
 {
@@ -10,7 +10,7 @@ namespace SmartPack.Forms
             InitializeComponent();
         }
 
-        private void guardar_e_Click(object sender, EventArgs e)
+        private async void guardar_e_Click(object sender, EventArgs e)
         {
             string acontrasenya = contrasenya_a.Text.Trim();
             string ncontrasenya = contrasenya_n.Text.Trim();
@@ -19,22 +19,21 @@ namespace SmartPack.Forms
             {
                 Message msg = new Message("La contrasenya ha de tenir almenys 8 caràcters, una lletra majúscula, un número i un caràcter especial", "Error");
                 msg.ShowDialog();
-                //MessageBox.Show("La contrasenya ha de tenir almenys 8 caràcters, una lletra majúscula, un número i un caràcter especial", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+               return;
             }
             if (ncontrasenya != rcontrasenya)
             {
                 Message msg = new Message("Les contrasenyes no coincideixen", "Error");
                 msg.ShowDialog();
-                //MessageBox.Show("Les contrasenyes no coincideixen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            var contrasenya = new
+            string data = await dbAPI.UserLogin(GestioSessins.token, ncontrasenya);
+            if (!string.IsNullOrEmpty(data))
             {
-                contrasenya = ncontrasenya
-            };
-            Message messatge = new Message("La nova contrasenya s'ha guardat correctament", "info");
-            messatge.ShowDialog();
+                GestioSessins.password = ncontrasenya;
+                Message messatge = new Message("La nova contrasenya s'ha guardat correctament", "info");
+                messatge.ShowDialog();
+            }
         }
     }
 }

@@ -48,6 +48,7 @@ namespace SmartPack
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(573, 10);
             this.panel1.TabIndex = 52;
+            //this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
@@ -59,6 +60,7 @@ namespace SmartPack
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 53;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -72,6 +74,7 @@ namespace SmartPack
             this.label1.TabIndex = 51;
             this.label1.Text = "Recuperar Contrasenya";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox2
             // 
@@ -86,6 +89,7 @@ namespace SmartPack
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 64;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // email_rc
             // 
@@ -99,6 +103,7 @@ namespace SmartPack
             this.email_rc.Size = new System.Drawing.Size(220, 35);
             this.email_rc.TabIndex = 63;
             this.email_rc.Text = "Email";
+            this.email_rc.TextChanged += new System.EventHandler(this.email_rc_TextChanged);
             // 
             // R_contrasenya
             // 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartPack.Classes;
+using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -167,7 +168,7 @@ namespace SmartPack
             };
 
 
-            if (await dbAPI.ExecuteDB(consulta, "login"))
+            if (await dbAPI.ExecuteDB(consulta, "login") == null)
             {
                 using (Message msg = new Message("Usuari ja registrat", "error"))
                 {
@@ -177,7 +178,7 @@ namespace SmartPack
             }
             else
             {
-                bool st = await dbAPI.ExecuteDB(user, "registrar");
+                bool st = await dbAPI.ExecuteDB(user, "registrar") == null;
                 if (st)
                 {
                     using (Message msg = new Message("Usuari registrat correctament", "info"))
@@ -201,13 +202,10 @@ namespace SmartPack
                 return true;
             }
 
-            // Validación para el NIE: letra inicial (X, Y, Z) + 7 dígitos + letra final
             if (Regex.IsMatch(doc, @"^[XYZ]\d{7}[A-Za-z]{1}$"))
             {
                 return true;
             }
-
-            // Si no cumple con ninguno de los formatos, es inválido
             return false;
         }
 

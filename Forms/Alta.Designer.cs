@@ -110,7 +110,7 @@ namespace SmartPack
             this.rol_c.FormattingEnabled = true;
             this.rol_c.Items.AddRange(new object[] {
             "ADMIN",
-            "Transportista",
+            "DELIVERYMAN",
             "USER"});
             this.rol_c.Location = new System.Drawing.Point(188, 140);
             this.rol_c.Name = "rol_c";

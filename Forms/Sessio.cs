@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SmartPack.Classes;
+using System;
+using System.Text.Json;
 
 namespace SmartPack
 {
@@ -11,7 +13,7 @@ namespace SmartPack
             //contrasenya_is.Text = "password123";
         }
 
-        private void Iniciar_sessio_Click(object sender, EventArgs e)
+        private async void Iniciar_sessio_Click(object sender, EventArgs e)
         {
             string temail = email_is.Text.Trim();
             string tcontrasenya = contrasenya_is.Text.Trim();
@@ -31,7 +33,19 @@ namespace SmartPack
                 }
                 return;
             }
-            _ = dbAPI.UserLogin(temail, tcontrasenya);
+
+            string data = await dbAPI.UserLogin(temail, tcontrasenya);
+            if (!string.IsNullOrEmpty(data))
+            {
+                GestioSessins.user = temail;
+                GestioSessins.password = tcontrasenya;
+                using (JsonDocument doc = JsonDocument.Parse(data))
+                {
+                    string token = doc.RootElement.GetProperty("token").GetString();
+                    Console.WriteLine("Token: " + token);
+                    GestioSessins.token = token;
+                }
+            }
         }
 
         private void pregunta_b_Click(object sender, EventArgs e)

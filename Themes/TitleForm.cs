@@ -1,6 +1,9 @@
-﻿using System;
+﻿using SmartPack.Classes;
+using SmartPack.Forms;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Security.Permissions;
 using System.Windows.Forms;
 
 namespace SmartPack
@@ -38,15 +41,12 @@ namespace SmartPack
             this.MouseClick += new MouseEventHandler(Form_MouseClick);
         }
 
-        // Dibujar la barra de título
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             Graphics g = e.Graphics;
 
-            int barraAltura = 30; // Ajustado a 30px
-
-            // Dibujar el fondo de la barra de título
+            int barraAltura = 30; 
             using (LinearGradientBrush brush = new LinearGradientBrush(
                 new Rectangle(0, 0, this.Width, barraAltura),
                 Color.DarkBlue,
@@ -55,15 +55,11 @@ namespace SmartPack
             {
                 g.FillRectangle(brush, new Rectangle(0, 0, this.Width, barraAltura));
             }
-
-            // Posicionar los botones de cerrar y minimizar
             btnCerrar = new Rectangle(this.Width - 45, 5, 30, 20);
             btnMinimizar = new Rectangle(this.Width - 85, 5, 30, 20);
 
-            // Dibujar el borde y los botones
             using (Pen borde = new Pen(Color.White, 2))
             {
-                // Botón Cerrar
                 using (LinearGradientBrush brushCerrar = new LinearGradientBrush(btnCerrar, Color.Red, Color.DarkRed, LinearGradientMode.Vertical))
                 {
                     g.FillRectangle(brushCerrar, btnCerrar);
@@ -71,7 +67,6 @@ namespace SmartPack
                     g.DrawString("X", new Font("Arial", 10, FontStyle.Bold), Brushes.White, btnCerrar.X + 9, btnCerrar.Y + 3);
                 }
 
-                // Botón Minimizar
                 using (LinearGradientBrush brushMin = new LinearGradientBrush(btnMinimizar, Color.Gold, Color.Orange, LinearGradientMode.Vertical))
                 {
                     g.FillRectangle(brushMin, btnMinimizar);
@@ -89,7 +84,6 @@ namespace SmartPack
             }
         }
 
-        // Función para arrastrar el formulario
         private void Form_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Y <= 30 && !btnCerrar.Contains(e.Location) && !btnMinimizar.Contains(e.Location))
@@ -98,8 +92,6 @@ namespace SmartPack
                 puntoInicio = new Point(e.X, e.Y);
             }
         }
-
-        // Mover el formulario al arrastrar
         private void Form_MouseMove(object sender, MouseEventArgs e)
         {
             if (arrastrando)
@@ -113,12 +105,25 @@ namespace SmartPack
             arrastrando = false;
         }
 
-        // Función para gestionar el clic en los botones de la barra de título
         private void Form_MouseClick(object sender, MouseEventArgs e)
         {
             if (btnCerrar.Contains(e.Location))
             {
-                this.Close();
+                using (Message msgBox = new Message("Estàs segur que vols tancar la sessió?", "confirmació"))
+                {
+                    var resultado = msgBox.ShowDialog();
+                    if (resultado == DialogResult.OK)
+                    {
+                        this.Close();
+                        CerrarSesionLocal();
+                        LiberarMemoria();
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
             }
             else if (btnMinimizar.Contains(e.Location))
             {
@@ -126,11 +131,32 @@ namespace SmartPack
             }
         }
 
-        // Re-dibujar el formulario cuando cambia de tamaño
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            this.Invalidate(); // Forzamos la actualización de la barra de título
+            this.Invalidate();
+        }
+        private void CerrarSesionLocal()
+        {
+            GestioSessins.user = null;
+            GestioSessins.password = null;
+            GestioSessins.token = null;
+        }
+        private static void LiberarMemoria()
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+        }
+
+
+        private void InitializeComponent()
+        {
+
+        }
+
+        private void TitleForm_Load()
+        {
+
         }
     }
 }

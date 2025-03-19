@@ -24,6 +24,10 @@ namespace SmartPack.Classes
         public string email { get; set; }
         public string password { get; set; } /*contrasenya */
         public string comentaris { get; set; }
+        public string rol { get; set; }
+        public bool esEmpresa { get; set; }
+        public string si { get; set; }
+        public string no { get; set; }
 
     }
 }
