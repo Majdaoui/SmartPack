@@ -1,33 +1,21 @@
 ﻿using SmartPack.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
-    public partial class AreaUsuari: TitleForm
+    public partial class AreaUsuari : TitleForm
     {
         public AreaUsuari()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.MaximizeBox = false;
-            this.MinimizeBox = true;
-            this.DoubleBuffered = true;
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
         }
-        ClassUsuari usuari = new ClassUsuari();
+
         private void AreaUsuari_Load(object sender, EventArgs e)
         {
+            ClassUsuari usuari = new ClassUsuari();
             //usuari = dbAPI.GetUsuari();
+            
             nom_usuari.Text = usuari.nom;
             cognom_p_usuari.Text = usuari.pcognom;
             dni_usuari.Text = usuari.dni;
@@ -43,6 +31,7 @@ namespace SmartPack.Forms
             cp_usuari.Text = usuari.cp;
             observacions_usuari.Text = usuari.comentaris;
             Rol_Usuari.Text = usuari.rol;
+            
         }
 
         private void Bcanvi_contrasenya_Click(object sender, EventArgs e)
@@ -57,6 +46,22 @@ namespace SmartPack.Forms
         private void Bsortir_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private async void bDesactivar_Click(object sender, EventArgs e)
+        {
+
+            var consulta = new
+            {
+                id = GestioSessins.id
+            };
+            string data = await dbAPI.UserDB(consulta, "desactivate");
+            if (!string.IsNullOrEmpty(data))
+            {
+                Message messatge = new Message("Usuari desactivat correctament", "info");
+                messatge.ShowDialog();
+                Application.Exit();
+            }
         }
     }
 }

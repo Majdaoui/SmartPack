@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartPack.Classes;
+using System;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -12,7 +13,7 @@ namespace SmartPack.Forms
         public NewPassword(string token)
         {
             InitializeComponent();
-            tokenRecibido = token;
+            this.tokenRecibido = token;
         }
 
         private async void R_password_Click(object sender, EventArgs e)
@@ -22,7 +23,7 @@ namespace SmartPack.Forms
 
             if (string.IsNullOrWhiteSpace(password_n) || string.IsNullOrWhiteSpace(password_r))
             {
-                using (Message msg = new Message("Ambos campos de contraseña son obligatorios.", "Error"))
+                using (Message msg = new Message("Els dos camps de contrasenya són obligatoris.", "error"))
                 {
                     msg.ShowDialog();
                     return;
@@ -31,54 +32,29 @@ namespace SmartPack.Forms
 
             if (password_n != password_r)
             {
-                using (Message msg = new Message("Las contraseñas no coinciden.", "Error"))
+                using (Message msg = new Message("La repitició de la contrasenya no concideix.", "error"))
                 {
                     msg.ShowDialog();
                     return;
                 }
             }
-            bool exito = await RestablecerPassword(tokenRecibido, password_n);
-            if (exito)
+            //GestioSessins.user = "aaahoy@hoy.com";
+            var consulta = new
             {
-                using (Message msg = new Message("Contraseña restablecida correctamente.", "Éxito"))
-                {
-                    msg.ShowDialog();
-                    this.Close();
-                }
-            }
-        }
-        private static readonly HttpClient client = new HttpClient();
-        public static async Task<bool> RestablecerPassword(string token, string nuevaContrasenya)
-        {
-            var requestData = new { token = token, password = nuevaContrasenya };
-            string json = JsonSerializer.Serialize(requestData);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+                token = tokenRecibido,
+                newPassword = password_n
+            };
+           
+            string respond = await dbAPI.ExecuteDB(consulta, "reset-password");
+            if (!string.IsNullOrEmpty(respond))
+            {
+                GestioSessins.password = password_n;
+                Message messatge = new Message("La nova contrasenya s'ha guardat correctament", "info");
+                messatge.ShowDialog();
+                AreaUsuari areaUsuari = new AreaUsuari();
+                areaUsuari.Show();
+                this.Hide();
 
-            string url = "https://tu-servidor.com/api/auth/reset-password";
-            try
-            {
-                HttpResponseMessage response = await client.PostAsync(url, content);
-                if (response.IsSuccessStatusCode)
-                {
-                    return true;
-                }
-                else
-                {
-                    string error = await response.Content.ReadAsStringAsync();
-                    using (Message msg = new Message($"Error al restablecer la contraseña: {error}", "error"))
-                    {
-                        msg.ShowDialog();
-                        return false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                using (Message msg = new Message($"Error al intentar conectar con el servidor: {ex.Message}", "error"))
-                {
-                    msg.ShowDialog();
-                    return false;
-                }
             }
         }
     }

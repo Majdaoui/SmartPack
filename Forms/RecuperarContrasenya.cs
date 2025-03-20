@@ -41,11 +41,18 @@ namespace SmartPack
                     return;
                 }
             }
-            string exito = await dbAPI.SolicitarRecuperarPassword(temail_rc);
-            if (exito != null)
+            var consulta = new
             {
-                NewPassword newPassword = new NewPassword(exito);
-                newPassword.ShowDialog();
+                email = temail_rc
+            };
+            string data = await dbAPI.ExecuteDB(consulta, "forgot-password");
+            if (!string.IsNullOrEmpty(data))
+            {
+                string[] parts = data.Split(':');
+                string _token = parts[1].Trim();
+                NewPassword newpassword = new NewPassword(_token);
+                newpassword.Show();
+                this.Hide();
             }
         }
        

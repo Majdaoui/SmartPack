@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using SmartPack.Forms;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace SmartPack
@@ -99,6 +100,10 @@ namespace SmartPack
             };
             Message messatge = new Message("Empresa registrada correctament", "info");
             messatge.ShowDialog();
+            AreaUsuari area = new AreaUsuari();
+            area.Show();
+            this.Hide();
+
         }
         public static bool ValidarIdentificacion(string doc)
         {

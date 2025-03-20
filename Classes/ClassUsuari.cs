@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmartPack.Classes
 {
-    class ClassUsuari
+    public class ClassUsuari
     {
+        public int id { get; set; }
         public string nom { get; set; }
         public string pcognom { get; set; }
         public string scognom { get; set; }
@@ -28,6 +29,5 @@ namespace SmartPack.Classes
         public bool esEmpresa { get; set; }
         public string si { get; set; }
         public string no { get; set; }
-
     }
 }

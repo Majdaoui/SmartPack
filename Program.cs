@@ -11,7 +11,7 @@ namespace SmartPack
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Sessio());
+            Application.Run(new AreaUsuari());
         }
     }
 }

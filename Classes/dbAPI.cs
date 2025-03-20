@@ -1,6 +1,4 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using MySqlX.XDevAPI;
-using SmartPack.Classes;
+﻿using SmartPack.Classes;
 using SmartPack.Forms;
 using System;
 using System.Net.Http;
@@ -49,6 +47,28 @@ namespace SmartPack
                 else
                 {
                     Console.WriteLine($"Error login user. Status Code: {response.StatusCode}");
+                }
+            }
+            return null;
+        }
+        public static async Task<string> UserDB(object obj, string api)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string url = "http://localhost:8080/usuari/{id}" + api;
+                string json = JsonSerializer.Serialize(obj);
+                Console.WriteLine(json);
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseString = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Response Body: " + responseString);
+                    return responseString;
+                }
+                else
+                {
+                    Console.WriteLine($"Error get data user. Status Code: {response.StatusCode}");
                 }
             }
             return null;

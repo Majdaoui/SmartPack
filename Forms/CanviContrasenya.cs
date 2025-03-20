@@ -19,13 +19,13 @@ namespace SmartPack.Forms
             string rcontrasenya = contrasenya_r.Text.Trim();
             if (!Alta.ValidarContrasenya(ncontrasenya))
             {
-                Message msg = new Message("La contrasenya ha de tenir almenys 8 caràcters, una lletra majúscula, un número i un caràcter especial", "Error");
+                Message msg = new Message("La contrasenya ha de tenir almenys 8 caràcters, una lletra majúscula, un número i un caràcter especial", "error");
                 msg.ShowDialog();
                return;
             }
             if (ncontrasenya != rcontrasenya)
             {
-                Message msg = new Message("Les contrasenyes no coincideixen", "Error");
+                Message msg = new Message("Les contrasenyes no coincideixen", "error");
                 msg.ShowDialog();
                 return;
             }

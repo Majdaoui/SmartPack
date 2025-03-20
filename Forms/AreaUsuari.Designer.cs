@@ -453,6 +453,7 @@
             this.bDesactivar.TabIndex = 68;
             this.bDesactivar.Text = "Disactivar Compta";
             this.bDesactivar.UseVisualStyleBackColor = false;
+            this.bDesactivar.Click += new System.EventHandler(this.bDesactivar_Click);
             // 
             // Bcanvi_contrasenya
             // 
@@ -469,7 +470,6 @@
             this.Bcanvi_contrasenya.TabIndex = 69;
             this.Bcanvi_contrasenya.Text = "Canviar Contrasenya";
             this.Bcanvi_contrasenya.UseVisualStyleBackColor = false;
-            this.Bcanvi_contrasenya.Click += new System.EventHandler(this.Bcanvi_contrasenya_Click);
             // 
             // AreaUsuari
             // 

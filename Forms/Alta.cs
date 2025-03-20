@@ -141,7 +141,7 @@ namespace SmartPack
                 AltaEmpresa formEmpresa = new AltaEmpresa();
                 formEmpresa.Show();
 
-                this.Close();
+                this.Hide();
             }
 
             // He canviat l'estil de la crida a la classe dbAPI, perque la meva companya ho ha fet d'aquesta manera
@@ -193,7 +193,7 @@ namespace SmartPack
                     }
                     Sessio sessio = new Sessio();
                     sessio.Show();
-                    this.Close();
+                    this.Hide();
                 }
                 else
                 {
@@ -232,7 +232,7 @@ namespace SmartPack
                 AltaVehicle formVehicle = new AltaVehicle();
                 formVehicle.Show();
 
-                this.Close();
+                this.Hide();
             }
         }
     }
