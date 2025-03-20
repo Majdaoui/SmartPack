@@ -154,6 +154,7 @@
     <Compile Include="Classes\ClassEmpresa.cs" />
     <Compile Include="Classes\ClassUsuari.cs" />
     <Compile Include="Classes\dbAPI.cs" />
+    <Compile Include="Classes\dbAPIHelpers.cs" />
     <Compile Include="Classes\GestioSessins.cs" />
     <Compile Include="Classes\mysqlAPI.cs" />
     <Compile Include="Forms\AreaUsuari.cs">

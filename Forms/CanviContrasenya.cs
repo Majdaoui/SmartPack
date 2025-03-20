@@ -1,5 +1,7 @@
 ﻿using SmartPack.Classes;
 using System;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SmartPack.Forms
 {
@@ -27,12 +29,28 @@ namespace SmartPack.Forms
                 msg.ShowDialog();
                 return;
             }
-            string data = await dbAPI.UserLogin(GestioSessins.token, ncontrasenya);
+            //GestioSessins.user = "aaahoy@hoy.com";
+            var consulta = new
+            {
+                email = GestioSessins.user
+            };           
+            string data = await dbAPI.ExecuteDB(consulta, "forgot-password");
             if (!string.IsNullOrEmpty(data))
             {
-                GestioSessins.password = ncontrasenya;
-                Message messatge = new Message("La nova contrasenya s'ha guardat correctament", "info");
-                messatge.ShowDialog();
+                string[] parts = data.Split(':');
+                string _token = parts[1].Trim();
+                var req = new { token = _token, newPassword = ncontrasenya };
+                string respond = await dbAPI.ExecuteDB(req, "reset-password");
+                if (!string.IsNullOrEmpty(respond))
+                {
+                    GestioSessins.password = ncontrasenya;
+                    Message messatge = new Message("La nova contrasenya s'ha guardat correctament", "info");
+                    messatge.ShowDialog();
+                    AreaUsuari areaUsuari = new AreaUsuari();
+                    areaUsuari.Show();
+                    this.Close();
+
+                }
             }
         }
     }

@@ -48,7 +48,15 @@ namespace SmartPack.Forms
         private void Bcanvi_contrasenya_Click(object sender, EventArgs e)
         {
             CanviContrasenya canviContrasenya = new CanviContrasenya();
-            canviContrasenya.ShowDialog();
+            canviContrasenya.Show();
+
+            this.Close();
+        }
+
+
+        private void Bsortir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

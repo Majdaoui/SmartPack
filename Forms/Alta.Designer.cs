@@ -109,9 +109,9 @@ namespace SmartPack
             this.rol_c.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rol_c.FormattingEnabled = true;
             this.rol_c.Items.AddRange(new object[] {
-            "ADMIN",
-            "DELIVERYMAN",
-            "USER"});
+            "ROLE_ADMIN",
+            "ROLE_DELIVERYMAN",
+            "ROLE_USER"});
             this.rol_c.Location = new System.Drawing.Point(188, 140);
             this.rol_c.Name = "rol_c";
             this.rol_c.Size = new System.Drawing.Size(199, 26);

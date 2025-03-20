@@ -1,9 +1,7 @@
 ﻿using SmartPack.Classes;
-using SmartPack.Forms;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Security.Permissions;
 using System.Windows.Forms;
 
 namespace SmartPack
@@ -31,9 +29,9 @@ namespace SmartPack
 
         public TitleForm()
         {
-            this.FormBorderStyle = FormBorderStyle.None; // Sin bordes
+            this.FormBorderStyle = FormBorderStyle.None;
             this.DoubleBuffered = true;
-            this.BackColor = Color.White; // Fondo blanco o el color que prefieras
+            this.BackColor = Color.White;
 
             this.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.MouseMove += new MouseEventHandler(Form_MouseMove);
@@ -117,7 +115,6 @@ namespace SmartPack
                         this.Close();
                         CerrarSesionLocal();
                         LiberarMemoria();
-                        Application.Exit();
                     }
                     else
                     {
@@ -146,17 +143,6 @@ namespace SmartPack
         {
             GC.Collect();
             GC.WaitForPendingFinalizers();
-        }
-
-
-        private void InitializeComponent()
-        {
-
-        }
-
-        private void TitleForm_Load()
-        {
-
         }
     }
 }

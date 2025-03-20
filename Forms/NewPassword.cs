@@ -65,7 +65,7 @@ namespace SmartPack.Forms
                 else
                 {
                     string error = await response.Content.ReadAsStringAsync();
-                    using (Message msg = new Message($"Error al restablecer la contraseña: {error}", "Error"))
+                    using (Message msg = new Message($"Error al restablecer la contraseña: {error}", "error"))
                     {
                         msg.ShowDialog();
                         return false;
@@ -74,7 +74,7 @@ namespace SmartPack.Forms
             }
             catch (Exception ex)
             {
-                using (Message msg = new Message($"Error al intentar conectar con el servidor: {ex.Message}", "Error"))
+                using (Message msg = new Message($"Error al intentar conectar con el servidor: {ex.Message}", "error"))
                 {
                     msg.ShowDialog();
                     return false;

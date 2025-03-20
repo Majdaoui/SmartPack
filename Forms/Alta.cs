@@ -17,6 +17,8 @@ namespace SmartPack
             this.MaximizeBox = false;
             this.MinimizeBox = true;
             this.DoubleBuffered = true;
+            Sessio sessio = new Sessio();
+            sessio.Close();
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -26,8 +28,7 @@ namespace SmartPack
         private async void bRegistre_Click(object sender, EventArgs e)
         {
 
-            dbAPI.GetPassword();
-
+            //dbAPI.GetPassword();
             string tnom = nom.Text.Trim();
             string tcognom_p = cognom_p.Text.Trim();
             string tcognom_s = cognom_s.Text.Trim();
@@ -139,38 +140,43 @@ namespace SmartPack
             {
                 AltaEmpresa formEmpresa = new AltaEmpresa();
                 formEmpresa.Show();
+
+                this.Close();
             }
 
-            
+            // He canviat l'estil de la crida a la classe dbAPI, perque la meva companya ho ha fet d'aquesta manera
             object user = new
             {
                 nom = tnom,
-                pcognom = tcognom_p,
-                scognom = tcognom_s,
+                cognom = tcognom_p + " "+ tcognom_s,
+                //pcognom = tcognom_p,
+                //scognom = tcognom_s,
                 dni = tdni,
                 telefon = ttelefon,
-                tvia = tt_via,
+                adreça = tt_via + " " + tnom_via + " " + tnum + " " + tporta + " " + tplanta + " " + tpoblacio + " "+ tprovincia + " " + tcp,
+                /*tvia = tt_via,
                 nom_via = tnom_via,
                 num = tnum,
                 porta = tporta,
                 planta = tplanta,
                 poblacio = tpoblacio,
                 provincia = tprovincia,
-                cp = tcp,
+                cp = tcp,*/
                 email = temail,
                 password = tpassword,
-                rol = trol,
-                comentaris = tobservacions
+                role = trol,
+                observacio = tobservacions
             };
             var consulta = new
             {
                 email = temail
             };
 
+            string email = await dbAPI.ExecuteDB(consulta, "forgot-password");
 
-            if (await dbAPI.ExecuteDB(consulta, "login") == null)
+            if (!string.IsNullOrEmpty(email))
             {
-                using (Message msg = new Message("Usuari ja registrat", "error"))
+                using (Message msg = new Message("Usuari ja existeix", "error"))
                 {
                     msg.ShowDialog();
                     return;
@@ -178,13 +184,16 @@ namespace SmartPack
             }
             else
             {
-                bool st = await dbAPI.ExecuteDB(user, "registrar") == null;
-                if (st)
+                string reg = await dbAPI.ExecuteDB(user, "registrar");
+                if (!string.IsNullOrEmpty(reg))
                 {
                     using (Message msg = new Message("Usuari registrat correctament", "info"))
                     {
                         msg.ShowDialog();
                     }
+                    Sessio sessio = new Sessio();
+                    sessio.Show();
+                    this.Close();
                 }
                 else
                 {
@@ -222,6 +231,8 @@ namespace SmartPack
             {
                 AltaVehicle formVehicle = new AltaVehicle();
                 formVehicle.Show();
+
+                this.Close();
             }
         }
     }

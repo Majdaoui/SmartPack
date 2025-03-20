@@ -92,7 +92,7 @@ namespace SmartPack.Forms
             this.Perfil.Size = new System.Drawing.Size(827, 24);
             this.Perfil.TabIndex = 35;
             this.Perfil.Text = "El Meu Compte";
-            //this.Perfil.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked_1);
+            this.Perfil.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Perfil_ItemClicked);
             // 
             // Principal
             // 
@@ -109,7 +109,6 @@ namespace SmartPack.Forms
             this.MainMenuStrip = this.Perfil;
             this.Name = "Principal";
             this.Text = "Principal";
-            //this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.logout);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -93,11 +93,12 @@
             // 
             // message_l
             // 
-            this.message_l.Location = new System.Drawing.Point(32, 130);
+            this.message_l.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.message_l.Location = new System.Drawing.Point(65, 127);
             this.message_l.Multiline = true;
             this.message_l.Name = "message_l";
             this.message_l.ReadOnly = true;
-            this.message_l.Size = new System.Drawing.Size(475, 115);
+            this.message_l.Size = new System.Drawing.Size(421, 90);
             this.message_l.TabIndex = 29;
             // 
             // Message

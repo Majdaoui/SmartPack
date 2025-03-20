@@ -15,5 +15,9 @@ namespace SmartPack.Forms
            
         }
 
+        private void Perfil_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
