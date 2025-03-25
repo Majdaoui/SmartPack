@@ -86,11 +86,7 @@ namespace SmartPack
                 {
                     msg.ShowDialog();
                 }
-            }
-            else
-            {
-                AreaUsuari area = new AreaUsuari();
-                area.Show();
+                return null;
             }
             return st;
         }

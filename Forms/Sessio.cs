@@ -1,4 +1,5 @@
 ﻿using SmartPack.Classes;
+using SmartPack.Forms;
 using System;
 using System.Text.Json;
 
@@ -44,19 +45,33 @@ namespace SmartPack
                     string token = doc.RootElement.GetProperty("token").GetString();
                     Console.WriteLine("Token: " + token);
                     GestioSessins.token = token;
+                    using (AreaUsuari area = new AreaUsuari())
+                    {
+                        this.Hide();
+                        area.ShowDialog();
+                    }
+                    this.Close();
                 }
             }
         }
 
         private void pregunta_b_Click(object sender, EventArgs e)
         {
-            RecuperarContrasenya formRContrasenya = new RecuperarContrasenya();
-            formRContrasenya.Show();
+            using (RecuperarContrasenya formRContrasenya = new RecuperarContrasenya())
+            {
+                formRContrasenya.Show();
+                this.Hide();
+            }
+               this.Show();
         }
         private void registrer_b_Click(object sender, EventArgs e)
         {
-            Alta formAlta = new Alta();
-            formAlta.Show();
+            using (Alta formAlta = new Alta())
+            {
+                formAlta.Show(); 
+                this.Hide();
+            }
+                this.Show();
         }
     }
 }

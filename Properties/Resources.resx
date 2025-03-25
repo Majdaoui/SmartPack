@@ -130,8 +130,8 @@
   <data name="logo_transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_transparent1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="password-manager_11135277" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\password-manager_111352771.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="reset-password_11135314" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reset-password_111353142.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="contrasena" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\contrasena1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,8 +142,8 @@
   <data name="password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\password1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconConfirm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconConfirm1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconAdv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconAdv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="freepik__retouch__32632" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\freepik__retouch__32632.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,26 +151,29 @@
   <data name="logo_icono_blau" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_icono_blau.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="reset-password_11135314" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reset-password_111353142.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\account_username_people_avatar_profile_person_user_icon_258905.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="orange-blue-background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\orange-blue-background2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo_icono_taronja" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_icono_taronja.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Packs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Packs.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconConfirm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconConfirm1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="internet_locked_padlock_password_secure_security_unlock_icon_127083" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\internet_locked_padlock_password_secure_security_unlock_icon_1270831.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usuario1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="password-manager_11135277" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\password-manager_111352771.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cerrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cerrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_icono_taronja" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_icono_taronja.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="delete-user_9977120" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete-user_99771201.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,7 +184,10 @@
   <data name="iconInfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconInfo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconAdv" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconAdv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usuario1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Checking boxes-amico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Checking boxes-amico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

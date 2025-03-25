@@ -1,9 +1,11 @@
 ﻿using SmartPack.Classes;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
+    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public partial class AreaUsuari : TitleForm
     {
         public AreaUsuari()
@@ -34,18 +36,9 @@ namespace SmartPack.Forms
             
         }
 
-        private void Bcanvi_contrasenya_Click(object sender, EventArgs e)
-        {
-            CanviContrasenya canviContrasenya = new CanviContrasenya();
-            canviContrasenya.Show();
-
-            this.Close();
-        }
-
-
         private void Bsortir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
 
         private async void bDesactivar_Click(object sender, EventArgs e)
@@ -60,8 +53,23 @@ namespace SmartPack.Forms
             {
                 Message messatge = new Message("Usuari desactivat correctament", "info");
                 messatge.ShowDialog();
-                Application.Exit();
+                //Application.Exit();
             }
+        }
+
+        private void Bcanvi_contrasenya_Click_1(object sender, EventArgs e)
+        {
+            using (CanviContrasenya canviContrasenya = new CanviContrasenya())
+            {
+                this.Hide();
+                canviContrasenya.ShowDialog();
+            }
+            this.Show();
+        }
+
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
         }
     }
 }

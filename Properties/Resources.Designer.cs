@@ -83,6 +83,16 @@ namespace SmartPack.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Checking_boxes_amico {
+            get {
+                object obj = ResourceManager.GetObject("Checking boxes-amico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap contrasena {
             get {
                 object obj = ResourceManager.GetObject("contrasena", resourceCulture);
@@ -206,6 +216,16 @@ namespace SmartPack.Properties {
         internal static System.Drawing.Bitmap orange_blue_background {
             get {
                 object obj = ResourceManager.GetObject("orange-blue-background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Packs {
+            get {
+                object obj = ResourceManager.GetObject("Packs", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

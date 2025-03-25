@@ -15,9 +15,29 @@ namespace SmartPack.Forms
            
         }
 
-        private void Perfil_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+
+        }
+      
+        private void bservei_Click(object sender, EventArgs e)
+        {
+            using (Servei servei = new Servei())
+            {
+                servei.ShowDialog();
+                this.Hide();
+            }
+            this.Show();
+        }
+
+        private void personal_Click(object sender, EventArgs e)
+        {
+            using( AreaUsuari areaUsuari = new AreaUsuari())
+            {
+                areaUsuari.ShowDialog();
+                this.Hide();
+            }
+            this.Show();
         }
     }
 }
