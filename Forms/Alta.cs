@@ -187,12 +187,12 @@ namespace SmartPack
             object user = new
             {
                 nom = tnom,
-                cognom = tcognom_p + " "+ tcognom_s,
+                cognom = tcognom_p + ", "+ tcognom_s,
                 //pcognom = tcognom_p,
                 //scognom = tcognom_s,
                 dni = tdni,
                 telefon = ttelefon,
-                adreça = tt_via + " " + tnom_via + " " + tnum + " " + tporta + " " + tplanta + " " + tpoblacio + " "+ tprovincia + " " + tcp,
+                adreça = tt_via + ", " + tnom_via + ", " + tnum + ", " + tporta + ", " + tplanta + ", " + tpoblacio + ", " + tprovincia + ", " + tcp,
                 /*tvia = tt_via,
                 nom_via = tnom_via,
                 num = tnum,

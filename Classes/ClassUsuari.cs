@@ -29,5 +29,41 @@ namespace SmartPack.Classes
         public bool esEmpresa { get; set; }
         public string si { get; set; }
         public string no { get; set; }
+        public string adreça { get; set; }
+        public string secret { get; set; }
+        public string token { get; set; }
+        public string cognom { get; set; }
+
+        public void SepararDireccio()
+        {
+            if (!string.IsNullOrEmpty(adreça))
+            {
+                var partes = adreça.Split(',');
+                if (partes.Length >= 3)
+                {
+                    tvia = partes[0].Trim();
+                    nom_via = partes[1].Trim();
+                    num = partes[2].Trim();
+                    planta = partes.Length > 3 ? partes[3].Trim() : "";
+                    porta = partes.Length > 4 ? partes[4].Trim() : "";
+                    cp = partes.Length > 5 ? partes[5].Trim() : "";
+                    poblacio = partes.Length > 6 ? partes[6].Trim() : "";
+                    provincia = partes.Length > 7 ? partes[7].Trim() : "";
+                }
+            }
+        }
+
+        public void separarCognom()
+        {
+            if (!string.IsNullOrEmpty(scognom))
+            {
+                var partes = scognom.Split(',');
+                if (partes.Length >= 2)
+                {
+                    pcognom = partes[0].Trim();
+                    scognom = partes[1].Trim();
+                }
+            }
+        }
     }
 }
