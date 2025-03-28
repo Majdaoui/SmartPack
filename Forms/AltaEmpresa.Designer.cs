@@ -69,7 +69,7 @@
             this.guardar_e.Location = new System.Drawing.Point(343, 392);
             this.guardar_e.Name = "guardar_e";
             this.guardar_e.Size = new System.Drawing.Size(96, 33);
-            this.guardar_e.TabIndex = 36;
+            this.guardar_e.TabIndex = 38;
             this.guardar_e.Text = "Guardar";
             this.guardar_e.UseVisualStyleBackColor = true;
             this.guardar_e.Click += new System.EventHandler(this.guardar_e_Click);
@@ -80,7 +80,7 @@
             this.provincia_e.Location = new System.Drawing.Point(583, 318);
             this.provincia_e.Name = "provincia_e";
             this.provincia_e.Size = new System.Drawing.Size(199, 24);
-            this.provincia_e.TabIndex = 34;
+            this.provincia_e.TabIndex = 37;
             // 
             // poblacio_e
             // 
@@ -88,7 +88,7 @@
             this.poblacio_e.Location = new System.Drawing.Point(193, 317);
             this.poblacio_e.Name = "poblacio_e";
             this.poblacio_e.Size = new System.Drawing.Size(199, 24);
-            this.poblacio_e.TabIndex = 33;
+            this.poblacio_e.TabIndex = 36;
             // 
             // cp_e
             // 
@@ -96,7 +96,7 @@
             this.cp_e.Location = new System.Drawing.Point(583, 288);
             this.cp_e.Name = "cp_e";
             this.cp_e.Size = new System.Drawing.Size(199, 24);
-            this.cp_e.TabIndex = 32;
+            this.cp_e.TabIndex = 35;
             // 
             // porta_e
             // 
@@ -104,7 +104,7 @@
             this.porta_e.Location = new System.Drawing.Point(193, 287);
             this.porta_e.Name = "porta_e";
             this.porta_e.Size = new System.Drawing.Size(199, 24);
-            this.porta_e.TabIndex = 31;
+            this.porta_e.TabIndex = 34;
             // 
             // provincia_l
             // 
@@ -136,7 +136,7 @@
             this.planta_e.Location = new System.Drawing.Point(583, 258);
             this.planta_e.Name = "planta_e";
             this.planta_e.Size = new System.Drawing.Size(199, 24);
-            this.planta_e.TabIndex = 35;
+            this.planta_e.TabIndex = 33;
             // 
             // num_e
             // 
@@ -144,7 +144,7 @@
             this.num_e.Location = new System.Drawing.Point(193, 257);
             this.num_e.Name = "num_e";
             this.num_e.Size = new System.Drawing.Size(199, 24);
-            this.num_e.TabIndex = 30;
+            this.num_e.TabIndex = 32;
             // 
             // cp_l
             // 
@@ -176,7 +176,7 @@
             this.nom_via_e.Location = new System.Drawing.Point(584, 227);
             this.nom_via_e.Name = "nom_via_e";
             this.nom_via_e.Size = new System.Drawing.Size(199, 24);
-            this.nom_via_e.TabIndex = 27;
+            this.nom_via_e.TabIndex = 31;
             // 
             // t_via_e
             // 
@@ -184,7 +184,7 @@
             this.t_via_e.Location = new System.Drawing.Point(193, 227);
             this.t_via_e.Name = "t_via_e";
             this.t_via_e.Size = new System.Drawing.Size(199, 24);
-            this.t_via_e.TabIndex = 25;
+            this.t_via_e.TabIndex = 30;
             // 
             // planta_l
             // 
@@ -240,7 +240,7 @@
             this.nom_e.Location = new System.Drawing.Point(583, 167);
             this.nom_e.Name = "nom_e";
             this.nom_e.Size = new System.Drawing.Size(199, 24);
-            this.nom_e.TabIndex = 24;
+            this.nom_e.TabIndex = 27;
             // 
             // cif_e
             // 
@@ -271,7 +271,7 @@
             this.cif.Name = "cif";
             this.cif.Size = new System.Drawing.Size(128, 24);
             this.cif.TabIndex = 12;
-            this.cif.Text = "CIF";
+            this.cif.Text = "NIF";
             this.cif.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel1
@@ -301,7 +301,7 @@
             this.tef_e.Location = new System.Drawing.Point(584, 197);
             this.tef_e.Name = "tef_e";
             this.tef_e.Size = new System.Drawing.Size(199, 24);
-            this.tef_e.TabIndex = 47;
+            this.tef_e.TabIndex = 29;
             // 
             // tef_empresa
             // 
@@ -321,7 +321,7 @@
             this.email_e.Location = new System.Drawing.Point(193, 198);
             this.email_e.Name = "email_e";
             this.email_e.Size = new System.Drawing.Size(199, 24);
-            this.email_e.TabIndex = 49;
+            this.email_e.TabIndex = 28;
             // 
             // email_l
             // 

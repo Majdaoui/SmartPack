@@ -165,18 +165,18 @@ namespace SmartPack
                 
             }
 
-
             // Mètode que gestiona la selecció de usuari com a empresa
             // Si es chequea la opció de empresa, es redirigeix al formulari d'alta d'empresa
             // i es tanca el formulari d'alta d'usuari
             // Si no es chequea la opció de empresa, no es fa res
             // Aquest mètode s'ha afegit per a la implementació de la funcionalitat de l'alta d'empresa
-
             if (esEmpresa)
             {
-                AltaEmpresa formEmpresa = new AltaEmpresa();
-                formEmpresa.Show();
-                this.Hide();
+                using (AltaEmpresa formEmpresa = new AltaEmpresa())
+                {
+                    this.Close();
+                    formEmpresa.ShowDialog();
+                }
             }
 
             

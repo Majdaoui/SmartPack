@@ -50,7 +50,7 @@
             this.tipus_t.Location = new System.Drawing.Point(368, 245);
             this.tipus_t.Name = "tipus_t";
             this.tipus_t.Size = new System.Drawing.Size(199, 24);
-            this.tipus_t.TabIndex = 7;
+            this.tipus_t.TabIndex = 9;
             // 
             // model_t
             // 
@@ -80,7 +80,7 @@
             this.matricula_t.Location = new System.Drawing.Point(367, 185);
             this.matricula_t.Name = "matricula_t";
             this.matricula_t.Size = new System.Drawing.Size(199, 24);
-            this.matricula_t.TabIndex = 9;
+            this.matricula_t.TabIndex = 7;
             // 
             // model_l
             // 
@@ -134,7 +134,7 @@
             this.color_t.Location = new System.Drawing.Point(368, 275);
             this.color_t.Name = "color_t";
             this.color_t.Size = new System.Drawing.Size(199, 24);
-            this.color_t.TabIndex = 47;
+            this.color_t.TabIndex = 10;
             // 
             // color_l
             // 
@@ -161,7 +161,7 @@
             this.guardar_e.Location = new System.Drawing.Point(320, 327);
             this.guardar_e.Name = "guardar_e";
             this.guardar_e.Size = new System.Drawing.Size(139, 44);
-            this.guardar_e.TabIndex = 48;
+            this.guardar_e.TabIndex = 11;
             this.guardar_e.Text = "Guardar";
             this.guardar_e.UseVisualStyleBackColor = true;
             this.guardar_e.Click += new System.EventHandler(this.guardar_e_Click);

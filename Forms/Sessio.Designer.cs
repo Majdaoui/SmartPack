@@ -67,7 +67,7 @@ namespace SmartPack
             pregunta_b.Location = new System.Drawing.Point(181, 129);
             pregunta_b.Name = "pregunta_b";
             pregunta_b.Size = new System.Drawing.Size(226, 30);
-            pregunta_b.TabIndex = 65;
+            pregunta_b.TabIndex = 54;
             pregunta_b.TabStop = false;
             pregunta_b.Text = "Has oblidat la teva contrasenya? Clica Aquí";
             pregunta_b.UseVisualStyleBackColor = false;
@@ -83,7 +83,7 @@ namespace SmartPack
             this.contrasenya_is.Name = "contrasenya_is";
             this.contrasenya_is.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.contrasenya_is.Size = new System.Drawing.Size(337, 35);
-            this.contrasenya_is.TabIndex = 52;
+            this.contrasenya_is.TabIndex = 54;
             this.contrasenya_is.TabStop = false;
             // 
             // email_is
@@ -132,7 +132,7 @@ namespace SmartPack
             this.Iniciar_sessio.Location = new System.Drawing.Point(227, 247);
             this.Iniciar_sessio.Name = "Iniciar_sessio";
             this.Iniciar_sessio.Size = new System.Drawing.Size(142, 44);
-            this.Iniciar_sessio.TabIndex = 58;
+            this.Iniciar_sessio.TabIndex = 55;
             this.Iniciar_sessio.Text = "Iniciar Sessió";
             this.Iniciar_sessio.UseVisualStyleBackColor = false;
             this.Iniciar_sessio.Click += new System.EventHandler(this.Iniciar_sessio_Click);
@@ -151,7 +151,7 @@ namespace SmartPack
             this.registrer.Location = new System.Drawing.Point(376, 247);
             this.registrer.Name = "registrer";
             this.registrer.Size = new System.Drawing.Size(142, 44);
-            this.registrer.TabIndex = 60;
+            this.registrer.TabIndex = 55;
             this.registrer.Text = "Registrar";
             this.registrer.UseVisualStyleBackColor = false;
             this.registrer.ClientSizeChanged += new System.EventHandler(this.registrer_b_Click);

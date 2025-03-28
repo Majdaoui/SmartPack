@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SmartPack
 {
@@ -85,6 +86,11 @@ namespace SmartPack
                 model = tmodel,
                 color = tcolor,
                 tipus = ttipus
+            };
+
+            var consulta = new
+            {
+                matricula = tmatricula
             };
             Message msg = new Message("Vehicle registrat correctament", "info");
             msg.ShowDialog();

@@ -40,17 +40,20 @@ namespace SmartPack
             {
                 GestioSessins.user = temail;
                 GestioSessins.password = tcontrasenya;
-                using (JsonDocument doc = JsonDocument.Parse(data))
+                if(data.Contains("token"))
                 {
-                    string token = doc.RootElement.GetProperty("token").GetString();
-                    Console.WriteLine("Token: " + token);
-                    GestioSessins.token = token;
-                    using (AreaUsuari area = new AreaUsuari())
+                    using (JsonDocument doc = JsonDocument.Parse(data))
                     {
-                        this.Hide();
-                        area.ShowDialog();
+                        string token = doc.RootElement.GetProperty("token").GetString();
+                        Console.WriteLine("Token: " + token);
+                        GestioSessins.token = token;
+                        using (AreaUsuari area = new AreaUsuari())
+                        {
+                            this.Hide();
+                            area.ShowDialog();
+                        }
+                        this.Close();
                     }
-                    this.Close();
                 }
             }
         }
@@ -68,10 +71,10 @@ namespace SmartPack
         {
             using (Alta formAlta = new Alta())
             {
-                formAlta.Show(); 
                 this.Hide();
+                formAlta.ShowDialog();
             }
-                this.Show();
+            this.Show();
         }
     }
 }

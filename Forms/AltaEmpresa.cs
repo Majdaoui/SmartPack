@@ -1,4 +1,5 @@
 ﻿using SmartPack.Forms;
+using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -24,7 +25,7 @@ namespace SmartPack
         // Guarda les dades de l'empresa
         // Si alguna dada no és correcta, mostra un missatge d'error
         // Si totes les dades són correctes, mostra un missatge d'informació i redirigeix a l'usuari a l'AreaUsuari
-        private void guardar_e_Click(object sender, System.EventArgs e)
+        private async void guardar_e_Click(object sender, System.EventArgs e)
         {
             // Obtenir i netejar les dades dels camps del formulari
             string tcif = cif_e.Text;
@@ -38,6 +39,7 @@ namespace SmartPack
             string tprovincia = provincia_e.Text;
             // Comprovar que els camps obligatoris no estiguin buits
             // Si ho estan, mostra un missatge d'error
+            // Si alguna dada no és correcta, mostra un missatge d'error
             if (string.IsNullOrWhiteSpace(tcif) || string.IsNullOrWhiteSpace(tnom_e) ||
                 string.IsNullOrWhiteSpace(temail) || string.IsNullOrWhiteSpace(ttef) ||
                 string.IsNullOrWhiteSpace(t_tvia) || string.IsNullOrWhiteSpace(tnom_via) ||
@@ -64,7 +66,7 @@ namespace SmartPack
 
             // Comprovar que el CIF/NIEF siguin vàlids ha de tener 9 dígits
             // Si alguna dada no és correcta, mostra un missatge d'error
-            else if (ValidarIdentificacion(tcif))
+            else if (!ValidarIdentificacion(tcif))
             {
                 using (Message messatgel = new Message("El CIF/NIEF no és vàlid, el seu format no és correcte. ", "Error"))
                 {
@@ -105,71 +107,80 @@ namespace SmartPack
             }
             // Guardar les dades de l'empresa
             // Mostrar un missatge d'informació
+            // Redirigir a l'usuari a l'AreaUsuari
+            // Si alguna dada no és correcta, mostra un missatge d'error
             var empresa = new
             {
-                cif = tcif,
-                nom_empresa = tnom_e,
                 email = temail,
+                nif = tcif,
+                nom = tnom_e,
                 telefon = ttef,
-                tvia = t_tvia,
-                carrer = tnom_via,
-                cp = t_cp,
-                poblacio = tpoble,
-                provincia = tprovincia
+                adreça = t_tvia +", "+ tnom_via + ", " + t_cp + ", " + tpoble + ", " + tprovincia
             };
-            Message messatge = new Message("Empresa registrada correctament", "info");
-            messatge.ShowDialog();
-            AreaUsuari area = new AreaUsuari();
-            area.Show();
-            this.Hide();
-
+            Console.WriteLine(empresa);
+            // Guardar les dades de l'empresa
+            string resposta = await dbAPI.EmpresaDB(empresa, "registrar");
+            // Mostrar un missatge d'error si el servidor no ha tornat cap resposta
+            if (string.IsNullOrEmpty(resposta))
+            {
+                using (Message ms = new Message("Error al registrar l'empresa", "Error"))
+                {
+                    ms.ShowDialog();
+                }
+                return;
+            }
+            else
+            {
+                using (Message ms = new Message("Empresa registrada correctament", "info"))
+                {
+                    ms.ShowDialog();
+                    AreaUsuari area = new AreaUsuari();
+                    area.Show();
+                    this.Hide();
+                }
+            }
         }
 
-        //validar el CIF/NIE o dni 
+        //Mètode que verifica l'entrada d'uari si el format es correcta
+        //comprova si és un NIF, DNI o NIE
+        // Si no te un format correcte dona un messatge d'error
         public static bool ValidarIdentificacion(string doc)
         {
             if (string.IsNullOrEmpty(doc)) return false;
             doc = doc.ToUpper().Trim();
-            return Regex.IsMatch(doc, @"^\d{8}[A-Z]$") ? ValidarNIF(doc) :
-                    Regex.IsMatch(doc, @"^[XYZ]\d{7}[A-Z]$") ? ValidarNIF(TransformarNIE(doc)) :
-                    Regex.IsMatch(doc, @"^[A-HJNP-SUVW]\d{7}[0-9A-J]$") ? ValidarCIF(doc) :
-                    false;
+            if (Regex.IsMatch(doc, @"^\d{8}[a-zA-Z]$"))
+            {
+                return true;
+            }
+            else if (Regex.IsMatch(doc, @"^\d{8}[a-zA-Z]$"))
+            {
+                return true;
+            }
+            // Validar NIE (format: lletra + 7 números + lletra)
+            else if (Regex.IsMatch(doc, @"^[XYZ]\d{7}[a-zA-Z]$"))
+            {
+                return true;
+            }
+            return false;
         }
-        //validar el NIF
+
+        private static bool ValidarDNI(string dni)
+        {
+            int numero = int.Parse(dni.Substring(0, 8));
+            char lletraEsperada = "TRWAGMYFPDXBNJZSQVHLCKE"[numero % 23];
+            return lletraEsperada == dni[8];
+        }
+
         private static bool ValidarNIF(string nif)
         {
-            int numero = int.Parse(nif.Substring(0, 8));
-            char lletraEsperada = "TRWAGMYFPDXBNJZSQVHLCKE"[numero % 23];
-            return lletraEsperada == nif[8];
+            return ValidarDNI(nif);
         }
 
-        //Transformar el NIE a NIF
-        // comprova si la primera lletra és X, Y o Z i la transforma a 0, 1 o 2 respectivamente
-        // acaba amb la lletra de control
-        private static string TransformarNIE(string nie)
+        
+        private static bool ValidarNIE(string nie)
         {
-            char primeraLletra = nie[0];
-            string numero = nie.Substring(1, 7);
-            return (primeraLletra == 'X' ? "0" : primeraLletra == 'Y' ? "1" : "2") + numero + nie[8];
+            var regexNIE = new Regex(@"^[XYZ]\d{7}[A-Z]$");
+            return regexNIE.IsMatch(nie);
         }
-
-        //validar el CIF 
-        //El CIF ha de tenir 9 caracters i començar per una lletra i acabar per un número
-        public static bool IsValidCIF(string cif)
-        {
-            var regex = new Regex(@"^[A-Z]\d{8}$");
-            return regex.IsMatch(cif);
-        }
-
-        //Validar el CIF que tingui 9 caracters i que no estigui buit
-        private static bool ValidarCIF(string cif)
-        {
-            if(string.IsNullOrEmpty(cif) || cif.Length < 9)
-            {
-                return false;
-            }
-            return IsValidCIF(cif);
-        }
-
     }
 }

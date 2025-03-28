@@ -13,6 +13,9 @@ namespace SmartPack
     public class dbAPI
 
     {
+        // Funció per obtenir la contrasenya encriptada
+        // Retorna la contrasenya encriptada
+        // Si la contrasenya és correcta, retorna "Password is correct."
         public static string GetPassword(string password = "luna1234")
         {
             string hash = BCrypt.Net.BCrypt.HashPassword(password);
@@ -28,7 +31,10 @@ namespace SmartPack
             }
             return hash;
         }
-
+        // Funció per executar una petició a la base de dades
+        // Retorna la resposta de la base de dades
+        // Si la resposta és correcta, retorna la resposta
+        // Si la resposta és incorrecta, mostra un missatge d'error
         public static async Task<string> ExecuteDB(object obj, string api)
         {
             using (HttpClient client = new HttpClient())
@@ -51,6 +57,11 @@ namespace SmartPack
             }
             return null;
         }
+        // Funció per obtenir les dades de l'usuari
+        // Retorna les dades de l'usuari
+        // Si les dades són correctes, retorna les dades de l'usuari
+        // Si les dades són incorrectes, mostra un missatge d'error
+        // Si les dades són incorrectes, retorna null
         public static async Task<string> UserDB(object obj, string api)
         {
             using (HttpClient client = new HttpClient())
@@ -74,6 +85,36 @@ namespace SmartPack
             return null;
         }
 
+        // Funció per obtenir les dades de l'empresa
+        // Retorna les dades de l'empresa
+        // Si les dades són correctes, retorna les dades de l'empresa
+        // Si les dades són incorrectes, mostra un missatge d'error, retorna null
+        public static async Task<string> EmpresaDB(object obj, string api)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string url = "http://localhost:8080/empresa/" + api;
+                string json = JsonSerializer.Serialize(obj);
+                Console.WriteLine(json);
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseString = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Response Body: " + responseString);
+                    return responseString;
+                }
+                else
+                {
+                    Console.WriteLine($"Error get data user. Status Code: {response.StatusCode}");
+                }
+            }
+            return null;
+        }
+        // Funció per login de l'usuari
+        // Retorna les dades de l'usuari
+        // Si les dades són correctes, retorna token de l'usuari
+        // Si les dades són incorrectes, mostra un missatge d'error, retorna null
         public static async Task<string> UserLogin(string email, string password)
         {
             ClassUsuari usuari = new ClassUsuari();
@@ -90,7 +131,13 @@ namespace SmartPack
             }
             return st;
         }
+
         private static readonly HttpClient client = new HttpClient();
+
+        // Funció per solicitar el token amb elmail
+        // Retorna el token de la recuperació de la contrasenya
+        // Si les dades són correctes, retorna el token
+        // Si les dades són incorrectes, mostra un missatge d'error, retorna null
         public static async Task<string> SolicitarTokenAsync(string email)
         {
             var requestData = new { email = email };
@@ -111,14 +158,16 @@ namespace SmartPack
             }
         }
 
+        // Funció per recuperar la contrasenya
+        // Retorna el token de la recuperació de la contrasenya
+        // Si les dades són correctes, retorna el token
+        // Si les dades són incorrectes, mostra un missatge d'error, retorna null
         public static async Task<string> SolicitarRecuperarPassword(string email)
         {
             var requestData = new { email = email };
             string json = JsonSerializer.Serialize(requestData);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
             string url = "https://tu-servidor.com/api/auth/forgot-password";
-
             try
             {
                 HttpResponseMessage response = await client.PostAsync(url, content);
@@ -143,6 +192,7 @@ namespace SmartPack
             }
         }
 
+        //
         public static async Task<string> ResetearPassword(string token, string nuevaContrasenya)
         {
             var requestData = new { token = token, password = nuevaContrasenya };
