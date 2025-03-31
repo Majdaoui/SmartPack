@@ -1,4 +1,5 @@
-﻿using SmartPack.Classes;
+﻿using Org.BouncyCastle.Ocsp;
+using SmartPack.Classes;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -54,6 +55,7 @@ namespace SmartPack
             string tpassword = contrasenya_t.Text.Trim();
             string fpassword = r_contrasenya.Text.Trim();
             string tobservacions = observacions_t.Text;
+            string psecreta = Secret.Text.Trim();
             var trol = rol_c.Text;
             bool esEmpresa = si_t.Checked;
             // Message message = new Message("", "");
@@ -66,13 +68,12 @@ namespace SmartPack
                 string.IsNullOrWhiteSpace(tnom_via) || string.IsNullOrWhiteSpace(tpoblacio) ||
                 string.IsNullOrWhiteSpace(tprovincia) || string.IsNullOrWhiteSpace(tcp) ||
                 string.IsNullOrWhiteSpace(temail) || string.IsNullOrWhiteSpace(tpassword) ||
-                string.IsNullOrWhiteSpace(fpassword))
+                string.IsNullOrWhiteSpace(fpassword) || string.IsNullOrWhiteSpace(psecreta))
             {
                 using (Message message1 = new Message("Revisa els camps són obligatoris", "error"))
                 { 
                     message1.ShowDialog(); return; 
                 }
-                
             }
 
             // Validació de format de nom i cognom
@@ -84,7 +85,6 @@ namespace SmartPack
                 { 
                     message1.ShowDialog(); return;
                 }
-                
             }
 
             if (!Regex.IsMatch(tcognom_p, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"))
@@ -93,13 +93,12 @@ namespace SmartPack
                 { 
                     message1.ShowDialog(); return; 
                 }
-                
             }
+
             // Validació de format de DNI/NIE
             // El DNI ha de tenir 8 dígits i una lletra
             // El NIE ha de començar per una lletra (X, Y o Z) seguida de 7 dígits i una lletra
             // Si el format no és correcte, es mostra un missatge d'error
-
             if (!EsDniNieValido(tdni))
             {
                 using (Message message1 = new Message("Format de DNI/NIE inválid. Ha de tenir entre 9 y 10 caràcters.", "error"))
@@ -108,6 +107,7 @@ namespace SmartPack
                 }
                 
             }
+
             if (!Regex.IsMatch(ttelefon, "^[0-9]{9,15}$"))
             {
                 using (Message message1 = new Message("El telèfono ha de tenir només números i tenir entre 9 y 15 dígits", "error"))
@@ -125,7 +125,6 @@ namespace SmartPack
                 { 
                     message1.ShowDialog(); return; 
                 }
-               
             }
 
             // Validació de format de email
@@ -139,7 +138,6 @@ namespace SmartPack
                     message1.ShowDialog();
                     return;
                 }
-                   
             }
 
             // Validació de contrasenya
@@ -153,6 +151,7 @@ namespace SmartPack
                     return;
                 }
             }
+
             // Verificació que les contrasenyes coincideixen
             // Si les contrasenyes no coincideixen, es mostra un missatge d'error
             if (tpassword != fpassword)
@@ -162,7 +161,6 @@ namespace SmartPack
                     message1.ShowDialog();
                     return;
                 }
-                
             }
 
             // Mètode que gestiona la selecció de usuari com a empresa
@@ -186,35 +184,23 @@ namespace SmartPack
             // He canviat l'estil de la crida a la classe dbAPI, perque la meva companya ho ha fet d'aquesta manera
             object user = new
             {
-                nom = tnom,
-                cognom = tcognom_p + ", "+ tcognom_s,
-                //pcognom = tcognom_p,
-                //scognom = tcognom_s,
-                dni = tdni,
-                telefon = ttelefon,
-                adreça = tt_via + ", " + tnom_via + ", " + tnum + ", " + tporta + ", " + tplanta + ", " + tpoblacio + ", " + tprovincia + ", " + tcp,
-                /*tvia = tt_via,
-                nom_via = tnom_via,
-                num = tnum,
-                porta = tporta,
-                planta = tplanta,
-                poblacio = tpoblacio,
-                provincia = tprovincia,
-                cp = tcp,*/
                 email = temail,
                 password = tpassword,
                 role = trol,
-                observacio = tobservacions
-            };
-            var consulta = new
-            {
-                email = temail
+                nom = tnom,
+                cognom = tcognom_p + ", "+ tcognom_s,
+                dni = tdni,
+                telefon = ttelefon,
+                adreça = tt_via + ", " + tnom_via + ", " + tnum + ", " + tporta + ", " + tplanta + ", " + tpoblacio + ", " + tprovincia + ", " + tcp,
+                observacio = tobservacions,
+                secret = psecreta.ToUpper()
             };
 
-            string email = await dbAPI.ExecuteDB(consulta, "forgot-password");
 
-            if (!string.IsNullOrEmpty(email))
+            string description_id = await user.altaUser();
+            if (description_id.Contains("duplicats"))
             {
+                Console.WriteLine("existeix: " + description_id);
                 using (Message msg = new Message("Usuari ja existeix", "error"))
                 {
                     msg.ShowDialog();
@@ -223,16 +209,17 @@ namespace SmartPack
             }
             else
             {
-                string reg = await dbAPI.ExecuteDB(user, "registrar");
-                if (!string.IsNullOrEmpty(reg))
+                if (!string.IsNullOrEmpty(description_id))
                 {
                     using (Message msg = new Message("Usuari registrat correctament", "info"))
                     {
                         msg.ShowDialog();
                     }
-                    Sessio sessio = new Sessio();
-                    sessio.Show();
-                    this.Hide();
+                    using (Sessio sessio = new Sessio())
+                    {
+                        this.Hide();
+                        sessio.ShowDialog();                        
+                    }
                 }
                 else
                 {
@@ -241,7 +228,7 @@ namespace SmartPack
                         msg.ShowDialog();
                     }
                 }
-            } 
+            }
         }
 
         // Mètode per validar el DNI/NIE

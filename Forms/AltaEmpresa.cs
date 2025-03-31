@@ -1,4 +1,5 @@
-﻿using SmartPack.Forms;
+﻿using SmartPack.Classes;
+using SmartPack.Forms;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -117,26 +118,29 @@ namespace SmartPack
                 telefon = ttef,
                 adreça = t_tvia +", "+ tnom_via + ", " + t_cp + ", " + tpoble + ", " + tprovincia
             };
-            Console.WriteLine(empresa);
-            // Guardar les dades de l'empresa
-            string resposta = await dbAPI.EmpresaDB(empresa, "registrar");
-            // Mostrar un missatge d'error si el servidor no ha tornat cap resposta
-            if (string.IsNullOrEmpty(resposta))
+
+            string description_id = await empresa.CreateEmpresa(GestioSessins.token);
+            if (description_id.Contains("duplicats"))
             {
-                using (Message ms = new Message("Error al registrar l'empresa", "Error"))
+                Console.WriteLine("existeix: " + description_id);
+                using (Message msg = new Message("empresa ja existeix", "error"))
                 {
-                    ms.ShowDialog();
+                    msg.ShowDialog();
+                    return;
                 }
-                return;
             }
             else
             {
+                Console.WriteLine("id: " + description_id);
                 using (Message ms = new Message("Empresa registrada correctament", "info"))
                 {
                     ms.ShowDialog();
-                    AreaUsuari area = new AreaUsuari();
-                    area.Show();
-                    this.Hide();
+                    using (AreaUsuari area = new AreaUsuari())
+                    {
+                        this.Hide();
+                        area.ShowDialog();
+                    }
+                    this.Show();
                 }
             }
         }

@@ -44,16 +44,23 @@ namespace SmartPack.Forms
         private async void bDesactivar_Click(object sender, EventArgs e)
         {
 
-            var consulta = new
+            string id = GestioSessins.id;
+            if (!string.IsNullOrEmpty(id) && id != "0")
             {
-                id = GestioSessins.id
-            };
-            string data = await dbAPI.UserDB(consulta, "desactivate");
-            if (!string.IsNullOrEmpty(data))
-            {
-                Message messatge = new Message("Usuari desactivat correctament", "info");
-                messatge.ShowDialog();
-                //Application.Exit();
+                // Patch desactivate usuari by id
+                string message = await id.DesactivateUsuari(GestioSessins.token);
+                if (message == "correctament")
+                {
+                    Console.WriteLine("correctament: " + message);
+                    using (Message messatge = new Message("Usuari desactivat correctament", "info"))
+                    {
+                        messatge.ShowDialog();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("message: " + message);
+                }
             }
         }
 

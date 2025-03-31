@@ -9,225 +9,192 @@ using System.Windows.Forms;
 
 namespace SmartPack
 {
-
-    public class dbAPI
-
+    public static class dbAPI
     {
-        // Funció per obtenir la contrasenya encriptada
-        // Retorna la contrasenya encriptada
-        // Si la contrasenya és correcta, retorna "Password is correct."
-        public static string GetPassword(string password = "luna1234")
+        public static async Task<string> altaUser(this object user)
         {
-            string hash = BCrypt.Net.BCrypt.HashPassword(password);
-            Console.WriteLine("hashed Password: " + hash);
-            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, hash);
-            if (isPasswordValid)
-            {
-                Console.WriteLine("Password is correct.");
-            }
-            else
-            {
-                Console.WriteLine("Password is incorrect.");
-            }
-            return hash;
-        }
-        // Funció per executar una petició a la base de dades
-        // Retorna la resposta de la base de dades
-        // Si la resposta és correcta, retorna la resposta
-        // Si la resposta és incorrecta, mostra un missatge d'error
-        public static async Task<string> ExecuteDB(object obj, string api)
-        {
+            string url = "http://localhost:8080/auth/registrar";
             using (HttpClient client = new HttpClient())
             {
-                string url = "http://localhost:8080/auth/" + api;
-                string json = JsonSerializer.Serialize(obj);
-                Console.WriteLine(json);
-                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(user);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(url, content);
-                string responseString = await response.Content.ReadAsStringAsync();
-                if (response.IsSuccessStatusCode)
+                string responseBody = await response.Content.ReadAsStringAsync();
+                if (responseBody.Contains("\"description\":"))
                 {
-                    Console.WriteLine("Response Body: " + responseString);
-                    return responseString;
-                }
-                else
-                {
-                    Console.WriteLine($"Error login user. Status Code: {response.StatusCode}");
-                }
-            }
-            return null;
-        }
-        // Funció per obtenir les dades de l'usuari
-        // Retorna les dades de l'usuari
-        // Si les dades són correctes, retorna les dades de l'usuari
-        // Si les dades són incorrectes, mostra un missatge d'error
-        // Si les dades són incorrectes, retorna null
-        public static async Task<string> UserDB(object obj, string api)
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                string url = "http://localhost:8080/usuari/{id}" + api;
-                string json = JsonSerializer.Serialize(obj);
-                Console.WriteLine(json);
-                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PostAsync(url, content);
-                string responseString = await response.Content.ReadAsStringAsync();
-                if (response.IsSuccessStatusCode)
-                {
-                    Console.WriteLine("Response Body: " + responseString);
-                    return responseString;
-                }
-                else
-                {
-                    Console.WriteLine($"Error get data user. Status Code: {response.StatusCode}");
-                }
-            }
-            return null;
-        }
-
-        // Funció per obtenir les dades de l'empresa
-        // Retorna les dades de l'empresa
-        // Si les dades són correctes, retorna les dades de l'empresa
-        // Si les dades són incorrectes, mostra un missatge d'error, retorna null
-        public static async Task<string> EmpresaDB(object obj, string api)
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                string url = "http://localhost:8080/empresa/" + api;
-                string json = JsonSerializer.Serialize(obj);
-                Console.WriteLine(json);
-                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PostAsync(url, content);
-                string responseString = await response.Content.ReadAsStringAsync();
-                if (response.IsSuccessStatusCode)
-                {
-                    Console.WriteLine("Response Body: " + responseString);
-                    return responseString;
-                }
-                else
-                {
-                    Console.WriteLine($"Error get data user. Status Code: {response.StatusCode}");
-                }
-            }
-            return null;
-        }
-        // Funció per login de l'usuari
-        // Retorna les dades de l'usuari
-        // Si les dades són correctes, retorna token de l'usuari
-        // Si les dades són incorrectes, mostra un missatge d'error, retorna null
-        public static async Task<string> UserLogin(string email, string password)
-        {
-            ClassUsuari usuari = new ClassUsuari();
-            usuari.email = email;
-            usuari.password = password;
-            string st = await ExecuteDB(usuari, "login");
-            if (string.IsNullOrEmpty(st))
-            {
-                using (Message msg = new Message("El email o la contrasenya no és correcte ", "error"))
-                {
-                    msg.ShowDialog();
-                }
-                return null;
-            }
-            return st;
-        }
-
-        private static readonly HttpClient client = new HttpClient();
-
-        // Funció per solicitar el token amb elmail
-        // Retorna el token de la recuperació de la contrasenya
-        // Si les dades són correctes, retorna el token
-        // Si les dades són incorrectes, mostra un missatge d'error, retorna null
-        public static async Task<string> SolicitarTokenAsync(string email)
-        {
-            var requestData = new { email = email };
-            string json = JsonSerializer.Serialize(requestData);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            string url = "https://tu-servidor.com/api/auth/reset-password";
-            HttpResponseMessage response = await client.PostAsync(url, content);
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show("Revisa tu correo para obtener el código de recuperación.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return GestioSessins.token = await response.Content.ReadAsStringAsync();
-            }
-            else
-            {
-                string error = await response.Content.ReadAsStringAsync();
-                MessageBox.Show($"Error al solicitar el token: {error}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        // Funció per recuperar la contrasenya
-        // Retorna el token de la recuperació de la contrasenya
-        // Si les dades són correctes, retorna el token
-        // Si les dades són incorrectes, mostra un missatge d'error, retorna null
-        public static async Task<string> SolicitarRecuperarPassword(string email)
-        {
-            var requestData = new { email = email };
-            string json = JsonSerializer.Serialize(requestData);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            string url = "https://tu-servidor.com/api/auth/forgot-password";
-            try
-            {
-                HttpResponseMessage response = await client.PostAsync(url, content);
-                if (response.IsSuccessStatusCode)
-                {
-                    string token = await response.Content.ReadAsStringAsync();
-                    GestioSessins.token = token;
-                    MessageBox.Show("Revisa tu correo para obtener el código de recuperación.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return token;
-                }
-                else
-                {
-                    string error = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show($"Error al solicitar el token: {error}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al intentar conectar con el servidor: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        //
-        public static async Task<string> ResetearPassword(string token, string nuevaContrasenya)
-        {
-            var requestData = new { token = token, password = nuevaContrasenya };
-            string json = JsonSerializer.Serialize(requestData);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            string url = "https://tu-servidor.com/api/auth/reset-password";
-            try
-            {
-                HttpResponseMessage response = await client.PostAsync(url, content);
-                if (response.IsSuccessStatusCode)
-                {
-                    using (Message msg = new Message("Contraseña restablecida correctamente.", "info"))
+                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
                     {
-                        msg.ShowDialog();
-                        return token;
+                        return doc.RootElement.GetProperty("description").GetString();
+                    }
+                }
+                else if (responseBody.Contains("\"id\":"))
+                {
+                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                    {
+                        return doc.RootElement.GetProperty("id").ToString();
+                    }
+                }
+            }
+            return "0";
+        }
+
+        public static async Task<string> Login(this object user)
+        {
+            string url = "http://localhost:8080/auth/login";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(user);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    if (responseBody.Contains("\"token\":"))
+                    {
+                        using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                        {
+                            return doc.RootElement.GetProperty("token").GetString();
+                        }
                     }
                 }
                 else
                 {
-                    string error = await response.Content.ReadAsStringAsync();
-                    using (Message msg = new Message($"Error al restablecer la contraseña: {error}", "error"))
+                    if (responseBody.Contains("desactivat"))
                     {
-                        msg.ShowDialog();
-                        return null;
+                        return "desactivat";
                     }
                 }
             }
-            catch (Exception ex)
+            return "0";
+        }
+
+        public static async Task<string> getCurrentUser(this string token)
+        {
+            string url = "http://localhost:8080/usuari/me";
+            using (HttpClient client = new HttpClient())
             {
-                using (Message msg = new Message($"Error al intentar conectar con el servidor: {ex.Message}", "error"))
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    msg.ShowDialog();
-                    return null;
+                    if (responseBody.Contains("\"id\":"))
+                    {
+                        using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                        {
+                            return doc.RootElement.GetProperty("id").ToString();
+                        }
+                    }
                 }
             }
+            return "0";
+        }
+
+        public static async Task<string> forgotPassword(this object data)
+        {
+            string url = "http://localhost:8080/auth/forgot-password";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(data);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                if (responseBody.Contains("\"tokenRecovery\":"))
+                {
+                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                    {
+                        return doc.RootElement.GetProperty("tokenRecovery").GetString();
+                    }
+                }
+            }
+            return "0";
+        }
+
+        public static async Task<string> resetPassword(this object data)
+        {
+            string url = "http://localhost:8080/auth/reset-password";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(data);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                if (responseBody.Contains("\"message\":"))
+                {
+                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                    {
+                        return doc.RootElement.GetProperty("message").GetString();
+                    }
+                }
+            }
+            return "0";
+        }
+
+        public static async Task<string> CreateEmpresa(this object empresa, string token)
+        {
+            string url = "http://localhost:8080/empresa/create";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(empresa);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"responseBody: {responseBody}");
+                if (responseBody.Contains("\"description\":"))
+                {
+                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                    {
+                        return doc.RootElement.GetProperty("description").GetString();
+                    }
+                }
+                else if (responseBody.Contains("\"id\":"))
+                {
+                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                    {
+                        return doc.RootElement.GetProperty("id").ToString();
+                    }
+                }
+            }
+            return "0";
+        }
+
+        public static async Task<string> DesactivateUsuari(this string id, string token)
+        {
+            string url = "http://localhost:8080/usuari/" + id + "/desactivate";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var request = new HttpRequestMessage
+                {
+                    Method = new HttpMethod("PATCH"),
+                    RequestUri = new Uri(url),
+                    Headers = { { "Accept", "*/*" } }
+                };
+                HttpResponseMessage response = await client.SendAsync(request);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    if (responseBody.Contains("\"message\":"))
+                    {
+                        using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                        {
+                            var ret = doc.RootElement.GetProperty("message").GetString();
+                            if (ret.Contains("correctament."))
+                            {
+                                return "correctament";
+                            }
+                        }
+                    }
+                }
+            }
+            return "0";
         }
     }
 }

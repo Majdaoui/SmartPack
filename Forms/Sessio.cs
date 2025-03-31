@@ -35,25 +35,32 @@ namespace SmartPack
                 return;
             }
 
-            string data = await dbAPI.UserLogin(temail, tcontrasenya);
-            if (!string.IsNullOrEmpty(data))
+            object user = new
             {
-                GestioSessins.user = temail;
-                GestioSessins.password = tcontrasenya;
-                if(data.Contains("token"))
+                email = temail,
+                password = tcontrasenya,
+            };
+            string token = await user.Login();
+            if (token == "desactivat")
+            {
+                Console.WriteLine("Usuari desactivat");
+                return;
+            }
+            else if (token != "0")
+            {
+                Console.WriteLine("Token: " + token);
+                string id = await token.getCurrentUser();
+                if (id != "0")
                 {
-                    using (JsonDocument doc = JsonDocument.Parse(data))
+                    Console.WriteLine("id: " + id);
+                    GestioSessins.token = token;
+                    GestioSessins.id = id;
+                    using (AreaUsuari area = new AreaUsuari())
                     {
-                        string token = doc.RootElement.GetProperty("token").GetString();
-                        Console.WriteLine("Token: " + token);
-                        GestioSessins.token = token;
-                        using (AreaUsuari area = new AreaUsuari())
-                        {
-                            this.Hide();
-                            area.ShowDialog();
-                        }
-                        this.Close();
+                        this.Hide();
+                        area.ShowDialog();
                     }
+                    this.Close();
                 }
             }
         }
@@ -62,11 +69,13 @@ namespace SmartPack
         {
             using (RecuperarContrasenya formRContrasenya = new RecuperarContrasenya())
             {
-                formRContrasenya.Show();
                 this.Hide();
+                formRContrasenya.ShowDialog();
+               
             }
-               this.Show();
+            this.Show();
         }
+
         private void registrer_b_Click(object sender, EventArgs e)
         {
             using (Alta formAlta = new Alta())

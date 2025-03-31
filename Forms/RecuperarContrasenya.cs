@@ -23,6 +23,7 @@ namespace SmartPack
         private async void R_contrasenya_Click(object sender, EventArgs e)
         {
             string temail_rc = email_rc.Text.Trim();
+            string tsecret = secret_t.Text.Trim().ToUpper();
             if (string.IsNullOrWhiteSpace(temail_rc))
             {
                 using (Message msg = new Message("El camp Email no pot estar vuit ", "error"))
@@ -41,18 +42,23 @@ namespace SmartPack
                     return;
                 }
             }
-            var consulta = new
+
+            object consulta = new
             {
-                email = temail_rc
+                email = temail_rc,
+                secret = tsecret
             };
-            string data = await dbAPI.ExecuteDB(consulta, "forgot-password");
-            if (!string.IsNullOrEmpty(data))
+            string token_recovery = await consulta.forgotPassword();
+            Console.WriteLine("Token Recovery: " + token_recovery);
+            if (!string.IsNullOrEmpty(token_recovery) && token_recovery != "0")
             {
-                string[] parts = data.Split(':');
-                string _token = parts[1].Trim();
-                NewPassword newpassword = new NewPassword(_token);
-                newpassword.Show();
-                this.Hide();
+                using (NewPassword newpassword = new NewPassword(token_recovery))
+                {
+                    this.Hide();
+                    newpassword.ShowDialog();
+
+                }
+                this.Close();
             }
         }
        

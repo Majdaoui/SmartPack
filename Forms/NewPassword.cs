@@ -41,20 +41,33 @@ namespace SmartPack.Forms
             //GestioSessins.user = "aaahoy@hoy.com";
             var consulta = new
             {
-                token = tokenRecibido,
+                token =  tokenRecibido, 
                 newPassword = password_n
             };
-           
-            string respond = await dbAPI.ExecuteDB(consulta, "reset-password");
-            if (!string.IsNullOrEmpty(respond))
+
+            string message = await consulta.resetPassword();
+            Console.WriteLine("message: " + message);
+            if (!string.IsNullOrEmpty(message) && message.Contains("correctament"))
             {
                 GestioSessins.password = password_n;
-                Message messatge = new Message("La nova contrasenya s'ha guardat correctament", "info");
-                messatge.ShowDialog();
-                AreaUsuari areaUsuari = new AreaUsuari();
-                areaUsuari.Show();
-                this.Hide();
+                using (Message messatge = new Message("La nova contrasenya s'ha guardat correctament", "info"))
+                {
+                    messatge.ShowDialog();
+                }
+                    
+                using (Sessio sessio = new Sessio())
+                {
+                    this.Close();
+                    sessio.ShowDialog();
+                }
 
+            }
+            else
+            {
+                using (Message messatge = new Message("Error durant el procès", "error"))
+                {
+                    messatge.ShowDialog();
+                }
             }
         }
     }

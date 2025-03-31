@@ -93,6 +93,16 @@ namespace SmartPack.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clau {
+            get {
+                object obj = ResourceManager.GetObject("clau", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap contrasena {
             get {
                 object obj = ResourceManager.GetObject("contrasena", resourceCulture);
@@ -266,6 +276,16 @@ namespace SmartPack.Properties {
         internal static System.Drawing.Bitmap reset_password_11135314 {
             get {
                 object obj = ResourceManager.GetObject("reset-password_11135314", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap secret {
+            get {
+                object obj = ResourceManager.GetObject("secret", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

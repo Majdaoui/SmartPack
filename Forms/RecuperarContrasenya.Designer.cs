@@ -37,8 +37,11 @@ namespace SmartPack
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.email_rc = new System.Windows.Forms.TextBox();
             this.R_contrasenya = new System.Windows.Forms.Button();
+            this.secret_i = new System.Windows.Forms.PictureBox();
+            this.secret_t = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secret_i)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -48,7 +51,6 @@ namespace SmartPack
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(573, 10);
             this.panel1.TabIndex = 52;
-            //this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
@@ -60,7 +62,6 @@ namespace SmartPack
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 53;
             this.pictureBox1.TabStop = false;
-           // this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -74,7 +75,6 @@ namespace SmartPack
             this.label1.TabIndex = 51;
             this.label1.Text = "Recuperar Contrasenya";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox2
             // 
@@ -89,7 +89,6 @@ namespace SmartPack
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 64;
             this.pictureBox2.TabStop = false;
-            //this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // email_rc
             // 
@@ -103,7 +102,6 @@ namespace SmartPack
             this.email_rc.Size = new System.Drawing.Size(220, 35);
             this.email_rc.TabIndex = 63;
             this.email_rc.Text = "Email";
-           // this.email_rc.TextChanged += new System.EventHandler(this.email_rc_TextChanged);
             // 
             // R_contrasenya
             // 
@@ -115,13 +113,40 @@ namespace SmartPack
             this.R_contrasenya.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.R_contrasenya.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.R_contrasenya.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.R_contrasenya.Location = new System.Drawing.Point(193, 228);
+            this.R_contrasenya.Location = new System.Drawing.Point(193, 263);
             this.R_contrasenya.Name = "R_contrasenya";
             this.R_contrasenya.Size = new System.Drawing.Size(220, 44);
             this.R_contrasenya.TabIndex = 65;
             this.R_contrasenya.Text = "Enviar";
             this.R_contrasenya.UseVisualStyleBackColor = false;
             this.R_contrasenya.Click += new System.EventHandler(this.R_contrasenya_Click);
+            // 
+            // secret_i
+            // 
+            this.secret_i.BackColor = System.Drawing.Color.Transparent;
+            this.secret_i.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.secret_i.ErrorImage = null;
+            this.secret_i.Image = global::SmartPack.Properties.Resources.clau;
+            this.secret_i.InitialImage = null;
+            this.secret_i.Location = new System.Drawing.Point(143, 217);
+            this.secret_i.Name = "secret_i";
+            this.secret_i.Size = new System.Drawing.Size(44, 35);
+            this.secret_i.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.secret_i.TabIndex = 67;
+            this.secret_i.TabStop = false;
+            // 
+            // secret_t
+            // 
+            this.secret_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.secret_t.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.secret_t.ForeColor = System.Drawing.Color.Gray;
+            this.secret_t.Location = new System.Drawing.Point(193, 217);
+            this.secret_t.Multiline = true;
+            this.secret_t.Name = "secret_t";
+            this.secret_t.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.secret_t.Size = new System.Drawing.Size(220, 35);
+            this.secret_t.TabIndex = 64;
+            this.secret_t.Text = "Paraula secreta";
             // 
             // RecuperarContrasenya
             // 
@@ -130,6 +155,8 @@ namespace SmartPack
             this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(594, 331);
+            this.Controls.Add(this.secret_i);
+            this.Controls.Add(this.secret_t);
             this.Controls.Add(this.R_contrasenya);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.email_rc);
@@ -141,6 +168,7 @@ namespace SmartPack
             this.Text = "R_Contrasenya";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secret_i)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +201,8 @@ namespace SmartPack
                 email_rc.ForeColor = Color.Gray;
             }
         }
+
+        private System.Windows.Forms.PictureBox secret_i;
+        private System.Windows.Forms.TextBox secret_t;
     }
 }

@@ -40,6 +40,8 @@ namespace SmartPack.Forms
             {
                 email = GestioSessins.user
             };
+
+            /*
             //Fem una crida a la API per a obtenir el token
             string data = await dbAPI.ExecuteDB(consulta, "forgot-password");
             if (!string.IsNullOrEmpty(data))
@@ -60,6 +62,7 @@ namespace SmartPack.Forms
                     }
                 }
             }
+            */
         }
     }
 }

@@ -76,6 +76,8 @@ namespace SmartPack
             this.observacions = new System.Windows.Forms.Label();
             this.bRegistre = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Secret = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -495,7 +497,7 @@ namespace SmartPack
             this.observacions_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.observacions_t.Location = new System.Drawing.Point(188, 405);
             this.observacions_t.Name = "observacions_t";
-            this.observacions_t.Size = new System.Drawing.Size(633, 20);
+            this.observacions_t.Size = new System.Drawing.Size(200, 20);
             this.observacions_t.TabIndex = 19;
             // 
             // observacions
@@ -538,6 +540,26 @@ namespace SmartPack
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
             // 
+            // Secret
+            // 
+            this.Secret.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Secret.Location = new System.Drawing.Point(622, 405);
+            this.Secret.Name = "Secret";
+            this.Secret.Size = new System.Drawing.Size(199, 20);
+            this.Secret.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(445, 405);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(171, 20);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Paraula Secreta";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Alta
             // 
             this.AcceptButton = this.bRegistre;
@@ -548,6 +570,8 @@ namespace SmartPack
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BorderColor = System.Drawing.Color.MediumBlue;
             this.ClientSize = new System.Drawing.Size(843, 517);
+            this.Controls.Add(this.Secret);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.title);
@@ -648,5 +672,7 @@ namespace SmartPack
         private TextBox observacions_t;
         private Label observacions;
         private Button bRegistre;
+        private TextBox Secret;
+        private Label label1;
     }
 }
