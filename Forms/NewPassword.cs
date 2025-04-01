@@ -45,7 +45,7 @@ namespace SmartPack.Forms
                 newPassword = password_n
             };
 
-            string message = await consulta.resetPassword();
+            string message = await dbAPI.resetPassword(consulta);
             Console.WriteLine("message: " + message);
             if (!string.IsNullOrEmpty(message) && message.Contains("correctament"))
             {

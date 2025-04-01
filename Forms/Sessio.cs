@@ -2,6 +2,7 @@
 using SmartPack.Forms;
 using System;
 using System.Text.Json;
+using System.Windows.Forms;
 
 namespace SmartPack
 {
@@ -10,8 +11,6 @@ namespace SmartPack
         public Sessio()
         {
             InitializeComponent();
-            //email_is.Text = "test@example.com";
-            //contrasenya_is.Text = "password123";
         }
 
         private async void Iniciar_sessio_Click(object sender, EventArgs e)
@@ -40,27 +39,46 @@ namespace SmartPack
                 email = temail,
                 password = tcontrasenya,
             };
-            string token = await user.Login();
-            if (token == "desactivat")
+            bool desactivat = await dbAPI.Login(user);
+            
+            if (desactivat)
             {
                 Console.WriteLine("Usuari desactivat");
-                return;
-            }
-            else if (token != "0")
-            {
-                Console.WriteLine("Token: " + token);
-                string id = await token.getCurrentUser();
-                if (id != "0")
+                using (Message messatge = new Message("Compte desactivat, contacta amb el servei tècnic.", "error"))
                 {
-                    Console.WriteLine("id: " + id);
-                    GestioSessins.token = token;
+                    messatge.ShowDialog();
+                    return;
+                }
+            }
+            else if (GestioSessins.token != "0" )
+            {
+                Console.WriteLine("Token: " + GestioSessins.token);
+                string id = await dbAPI.getCurrentUser(GestioSessins.token);
+                if (!string.IsNullOrEmpty(id) && id != "0")
+                {
                     GestioSessins.id = id;
-                    using (AreaUsuari area = new AreaUsuari())
+                    if (GestioSessins.role != "ROLE_ADMIN")
                     {
-                        this.Hide();
-                        area.ShowDialog();
+                        Console.WriteLine("id: " + GestioSessins.id);
+                        Principal principal = new Principal();
+                        principal.Show();
+                        this.Close();
                     }
-                    this.Close();
+                    else if (GestioSessins.role == "ROLE_ADMIN")
+                    {
+                        Console.WriteLine("role: " + GestioSessins.role);
+                        Servei se = new Servei();
+                        se.Show();
+                        this.Close();
+                    }
+                }                
+            }
+            else
+            {
+                using (Message messatge = new Message("No s'ha pogut iniciar sessió correctament, ententa'ho de nou més tard.", "error"))
+                {
+                    messatge.ShowDialog();
+                    return;
                 }
             }
         }
@@ -84,6 +102,11 @@ namespace SmartPack
                 formAlta.ShowDialog();
             }
             this.Show();
+        }
+
+        private void Sessio_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

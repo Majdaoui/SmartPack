@@ -12,5 +12,7 @@ namespace SmartPack.Classes
         public static string user { get; set; } = "";
         public static string password { get; set; } = "";
         public static string token { get; set; } = "";
+        public static string role { get; set; } = "";
+        public static bool desactivat { get; set; } = false;
     }
 }

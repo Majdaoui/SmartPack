@@ -48,7 +48,7 @@ namespace SmartPack
                 email = temail_rc,
                 secret = tsecret
             };
-            string token_recovery = await consulta.forgotPassword();
+            string token_recovery = await dbAPI.forgotPassword(consulta);
             Console.WriteLine("Token Recovery: " + token_recovery);
             if (!string.IsNullOrEmpty(token_recovery) && token_recovery != "0")
             {

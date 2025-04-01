@@ -32,12 +32,11 @@ namespace SmartPack.Forms
 
         private void personal_Click(object sender, EventArgs e)
         {
-            using( AreaUsuari areaUsuari = new AreaUsuari())
+            using(AreaUsuari areaUsuari = new AreaUsuari())
             {
-                areaUsuari.ShowDialog();
-                this.Hide();
+                areaUsuari.Show();
+                this.Close();
             }
-            this.Show();
         }
     }
 }

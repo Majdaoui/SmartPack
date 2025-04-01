@@ -13,7 +13,12 @@ namespace SmartPack.Forms
         }
 
         //Metode per a canviar la contrasenya
-        private async void guardar_e_Click(object sender, EventArgs e)
+        //Aquest mètode comprova que la contrasenya sigui vàlida i la canvia
+        //Si la contrasenya no és vàlida, mostra un missatge d'error
+        //Si la contrasenya no coincideix amb la repetició de la contrasenya, mostra un missatge d'error
+        //Si la contrasenya s'ha canviat correctament, mostra un missatge d'informació i redirigeix a l'usuari a l'AreaUsuari
+        //Si la contrasenya no s'ha canviat correctament, mostra un missatge d'error
+        private void guardar_e_Click(object sender, EventArgs e)
         {
             //Recollim les dades dels camps
             string acontrasenya = contrasenya_a.Text.Trim();

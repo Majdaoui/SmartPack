@@ -1,6 +1,7 @@
 ﻿using SmartPack.Classes;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SmartPack.Forms
@@ -8,32 +9,49 @@ namespace SmartPack.Forms
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public partial class AreaUsuari : TitleForm
     {
+        
+
         public AreaUsuari()
         {
             InitializeComponent();
         }
 
-        private void AreaUsuari_Load(object sender, EventArgs e)
+        private async void test(ClassUsuari usuari)
         {
-            ClassUsuari usuari = new ClassUsuari();
-            //usuari = dbAPI.GetUsuari();
-            
-            nom_usuari.Text = usuari.nom;
-            cognom_p_usuari.Text = usuari.pcognom;
-            dni_usuari.Text = usuari.dni;
-            telefon_usuari.Text = usuari.telefon;
-            email_usuari.Text = usuari.email;
-            t_via_usuari.Text = usuari.tvia;
-            num_usuari.Text = usuari.num;
-            porta_usuari.Text = usuari.porta;
-            planta_usuari.Text = usuari.planta;
-            nom_via_usuari.Text = usuari.nom_via;
-            poblacio_usuari.Text = usuari.poblacio;
-            provincia_usuari.Text = usuari.provincia;
-            cp_usuari.Text = usuari.cp;
-            observacions_usuari.Text = usuari.comentaris;
-            Rol_Usuari.Text = usuari.rol;
-            
+            string id = await dbAPI.getCurrentUser(GestioSessins.token);
+            nom_usuari.Text = ClassUsuari.nom;
+            usuari.separarCognom();
+            cognom_p_usuari.Text = ClassUsuari.pcognom;
+            dni_usuari.Text = ClassUsuari.dni;
+            telefon_usuari.Text = ClassUsuari.telefon;
+            email_usuari.Text = ClassUsuari.email;
+            usuari.SepararDireccio();
+            t_via_usuari.Text = ClassUsuari.tvia;
+            num_usuari.Text = ClassUsuari.num;
+            porta_usuari.Text = ClassUsuari.porta;
+            planta_usuari.Text = ClassUsuari.planta;
+            nom_via_usuari.Text = ClassUsuari.nom_via;
+            poblacio_usuari.Text = ClassUsuari.poblacio;
+            provincia_usuari.Text = ClassUsuari.provincia;
+            cp_usuari.Text = ClassUsuari.cp;
+            observacions_usuari.Text = ClassUsuari.observacions;
+            Rol_Usuari.Text = ClassUsuari.rol;
+        }
+
+        protected async override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            string id = await dbAPI.getCurrentUser(GestioSessins.token);
+            ClassUsuari usuari = await dbAPI.GetUserByID(id);
+
+            if (usuari != null)
+            {
+                test(usuari); // Pasamos el usuario al método test()
+            }
+            else
+            {
+                MessageBox.Show("No se pudo cargar el usuario.");
+            }
         }
 
         private void Bsortir_Click(object sender, EventArgs e)
@@ -48,18 +66,27 @@ namespace SmartPack.Forms
             if (!string.IsNullOrEmpty(id) && id != "0")
             {
                 // Patch desactivate usuari by id
-                string message = await id.DesactivateUsuari(GestioSessins.token);
+                string message = await dbAPI.DesactivateUsuari(id, GestioSessins.token);
                 if (message == "correctament")
                 {
                     Console.WriteLine("correctament: " + message);
                     using (Message messatge = new Message("Usuari desactivat correctament", "info"))
                     {
                         messatge.ShowDialog();
+
+                    }
+                    using (Sessio sessio = new Sessio())
+                    {
+                        sessio.ShowDialog();
                     }
                 }
                 else
                 {
                     Console.WriteLine("message: " + message);
+                    using (Message messatge = new Message("Usuari desactivat", "error"))
+                    {
+                        messatge.ShowDialog();
+                    }
                 }
             }
         }

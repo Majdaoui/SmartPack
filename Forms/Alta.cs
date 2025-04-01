@@ -197,7 +197,7 @@ namespace SmartPack
             };
 
 
-            string description_id = await user.altaUser();
+            string description_id = await dbAPI.altaUser(user);
             if (description_id.Contains("duplicats"))
             {
                 Console.WriteLine("existeix: " + description_id);

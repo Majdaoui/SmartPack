@@ -119,12 +119,13 @@ namespace SmartPack
                 adreça = t_tvia +", "+ tnom_via + ", " + t_cp + ", " + tpoble + ", " + tprovincia
             };
 
-            string description_id = await empresa.CreateEmpresa(GestioSessins.token);
+            string description_id = await dbAPI.CreateEmpresa(empresa, GestioSessins.token);
             if (description_id.Contains("duplicats"))
             {
                 Console.WriteLine("existeix: " + description_id);
                 using (Message msg = new Message("empresa ja existeix", "error"))
                 {
+                    this.Hide();
                     msg.ShowDialog();
                     return;
                 }
@@ -135,12 +136,11 @@ namespace SmartPack
                 using (Message ms = new Message("Empresa registrada correctament", "info"))
                 {
                     ms.ShowDialog();
-                    using (AreaUsuari area = new AreaUsuari())
+                    using (Principal principal = new Principal())
                     {
-                        this.Hide();
-                        area.ShowDialog();
+                        this.Close();
+                        principal.ShowDialog();
                     }
-                    this.Show();
                 }
             }
         }

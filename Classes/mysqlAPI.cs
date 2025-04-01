@@ -11,7 +11,7 @@ namespace SmartPack
     public class mysqlAPI
     {
         private static string connectionString = "Server=localhost;Port=3306;Database=smartpack;User=root;Password=;";
-        public static async Task<bool> ExecuteDB(object obj, string api)
+        public static Task<bool> ExecuteDB(object obj, string api)
         {
             string json = JsonSerializer.Serialize(obj);
             Console.WriteLine(json);
@@ -21,7 +21,7 @@ namespace SmartPack
                 Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
             }
 
-            return false;
+            return Task.FromResult(false);
         }
 
         public static void isEmail(object obj)

@@ -54,6 +54,7 @@
             this.AddServei.TabIndex = 0;
             this.AddServei.Text = "Contractar Servei";
             this.AddServei.UseVisualStyleBackColor = false;
+            this.AddServei.Click += new System.EventHandler(this.AddServei_Click);
             // 
             // panel1
             // 
@@ -74,7 +75,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
-           // this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // title
             // 
@@ -106,6 +106,7 @@
             this.consult.TabIndex = 37;
             this.consult.Text = "Consultar Servei Actiu";
             this.consult.UseVisualStyleBackColor = false;
+            this.consult.Click += new System.EventHandler(this.consult_Click);
             // 
             // ConsultAll
             // 
@@ -123,6 +124,7 @@
             this.ConsultAll.TabIndex = 38;
             this.ConsultAll.Text = "Consultar Serveis Finalitzats";
             this.ConsultAll.UseVisualStyleBackColor = false;
+            this.ConsultAll.Click += new System.EventHandler(this.ConsultAll_Click);
             // 
             // update
             // 
@@ -140,6 +142,7 @@
             this.update.TabIndex = 39;
             this.update.Text = "Modificar Servei Actiu";
             this.update.UseVisualStyleBackColor = false;
+            this.update.Click += new System.EventHandler(this.update_Click);
             // 
             // Servei
             // 

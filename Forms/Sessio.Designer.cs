@@ -277,6 +277,7 @@ namespace SmartPack
             this.Name = "Sessio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar Sissió";
+            this.Load += new System.EventHandler(this.Sessio_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
