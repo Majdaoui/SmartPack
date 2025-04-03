@@ -1,6 +1,7 @@
 ﻿using Org.BouncyCastle.Ocsp;
 using SmartPack.Classes;
 using System;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -187,7 +188,6 @@ namespace SmartPack
                 role = trol,
                 nom = tnom,
                 cognom = tcognom_p + ", "+ tcognom_s,
-                dni = tdni,
                 telefon = ttelefon,
                 adreça = tt_via + ", " + tnom_via + ", " + tnum + ", " + tplanta + ", " + tporta + ", " + tcp + ", " + tpoblacio + ", " + tprovincia,
                 observacio = tobservacions,
@@ -195,7 +195,14 @@ namespace SmartPack
             };
 
 
-            string description_id = await dbAPI.altaUser(user);
+            await createNewUser(user, esEmpresa);
+            
+        }
+
+        public async Task createNewUser(object user_account, bool is_empresa = false)
+        {
+            if (user_account == null) return;
+            string description_id = await dbAPI.altaUser(user_account);
             if (description_id.Contains("duplicats"))
             {
                 Console.WriteLine("existeix: " + description_id);
@@ -207,16 +214,13 @@ namespace SmartPack
             }
             else
             {
-                if (!string.IsNullOrEmpty(description_id))
+                Console.WriteLine("id: " + description_id);
+                GestioSessins.usuariId = description_id;
+                if (string.IsNullOrEmpty(GestioSessins.usuariId) || GestioSessins.usuariId != "0")
                 {
                     using (Message msg = new Message("Usuari registrat correctament", "info"))
                     {
                         msg.ShowDialog();
-                    }
-                    using (Sessio sessio = new Sessio())
-                    {
-                        this.Hide();
-                        sessio.ShowDialog();                        
                     }
                 }
                 else
@@ -225,7 +229,18 @@ namespace SmartPack
                     {
                         msg.ShowDialog();
                     }
+                    return;
                 }
+
+                if (is_empresa)
+                {
+                    AltaEmpresa altaEmpresa = new AltaEmpresa();
+                    altaEmpresa.Show();
+                    this.Close();
+                    GestioSessins.email = user_account.GetType().GetProperty("email")?.GetValue(user_account).ToString();
+                    GestioSessins.password = user_account.GetType().GetProperty("password")?.GetValue(user_account).ToString();
+                }
+
             }
         }
 

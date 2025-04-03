@@ -227,6 +227,7 @@ namespace SmartPack
         //Retorna "0" si hi ha hagut un error inesperat
         public static async Task<string> CreateEmpresa(this object empresa, string token)
         {
+            GestioSessins.empresaId = "0";
             string url = "http://localhost:8080/empresa/create";
             using (HttpClient client = new HttpClient())
             {
@@ -248,7 +249,8 @@ namespace SmartPack
                 {
                     using (JsonDocument doc = JsonDocument.Parse(responseBody))
                     {
-                        return doc.RootElement.GetProperty("id").ToString();
+                        GestioSessins.empresaId = doc.RootElement.GetProperty("id").GetInt32().ToString();
+                        return GestioSessins.empresaId;
                     }
                 }
             }
@@ -309,7 +311,7 @@ namespace SmartPack
             return null;
         }
 
-        public static async Task<string> getAllEmpresas(string token)
+        public static async Task<string> getAllEmpresas(this string token)
         {
             string url = "http://localhost:8080/empresa/list";
             using (HttpClient client = new HttpClient())
@@ -324,7 +326,18 @@ namespace SmartPack
             return null;
         }
 
-
-
+        public static async Task<string> assignarUsuari(this object data, string token)
+        {
+            string url = "http://localhost:8080/empresa/assignar-usuari";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(data);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
     }
 }

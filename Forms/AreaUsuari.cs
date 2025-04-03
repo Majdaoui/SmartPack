@@ -48,7 +48,7 @@ namespace SmartPack.Forms
 
             if (usuari != null)
             {
-                test(usuari); // Pasamos el usuario al método test()
+                test(usuari); 
             }
             else
             {

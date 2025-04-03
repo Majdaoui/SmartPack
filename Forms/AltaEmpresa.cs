@@ -119,6 +119,45 @@ namespace SmartPack
                 adreça = t_tvia +", "+ tnom_via + ", " + t_cp + ", " + tpoble + ", " + tprovincia
             };
 
+
+            object user = new
+            {
+                email = GestioSessins.email,
+                password = GestioSessins.password,
+            };
+            bool state = await dbAPI.Login(user);
+            if (GestioSessins.desactivat)
+            {
+                Console.WriteLine("Usuari desactivat");
+            }
+            else if (GestioSessins.token != "0")
+            {
+                Console.WriteLine("Token: " + GestioSessins.token);
+                string response = await dbAPI.CreateEmpresa(empresa, GestioSessins.token);
+                if (!string.IsNullOrEmpty(GestioSessins.empresaId) && GestioSessins.empresaId != "0")
+                {
+                    Console.WriteLine("Response Body: " + GestioSessins.empresaId);
+                    object assignar = new
+                    {
+                        usuariId = GestioSessins.usuariId,
+                        empresaId = GestioSessins.empresaId,
+                    };
+                    string message = await dbAPI.assignarUsuari(assignar, GestioSessins.token);
+                    if (message == "correctament")
+                    {
+                        Console.WriteLine("Empresa Message: " + message);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No: " + message);
+                    }
+                }
+            }
+
+
+
+
+            /*
             string description_id = await dbAPI.CreateEmpresa(empresa, GestioSessins.token);
             if (description_id.Contains("duplicats"))
             {
@@ -142,7 +181,7 @@ namespace SmartPack
                         principal.ShowDialog();
                     }
                 }
-            }
+            }*/
         }
 
         //Mètode que verifica l'entrada d'uari si el format es correcta
