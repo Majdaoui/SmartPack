@@ -81,10 +81,10 @@ namespace SmartPack
             this.contrasenya_is.Location = new System.Drawing.Point(180, 91);
             this.contrasenya_is.Multiline = true;
             this.contrasenya_is.Name = "contrasenya_is";
+            this.contrasenya_is.PasswordChar = '*';
             this.contrasenya_is.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.contrasenya_is.Size = new System.Drawing.Size(337, 35);
             this.contrasenya_is.TabIndex = 54;
-            this.contrasenya_is.TabStop = false;
             // 
             // email_is
             // 

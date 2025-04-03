@@ -8,36 +8,37 @@ namespace SmartPack.Classes
 {
     public class ClassUsuari
     {
-        public static string id { get; set; }
-        public static string email { get; set; }
-        public static string nom { get; set; }
-        public static string cognom { get; set; }
-        public static string telefon { get; set; }
-        public static string adreça { get; set; }
-        public static string observacions { get; set; }
-        public static string empresaId { get; set; }
+
+        public string id { get; set; }
+        public string email { get; set; }
+        public string nom { get; set; }
+        public string cognom { get; set; }
+        public string telefon { get; set; }
+        public string adreça { get; set; }
+        public string observacions { get; set; }
+        public string empresaId { get; set; }
 
 
-        public static string dni { get; set; }
-        public static string password { get; set; } /*contrasenya */
+        public string dni { get; set; }
+        public string password { get; set; } /*contrasenya */
        
-        public static string rol { get; set; }
-        
-        public static string secret { get; set; }
-        public static string token { get; set; }
+        public string rol { get; set; }
+            
+        public string secret { get; set; }
+        public string token { get; set; }
        
 
-        public static string pcognom { get; set; }
-        public static string scognom { get; set; }
+        public string pcognom { get; set; }
+        public string scognom { get; set; }
 
-        public static string tvia { get; set; }
-        public static string nom_via { get; set; }
-        public static string num { get; set; }
-        public static string porta { get; set; }
-        public static string planta { get; set; }
-        public static string poblacio { get; set; }
-        public static string provincia { get; set; }
-        public static string cp { get; set; }
+        public string tvia { get; set; }
+        public string nom_via { get; set; }
+        public string num { get; set; }
+        public string porta { get; set; }
+        public string planta { get; set; }
+        public string poblacio { get; set; }
+        public string provincia { get; set; }
+        public string cp { get; set; }
 
         public bool esEmpresa { get; set; }
         public string si { get; set; }
@@ -64,9 +65,9 @@ namespace SmartPack.Classes
 
         public void separarCognom()
         {
-            if (!string.IsNullOrEmpty(scognom))
+            if (!string.IsNullOrEmpty(cognom))
             {
-                var partes = scognom.Split(',');
+                var partes = cognom.Split(',');
                 if (partes.Length >= 2)
                 {
                     pcognom = partes[0].Trim();

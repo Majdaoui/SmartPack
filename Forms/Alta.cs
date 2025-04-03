@@ -170,11 +170,9 @@ namespace SmartPack
             // Aquest mètode s'ha afegit per a la implementació de la funcionalitat de l'alta d'empresa
             if (esEmpresa)
             {
-                using (AltaEmpresa formEmpresa = new AltaEmpresa())
-                {
-                    this.Close();
-                    formEmpresa.ShowDialog();
-                }
+                AltaEmpresa formEmpresa = new AltaEmpresa();
+                formEmpresa.Show();
+                this.Close();
             }
 
             
@@ -191,7 +189,7 @@ namespace SmartPack
                 cognom = tcognom_p + ", "+ tcognom_s,
                 dni = tdni,
                 telefon = ttelefon,
-                adreça = tt_via + ", " + tnom_via + ", " + tnum + ", " + tporta + ", " + tplanta + ", " + tpoblacio + ", " + tprovincia + ", " + tcp,
+                adreça = tt_via + ", " + tnom_via + ", " + tnum + ", " + tplanta + ", " + tporta + ", " + tcp + ", " + tpoblacio + ", " + tprovincia,
                 observacio = tobservacions,
                 secret = psecreta.ToUpper()
             };

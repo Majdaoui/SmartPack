@@ -163,6 +163,12 @@
     <Compile Include="Forms\AreaUsuari.Designer.cs">
       <DependentUpon>AreaUsuari.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Administracio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Administracio.Designer.cs">
+      <DependentUpon>Administracio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Message.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AreaUsuari.resx">
       <DependentUpon>AreaUsuari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Administracio.resx">
+      <DependentUpon>Administracio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Message.resx">
       <DependentUpon>Message.cs</DependentUpon>

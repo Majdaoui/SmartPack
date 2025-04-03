@@ -39,9 +39,9 @@ namespace SmartPack
                 email = temail,
                 password = tcontrasenya,
             };
-            bool desactivat = await dbAPI.Login(user);
+            bool state = await dbAPI.Login(user);
             
-            if (desactivat)
+            if (GestioSessins.desactivat)
             {
                 Console.WriteLine("Usuari desactivat");
                 using (Message messatge = new Message("Compte desactivat, contacta amb el servei tècnic.", "error"))

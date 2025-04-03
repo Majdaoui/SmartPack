@@ -48,6 +48,7 @@ namespace SmartPack
 
         public static async Task<bool> Login(this object user)
         {
+            int count = 0;
             string url = "http://localhost:8080/auth/login";
             using (HttpClient client = new HttpClient())
             {
@@ -64,6 +65,7 @@ namespace SmartPack
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
                         {
                             GestioSessins.token = doc.RootElement.GetProperty("token").GetString();
+                            count++;
                         }
                     }
                     
@@ -72,6 +74,7 @@ namespace SmartPack
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
                         {
                             GestioSessins.role = doc.RootElement.GetProperty("role").GetString();
+                            count++;
                         }
                     }
                 }
@@ -80,10 +83,11 @@ namespace SmartPack
                     if (responseBody.Contains("desactivat"))
                     {
                         GestioSessins.desactivat = true;
+                        return false;
                     }
                 }
-            }
-            return GestioSessins.desactivat;
+            }            
+            return (count >= 2);
         }
 
         //Funció per a obtenir les dades de l'usuari actual
@@ -101,12 +105,14 @@ namespace SmartPack
                 Console.WriteLine($"responseBody: {responseBody}");
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
+                    ClassUsuari usuari = new ClassUsuari();
                     int count = 0;
                     if (responseBody.Contains("\"id\":"))
                     {
+                       
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
                         {
-                            ClassUsuari.id = doc.RootElement.GetProperty("id").ToString();
+                            usuari.id = doc.RootElement.GetProperty("id").GetInt32().ToString();
                             count++;
                         }
                     }
@@ -114,7 +120,7 @@ namespace SmartPack
                     {
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
                         {
-                            ClassUsuari.email = doc.RootElement.GetProperty("email").ToString();
+                            usuari.email = doc.RootElement.GetProperty("email").ToString();
                             count++;
                         }
                     }
@@ -122,7 +128,7 @@ namespace SmartPack
                     {
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
                         {
-                            ClassUsuari.nom = doc.RootElement.GetProperty("nom").ToString();
+                            usuari.nom = doc.RootElement.GetProperty("nom").ToString();
                             count++;
                         }
                     }
@@ -130,7 +136,7 @@ namespace SmartPack
                     {
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
                         {
-                            ClassUsuari.cognom = doc.RootElement.GetProperty("cognom").ToString();
+                            usuari.cognom = doc.RootElement.GetProperty("cognom").ToString();
                             count++;
                         }
                     }
@@ -138,7 +144,7 @@ namespace SmartPack
                     {
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
                         {
-                            ClassUsuari.telefon = doc.RootElement.GetProperty("telefon").ToString();
+                            usuari.telefon = doc.RootElement.GetProperty("telefon").ToString();
                             count++;
                         }
                     }
@@ -146,7 +152,7 @@ namespace SmartPack
                     {
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
                         {
-                            ClassUsuari.adreça = doc.RootElement.GetProperty("adreça").ToString();
+                            usuari.adreça = doc.RootElement.GetProperty("adreça").ToString();
                             count++;
                         }
                     }
@@ -154,13 +160,13 @@ namespace SmartPack
                     {
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
                         {
-                            ClassUsuari.observacions = doc.RootElement.GetProperty("observacio").ToString();
+                            usuari.observacions = doc.RootElement.GetProperty("observacio").ToString();
                             count++;
                         }
                     }
                     if(count >= 7)
                     {
-                        return ClassUsuari.id;
+                        return usuari.id;
                     }
                 }
             }
@@ -302,6 +308,23 @@ namespace SmartPack
             }
             return null;
         }
+
+        public static async Task<string> getAllEmpresas(string token)
+        {
+            string url = "http://localhost:8080/empresa/list";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    return responseBody;
+            }
+            return null;
+        }
+
+
 
     }
 }

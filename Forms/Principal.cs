@@ -22,21 +22,16 @@ namespace SmartPack.Forms
       
         private void bservei_Click(object sender, EventArgs e)
         {
-            using (Servei servei = new Servei())
-            {
-                servei.ShowDialog();
-                this.Hide();
-            }
-            this.Show();
+            Servei servei = new Servei();
+            servei.Show();
+            this.Close();
         }
 
         private void personal_Click(object sender, EventArgs e)
         {
-            using(AreaUsuari areaUsuari = new AreaUsuari())
-            {
-                areaUsuari.Show();
-                this.Close();
-            }
+            AreaUsuari areaUsuari = new AreaUsuari();
+            areaUsuari.Show();
+            this.Close();
         }
     }
 }
