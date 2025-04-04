@@ -146,6 +146,9 @@ namespace SmartPack
                     if (message == "correctament")
                     {
                         Console.WriteLine("Empresa Message: " + message);
+                        Sessio sessio = new Sessio();
+                        sessio.Show();
+                        this.Close();
                     }
                     else
                     {

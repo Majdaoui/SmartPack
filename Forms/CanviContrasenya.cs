@@ -1,5 +1,7 @@
 ﻿using SmartPack.Classes;
 using System;
+using System.Security.Principal;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -18,7 +20,7 @@ namespace SmartPack.Forms
         //Si la contrasenya no coincideix amb la repetició de la contrasenya, mostra un missatge d'error
         //Si la contrasenya s'ha canviat correctament, mostra un missatge d'informació i redirigeix a l'usuari a l'AreaUsuari
         //Si la contrasenya no s'ha canviat correctament, mostra un missatge d'error
-        private void guardar_e_Click(object sender, EventArgs e)
+        private async void guardar_e_Click(object sender, EventArgs e)
         {
             //Recollim les dades dels camps
             string acontrasenya = contrasenya_a.Text.Trim();
@@ -43,8 +45,22 @@ namespace SmartPack.Forms
             //GestioSessins.user = "aaahoy@hoy.com";
             var consulta = new
             {
-                email = GestioSessins.user
+                password = ncontrasenya
             };
+            string id_usuari = await dbAPI.getCurrentUser(GestioSessins.token);
+            string resultado = await dbAPI.UpdateUser(GestioSessins.token, id_usuari, consulta);
+            if (resultado != "0")
+            {
+                Message msg = new Message("La contrasenya s'ha canviat correctament", "info");
+                msg.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                Message msg = new Message("Error al canviar la contrasenya", "error");
+                msg.ShowDialog();
+            }
+
 
             /*
             //Fem una crida a la API per a obtenir el token

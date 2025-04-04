@@ -3,6 +3,7 @@ using System;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SmartPack
@@ -109,7 +110,6 @@ namespace SmartPack
                     int count = 0;
                     if (responseBody.Contains("\"id\":"))
                     {
-                       
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
                         {
                             usuari.id = doc.RootElement.GetProperty("id").GetInt32().ToString();
@@ -160,7 +160,7 @@ namespace SmartPack
                     {
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
                         {
-                            usuari.observacions = doc.RootElement.GetProperty("observacio").ToString();
+                            usuari.observacio = doc.RootElement.GetProperty("observacio").ToString();
                             count++;
                         }
                     }
@@ -311,6 +311,39 @@ namespace SmartPack
             return null;
         }
 
+        public static async Task<string> UpdateUser(string token, string userId, object user)
+        {
+            string url = $"http://localhost:8080/usuari/{userId}"; // URL con el ID del usuario
+
+            using (HttpClient client = new HttpClient())
+            {
+                // Añadir token en el header
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+
+                // Serializar el objeto usuario a JSON
+                string json = JsonSerializer.Serialize(user);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                // Enviar la petición PUT
+                HttpResponseMessage response = await client.PutAsync(url, content);
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                Console.WriteLine($"Response: {responseBody}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Response: successfully " + responseBody);
+                    return responseBody;
+                }
+                else
+                {
+                    return "0";
+                }
+            }
+        }
+
+
         public static async Task<string> getAllEmpresas(this string token)
         {
             string url = "http://localhost:8080/empresa/list";
@@ -337,6 +370,27 @@ namespace SmartPack
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 return await response.Content.ReadAsStringAsync();
+            }
+        }
+
+        public class IntToStringConverter : JsonConverter<string>
+        {
+            public override string Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+            {
+                if (reader.TokenType == JsonTokenType.Number)
+                {
+                    return reader.GetInt32().ToString(); // Convierte el número a string
+                }
+                else if (reader.TokenType == JsonTokenType.String)
+                {
+                    return reader.GetString();
+                }
+                throw new JsonException("Unexpected token type");
+            }
+
+            public override void Write(Utf8JsonWriter writer, string value, JsonSerializerOptions options)
+            {
+                writer.WriteStringValue(value);
             }
         }
     }

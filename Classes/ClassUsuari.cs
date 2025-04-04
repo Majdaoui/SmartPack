@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using static SmartPack.dbAPI;
 
 namespace SmartPack.Classes
 {
     public class ClassUsuari
     {
-
+        [JsonConverter(typeof(IntToStringConverter))]
         public string id { get; set; }
         public string email { get; set; }
         public string nom { get; set; }
         public string cognom { get; set; }
         public string telefon { get; set; }
         public string adreça { get; set; }
-        public string observacions { get; set; }
+
+        [JsonPropertyName("observacio")]
+        public string observacio { get; set; }
+        [JsonPropertyName("empresaId")]
         public string empresaId { get; set; }
 
 

@@ -36,7 +36,7 @@ namespace SmartPack.Forms
             poblacio_usuari.Text = usuari.poblacio;
             provincia_usuari.Text = usuari.provincia;
            
-            observacions_usuari.Text = usuari.observacions;
+            observacions_usuari.Text = usuari.observacio;
             Rol_Usuari.Text = usuari.rol;
         }
 
@@ -77,6 +77,7 @@ namespace SmartPack.Forms
                         messatge.ShowDialog();
 
                     }
+                    this.Close();
                     Sessio sessio = new Sessio(); 
                     sessio.Show();
                     
@@ -96,6 +97,7 @@ namespace SmartPack.Forms
         {
             CanviContrasenya canviContrasenya = new CanviContrasenya();
             canviContrasenya.Show();
+            this.Hide();
         }
 
         private string GetDebuggerDisplay()
