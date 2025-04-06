@@ -373,6 +373,21 @@ namespace SmartPack
             }
         }
 
+        public static async Task<string> getAllUsers(string token)
+        {
+            string url = "http://localhost:8080/usuari/list";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    return responseBody;
+            }
+            return null;
+        }
+
         public class IntToStringConverter : JsonConverter<string>
         {
             public override string Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -393,5 +408,108 @@ namespace SmartPack
                 writer.WriteStringValue(value);
             }
         }
+
+        public static async Task<string> crearTransportista(object transportista, string token)
+        {
+            string url = "http://localhost:8080/transportista/crear";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(transportista);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"responseBody: {responseBody}");
+                if (responseBody.Contains("\"id\":"))
+                {
+                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                    {
+                        Transportista.id = doc.RootElement.GetProperty("id").GetInt32().ToString();
+                        return Transportista.id;
+                    }
+                }
+            }
+            return "0";
+        }
+
+        public static async Task<string> crearServei(object servei, string token)
+        {
+            string url = "http://localhost:8080/servei/crear";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(servei);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"responseBody: {responseBody}");
+                if (responseBody.Contains("\"description\":"))
+                {
+                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                    {
+                        return doc.RootElement.GetProperty("description").GetString();
+                    }
+                }
+            }
+            return "0";
+        }
+
+        public static async Task<string> crearVehicle(object vehicle, string token)
+        {
+            string url = "http://localhost:8080/vehicle/crear";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(vehicle);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"responseBody: {responseBody}");
+                if (responseBody.Contains("\"id\":"))
+                {
+                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                    {
+                        string id = doc.RootElement.GetProperty("id").GetInt32().ToString();
+                        return id;
+                    }
+                }
+            }
+            return "0";
+        }
+
+        public static async Task<string> assignarVehicleTransportista(string transportistaId, string vehicleId, string token)
+        {
+            string url = $"http://localhost:8080/transportista/{transportistaId}/assignar-vehicle/{vehicleId}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                // Afegim el token al header
+                client.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Accept.Add(
+                    new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                // No cal cos (body) per aquesta crida POST
+                HttpResponseMessage response = await client.PostAsync(url, null);
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Vehicle assignat correctament.");
+                    return "OK";
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode}");
+                    Console.WriteLine(responseBody);
+                    return "error";
+                }
+            }
+        }
+
+
     }
 }

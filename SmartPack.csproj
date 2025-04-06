@@ -157,6 +157,7 @@
     <Compile Include="Classes\dbAPIHelpers.cs" />
     <Compile Include="Classes\GestioSessins.cs" />
     <Compile Include="Classes\mysqlAPI.cs" />
+    <Compile Include="Classes\Transportista.cs" />
     <Compile Include="Forms\AreaUsuari.cs">
       <SubType>Form</SubType>
     </Compile>

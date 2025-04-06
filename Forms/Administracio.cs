@@ -42,8 +42,8 @@ namespace SmartPack.Forms
             listEmpreses.Items.Clear();
             object user = new
             {
-                email = "nemo.it@live.com",
-                password = "@Nemo1234",
+                email = GestioSessins.email,
+                password = GestioSessins.password,
             };
             var state = await dbAPI.Login(user);
             if (state)
@@ -65,16 +65,40 @@ namespace SmartPack.Forms
                             listEmpreses.Items.Add(nom + ", " + nif);
 
                         }
-
-                        
-
                     }
-                    
-                    
                 }
-
-
             }
+        }
+
+        private async void llist_u_Click(object sender, EventArgs e)
+        {
+            listUsauris.Items.Clear();
+            object user = new
+            {
+                email = GestioSessins.email,
+                password = GestioSessins.password,
+            };
+            var state = await dbAPI.Login(user);
+            if (state)
+            {
+                var response = await dbAPI.getAllUsers(GestioSessins.token);
+                Console.WriteLine("Response Body: " + response);
+                using (JsonDocument doc = JsonDocument.Parse(response))
+                {
+                    if (doc.RootElement.GetArrayLength() > 0)
+                    {
+                        var array = doc.RootElement.EnumerateArray();
+                        foreach (JsonElement item in array)
+                        {
+                            var nom = item.GetProperty("nom").ToString();
+                            var email = item.GetProperty("email").ToString();
+                            Console.WriteLine("email: " + email);
+                            listUsauris.Items.Add("Nom: "+nom + " Email: " + email);
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

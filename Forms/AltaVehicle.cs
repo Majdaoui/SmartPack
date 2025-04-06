@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartPack.Classes;
+using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -22,17 +23,16 @@ namespace SmartPack
         }
 
         // Mètode que s'executa en fer clic al botó de registre un vehicle
-        private void guardar_e_Click(object sender, EventArgs e)
+        private async void guardar_e_Click(object sender, EventArgs e)
         {
             // Obtenir i netejar les dades dels camps del formulari
             string tmatricula = matricula_t.Text;
             string tmodel = model_t.Text;
-            string tcolor = color_t.Text;
-            string ttipus = tipus_t.Text;
+            string tmarca = marca_t.Text;
             // Comprovar que els camps obligatoris no estiguin buits
             // Si ho estan, mostra un missatge d'error
             if (string.IsNullOrWhiteSpace(tmatricula) || string.IsNullOrWhiteSpace(tmodel)
-                || string.IsNullOrWhiteSpace(tcolor) || string.IsNullOrWhiteSpace(ttipus))
+                || string.IsNullOrWhiteSpace(tmarca))
             {
                 Message message = new Message("Revisa els camps són obligatoris.", "Error");
                 message.ShowDialog();
@@ -60,7 +60,7 @@ namespace SmartPack
             }
             // Comprovar que el color, el color i el tipus siguin correctes només pot tenir lletres
             // Si alguna dada no és correcta, mostra un missatge d'error
-            if (!Regex.IsMatch(tcolor, "^[a-zA-Z]+$"))
+            if (!Regex.IsMatch(tmarca, "^[a-zA-Z]+$"))
             {
                 Message message = new Message("El color només pot tenir lletres. ", "Error");
                 message.ShowDialog();
@@ -68,32 +68,57 @@ namespace SmartPack
                 return;
             }
 
-            // Comprovar que el tipus, el color i el tipus siguin correctes només pot tenir lletres
-            // Si alguna dada no és correcta, mostra un missatge d'error
-            if (!Regex.IsMatch(ttipus, "^[a-zA-Z]+$"))
-            {
-                Message message = new Message("El tipus només pot tenir lletres ", "Error");
-                message.ShowDialog();
-                //MessageBox.Show("El tipus només pot tenir lletres ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             // Guardar les dades del vehicle
             // Si totes les dades són correctes, mostra un missatge d'informació
             var vehicle = new
             {
-                matricula = tmatricula,
+                marca = tmarca,
                 model = tmodel,
-                color = tcolor,
-                tipus = ttipus
-            };
-
-            var consulta = new
-            {
                 matricula = tmatricula
             };
-            Message msg = new Message("Vehicle registrat correctament", "info");
-            msg.ShowDialog();
+
+            object user = new
+            {
+                email = GestioSessins.email,
+                password = GestioSessins.password,
+            };
+            bool state = await dbAPI.Login(user);
+            if (GestioSessins.desactivat)
+            {
+                Console.WriteLine("Usuari desactivat");
+            }
+            else if (!string.IsNullOrEmpty(GestioSessins.token) && GestioSessins.token != "0")
+            {
+                Console.WriteLine("Token: " + GestioSessins.token);
+                string response = await dbAPI.crearVehicle(vehicle, GestioSessins.token);
+                if (!string.IsNullOrEmpty(response) && response != "0")
+                {
+                    Console.WriteLine("Response Body vehicle : " + response);
+                    ClassVehicle.id = response;
+                    object assignar = new
+                    {
+                        transportistaId = Transportista.id,
+                        vehicleId = response,
+                    };
+                    string message = await dbAPI.assignarVehicleTransportista(Transportista.id, ClassVehicle.id, GestioSessins.token);
+                    Console.WriteLine("Vehicle Message 123 : " + message);
+                    if (message == "OK")
+                    {
+                        Console.WriteLine("Vehicle Message: " + message);
+                        using (Message messatgel = new Message("Vehicla creat correctament", "info"))
+                        {
+                            messatgel.ShowDialog();
+                        }
+                        Sessio sessio = new Sessio();
+                        sessio.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error " + message);
+                    }
+                }
+            }
         }
 
         // Mètode que comprova si la matrícula és vàlida ha de tenir 4 números i 3 lletres
@@ -112,6 +137,16 @@ namespace SmartPack
             {
                 return false;
             }
+        }
+
+        private void AltaVehicle_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tipus_t_TextChanged()
+        {
+
         }
     }
 }

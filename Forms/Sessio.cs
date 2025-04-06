@@ -3,6 +3,7 @@ using SmartPack.Forms;
 using System;
 using System.Text.Json;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SmartPack
 {
@@ -50,13 +51,15 @@ namespace SmartPack
                     return;
                 }
             }
-            else if (GestioSessins.token != "0" )
+            else if (!string.IsNullOrEmpty(GestioSessins.token) && GestioSessins.token != "0" )
             {
                 Console.WriteLine("Token: " + GestioSessins.token);
                 string id = await dbAPI.getCurrentUser(GestioSessins.token);
                 if (!string.IsNullOrEmpty(id) && id != "0")
                 {
                     GestioSessins.id = id;
+                    GestioSessins.email = temail;
+                    GestioSessins.password = tcontrasenya;
                     if (GestioSessins.role != "ROLE_ADMIN")
                     {
                         Console.WriteLine("id: " + GestioSessins.id);
@@ -67,7 +70,7 @@ namespace SmartPack
                     else if (GestioSessins.role == "ROLE_ADMIN")
                     {
                         Console.WriteLine("role: " + GestioSessins.role);
-                        Servei se = new Servei();
+                        Administracio se = new Administracio();
                         se.Show();
                         this.Close();
                     }

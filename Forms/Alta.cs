@@ -1,6 +1,7 @@
 ﻿using Org.BouncyCastle.Ocsp;
 using SmartPack.Classes;
 using System;
+using System.Data;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -59,6 +60,7 @@ namespace SmartPack
             string psecreta = Secret.Text.Trim();
             var trol = rol_c.Text;
             bool esEmpresa = si_t.Checked;
+            string licencia = tbLlicencia.Text;
             // Message message = new Message("", "");
 
             // Validació de camps obligatoris
@@ -73,8 +75,22 @@ namespace SmartPack
             {
                 using (Message message1 = new Message("Revisa els camps són obligatoris", "error"))
                 { 
-                    message1.ShowDialog(); return; 
+                    message1.ShowDialog();
+                    return; 
                 }
+            }
+
+
+            if (trol == "ROLE_DELIVERYMAN")
+            {
+                if(string.IsNullOrWhiteSpace(licencia))
+                {
+                    using (Message message1 = new Message("Escriu el tipus de llicencia", "error"))
+                    {
+                        message1.ShowDialog(); 
+                        return;
+                    }
+                }                
             }
 
             // Validació de format de nom i cognom
@@ -163,19 +179,6 @@ namespace SmartPack
                     return;
                 }
             }
-
-            // Mètode que gestiona la selecció de usuari com a empresa
-            // Si es chequea la opció de empresa, es redirigeix al formulari d'alta d'empresa
-            // i es tanca el formulari d'alta d'usuari
-            // Si no es chequea la opció de empresa, no es fa res
-            // Aquest mètode s'ha afegit per a la implementació de la funcionalitat de l'alta d'empresa
-            if (esEmpresa)
-            {
-                AltaEmpresa formEmpresa = new AltaEmpresa();
-                formEmpresa.Show();
-                this.Close();
-            }
-
             
             // Creem un objecte amb les dades de l'usuari
             // Aquest objecte es passarà com a paràmetre a la crida a la classe dbAPI
@@ -195,11 +198,11 @@ namespace SmartPack
             };
 
 
-            await createNewUser(user, esEmpresa);
+            await createNewUser(user, trol, licencia, esEmpresa);
             
         }
 
-        public async Task createNewUser(object user_account, bool is_empresa = false)
+        public async Task createNewUser(object user_account, string role, string licencia, bool is_empresa = false)
         {
             if (user_account == null) return;
             string description_id = await dbAPI.altaUser(user_account);
@@ -216,12 +219,16 @@ namespace SmartPack
             {
                 Console.WriteLine("id: " + description_id);
                 GestioSessins.usuariId = description_id;
+                GestioSessins.email = user_account.GetType().GetProperty("email")?.GetValue(user_account).ToString();
+                GestioSessins.password = user_account.GetType().GetProperty("password")?.GetValue(user_account).ToString();
+
                 if (string.IsNullOrEmpty(GestioSessins.usuariId) || GestioSessins.usuariId != "0")
                 {
                     using (Message msg = new Message("Usuari registrat correctament", "info"))
                     {
                         msg.ShowDialog();
                     }
+                    this.Close();
                 }
                 else
                 {
@@ -231,16 +238,41 @@ namespace SmartPack
                     }
                     return;
                 }
-
+                // Mètode que gestiona la selecció de usuari com a empresa
+                // Si es chequea la opció de empresa, es redirigeix al formulari d'alta d'empresa
+                // i es tanca el formulari d'alta d'usuari
+                // Si no es chequea la opció de empresa, no es fa res
+                // Aquest mètode s'ha afegit per a la implementació de la funcionalitat de l'alta d'empresa
                 if (is_empresa)
                 {
                     AltaEmpresa altaEmpresa = new AltaEmpresa();
                     altaEmpresa.Show();
                     this.Close();
-                    GestioSessins.email = user_account.GetType().GetProperty("email")?.GetValue(user_account).ToString();
-                    GestioSessins.password = user_account.GetType().GetProperty("password")?.GetValue(user_account).ToString();
                 }
-
+                if (role == "ROLE_DELIVERYMAN")
+                {
+                    object user = new
+                    {
+                        email = GestioSessins.email,
+                        password = GestioSessins.password,
+                    };
+                    bool state = await dbAPI.Login(user);
+                    if (!string.IsNullOrEmpty(GestioSessins.token) && GestioSessins.token != "0")
+                    {
+                        object transportista = new
+                        {
+                            usuariId = description_id,
+                            llicencia = licencia
+                        };
+                        string s = await dbAPI.crearTransportista(transportista, GestioSessins.token);
+                        if (!string.IsNullOrEmpty(s))
+                        {
+                            AltaVehicle vehicle = new AltaVehicle();
+                            vehicle.Show();
+                            this.Close();
+                        }
+                    }
+                }
             }
         }
 
@@ -280,15 +312,17 @@ namespace SmartPack
         //He fet servir l'ajuda de copilot pels comentaris
         private void rol_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (rol_c.Text == "Transportista")
+            if (rol_c.Text == "ROLE_DELIVERYMAN")
             {
-                using (AltaVehicle formVehicle = new AltaVehicle())
-                {
-                    formVehicle.ShowDialog();
-                    this.Hide();
-                }
-                this.Show();
+                labelLlicencia.Visible = true;
+                tbLlicencia.Visible = true;
             }
+            else
+            {
+                labelLlicencia.Visible = false;
+                tbLlicencia.Visible = false;
+            } 
+
         }
     }
 }

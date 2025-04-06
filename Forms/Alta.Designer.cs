@@ -78,6 +78,8 @@ namespace SmartPack
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Secret = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tbLlicencia = new System.Windows.Forms.TextBox();
+            this.labelLlicencia = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -560,6 +562,28 @@ namespace SmartPack
             this.label1.Text = "Paraula Secreta";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // tbLlicencia
+            // 
+            this.tbLlicencia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbLlicencia.Location = new System.Drawing.Point(187, 172);
+            this.tbLlicencia.Name = "tbLlicencia";
+            this.tbLlicencia.Size = new System.Drawing.Size(200, 20);
+            this.tbLlicencia.TabIndex = 30;
+            this.tbLlicencia.Visible = false;
+            // 
+            // labelLlicencia
+            // 
+            this.labelLlicencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.labelLlicencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLlicencia.ForeColor = System.Drawing.Color.White;
+            this.labelLlicencia.Location = new System.Drawing.Point(54, 172);
+            this.labelLlicencia.Name = "labelLlicencia";
+            this.labelLlicencia.Size = new System.Drawing.Size(128, 20);
+            this.labelLlicencia.TabIndex = 31;
+            this.labelLlicencia.Text = "Llicencia";
+            this.labelLlicencia.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelLlicencia.Visible = false;
+            // 
             // Alta
             // 
             this.AcceptButton = this.bRegistre;
@@ -570,6 +594,8 @@ namespace SmartPack
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BorderColor = System.Drawing.Color.MediumBlue;
             this.ClientSize = new System.Drawing.Size(843, 517);
+            this.Controls.Add(this.tbLlicencia);
+            this.Controls.Add(this.labelLlicencia);
             this.Controls.Add(this.Secret);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -674,5 +700,7 @@ namespace SmartPack
         private Button bRegistre;
         private TextBox Secret;
         private Label label1;
+        private TextBox tbLlicencia;
+        private Label labelLlicencia;
     }
 }

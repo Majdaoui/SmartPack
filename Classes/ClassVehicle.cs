@@ -8,9 +8,9 @@ namespace SmartPack.Classes
 {
     class ClassVehicle
     {
+        public static string id { get; set; }
         public string matricula { get; set; }
         public string model { get; set; }
-        public string color { get; set; }
-        public string tipus { get; set; }
+        public string marca { get; set; }
     }
 }

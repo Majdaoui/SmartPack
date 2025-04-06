@@ -130,7 +130,7 @@ namespace SmartPack
             {
                 Console.WriteLine("Usuari desactivat");
             }
-            else if (GestioSessins.token != "0")
+            else if (string.IsNullOrEmpty(GestioSessins.token) && GestioSessins.token != "0")
             {
                 Console.WriteLine("Token: " + GestioSessins.token);
                 string response = await dbAPI.CreateEmpresa(empresa, GestioSessins.token);
