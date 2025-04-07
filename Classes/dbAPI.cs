@@ -445,11 +445,11 @@ namespace SmartPack
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 string responseBody = await response.Content.ReadAsStringAsync();
                 Console.WriteLine($"responseBody: {responseBody}");
-                if (responseBody.Contains("\"description\":"))
+                if (responseBody.Contains("\"id\":"))
                 {
                     using (JsonDocument doc = JsonDocument.Parse(responseBody))
                     {
-                        return doc.RootElement.GetProperty("description").GetString();
+                        return doc.RootElement.GetProperty("id").GetString();
                     }
                 }
             }

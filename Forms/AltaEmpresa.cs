@@ -130,7 +130,7 @@ namespace SmartPack
             {
                 Console.WriteLine("Usuari desactivat");
             }
-            else if (string.IsNullOrEmpty(GestioSessins.token) && GestioSessins.token != "0")
+            else if (!string.IsNullOrEmpty(GestioSessins.token) && GestioSessins.token != "0")
             {
                 Console.WriteLine("Token: " + GestioSessins.token);
                 string response = await dbAPI.CreateEmpresa(empresa, GestioSessins.token);
@@ -156,35 +156,6 @@ namespace SmartPack
                     }
                 }
             }
-
-
-
-
-            /*
-            string description_id = await dbAPI.CreateEmpresa(empresa, GestioSessins.token);
-            if (description_id.Contains("duplicats"))
-            {
-                Console.WriteLine("existeix: " + description_id);
-                using (Message msg = new Message("empresa ja existeix", "error"))
-                {
-                    this.Hide();
-                    msg.ShowDialog();
-                    return;
-                }
-            }
-            else
-            {
-                Console.WriteLine("id: " + description_id);
-                using (Message ms = new Message("Empresa registrada correctament", "info"))
-                {
-                    ms.ShowDialog();
-                    using (Principal principal = new Principal())
-                    {
-                        this.Close();
-                        principal.ShowDialog();
-                    }
-                }
-            }*/
         }
 
         //Mètode que verifica l'entrada d'uari si el format es correcta

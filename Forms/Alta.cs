@@ -248,7 +248,9 @@ namespace SmartPack
                     AltaEmpresa altaEmpresa = new AltaEmpresa();
                     altaEmpresa.Show();
                     this.Close();
+                    return;
                 }
+
                 if (role == "ROLE_DELIVERYMAN")
                 {
                     object user = new
@@ -323,6 +325,29 @@ namespace SmartPack
                 tbLlicencia.Visible = false;
             } 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            nom.Text = "Luna";
+            cognom_p.Text = "Majdaoui";
+            cognom_s.Text = "El Hammoudi";
+            dni_c.Text = "49459155R";
+            telephon.Text = "603207702";
+            t_via.Text = "Carrer";
+            num.Text = "146";
+            porta.Text = "";
+            planta.Text = "";
+            nom_via.Text = "Dom Bosco";
+            poblacio_t.Text = "Terrassa";
+            provincia_t.Text = "Barcelona";
+            cp.Text = "08224";
+            email_t.Text = "eyesight_vista@msn.com";
+            contrasenya_t.Text = "Luna*1234";
+            r_contrasenya.Text = "Luna*1234";
+            observacions_t.Text = "Test";
+            Secret.Text = "Luna";
+            rol_c.Text = "ROLE_ADMIN";
         }
     }
 }

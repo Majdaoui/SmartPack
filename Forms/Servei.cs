@@ -29,7 +29,9 @@ namespace SmartPack.Forms
 
         private void AddServei_Click(object sender, EventArgs e)
         {
-
+            AltaServei altaservei = new AltaServei();
+            altaservei.Show();
+            this.Hide();
         }
 
         private void consult_Click(object sender, EventArgs e)

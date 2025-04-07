@@ -80,6 +80,7 @@ namespace SmartPack
             this.label1 = new System.Windows.Forms.Label();
             this.tbLlicencia = new System.Windows.Forms.TextBox();
             this.labelLlicencia = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -584,6 +585,23 @@ namespace SmartPack
             this.labelLlicencia.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.labelLlicencia.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(45, 442);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(136, 44);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "Auto";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Alta
             // 
             this.AcceptButton = this.bRegistre;
@@ -594,6 +612,7 @@ namespace SmartPack
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BorderColor = System.Drawing.Color.MediumBlue;
             this.ClientSize = new System.Drawing.Size(843, 517);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tbLlicencia);
             this.Controls.Add(this.labelLlicencia);
             this.Controls.Add(this.Secret);
@@ -702,5 +721,6 @@ namespace SmartPack
         private Label label1;
         private TextBox tbLlicencia;
         private Label labelLlicencia;
+        private Button button1;
     }
 }

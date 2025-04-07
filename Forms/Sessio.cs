@@ -99,12 +99,9 @@ namespace SmartPack
 
         private void registrer_b_Click(object sender, EventArgs e)
         {
-            using (Alta formAlta = new Alta())
-            {
-                this.Hide();
-                formAlta.ShowDialog();
-            }
-            this.Show();
+            Alta formAlta = new Alta();
+            formAlta.Show();
+            this.Close();
         }
 
         private void Sessio_Load(object sender, EventArgs e)
