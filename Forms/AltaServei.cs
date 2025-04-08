@@ -1,13 +1,5 @@
 ﻿using SmartPack.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
@@ -18,6 +10,8 @@ namespace SmartPack.Forms
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
         private async void bRegistre_Click(object sender, EventArgs e)
         {
             string detallas = t_detalls.Text;
@@ -37,6 +31,8 @@ namespace SmartPack.Forms
             string planta = t_planta.Text;
             string porta = t_porta.Text;
 
+            // Validar que no hi hagi camps buits
+
             if (string.IsNullOrEmpty(detallas) || string.IsNullOrEmpty(pes) || string.IsNullOrEmpty(altura) ||
                 string.IsNullOrEmpty(amplada) || string.IsNullOrEmpty(profunditat) || string.IsNullOrEmpty(nomdestinatari) ||
                 string.IsNullOrEmpty(tipusVia) || string.IsNullOrEmpty(telefonDestinatari) || string.IsNullOrEmpty(codiPostal) 
@@ -51,6 +47,7 @@ namespace SmartPack.Forms
             }
             else
             {
+                // Crear l'objecte servei
                 object servei = new
                 {
                     estat = "ORDENAT",
@@ -68,6 +65,8 @@ namespace SmartPack.Forms
                     }
                 };
 
+                // Cridar a l'API per crear el servei
+                // Aquí hauries d'afegir el codi per cridar a l'API i passar-li l'objecte servei
                 string resultat = await dbAPI.crearServei(servei, GestioSessins.token);
                 if (resultat != "0")
                 {

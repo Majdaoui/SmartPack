@@ -1,9 +1,6 @@
 ﻿using SmartPack.Classes;
 using SmartPack.Forms;
 using System;
-using System.Text.Json;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SmartPack
 {
@@ -54,7 +51,16 @@ namespace SmartPack
             else if (!string.IsNullOrEmpty(GestioSessins.token) && GestioSessins.token != "0" )
             {
                 Console.WriteLine("Token: " + GestioSessins.token);
-                string id = await dbAPI.getCurrentUser(GestioSessins.token);
+                ClassUsuari usuari = await dbAPI.getCurrentUser(GestioSessins.token);
+                if(usuari == null)
+                {
+                    using (Message messatge = new Message("No s'ha pogut iniciar sessió correctament, ententa'ho de nou més tard.", "error"))
+                    {
+                        messatge.ShowDialog();
+                        return;
+                    }
+                }
+                string id = usuari.id;
                 if (!string.IsNullOrEmpty(id) && id != "0")
                 {
                     GestioSessins.id = id;

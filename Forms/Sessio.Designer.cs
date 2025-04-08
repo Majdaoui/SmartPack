@@ -85,6 +85,7 @@ namespace SmartPack
             this.contrasenya_is.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.contrasenya_is.Size = new System.Drawing.Size(337, 35);
             this.contrasenya_is.TabIndex = 54;
+            this.contrasenya_is.Text = "Luna*1234";
             // 
             // email_is
             // 
@@ -97,6 +98,7 @@ namespace SmartPack
             this.email_is.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.email_is.Size = new System.Drawing.Size(337, 35);
             this.email_is.TabIndex = 53;
+            this.email_is.Text = "luna@luna.com";
             // 
             // panel1
             // 

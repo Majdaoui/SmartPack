@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 using static SmartPack.dbAPI;
 
 namespace SmartPack.Classes
@@ -22,17 +17,11 @@ namespace SmartPack.Classes
         public string observacio { get; set; }
         [JsonPropertyName("empresaId")]
         public string empresaId { get; set; }
-
-
         public string dni { get; set; }
-        public string password { get; set; } /*contrasenya */
-       
-        public string rol { get; set; }
-            
+        public string password { get; set; } /*contrasenya */       
+        public string rol { get; set; }            
         public string secret { get; set; }
         public string token { get; set; }
-       
-
         public string pcognom { get; set; }
         public string scognom { get; set; }
 
@@ -51,7 +40,7 @@ namespace SmartPack.Classes
 
         public void SepararDireccio()
         {
-            if (!string.IsNullOrEmpty(adreça))
+            if (!string.IsNullOrEmpty(adreça) && adreça.Contains(","))
             {
                 var partes = adreça.Split(',');
                 if (partes.Length >= 3)
@@ -72,11 +61,18 @@ namespace SmartPack.Classes
         {
             if (!string.IsNullOrEmpty(cognom))
             {
-                var partes = cognom.Split(',');
-                if (partes.Length >= 2)
+                if(cognom.Contains(","))
                 {
-                    pcognom = partes[0].Trim();
-                    scognom = partes[1].Trim();
+                    var partes = cognom.Split(',');
+                    if (partes.Length >= 2)
+                    {
+                        pcognom = partes[0].Trim();
+                        scognom = partes[1].Trim();
+                    }
+                }
+                else
+                {
+                    pcognom = cognom;
                 }
             }
         }

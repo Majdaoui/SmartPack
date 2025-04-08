@@ -173,6 +173,7 @@
             this.l_rol_u.TabIndex = 58;
             this.l_rol_u.Text = "Tipus de compte: ";
             this.l_rol_u.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l_rol_u.Visible = false;
             // 
             // email_usuari
             // 
@@ -209,6 +210,7 @@
             this.bGuardar.TabIndex = 53;
             this.bGuardar.Text = "Guardar";
             this.bGuardar.UseVisualStyleBackColor = false;
+            this.bGuardar.Click += new System.EventHandler(this.bGuardar_Click);
             // 
             // provincia_usuari
             // 
@@ -437,6 +439,7 @@
             this.Rol_Usuari.Name = "Rol_Usuari";
             this.Rol_Usuari.Size = new System.Drawing.Size(199, 20);
             this.Rol_Usuari.TabIndex = 67;
+            this.Rol_Usuari.Visible = false;
             // 
             // bDesactivar
             // 

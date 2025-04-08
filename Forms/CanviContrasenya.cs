@@ -47,7 +47,9 @@ namespace SmartPack.Forms
             {
                 password = ncontrasenya
             };
-            string id_usuari = await dbAPI.getCurrentUser(GestioSessins.token);
+
+            ClassUsuari usuari = await dbAPI.getCurrentUser(GestioSessins.token);
+            string id_usuari = usuari.id;
             string resultado = await dbAPI.UpdateUser(GestioSessins.token, id_usuari, consulta);
             if (resultado != "0")
             {

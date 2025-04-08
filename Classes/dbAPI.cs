@@ -94,7 +94,7 @@ namespace SmartPack
         //Funció per a obtenir les dades de l'usuari actual
         //Retorna un string amb l'id de l'usuari
         //Retorna "0" si hi ha hagut un error inesperat
-        public static async Task<string> getCurrentUser(this string token)
+        public static async Task<ClassUsuari> getCurrentUser(this string token)
         {
             string url = "http://localhost:8080/usuari/me";
             using (HttpClient client = new HttpClient())
@@ -166,11 +166,11 @@ namespace SmartPack
                     }
                     if(count >= 7)
                     {
-                        return usuari.id;
+                        return usuari;
                     }
                 }
             }
-            return "0";
+            return null;
         }
 
         //Funció per eecuperar la contrasenya de l'usuari
@@ -510,6 +510,19 @@ namespace SmartPack
             }
         }
 
+        public static async Task<string> PutUserUpdate(object user, string id, string token)
+        {
+            string url = "http://localhost:8080/usuari/" + id;
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(user);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PutAsync(url, content);
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
 
     }
 }
