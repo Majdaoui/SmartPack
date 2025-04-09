@@ -1,7 +1,7 @@
 ﻿using SmartPack.Classes;
 using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace SmartPack.Forms
@@ -14,13 +14,18 @@ namespace SmartPack.Forms
             InitializeComponent();
         }
 
+        //Per a mostrar les dades de l'usuari a la finestra
+        //Aquest mètode recull les dades de l'usuari i les mostra a la finestra
+        //El mètode utilitza la classe ClassUsuari per separar el nom i els cognoms
+        //El mètode utilitza la classe dbAPI per obtenir les dades de l'usuari
+
         private void test(ClassUsuari usuari)
         {
             nom_usuari.Text = usuari.nom;
             usuari.separarCognom();
             cognom_p_usuari.Text = usuari.pcognom;
             cognom_s_usuari.Text = usuari.scognom;
-            dni_usuari.Text = usuari.dni;
+            //dni_usuari.Text = usuari.dni;
             telefon_usuari.Text = usuari.telefon;
             email_usuari.Text = usuari.email;
             usuari.SepararDireccio();
@@ -33,9 +38,11 @@ namespace SmartPack.Forms
             poblacio_usuari.Text = usuari.poblacio;
             provincia_usuari.Text = usuari.provincia;
             observacions_usuari.Text = usuari.observacio;
-            Rol_Usuari.Text = usuari.rol;
+            //Rol_Usuari.Text = usuari.rol;
         }
 
+        //Aquest metoda es crida quan es carrega la finestra
+        //Carrega les dades de l'usuari actual i les mostra a la finestra
         protected async override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -50,6 +57,7 @@ namespace SmartPack.Forms
             }
         }
 
+        
         private void Bsortir_Click(object sender, EventArgs e)
         {
             //Application.Exit();
@@ -61,10 +69,8 @@ namespace SmartPack.Forms
         //Si l'usuari no s'ha desactivat correctament, mostra un missatge d'error
         //El mètode utilitza la classe dbAPI per enviar les dades a la base de dades
         //El mètode utilitza la classe GestioSessins per obtenir l'id i el token de l'usuari
-
         private async void bDesactivar_Click(object sender, EventArgs e)
         {
-
             string id = GestioSessins.id;
             if (!string.IsNullOrEmpty(id) && id != "0")
             {
@@ -91,11 +97,14 @@ namespace SmartPack.Forms
             }
         }
 
+        //Aquest mètode es crida quan es fa clic al botó "Canvi contrasenya"
+        //Obre la finestra de canvi de contrasenya
+        //Tanca la finestra actual
         private void Bcanvi_contrasenya_Click_1(object sender, EventArgs e)
         {
             CanviContrasenya canviContrasenya = new CanviContrasenya();
             canviContrasenya.Show();
-            this.Hide();
+            this.Close();
         }
 
         private string GetDebuggerDisplay()
@@ -150,6 +159,16 @@ namespace SmartPack.Forms
                     messatge.ShowDialog();
                 }
             }
+        }
+
+        //Aquest mètode es crida quan es fa clic al botó "Vehicle"
+        //Obre la finestra de vehicle
+        //Tanca la finestra actual
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Vehicle vehicle = new Vehicle();
+            vehicle.Show();
+            this.Close();
         }
     }
 }

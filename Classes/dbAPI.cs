@@ -524,5 +524,111 @@ namespace SmartPack
             }
         }
 
+        public static async Task<string> PutEmpresaUpdate(object empresa, string id, string token)
+        {
+            string url = "http://localhost:8080/empresa/" + id;
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(empresa);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PutAsync(url, content);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Response: {responseBody}");
+                return responseBody;
+            }
+        }
+
+        public static async Task<string> DeactivateEmpresa(string id, string token)
+        {
+            string url = "http://localhost:8080/empresa/" + id + "/desactivate";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var request = new HttpRequestMessage
+                {
+                    Method = new HttpMethod("PATCH"),
+                    RequestUri = new Uri(url),
+                    Headers = { { "Accept", "*/*" } }
+                };
+                HttpResponseMessage response = await client.SendAsync(request);
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    Console.WriteLine($"Request failed: {response.StatusCode}");
+                }
+            }
+            return null;
+        }
+
+
+        public static async Task<string> PutVehicleUpdate(object vehicle, string id, string token)
+        {
+            string url = "http://localhost:8080/vehicle/" + id;
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(vehicle);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PutAsync(url, content);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Response: {responseBody}");
+                return responseBody;
+            }
+        }
+
+        public static async Task<string> GetTransportistaPerUsuari(string id, string token)
+        {
+            string url = "http://localhost:8080/transportista/usuari/" + id;
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                //Console.WriteLine($"responseBody: {responseBody}");
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    return responseBody;
+            }
+            return null;
+        }
+
+        public static async Task<string> DesactivarVehicle(string id, string token)
+        {
+            string url = "http://localhost:8080/vehicle/" + id + "/desactivate";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var request = new HttpRequestMessage
+                {
+                    Method = new HttpMethod("PATCH"),
+                    RequestUri = new Uri(url),
+                    Headers = { { "Accept", "*/*" } }
+                };
+                HttpResponseMessage response = await client.SendAsync(request);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    if (responseBody.Contains("\"message\":"))
+                    {
+                        using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                        {
+                            var ret = doc.RootElement.GetProperty("message").GetString();
+                            if (ret.Contains("correctament."))
+                            {
+                                return "correctament";
+                            }
+                        }
+                    }
+                }
+            }
+            return "0";
+        }
+
     }
 }

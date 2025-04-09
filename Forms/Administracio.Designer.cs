@@ -48,12 +48,13 @@
             this.COGNOMS_T = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.TELEFON_T = new System.Windows.Forms.TextBox();
+            this.EMAIL_T = new System.Windows.Forms.TextBox();
             this.lTipusdeCompte = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.TELEFON_T = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.EMAIL_T = new System.Windows.Forms.Label();
+            this.lID = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -208,6 +209,7 @@
             this.desctivate_e.Text = "Desactivar Empresa";
             this.desctivate_e.UseVisualStyleBackColor = false;
             this.desctivate_e.Visible = false;
+            this.desctivate_e.Click += new System.EventHandler(this.desctivate_e_Click);
             // 
             // update_e
             // 
@@ -224,7 +226,7 @@
             this.update_e.TabIndex = 28;
             this.update_e.Text = "Modificar Empresa";
             this.update_e.UseVisualStyleBackColor = false;
-            this.update_e.Visible = false;
+            this.update_e.Click += new System.EventHandler(this.update_e_Click);
             // 
             // panel5
             // 
@@ -308,12 +310,13 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.lID);
+            this.panel3.Controls.Add(this.TELEFON_T);
+            this.panel3.Controls.Add(this.EMAIL_T);
             this.panel3.Controls.Add(this.lTipusdeCompte);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.TELEFON_T);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.EMAIL_T);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.COGNOMS_T);
             this.panel3.Controls.Add(this.NOM_T);
@@ -322,6 +325,22 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(354, 352);
             this.panel3.TabIndex = 36;
+            // 
+            // TELEFON_T
+            // 
+            this.TELEFON_T.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TELEFON_T.Location = new System.Drawing.Point(161, 185);
+            this.TELEFON_T.Name = "TELEFON_T";
+            this.TELEFON_T.Size = new System.Drawing.Size(174, 20);
+            this.TELEFON_T.TabIndex = 45;
+            // 
+            // EMAIL_T
+            // 
+            this.EMAIL_T.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EMAIL_T.Location = new System.Drawing.Point(161, 157);
+            this.EMAIL_T.Name = "EMAIL_T";
+            this.EMAIL_T.Size = new System.Drawing.Size(174, 20);
+            this.EMAIL_T.TabIndex = 44;
             // 
             // lTipusdeCompte
             // 
@@ -357,18 +376,6 @@
             this.label8.Text = "Telèfon";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // TELEFON_T
-            // 
-            this.TELEFON_T.BackColor = System.Drawing.Color.Transparent;
-            this.TELEFON_T.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TELEFON_T.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TELEFON_T.Location = new System.Drawing.Point(161, 181);
-            this.TELEFON_T.Name = "TELEFON_T";
-            this.TELEFON_T.Size = new System.Drawing.Size(174, 30);
-            this.TELEFON_T.TabIndex = 39;
-            this.TELEFON_T.Text = "...";
-            this.TELEFON_T.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
@@ -380,17 +387,18 @@
             this.label6.Text = "Email";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // EMAIL_T
+            // lID
             // 
-            this.EMAIL_T.BackColor = System.Drawing.Color.Transparent;
-            this.EMAIL_T.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EMAIL_T.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EMAIL_T.Location = new System.Drawing.Point(161, 150);
-            this.EMAIL_T.Name = "EMAIL_T";
-            this.EMAIL_T.Size = new System.Drawing.Size(174, 30);
-            this.EMAIL_T.TabIndex = 37;
-            this.EMAIL_T.Text = "...";
-            this.EMAIL_T.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lID.BackColor = System.Drawing.Color.Transparent;
+            this.lID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lID.Location = new System.Drawing.Point(6, 10);
+            this.lID.Name = "lID";
+            this.lID.Size = new System.Drawing.Size(329, 30);
+            this.lID.TabIndex = 46;
+            this.lID.Text = "ID";
+            this.lID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lID.Visible = false;
             // 
             // Administracio
             // 
@@ -418,6 +426,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -444,10 +453,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label TELEFON_T;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label EMAIL_T;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lTipusdeCompte;
+        private System.Windows.Forms.TextBox EMAIL_T;
+        private System.Windows.Forms.TextBox TELEFON_T;
+        private System.Windows.Forms.Label lID;
     }
 }

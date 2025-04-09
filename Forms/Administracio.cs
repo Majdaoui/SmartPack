@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -41,6 +42,8 @@ namespace SmartPack.Forms
         private async void list_e_Click(object sender, EventArgs e)
         {
             listEmpreses.Items.Clear();
+            update_e.Visible = false;
+            desctivate_e.Visible = false;
             object user = new
             {
                 email = GestioSessins.email,
@@ -75,6 +78,8 @@ namespace SmartPack.Forms
         private async void llist_u_Click(object sender, EventArgs e)
         {
             listUsauris.Items.Clear();
+            update_e.Visible = false;
+            desctivate_e.Visible = false;
             object user = new
             {
                 email = GestioSessins.email,
@@ -122,10 +127,14 @@ namespace SmartPack.Forms
                             var id = item.GetProperty("id") + "";
                             if (_id == id)
                             {
+                                listUsauris.SelectedIndex = -1;
+                                lID.Text = id;
                                 NOM_T.Text = item.GetProperty("nom").ToString();
                                 COGNOMS_T.Text = "";
                                 EMAIL_T.Text = item.GetProperty("email").ToString();
                                 TELEFON_T.Text = item.GetProperty("telefon").ToString();
+                                update_e.Visible = true;
+                                desctivate_e.Visible = true;
                                 break;
                             }
                         }
@@ -153,14 +162,43 @@ namespace SmartPack.Forms
                             var id = item.GetProperty("id") + "";
                             if (_id == id)
                             {
+                                listEmpreses.SelectedIndex = -1;
+                                lID.Text = id;
                                 NOM_T.Text = item.GetProperty("nom").ToString();
                                 COGNOMS_T.Text = item.GetProperty("cognom").ToString();
                                 EMAIL_T.Text = item.GetProperty("email").ToString();
                                 TELEFON_T.Text = item.GetProperty("telefon").ToString();
+                                update_e.Visible = false;
+                                desctivate_e.Visible = false;
                                 break;
                             }
                         }
                     }
+                }
+            }
+        }
+
+        private async void update_e_Click(object sender, EventArgs e)
+        {
+            object empresa_update = new
+            {
+                email = EMAIL_T.Text,
+                telefon = TELEFON_T.Text,
+            };
+            var response = await dbAPI.PutEmpresaUpdate(empresa_update, lID.Text, GestioSessins.token);
+            Console.WriteLine("Response Body: " + response);
+        }
+
+        private async void desctivate_e_Click(object sender, EventArgs e)
+        {
+            var response = await dbAPI.DeactivateEmpresa(lID.Text, GestioSessins.token);
+            if (string.IsNullOrEmpty(response)) return;
+            Console.WriteLine("Response Body: " + response);
+            if(response.Contains("correctament"))
+            {
+                using (Message message1 = new Message("Empresa desactivada correctament.", "info"))
+                {
+                    message1.ShowDialog();
                 }
             }
         }

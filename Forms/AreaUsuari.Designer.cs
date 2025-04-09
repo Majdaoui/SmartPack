@@ -37,7 +37,6 @@
             this.telefon_u = new System.Windows.Forms.Label();
             this.cognom_s_usuari = new System.Windows.Forms.TextBox();
             this.s_cognom_u = new System.Windows.Forms.Label();
-            this.l_rol_u = new System.Windows.Forms.Label();
             this.email_usuari = new System.Windows.Forms.TextBox();
             this.email_u = new System.Windows.Forms.Label();
             this.bGuardar = new System.Windows.Forms.Button();
@@ -55,16 +54,14 @@
             this.t_via_usuari = new System.Windows.Forms.TextBox();
             this.lplanta_u = new System.Windows.Forms.Label();
             this.num_u = new System.Windows.Forms.Label();
-            this.dni_usuari = new System.Windows.Forms.TextBox();
             this.n_via_u = new System.Windows.Forms.Label();
             this.tvia_u = new System.Windows.Forms.Label();
             this.cognom_p_usuari = new System.Windows.Forms.TextBox();
             this.nom_usuari = new System.Windows.Forms.TextBox();
-            this.dni_u = new System.Windows.Forms.Label();
             this.p_cognom_u = new System.Windows.Forms.Label();
             this.nom_u = new System.Windows.Forms.Label();
-            this.Rol_Usuari = new System.Windows.Forms.TextBox();
             this.bDesactivar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.Bcanvi_contrasenya = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -81,7 +78,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::SmartPack.Properties.Resources.logo_transparent;
-            this.pictureBox1.Location = new System.Drawing.Point(16, -1);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(169, 136);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -104,17 +101,18 @@
             // observacions_usuari
             // 
             this.observacions_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.observacions_usuari.Location = new System.Drawing.Point(176, 402);
+            this.observacions_usuari.Location = new System.Drawing.Point(185, 328);
             this.observacions_usuari.Name = "observacions_usuari";
-            this.observacions_usuari.Size = new System.Drawing.Size(633, 20);
+            this.observacions_usuari.Size = new System.Drawing.Size(199, 20);
             this.observacions_usuari.TabIndex = 66;
+            this.observacions_usuari.TextChanged += new System.EventHandler(this.observacions_usuari_TextChanged);
             // 
             // observacions_u
             // 
             this.observacions_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.observacions_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.observacions_u.ForeColor = System.Drawing.Color.White;
-            this.observacions_u.Location = new System.Drawing.Point(43, 402);
+            this.observacions_u.Location = new System.Drawing.Point(52, 328);
             this.observacions_u.Name = "observacions_u";
             this.observacions_u.Size = new System.Drawing.Size(128, 20);
             this.observacions_u.TabIndex = 65;
@@ -124,7 +122,7 @@
             // telefon_usuari
             // 
             this.telefon_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.telefon_usuari.Location = new System.Drawing.Point(610, 348);
+            this.telefon_usuari.Location = new System.Drawing.Point(606, 328);
             this.telefon_usuari.MaxLength = 9;
             this.telefon_usuari.Name = "telefon_usuari";
             this.telefon_usuari.Size = new System.Drawing.Size(199, 20);
@@ -135,7 +133,7 @@
             this.telefon_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.telefon_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.telefon_u.ForeColor = System.Drawing.Color.White;
-            this.telefon_u.Location = new System.Drawing.Point(433, 348);
+            this.telefon_u.Location = new System.Drawing.Point(429, 328);
             this.telefon_u.Name = "telefon_u";
             this.telefon_u.Size = new System.Drawing.Size(171, 20);
             this.telefon_u.TabIndex = 63;
@@ -145,7 +143,7 @@
             // cognom_s_usuari
             // 
             this.cognom_s_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cognom_s_usuari.Location = new System.Drawing.Point(610, 222);
+            this.cognom_s_usuari.Location = new System.Drawing.Point(606, 202);
             this.cognom_s_usuari.Name = "cognom_s_usuari";
             this.cognom_s_usuari.Size = new System.Drawing.Size(199, 20);
             this.cognom_s_usuari.TabIndex = 60;
@@ -155,30 +153,17 @@
             this.s_cognom_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.s_cognom_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.s_cognom_u.ForeColor = System.Drawing.Color.White;
-            this.s_cognom_u.Location = new System.Drawing.Point(433, 222);
+            this.s_cognom_u.Location = new System.Drawing.Point(429, 202);
             this.s_cognom_u.Name = "s_cognom_u";
             this.s_cognom_u.Size = new System.Drawing.Size(171, 20);
             this.s_cognom_u.TabIndex = 59;
             this.s_cognom_u.Text = "Segon Cognom";
             this.s_cognom_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // l_rol_u
-            // 
-            this.l_rol_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.l_rol_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_rol_u.ForeColor = System.Drawing.Color.White;
-            this.l_rol_u.Location = new System.Drawing.Point(43, 168);
-            this.l_rol_u.Name = "l_rol_u";
-            this.l_rol_u.Size = new System.Drawing.Size(128, 20);
-            this.l_rol_u.TabIndex = 58;
-            this.l_rol_u.Text = "Tipus de compte: ";
-            this.l_rol_u.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.l_rol_u.Visible = false;
-            // 
             // email_usuari
             // 
             this.email_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.email_usuari.Location = new System.Drawing.Point(177, 348);
+            this.email_usuari.Location = new System.Drawing.Point(185, 303);
             this.email_usuari.Name = "email_usuari";
             this.email_usuari.Size = new System.Drawing.Size(199, 20);
             this.email_usuari.TabIndex = 57;
@@ -188,12 +173,13 @@
             this.email_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.email_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.email_u.ForeColor = System.Drawing.Color.White;
-            this.email_u.Location = new System.Drawing.Point(43, 348);
+            this.email_u.Location = new System.Drawing.Point(51, 303);
             this.email_u.Name = "email_u";
             this.email_u.Size = new System.Drawing.Size(128, 20);
             this.email_u.TabIndex = 55;
             this.email_u.Text = "Email";
             this.email_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.email_u.Click += new System.EventHandler(this.email_u_Click);
             // 
             // bGuardar
             // 
@@ -204,7 +190,7 @@
             this.bGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bGuardar.ForeColor = System.Drawing.Color.Black;
-            this.bGuardar.Location = new System.Drawing.Point(335, 439);
+            this.bGuardar.Location = new System.Drawing.Point(265, 439);
             this.bGuardar.Name = "bGuardar";
             this.bGuardar.Size = new System.Drawing.Size(136, 44);
             this.bGuardar.TabIndex = 53;
@@ -215,7 +201,7 @@
             // provincia_usuari
             // 
             this.provincia_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.provincia_usuari.Location = new System.Drawing.Point(610, 323);
+            this.provincia_usuari.Location = new System.Drawing.Point(606, 303);
             this.provincia_usuari.Name = "provincia_usuari";
             this.provincia_usuari.Size = new System.Drawing.Size(199, 20);
             this.provincia_usuari.TabIndex = 50;
@@ -223,15 +209,16 @@
             // poblacio_usuari
             // 
             this.poblacio_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.poblacio_usuari.Location = new System.Drawing.Point(176, 323);
+            this.poblacio_usuari.Location = new System.Drawing.Point(184, 278);
             this.poblacio_usuari.Name = "poblacio_usuari";
             this.poblacio_usuari.Size = new System.Drawing.Size(199, 20);
             this.poblacio_usuari.TabIndex = 49;
+            this.poblacio_usuari.TextChanged += new System.EventHandler(this.poblacio_usuari_TextChanged);
             // 
             // cp_usuari
             // 
             this.cp_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cp_usuari.Location = new System.Drawing.Point(610, 298);
+            this.cp_usuari.Location = new System.Drawing.Point(606, 278);
             this.cp_usuari.Name = "cp_usuari";
             this.cp_usuari.Size = new System.Drawing.Size(199, 20);
             this.cp_usuari.TabIndex = 52;
@@ -239,7 +226,7 @@
             // porta_usuari
             // 
             this.porta_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.porta_usuari.Location = new System.Drawing.Point(176, 298);
+            this.porta_usuari.Location = new System.Drawing.Point(184, 253);
             this.porta_usuari.Name = "porta_usuari";
             this.porta_usuari.Size = new System.Drawing.Size(199, 20);
             this.porta_usuari.TabIndex = 51;
@@ -249,7 +236,7 @@
             this.provincia_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.provincia_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.provincia_u.ForeColor = System.Drawing.Color.White;
-            this.provincia_u.Location = new System.Drawing.Point(433, 323);
+            this.provincia_u.Location = new System.Drawing.Point(429, 303);
             this.provincia_u.Name = "provincia_u";
             this.provincia_u.Size = new System.Drawing.Size(171, 20);
             this.provincia_u.TabIndex = 34;
@@ -261,7 +248,7 @@
             this.poblacio_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.poblacio_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.poblacio_u.ForeColor = System.Drawing.Color.White;
-            this.poblacio_u.Location = new System.Drawing.Point(43, 323);
+            this.poblacio_u.Location = new System.Drawing.Point(51, 278);
             this.poblacio_u.Name = "poblacio_u";
             this.poblacio_u.Size = new System.Drawing.Size(128, 20);
             this.poblacio_u.TabIndex = 35;
@@ -271,7 +258,7 @@
             // planta_usuari
             // 
             this.planta_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.planta_usuari.Location = new System.Drawing.Point(611, 272);
+            this.planta_usuari.Location = new System.Drawing.Point(607, 252);
             this.planta_usuari.Name = "planta_usuari";
             this.planta_usuari.Size = new System.Drawing.Size(199, 20);
             this.planta_usuari.TabIndex = 44;
@@ -279,7 +266,7 @@
             // num_usuari
             // 
             this.num_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.num_usuari.Location = new System.Drawing.Point(176, 272);
+            this.num_usuari.Location = new System.Drawing.Point(184, 227);
             this.num_usuari.Name = "num_usuari";
             this.num_usuari.Size = new System.Drawing.Size(199, 20);
             this.num_usuari.TabIndex = 43;
@@ -289,7 +276,7 @@
             this.lcp_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.lcp_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lcp_u.ForeColor = System.Drawing.Color.White;
-            this.lcp_u.Location = new System.Drawing.Point(433, 298);
+            this.lcp_u.Location = new System.Drawing.Point(429, 278);
             this.lcp_u.Name = "lcp_u";
             this.lcp_u.Size = new System.Drawing.Size(171, 20);
             this.lcp_u.TabIndex = 36;
@@ -301,7 +288,7 @@
             this.porta_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.porta_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.porta_u.ForeColor = System.Drawing.Color.White;
-            this.porta_u.Location = new System.Drawing.Point(43, 298);
+            this.porta_u.Location = new System.Drawing.Point(51, 253);
             this.porta_u.Name = "porta_u";
             this.porta_u.Size = new System.Drawing.Size(128, 20);
             this.porta_u.TabIndex = 31;
@@ -311,7 +298,7 @@
             // nom_via_usuari
             // 
             this.nom_via_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nom_via_usuari.Location = new System.Drawing.Point(610, 247);
+            this.nom_via_usuari.Location = new System.Drawing.Point(606, 227);
             this.nom_via_usuari.Name = "nom_via_usuari";
             this.nom_via_usuari.Size = new System.Drawing.Size(199, 20);
             this.nom_via_usuari.TabIndex = 48;
@@ -319,7 +306,7 @@
             // t_via_usuari
             // 
             this.t_via_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_via_usuari.Location = new System.Drawing.Point(176, 247);
+            this.t_via_usuari.Location = new System.Drawing.Point(184, 202);
             this.t_via_usuari.Name = "t_via_usuari";
             this.t_via_usuari.Size = new System.Drawing.Size(199, 20);
             this.t_via_usuari.TabIndex = 45;
@@ -329,7 +316,7 @@
             this.lplanta_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.lplanta_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lplanta_u.ForeColor = System.Drawing.Color.White;
-            this.lplanta_u.Location = new System.Drawing.Point(433, 272);
+            this.lplanta_u.Location = new System.Drawing.Point(429, 252);
             this.lplanta_u.Name = "lplanta_u";
             this.lplanta_u.Size = new System.Drawing.Size(171, 20);
             this.lplanta_u.TabIndex = 32;
@@ -341,27 +328,19 @@
             this.num_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.num_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.num_u.ForeColor = System.Drawing.Color.White;
-            this.num_u.Location = new System.Drawing.Point(43, 272);
+            this.num_u.Location = new System.Drawing.Point(51, 227);
             this.num_u.Name = "num_u";
             this.num_u.Size = new System.Drawing.Size(128, 20);
             this.num_u.TabIndex = 33;
             this.num_u.Text = "Número";
             this.num_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dni_usuari
-            // 
-            this.dni_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dni_usuari.Location = new System.Drawing.Point(176, 222);
-            this.dni_usuari.Name = "dni_usuari";
-            this.dni_usuari.Size = new System.Drawing.Size(199, 20);
-            this.dni_usuari.TabIndex = 42;
-            // 
             // n_via_u
             // 
             this.n_via_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.n_via_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.n_via_u.ForeColor = System.Drawing.Color.White;
-            this.n_via_u.Location = new System.Drawing.Point(433, 247);
+            this.n_via_u.Location = new System.Drawing.Point(429, 227);
             this.n_via_u.Name = "n_via_u";
             this.n_via_u.Size = new System.Drawing.Size(171, 20);
             this.n_via_u.TabIndex = 37;
@@ -373,7 +352,7 @@
             this.tvia_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.tvia_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tvia_u.ForeColor = System.Drawing.Color.White;
-            this.tvia_u.Location = new System.Drawing.Point(43, 247);
+            this.tvia_u.Location = new System.Drawing.Point(51, 202);
             this.tvia_u.Name = "tvia_u";
             this.tvia_u.Size = new System.Drawing.Size(128, 20);
             this.tvia_u.TabIndex = 40;
@@ -383,7 +362,7 @@
             // cognom_p_usuari
             // 
             this.cognom_p_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cognom_p_usuari.Location = new System.Drawing.Point(610, 197);
+            this.cognom_p_usuari.Location = new System.Drawing.Point(606, 177);
             this.cognom_p_usuari.Name = "cognom_p_usuari";
             this.cognom_p_usuari.Size = new System.Drawing.Size(199, 20);
             this.cognom_p_usuari.TabIndex = 46;
@@ -391,29 +370,17 @@
             // nom_usuari
             // 
             this.nom_usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nom_usuari.Location = new System.Drawing.Point(176, 197);
+            this.nom_usuari.Location = new System.Drawing.Point(185, 176);
             this.nom_usuari.Name = "nom_usuari";
             this.nom_usuari.Size = new System.Drawing.Size(199, 20);
             this.nom_usuari.TabIndex = 47;
-            // 
-            // dni_u
-            // 
-            this.dni_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.dni_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dni_u.ForeColor = System.Drawing.Color.White;
-            this.dni_u.Location = new System.Drawing.Point(43, 222);
-            this.dni_u.Name = "dni_u";
-            this.dni_u.Size = new System.Drawing.Size(128, 20);
-            this.dni_u.TabIndex = 39;
-            this.dni_u.Text = "DIN/NIE";
-            this.dni_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // p_cognom_u
             // 
             this.p_cognom_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.p_cognom_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.p_cognom_u.ForeColor = System.Drawing.Color.White;
-            this.p_cognom_u.Location = new System.Drawing.Point(433, 197);
+            this.p_cognom_u.Location = new System.Drawing.Point(429, 177);
             this.p_cognom_u.Name = "p_cognom_u";
             this.p_cognom_u.Size = new System.Drawing.Size(171, 20);
             this.p_cognom_u.TabIndex = 38;
@@ -425,21 +392,12 @@
             this.nom_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.nom_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nom_u.ForeColor = System.Drawing.Color.White;
-            this.nom_u.Location = new System.Drawing.Point(43, 197);
+            this.nom_u.Location = new System.Drawing.Point(52, 176);
             this.nom_u.Name = "nom_u";
             this.nom_u.Size = new System.Drawing.Size(128, 20);
             this.nom_u.TabIndex = 41;
             this.nom_u.Text = "Nom";
             this.nom_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // Rol_Usuari
-            // 
-            this.Rol_Usuari.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Rol_Usuari.Location = new System.Drawing.Point(177, 168);
-            this.Rol_Usuari.Name = "Rol_Usuari";
-            this.Rol_Usuari.Size = new System.Drawing.Size(199, 20);
-            this.Rol_Usuari.TabIndex = 67;
-            this.Rol_Usuari.Visible = false;
             // 
             // bDesactivar
             // 
@@ -450,13 +408,30 @@
             this.bDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bDesactivar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bDesactivar.ForeColor = System.Drawing.Color.Black;
-            this.bDesactivar.Location = new System.Drawing.Point(486, 439);
+            this.bDesactivar.Location = new System.Drawing.Point(429, 439);
             this.bDesactivar.Name = "bDesactivar";
             this.bDesactivar.Size = new System.Drawing.Size(179, 44);
             this.bDesactivar.TabIndex = 68;
             this.bDesactivar.Text = "Disactivar Compta";
             this.bDesactivar.UseVisualStyleBackColor = false;
             this.bDesactivar.Click += new System.EventHandler(this.bDesactivar_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(636, 439);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(169, 44);
+            this.button1.TabIndex = 76;
+            this.button1.Text = "Vehicle";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Bcanvi_contrasenya
             // 
@@ -467,7 +442,7 @@
             this.Bcanvi_contrasenya.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Bcanvi_contrasenya.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Bcanvi_contrasenya.ForeColor = System.Drawing.Color.Black;
-            this.Bcanvi_contrasenya.Location = new System.Drawing.Point(127, 439);
+            this.Bcanvi_contrasenya.Location = new System.Drawing.Point(37, 439);
             this.Bcanvi_contrasenya.Name = "Bcanvi_contrasenya";
             this.Bcanvi_contrasenya.Size = new System.Drawing.Size(191, 44);
             this.Bcanvi_contrasenya.TabIndex = 69;
@@ -482,16 +457,15 @@
             this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(857, 512);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Bcanvi_contrasenya);
             this.Controls.Add(this.bDesactivar);
-            this.Controls.Add(this.Rol_Usuari);
             this.Controls.Add(this.observacions_usuari);
             this.Controls.Add(this.observacions_u);
             this.Controls.Add(this.telefon_usuari);
             this.Controls.Add(this.telefon_u);
             this.Controls.Add(this.cognom_s_usuari);
             this.Controls.Add(this.s_cognom_u);
-            this.Controls.Add(this.l_rol_u);
             this.Controls.Add(this.email_usuari);
             this.Controls.Add(this.email_u);
             this.Controls.Add(this.bGuardar);
@@ -509,12 +483,10 @@
             this.Controls.Add(this.t_via_usuari);
             this.Controls.Add(this.lplanta_u);
             this.Controls.Add(this.num_u);
-            this.Controls.Add(this.dni_usuari);
             this.Controls.Add(this.n_via_u);
             this.Controls.Add(this.tvia_u);
             this.Controls.Add(this.cognom_p_usuari);
             this.Controls.Add(this.nom_usuari);
-            this.Controls.Add(this.dni_u);
             this.Controls.Add(this.p_cognom_u);
             this.Controls.Add(this.nom_u);
             this.Controls.Add(this.panel1);
@@ -522,6 +494,7 @@
             this.Controls.Add(this.title);
             this.Name = "AreaUsuari";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.AreaUsuari_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -539,7 +512,6 @@
         private System.Windows.Forms.Label telefon_u;
         private System.Windows.Forms.TextBox cognom_s_usuari;
         private System.Windows.Forms.Label s_cognom_u;
-        private System.Windows.Forms.Label l_rol_u;
         private System.Windows.Forms.TextBox email_usuari;
         private System.Windows.Forms.Label email_u;
         private System.Windows.Forms.Button bGuardar;
@@ -557,16 +529,14 @@
         private System.Windows.Forms.TextBox t_via_usuari;
         private System.Windows.Forms.Label lplanta_u;
         private System.Windows.Forms.Label num_u;
-        private System.Windows.Forms.TextBox dni_usuari;
         private System.Windows.Forms.Label n_via_u;
         private System.Windows.Forms.Label tvia_u;
         private System.Windows.Forms.TextBox cognom_p_usuari;
         private System.Windows.Forms.TextBox nom_usuari;
-        private System.Windows.Forms.Label dni_u;
         private System.Windows.Forms.Label p_cognom_u;
         private System.Windows.Forms.Label nom_u;
-        private System.Windows.Forms.TextBox Rol_Usuari;
         private System.Windows.Forms.Button bDesactivar;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button Bcanvi_contrasenya;
     }
 }
