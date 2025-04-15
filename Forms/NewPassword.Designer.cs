@@ -54,7 +54,7 @@
             this.R_password.Location = new System.Drawing.Point(188, 264);
             this.R_password.Name = "R_password";
             this.R_password.Size = new System.Drawing.Size(220, 44);
-            this.R_password.TabIndex = 71;
+            this.R_password.TabIndex = 3;
             this.R_password.Text = "Enviar";
             this.R_password.UseVisualStyleBackColor = false;
             this.R_password.Click += new System.EventHandler(this.R_password_Click);
@@ -83,7 +83,7 @@
             this.npassword.Name = "npassword";
             this.npassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.npassword.Size = new System.Drawing.Size(220, 35);
-            this.npassword.TabIndex = 69;
+            this.npassword.TabIndex = 1;
             this.npassword.Text = "Nova Contrasenya";
             // 
             // panel1
@@ -142,7 +142,7 @@
             this.rnpassword.Name = "rnpassword";
             this.rnpassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.rnpassword.Size = new System.Drawing.Size(220, 35);
-            this.rnpassword.TabIndex = 72;
+            this.rnpassword.TabIndex = 2;
             this.rnpassword.Text = "Repetir Contrasenya";
             // 
             // NewPassword
@@ -161,6 +161,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Name = "NewPassword";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewPassword";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

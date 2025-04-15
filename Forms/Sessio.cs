@@ -11,6 +11,11 @@ namespace SmartPack
             InitializeComponent();
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+        }
+
         private async void Iniciar_sessio_Click(object sender, EventArgs e)
         {
             string temail = email_is.Text.Trim();
@@ -94,13 +99,9 @@ namespace SmartPack
 
         private void pregunta_b_Click(object sender, EventArgs e)
         {
-            using (RecuperarContrasenya formRContrasenya = new RecuperarContrasenya())
-            {
-                this.Hide();
-                formRContrasenya.ShowDialog();
-               
-            }
-            this.Show();
+            RecuperarContrasenya formRContrasenya = new RecuperarContrasenya();
+            formRContrasenya.Show();
+            this.Close();
         }
 
         private void registrer_b_Click(object sender, EventArgs e)

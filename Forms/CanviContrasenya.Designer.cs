@@ -73,7 +73,7 @@
             this.guardar_e.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.guardar_e.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.guardar_e.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guardar_e.Location = new System.Drawing.Point(133, 170);
+            this.guardar_e.Location = new System.Drawing.Point(141, 184);
             this.guardar_e.Name = "guardar_e";
             this.guardar_e.Size = new System.Drawing.Size(137, 42);
             this.guardar_e.TabIndex = 49;

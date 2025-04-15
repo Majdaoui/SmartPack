@@ -25,7 +25,6 @@ namespace SmartPack
                 if (response.IsSuccessStatusCode)
                 {
                     string token = await response.Content.ReadAsStringAsync();
-                    GestioSessins.token = token;
                     using (Message msg = new Message("Revisa tu correo para obtener el código de recuperación.", "info"))
                     {
                         msg.ShowDialog();

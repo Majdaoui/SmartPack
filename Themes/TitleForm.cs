@@ -135,9 +135,7 @@ namespace SmartPack
         }
         private void CerrarSesionLocal()
         {
-            GestioSessins.user = null;
-            GestioSessins.password = null;
-            GestioSessins.token = null;
+
         }
         private static void LiberarMemoria()
         {

@@ -3,6 +3,9 @@ using static SmartPack.dbAPI;
 
 namespace SmartPack.Classes
 {
+    /// <summary>
+    /// Classe ClassUsuari
+    /// </summary>
     public class ClassUsuari
     {
         [JsonConverter(typeof(IntToStringConverter))]

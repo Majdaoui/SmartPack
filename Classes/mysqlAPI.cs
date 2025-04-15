@@ -8,9 +8,22 @@ using System.Collections.Generic;
 
 namespace SmartPack
 {
+    /// <summary>
+    /// Classe mysqlAPI
+    /// </summary>
     public class mysqlAPI
     {
+        /// <summary>
+        /// String de connexió a la base de dades
+        /// </summary>
         private static string connectionString = "Server=localhost;Port=3306;Database=smartpack;User=root;Password=;";
+
+        /// <summary>
+        /// Metode que s'executa una petició a la base de dades
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="api"></param>
+        /// <returns></returns>
         public static Task<bool> ExecuteDB(object obj, string api)
         {
             string json = JsonSerializer.Serialize(obj);
@@ -24,6 +37,11 @@ namespace SmartPack
             return Task.FromResult(false);
         }
 
+
+        /// <summary>
+        /// Metode que comprova si l'email ja existeix a la base de dades
+        /// </summary>
+        /// <param name="obj"></param>
         public static void isEmail(object obj)
         {
             dynamic data = obj;
@@ -48,6 +66,11 @@ namespace SmartPack
             }
         }
 
+
+        /// <summary>
+        /// Metode que insereix un usuari a la base de dades
+        /// </summary>
+        /// <param name="user"></param>
         public static void instararUsari(object user)
         {
             dynamic u = user;

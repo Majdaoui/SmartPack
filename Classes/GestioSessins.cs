@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace SmartPack.Classes
 {
+
+    /// <summary>
+    /// Classe GestioSessins
+    /// </summary>
     public class GestioSessins
     {
         public static string empresaId { get; set; } = "0";
@@ -17,5 +21,11 @@ namespace SmartPack.Classes
         public static string token { get; set; } = "";
         public static string role { get; set; } = "";
         public static bool desactivat { get; set; } = false;
+        public static void Logout()
+        {
+            GestioSessins.user = null;
+            GestioSessins.password = null;
+            GestioSessins.token = null;
+        }
     }
 }

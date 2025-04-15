@@ -14,6 +14,17 @@ namespace SmartPack.Forms
             InitializeComponent();
         }
 
+        private bool justClosed = false;
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            if (!justClosed)
+            {
+                var principal = new Principal();
+                principal.Show();
+            }            
+        }
+
         //Per a mostrar les dades de l'usuari a la finestra
         //Aquest mètode recull les dades de l'usuari i les mostra a la finestra
         //El mètode utilitza la classe ClassUsuari per separar el nom i els cognoms
@@ -82,6 +93,7 @@ namespace SmartPack.Forms
                     {
                         messatge.ShowDialog();
                     }
+                    justClosed = true;
                     this.Close();
                     Sessio sessio = new Sessio(); 
                     sessio.Show();
@@ -104,6 +116,7 @@ namespace SmartPack.Forms
         {
             CanviContrasenya canviContrasenya = new CanviContrasenya();
             canviContrasenya.Show();
+            justClosed = true;
             this.Close();
         }
 
@@ -168,6 +181,7 @@ namespace SmartPack.Forms
         {
             Vehicle vehicle = new Vehicle();
             vehicle.Show();
+            justClosed = true;
             this.Close();
         }
     }

@@ -39,6 +39,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <DocumentationFile>bin\Debug\SmartPack.xml</DocumentationFile>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -150,6 +152,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ClassServei.cs" />
     <Compile Include="Classes\ClassVehicle.cs" />
     <Compile Include="Classes\ClassEmpresa.cs" />
     <Compile Include="Classes\ClassUsuari.cs" />
@@ -218,6 +221,8 @@
     <Compile Include="Forms\RecuperarContrasenya.Designer.cs">
       <DependentUpon>RecuperarContrasenya.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TestAttribute.cs" />
+    <Compile Include="Forms\TestFixtureAttribute.cs" />
     <Compile Include="Forms\Vehicle.cs">
       <SubType>Form</SubType>
     </Compile>

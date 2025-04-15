@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmartPack.Classes
 {
+    /// <summary>
+    /// Classe Transportista
+    /// </summary>
     public class Transportista
     {
         public static string id { get; set; }

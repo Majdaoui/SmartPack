@@ -1,22 +1,17 @@
 ﻿using SmartPack.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Text.Json.JsonElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Formulari per a la gestió d'empreses i usuaris des del panell d'administració.
+    /// </summary>
     public partial class Administracio : TitleForm
     {
+        /// <summary>
+        /// Constructor per inicialitzar els components del formulari.
+        /// </summary>
         public Administracio()
         {
             InitializeComponent();
@@ -24,22 +19,25 @@ namespace SmartPack.Forms
 
         private void usuari_a_Click(object sender, EventArgs e)
         {
-
+            // Acció pendent d'implementació
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            // Acció pendent d'implementació
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            // Acció pendent d'implementació
         }
 
-        private string responseEmpresas { get; set; } = "";
+        public string responseEmpresas { get; set; } = "";
 
-        private async void list_e_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Fa la petició a l'API i llista totes les empreses disponibles.
+        /// </summary>
+        public async void list_e_Click(object sender, EventArgs e)
         {
             listEmpreses.Items.Clear();
             update_e.Visible = false;
@@ -72,10 +70,12 @@ namespace SmartPack.Forms
             }
         }
 
+        public string responseUsauris { get; set; } = "";
 
-        private string responseUsauris { get; set; } = "";
-
-        private async void llist_u_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Fa la petició a l'API i llista tots els usuaris disponibles.
+        /// </summary>
+        public async void llist_u_Click(object sender, EventArgs e)
         {
             listUsauris.Items.Clear();
             update_e.Visible = false;
@@ -101,17 +101,20 @@ namespace SmartPack.Forms
                             var nom = item.GetProperty("nom").ToString();
                             var email = item.GetProperty("email").ToString();
                             Console.WriteLine("email: " + email);
-                            listUsauris.Items.Add(id + ":" + "Nom: " + nom + ", "+ " Email: " + email);
+                            listUsauris.Items.Add(id + ":" + "Nom: " + nom + ", " + " Email: " + email);
                         }
                     }
                 }
             }
         }
 
-        private void listEmpreses_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Omple les dades de l'empresa seleccionada de la llista.
+        /// </summary>
+        public void listEmpreses_SelectedIndexChanged(object sender, EventArgs e)
         {
             lTipusdeCompte.Text = "Empresa";
-            if(listEmpreses.SelectedItem != null)
+            if (listEmpreses.SelectedItem != null)
             {
                 string selectedItem = listEmpreses.SelectedItem.ToString();
                 string[] parts = selectedItem.Split(new[] { ":" }, StringSplitOptions.None);
@@ -143,7 +146,10 @@ namespace SmartPack.Forms
             }
         }
 
-        private void listUsauris_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Omple les dades de l'usuari seleccionat de la llista.
+        /// </summary>
+        public void listUsauris_SelectedIndexChanged(object sender, EventArgs e)
         {
             lTipusdeCompte.Text = "Usauri";
             if (listUsauris.SelectedItem != null)
@@ -178,7 +184,10 @@ namespace SmartPack.Forms
             }
         }
 
-        private async void update_e_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Actualitza les dades de l'empresa seleccionada.
+        /// </summary>
+        public async void update_e_Click(object sender, EventArgs e)
         {
             object empresa_update = new
             {
@@ -189,12 +198,15 @@ namespace SmartPack.Forms
             Console.WriteLine("Response Body: " + response);
         }
 
-        private async void desctivate_e_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Desactiva l'empresa seleccionada.
+        /// </summary>
+        public async void desctivate_e_Click(object sender, EventArgs e)
         {
             var response = await dbAPI.DeactivateEmpresa(lID.Text, GestioSessins.token);
             if (string.IsNullOrEmpty(response)) return;
             Console.WriteLine("Response Body: " + response);
-            if(response.Contains("correctament"))
+            if (response.Contains("correctament"))
             {
                 using (Message message1 = new Message("Empresa desactivada correctament.", "info"))
                 {

@@ -41,7 +41,7 @@ namespace SmartPack.Forms
             //GestioSessins.user = "aaahoy@hoy.com";
             var consulta = new
             {
-                token =  tokenRecibido, 
+                token = tokenRecibido,
                 newPassword = password_n
             };
 
@@ -54,13 +54,9 @@ namespace SmartPack.Forms
                 {
                     messatge.ShowDialog();
                 }
-                    
-                using (Sessio sessio = new Sessio())
-                {
-                    this.Close();
-                    sessio.ShowDialog();
-                }
-
+                Sessio sessio = new Sessio();
+                sessio.Show();
+                this.Close();
             }
             else
             {

@@ -1,18 +1,16 @@
-﻿using Org.BouncyCastle.Ocsp;
-using SmartPack.Classes;
+﻿using SmartPack.Classes;
 using System;
-using System.Data;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SmartPack
 {
     public partial class Alta : TitleForm
     {
+        /// <summary>
+        /// Constructor de la classe Alta
+        /// </summary>
         public Alta()
         {
             InitializeComponent();
@@ -25,17 +23,25 @@ namespace SmartPack
             Sessio sessio = new Sessio();
             sessio.Close();
         }
+        /// <summary>
+        /// Mètode que s'executa quan es pinta el formulari 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
         }
+        /// <summary>
+        /// Mètode que s'executa en fer clic al botó de registre
+        /// Aquest mètode recull les dades del formulari i les valida
+        /// Si les dades són correctes, es crida a la classe dbAPI per a registrar l'usuari a la base de dades
+        /// Si l'usuari ja existeix, es mostra un missatge d'error
+        /// Si l'usuari s'ha registrat correctament, es mostra un missatge d'informació i es redirigeix a la pàgina de login
+        /// He fet servir l'ajuda de copilot pels comentaris
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
-        // Mètode que s'executa en fer clic al botó de registre
-        // Aquest mètode recull les dades del formulari i les valida
-        // Si les dades són correctes, es crida a la classe dbAPI per a registrar l'usuari a la base de dades
-        // Si l'usuari ja existeix, es mostra un missatge d'error
-        // Si l'usuari s'ha registrat correctament, es mostra un missatge d'informació i es redirigeix a la pàgina de login
-        //He fet servir l'ajuda de copilot pels comentaris
         private async void bRegistre_Click(object sender, EventArgs e)
         {
             // Obtenir i netejar les dades dels camps del formulari
@@ -63,6 +69,7 @@ namespace SmartPack
             string licencia = tbLlicencia.Text;
             // Message message = new Message("", "");
 
+            
             // Validació de camps obligatoris
             // Si hi ha camps obligatoris buits, es mostra un missatge d'error
             if (string.IsNullOrWhiteSpace(tnom) || string.IsNullOrWhiteSpace(tcognom_p) ||
@@ -96,7 +103,7 @@ namespace SmartPack
             // Validació de format de nom i cognom
             // El nom i cognom només poden contenir lletres
             // Si el format no és correcte, es mostra un missatge d'error
-            if (!Regex.IsMatch(tnom, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"))
+            if (!EsNomOCognomValid(tnom))
             {
                 using (Message message1 = new Message("El nom només pot tenir lletres.", "error"))
                 { 
@@ -104,7 +111,7 @@ namespace SmartPack
                 }
             }
 
-            if (!Regex.IsMatch(tcognom_p, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"))
+            if (!EsNomOCognomValid(tcognom_p))
             {
                 using (Message message1 = new Message("El cognom només pot tenir lletres", "error"))
                 { 
@@ -125,7 +132,7 @@ namespace SmartPack
                 
             }
 
-            if (!Regex.IsMatch(ttelefon, "^[0-9]{9,15}$"))
+            if (!EsCodiPostalValid(ttelefon))
             {
                 using (Message message1 = new Message("El telèfono ha de tenir només números i tenir entre 9 y 15 dígits", "error"))
                 { 
@@ -136,7 +143,7 @@ namespace SmartPack
             // Validació de format de Codi Postal
             // El Codi Postal ha de tenir 5 dígits
             // Si el format no és correcte, es mostra un missatge d'error
-            if (!Regex.IsMatch(tcp, "^[0-9]{5}$"))
+            if (!EsCodiPostalValid(tcp))
             {
                 using (Message message1 = new Message("Format de Códi Postal invàlid", "error")) 
                 { 
@@ -148,7 +155,7 @@ namespace SmartPack
             // Si el format no és correcte, es mostra un missatge d'error
             bool isValidFormat = System.Text.RegularExpressions.Regex.IsMatch(temail, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
 
-            if (!isValidFormat)
+            if (!EsEmailValid(temail))
             {
                 using (Message message1 = new Message("Format Email invàlid ", "error")) 
                 {
@@ -228,7 +235,6 @@ namespace SmartPack
                     {
                         msg.ShowDialog();
                     }
-                    this.Close();
                 }
                 else
                 {
@@ -277,11 +283,36 @@ namespace SmartPack
                 }
             }
         }
+        /// <summary>
+        /// Mètode per validar el format del Codi Postal
+        /// </summary>
+        /// <param name="cp"></param>
+        /// <returns></returns>
+        public static bool EsCodiPostalValid(string cp)
+        {
+            return Regex.IsMatch(cp, "^[0-9]{5}$");
+        }
 
-        // Mètode per validar el DNI/NIE
-        // El DNI ha de tenir 8 dígits i una lletra
-        // El NIE ha de començar per una lletra (X, Y o Z) seguida de 7 dígits i una lletra
-        //He fet servir l'ajuda de copilot pels comentaris
+        /// <summary>
+        /// Mètode per validar el format de l'email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public static bool EsEmailValid(string email)
+        {
+            return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
+
+        /// <summary>
+        /// Mètode per validar el DNI/NIE
+        /// El DNI ha de tenir 8 dígits i una lletra
+        /// El NIE ha de començar per una lletra (X, Y o Z) seguida de 7 dígits i una lletra
+        /// He fet servir l'ajuda de copilot pels comentaris
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <returns></returns>
+
         public static bool EsDniNieValido(string doc)
         {
             if (Regex.IsMatch(doc, @"^\d{8}[A-Za-z]{1}$"))
@@ -296,22 +327,31 @@ namespace SmartPack
             return false;
         }
 
-        // Mètode per validar la contrasenya segons els requisits de seguretat
-        // La contrasenya ha de tenir almenys 8 caràcters, una lletra majúscula, un número i un caràcter especial
-        //He fet servir l'ajuda de copilot pels comentaris
 
+        /// <summary>
+        /// Mètode per validar la contrasenya
+        /// Mètode per validar la contrasenya segons els requisits de seguretat
+        /// La contrasenya ha de tenir almenys 8 caràcters, una lletra majúscula, un número i un caràcter especial
+        /// He fet servir l'ajuda de copilot pels comentaris
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static bool ValidarContrasenya(string password)
         {
             if (string.IsNullOrEmpty(password)) return false;
             return Regex.IsMatch(password, @"^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$");
         }
 
-        // Mètode que gestiona la selecció del rol transportista
-        // Si es selecciona el rol transportista, s'obre el formulari d'alta de vehicle
-        // i es tanca el formulari d'alta d'usuari
-        // Si es selecciona un altre rol, no es fa res
-        // Aquest mètode s'ha afegit per a la implementació de la funcionalitat de l'alta de vehicle
-        //He fet servir l'ajuda de copilot pels comentaris
+        /// <summary>
+        /// Mètode que gestiona la selecció del rol transportista
+        /// Si es selecciona el rol transportista, s'obre el formulari d'alta de vehicle
+        /// i es tanca el formulari d'alta d'usuari
+        /// Si es selecciona un altre rol, no es fa res
+        /// Aquest mètode s'ha afegit per a la implementació de la funcionalitat de l'alta de vehicle
+        /// He fet servir l'ajuda de copilot pels comentaris
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rol_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (rol_c.Text == "ROLE_DELIVERYMAN")
@@ -326,6 +366,12 @@ namespace SmartPack
             } 
 
         }
+
+        /// <summary>
+        /// Mètode ompleix els camps del formulari d'alta d'usuari amb dades de test
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -348,6 +394,26 @@ namespace SmartPack
             observacions_t.Text = "Test";
             Secret.Text = "Luna";
             rol_c.Text = "ROLE_ADMIN";
+        }
+
+        /// <summary>
+        /// Mètode per validar el format del telèfon
+        /// </summary>
+        /// <param name="telefon"></param>
+        /// <returns></returns>
+        public static bool EsTelefonValid(string telefon)
+        {
+            return Regex.IsMatch(telefon, "^[0-9]{9,15}$");
+        }
+
+        /// <summary>
+        /// Metode per validar si un text és nom i cognoms vàlid.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static bool EsNomOCognomValid(string text)
+        {
+            return Regex.IsMatch(text, "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$");
         }
     }
 }

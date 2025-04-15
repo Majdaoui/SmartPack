@@ -52,13 +52,17 @@ namespace SmartPack
             Console.WriteLine("Token Recovery: " + token_recovery);
             if (!string.IsNullOrEmpty(token_recovery) && token_recovery != "0")
             {
-                using (NewPassword newpassword = new NewPassword(token_recovery))
-                {
-                    this.Hide();
-                    newpassword.ShowDialog();
-
-                }
+                NewPassword newpassword = new NewPassword(token_recovery);
+                newpassword.Show();
                 this.Close();
+            }
+            else
+            {
+                using (Message msg = new Message("El camp Email o prula secreta es incorrecte", "error"))
+                {
+                    msg.ShowDialog();
+                    return;
+                }
             }
         }
        

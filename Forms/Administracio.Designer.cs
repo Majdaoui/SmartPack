@@ -1,4 +1,6 @@
-﻿namespace SmartPack.Forms
+﻿using System.Windows.Forms;
+
+namespace SmartPack.Forms
 {
     partial class Administracio
     {
@@ -445,8 +447,8 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label title;
-        private System.Windows.Forms.ListBox listEmpreses;
-        private System.Windows.Forms.ListBox listUsauris;
+        public System.Windows.Forms.ListBox listEmpreses;
+        public System.Windows.Forms.ListBox listUsauris;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label NOM_T;
         private System.Windows.Forms.Label COGNOMS_T;
@@ -459,5 +461,6 @@
         private System.Windows.Forms.TextBox EMAIL_T;
         private System.Windows.Forms.TextBox TELEFON_T;
         private System.Windows.Forms.Label lID;
+        //public ListBox LlistaEmpreses => listEmpreses;
     }
 }

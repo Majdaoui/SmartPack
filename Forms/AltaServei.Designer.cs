@@ -508,6 +508,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.title);
             this.Name = "AltaServei";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AltaServei";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

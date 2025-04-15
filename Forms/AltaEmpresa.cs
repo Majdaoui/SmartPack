@@ -6,10 +6,14 @@ using System.Windows.Forms;
 
 namespace SmartPack
 {
-    // Formulari per a l'alta d'una empresa
+    /// <summary>
+    /// Classe AltaEmpresa
+    /// </summary>
     public partial class AltaEmpresa : TitleForm
     {
-        // Constructor
+        /// <summary>
+        /// Constructor de la classe AltaEmpresa
+        /// </summary>
         public AltaEmpresa()
         {
             InitializeComponent();
@@ -17,15 +21,25 @@ namespace SmartPack
             this.MaximizeBox = false;
             this.MinimizeBox = true;
         }
-       
+
+
+        /// <summary>
+        /// Mètode que dibuixa la barra superio en el formulari
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
         }
-        // Mètode que s'executa en fer clic al botó de guardar
-        // Guarda les dades de l'empresa
-        // Si alguna dada no és correcta, mostra un missatge d'error
-        // Si totes les dades són correctes, mostra un missatge d'informació i redirigeix a l'usuari a l'AreaUsuari
+
+        /// <summary>
+        /// Mètode que s'executa en fer clic al botó de guardar
+        /// Guarda les dades de l'empresa
+        /// Si alguna dada no és correcta, mostra un missatge d'error
+        /// Si totes les dades són correctes, mostra un missatge d'informació i redirigeix a l'usuari a l'AreaUsuari
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void guardar_e_Click(object sender, System.EventArgs e)
         {
             // Obtenir i netejar les dades dels camps del formulari
@@ -38,6 +52,7 @@ namespace SmartPack
             string t_cp = cp_e.Text;
             string tpoble = poblacio_e.Text;
             string tprovincia = provincia_e.Text;
+
             // Comprovar que els camps obligatoris no estiguin buits
             // Si ho estan, mostra un missatge d'error
             // Si alguna dada no és correcta, mostra un missatge d'error
@@ -58,7 +73,7 @@ namespace SmartPack
             // Si alguna dada no és correcta, mostra un missatge d'error
             if (!Regex.IsMatch(tcif, "^[a-zA-Z0-9]+$"))
             {
-                using (Message messatgel = new Message("El CIF/NIEF només pot tenir lletres i números. ", "Error"))
+                using (Message messatgel = new Message("El CIF/NIF només pot tenir lletres i números. ", "Error"))
                 {
                     messatgel.ShowDialog();
                 }
@@ -78,7 +93,7 @@ namespace SmartPack
 
             // Comprovar que el telèfon sigui vàlid ha de tener entre 9 i 15 dígits
             // Si alguna dada no és correcta, mostra un missatge d'error
-            if (!Regex.IsMatch(ttef, "^[0-9]{9,15}$"))
+            if (!ValidarTelefon(ttef))
             {
                 using (Message messatgel = new Message("El telèfon ha de tenir entres 9 i 15 dígits.", "Error"))
                 {
@@ -88,7 +103,7 @@ namespace SmartPack
             }
             // Comprovar que el codi postal sigui vàlid ha de tener 5 dígits
             // Si alguna dada no és correcta, mostra un missatge d'error
-            if (!Regex.IsMatch(t_cp, "^[0-9]{5}$"))
+            if (!ValidarCodiPostal(t_cp))
             {
                 using (Message messatgel = new Message("El códi postal ha de tenir 5 dígits.", "Error"))
                 {
@@ -98,7 +113,7 @@ namespace SmartPack
             }
             // Comprovar que l'email sigui vàlid comprova que tingui un format vàlid com ha minim ha de tenir un @ i un punt
             // Si alguna dada no és correcta, mostra un missatge d'error
-            if (!Regex.IsMatch(temail, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+            if (!ValidarEmail(temail))
             {
                 using (Message messatgel = new Message("El email no és vàlid ", "Error"))
                 {
@@ -116,7 +131,7 @@ namespace SmartPack
                 nif = tcif,
                 nom = tnom_e,
                 telefon = ttef,
-                adreça = t_tvia +", "+ tnom_via + ", " + t_cp + ", " + tpoble + ", " + tprovincia
+                adreça = t_tvia + ", " + tnom_via + ", " + t_cp + ", " + tpoble + ", " + tprovincia
             };
 
 
@@ -158,46 +173,73 @@ namespace SmartPack
             }
         }
 
-        //Mètode que verifica l'entrada d'uari si el format es correcta
-        //comprova si és un NIF, DNI o NIE
-        // Si no te un format correcte dona un messatge d'error
+
+        /// <summary>
+        /// Mètode que valida el NIF, DNI o NIE
+        /// Mètode que verifica l'entrada d'uari si el format es correcta
+        /// Si no te un format correcte dona un messatge d'error
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <returns></returns>
         public static bool ValidarIdentificacion(string doc)
         {
             if (string.IsNullOrEmpty(doc)) return false;
+
             doc = doc.ToUpper().Trim();
-            if (Regex.IsMatch(doc, @"^\d{8}[a-zA-Z]$"))
+
+            // DNI: 8 digits + lletra
+            if (Regex.IsMatch(doc, @"^\d{8}[A-Z]$"))
             {
                 return true;
             }
-            else if (Regex.IsMatch(doc, @"^\d{8}[a-zA-Z]$"))
+
+            // NIE: X, Y o Z + 7 digits + lletra
+            if (Regex.IsMatch(doc, @"^[XYZ]\d{7}[A-Z]$"))
             {
                 return true;
             }
-            // Validar NIE (format: lletra + 7 números + lletra)
-            else if (Regex.IsMatch(doc, @"^[XYZ]\d{7}[a-zA-Z]$"))
+
+            // NIF empresa: Lletra (A-H, J-N, P-S, U-W) + 7 digits + control (lletra o número)
+            if (Regex.IsMatch(doc, @"^[A-HJ-NP-SUVW]\d{7}[A-Z0-9]$"))
             {
                 return true;
             }
+
             return false;
         }
 
-        private static bool ValidarDNI(string dni)
+        /// <summary>
+        /// Mètode que valida el codi postal
+        /// </summary>
+        /// <param name="codiPostal"></param>
+        /// <returns></returns>
+        public static bool ValidarCodiPostal(string codiPostal)
         {
-            int numero = int.Parse(dni.Substring(0, 8));
-            char lletraEsperada = "TRWAGMYFPDXBNJZSQVHLCKE"[numero % 23];
-            return lletraEsperada == dni[8];
+            var regexCodiPostal = new Regex(@"^\d{5}$");
+            return regexCodiPostal.IsMatch(codiPostal);
         }
 
-        private static bool ValidarNIF(string nif)
+
+        /// <summary>
+        /// Mètode que valida el telèfon
+        /// </summary>
+        /// <param name="telefon"></param>
+        /// <returns></returns>
+        public static bool ValidarTelefon(string telefon)
         {
-            return ValidarDNI(nif);
+            var regexTelefon = new Regex(@"^\d{9,15}$");
+            return regexTelefon.IsMatch(telefon);
         }
 
-        
-        private static bool ValidarNIE(string nie)
+        /// <summary>
+        /// Mètode que validar l'email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public static bool ValidarEmail(string email)
         {
-            var regexNIE = new Regex(@"^[XYZ]\d{7}[A-Z]$");
-            return regexNIE.IsMatch(nie);
+            var regexEmail = new Regex(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+            return regexEmail.IsMatch(email);
         }
     }
 }

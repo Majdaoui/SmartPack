@@ -8,12 +8,19 @@ using System.Threading.Tasks;
 
 namespace SmartPack
 {
+    /// <summary>
+    /// Classe per a gestionar les peticions a la base de dades
+    /// </summary>
     public static class dbAPI
     {
-        //Funció per a registrar un usuari a la base de dades
-        //Retorna l'id de l'usuari si s'ha registrat correctament
-        //Retorna la descripció de l'error si no s'ha pogut registrar
-        //Retorna "0" si hi ha hagut un error inesperat
+        /// <summary>
+        /// Funció per a registrar un usuari a la base de dades
+        /// Retorna l'id de l'usuari si s'ha registrat correctament
+        /// Retorna la descripció de l'error si no s'ha pogut registrar
+        /// Retorna "0" si hi ha hagut un error inesperat
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public static async Task<string> altaUser(this object user)
         {
             string url = "http://localhost:8080/auth/registrar";
@@ -42,11 +49,15 @@ namespace SmartPack
             return "0";
         }
 
-        //Funció per a fer login a la base de dades
-        //Retorna el token de l'usuari si s'ha fet login correctament
-        //Retorna "desactivat" si l'usuari està desactivat
-        //Retorna "0" si hi ha hagut un error inesperat
-
+       
+        /// <summary>
+        /// Funció per a fer login a la base de dades
+        /// Retorna el token de l'usuari si s'ha fet login correctament
+        /// Retorna "desactivat" si l'usuari està desactivat
+        /// Retorna "0" si hi ha hagut un error inesperat
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public static async Task<bool> Login(this object user)
         {
             int count = 0;
@@ -91,9 +102,13 @@ namespace SmartPack
             return (count >= 2);
         }
 
-        //Funció per a obtenir les dades de l'usuari actual
-        //Retorna un string amb l'id de l'usuari
-        //Retorna "0" si hi ha hagut un error inesperat
+        /// <summary>
+        /// Funció per a obtenir les dades de l'usuari actual
+        /// Retorna un string amb l'id de l'usuari
+        /// Retorna "0" si hi ha hagut un error inesperat
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<ClassUsuari> getCurrentUser(this string token)
         {
             string url = "http://localhost:8080/usuari/me";
@@ -173,9 +188,14 @@ namespace SmartPack
             return null;
         }
 
-        //Funció per eecuperar la contrasenya de l'usuari
-        //Retorna el token de recuperació si email i la paraulña secreta es correcte
-        //Retorna "0" si hi ha hagut un error inesperat
+
+        /// <summary>
+        /// Funció per a recuperar la contrasenya de l'usuari
+        /// Retorna el token de recuperació si email i la paraula secreta es correcte
+        /// Retorna "0" si hi ha hagut un error inesperat
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static async Task<string> forgotPassword(this object data)
         {
             string url = "http://localhost:8080/auth/forgot-password";
@@ -197,9 +217,14 @@ namespace SmartPack
             return "0";
         }
 
-        //Funció per a canviar la contrasenya de l'usuari
-        //Retorna "correctament" si s'ha canviat la contrasenya correctament
-        //Retorna "0" si hi ha hagut un error inesperat
+
+        /// <summary>
+        /// Funció per a canviar la contrasenya de l'usuari
+        /// Retorna "correctament" si s'ha canviat la contrasenya correctament
+        /// Retorna "0" si hi ha hagut un error inesperat
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static async Task<string> resetPassword(this object data)
         {
             string url = "http://localhost:8080/auth/reset-password";
@@ -221,10 +246,16 @@ namespace SmartPack
             return "0";
         }
 
-        //Funció per REGISTRE EMPRESA
-        //Retorna l'id de l'empresa si s'ha registrat correctament
-        //Retorna la descripció de l'error si no s'ha pogut registrar
-        //Retorna "0" si hi ha hagut un error inesperat
+
+        /// <summary>
+        /// Funció per a crear una empresa
+        /// Retorna l'id de l'empresa si s'ha registrat correctament
+        /// Retorna la descripció de l'error si no s'ha pogut registrar
+        /// Retorna "0" si hi ha hagut un error inesperat
+        /// </summary>
+        /// <param name="empresa"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> CreateEmpresa(this object empresa, string token)
         {
             GestioSessins.empresaId = "0";
@@ -257,9 +288,15 @@ namespace SmartPack
             return "0";
         }
 
-        //Funció per desactivar usuari
-        //Retorna "correctament" si s'ha desactivat l'usuari correctament
-        //Retorna "0" si hi ha hagut un error inesperat
+
+        /// <summary>
+        /// Funció per desactivar un usuari
+        /// Retorna "correctament" si s'ha desactivat l'usuari correctament
+        /// Retorna "0" si hi ha hagut un error inesperat
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> DesactivateUsuari(this string id, string token)
         {
             string url = "http://localhost:8080/usuari/" + id + "/desactivate";
@@ -292,6 +329,11 @@ namespace SmartPack
             return "0";
         }
 
+        /// <summary>
+        /// funció per obtenir un usuari per id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static async Task<ClassUsuari> GetUserByID(string id)
         {
             string url = "http://localhost:8080/usuari/" + id;
@@ -311,6 +353,14 @@ namespace SmartPack
             return null;
         }
 
+
+        /// <summary>
+        /// Funció per actualitzar un usuari
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="userId"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public static async Task<string> UpdateUser(string token, string userId, object user)
         {
             string url = $"http://localhost:8080/usuari/{userId}"; // URL con el ID del usuario
@@ -343,7 +393,11 @@ namespace SmartPack
             }
         }
 
-
+        /// <summary>
+        /// Funció per obtenir totes les empreses
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> getAllEmpresas(this string token)
         {
             string url = "http://localhost:8080/empresa/list";
@@ -359,6 +413,13 @@ namespace SmartPack
             return null;
         }
 
+
+        /// <summary>
+        /// Funció per assignar un usuari a una empresa
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> assignarUsuari(this object data, string token)
         {
             string url = "http://localhost:8080/empresa/assignar-usuari";
@@ -373,6 +434,12 @@ namespace SmartPack
             }
         }
 
+
+        /// <summary>
+        /// Funció per obtenir tots els usuaris
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> getAllUsers(string token)
         {
             string url = "http://localhost:8080/usuari/list";
@@ -388,8 +455,20 @@ namespace SmartPack
             return null;
         }
 
+
+        /// <summary>
+        /// Converter per convertir un int a string
+        /// </summary>
         public class IntToStringConverter : JsonConverter<string>
         {
+            /// <summary>
+            /// Llegeix un valor JSON i el converteix a string
+            /// </summary>
+            /// <param name="reader"></param>
+            /// <param name="typeToConvert"></param>
+            /// <param name="options"></param>
+            /// <returns></returns>
+            /// <exception cref="JsonException"></exception>
             public override string Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
                 if (reader.TokenType == JsonTokenType.Number)
@@ -403,12 +482,25 @@ namespace SmartPack
                 throw new JsonException("Unexpected token type");
             }
 
+            /// <summary>
+            /// Escriu un valor string com a JSON
+            /// </summary>
+            /// <param name="writer"></param>
+            /// <param name="value"></param>
+            /// <param name="options"></param>
             public override void Write(Utf8JsonWriter writer, string value, JsonSerializerOptions options)
             {
                 writer.WriteStringValue(value);
             }
         }
 
+
+        /// <summary>
+        /// Funció per a crear un transportista
+        /// </summary>
+        /// <param name="transportista"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> crearTransportista(object transportista, string token)
         {
             string url = "http://localhost:8080/transportista/crear";
@@ -433,6 +525,14 @@ namespace SmartPack
             return "0";
         }
 
+
+        /// <summary>
+        /// Funció per a crear un servei
+        /// </summary>
+        /// <param name="servei"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+
         public static async Task<string> crearServei(object servei, string token)
         {
             string url = "http://localhost:8080/servei/crear";
@@ -449,13 +549,20 @@ namespace SmartPack
                 {
                     using (JsonDocument doc = JsonDocument.Parse(responseBody))
                     {
-                        return doc.RootElement.GetProperty("id").GetString();
+                        ClassServei.idServei = doc.RootElement.GetProperty("id").GetInt32().ToString();
+                        return ClassServei.idServei;
                     }
                 }
             }
             return "0";
         }
 
+        /// <summary>
+        /// Funció per a crear un vehicle
+        /// </summary>
+        /// <param name="vehicle"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> crearVehicle(object vehicle, string token)
         {
             string url = "http://localhost:8080/vehicle/crear";
@@ -480,6 +587,14 @@ namespace SmartPack
             return "0";
         }
 
+
+        /// <summary>
+        /// Funció per assignar un vehicle a un transportista
+        /// </summary>
+        /// <param name="transportistaId"></param>
+        /// <param name="vehicleId"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> assignarVehicleTransportista(string transportistaId, string vehicleId, string token)
         {
             string url = $"http://localhost:8080/transportista/{transportistaId}/assignar-vehicle/{vehicleId}";
@@ -510,6 +625,14 @@ namespace SmartPack
             }
         }
 
+
+        /// <summary>
+        /// Funció per actualitzar un usuari
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> PutUserUpdate(object user, string id, string token)
         {
             string url = "http://localhost:8080/usuari/" + id;
@@ -524,6 +647,14 @@ namespace SmartPack
             }
         }
 
+
+        /// <summary>
+        /// Funció per actualitzar una empresa
+        /// </summary>
+        /// <param name="empresa"></param>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> PutEmpresaUpdate(object empresa, string id, string token)
         {
             string url = "http://localhost:8080/empresa/" + id;
@@ -540,6 +671,13 @@ namespace SmartPack
             }
         }
 
+
+        /// <summary>
+        /// Funció per desactivar una empresa
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> DeactivateEmpresa(string id, string token)
         {
             string url = "http://localhost:8080/empresa/" + id + "/desactivate";
@@ -565,7 +703,13 @@ namespace SmartPack
             return null;
         }
 
-
+        /// <summary>
+        /// Funció per actualitzar un vehicle
+        /// </summary>
+        /// <param name="vehicle"></param>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> PutVehicleUpdate(object vehicle, string id, string token)
         {
             string url = "http://localhost:8080/vehicle/" + id;
@@ -577,11 +721,17 @@ namespace SmartPack
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PutAsync(url, content);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Response: {responseBody}");
+                Console.WriteLine($"Response vehicle: {responseBody}");
                 return responseBody;
             }
         }
 
+        /// <summary>
+        /// Funció per obtenir el transportista d'un usuari
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> GetTransportistaPerUsuari(string id, string token)
         {
             string url = "http://localhost:8080/transportista/usuari/" + id;
@@ -598,6 +748,13 @@ namespace SmartPack
             return null;
         }
 
+
+        /// <summary>
+        /// Funció per desactivar un vehicle
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> DesactivarVehicle(string id, string token)
         {
             string url = "http://localhost:8080/vehicle/" + id + "/desactivate";

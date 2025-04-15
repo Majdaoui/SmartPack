@@ -6,10 +6,15 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SmartPack
 {
-    // Formulari per a l'alta d'un vehicle
+    /// <summary>
+    /// Classe AltaVehicle
+    /// </summary>
     public partial class AltaVehicle : TitleForm
     {
-        // Constructor
+        
+        /// <summary>
+        /// Constructor de la classe AltaVehicle
+        /// </summary>
         public AltaVehicle()
         {
             InitializeComponent();
@@ -17,12 +22,22 @@ namespace SmartPack
             this.MaximizeBox = false;
             this.MinimizeBox = true;
         }
+
+        /// <summary>
+        /// Mètode que dibuixa la barra superior en el formulari
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
         }
 
-        // Mètode que s'executa en fer clic al botó de registre un vehicle
+        
+        /// <summary>
+        /// Mètode que s'executa quan es fa clic al botó de guardar vehicle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void guardar_e_Click(object sender, EventArgs e)
         {
             // Obtenir i netejar les dades dels camps del formulari
@@ -68,8 +83,7 @@ namespace SmartPack
                 return;
             }
 
-            // Guardar les dades del vehicle
-            // Si totes les dades són correctes, mostra un missatge d'informació
+
             var vehicle = new
             {
                 marca = tmarca,
@@ -121,9 +135,15 @@ namespace SmartPack
             }
         }
 
-        // Mètode que comprova si la matrícula és vàlida ha de tenir 4 números i 3 lletres
-        // Si la matrícula és vàlida retorna true, si no, retorna false
-        //tambe valida la matricula antiga de 2 lletres 4 numeros i 2 lletres
+
+        /// <summary>
+        /// Comprova si la matrícula és vàlida
+        /// Mètode que comprova si la matrícula és vàlida ha de tenir 4 números i 3 lletres
+        /// Si la matrícula és vàlida retorna true, si no, retorna false
+        /// tambe valida la matricula antiga de 2 lletres 4 numeros i 2 lletres
+        /// </summary>
+        /// <param name="tmatricula"></param>
+        /// <returns></returns>
         public static bool EsMatriculaValida(string tmatricula)
         {
             string matricula = tmatricula.Trim().ToUpper();

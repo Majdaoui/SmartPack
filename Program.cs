@@ -4,9 +4,22 @@ using System.Windows.Forms;
 
 namespace SmartPack
 {
+    /// <summary>
+    /// ApplicationContext that closes when the last form is closed.
+    /// </summary>
     public class LastFormClosingApplicationContext : ApplicationContext
     {
+        /// <summary>
+        /// Initializes a new instance of the LastFormClosingApplicationContext class with the specified main form.
+        /// </summary>
+        /// <param name="mainForm"></param>
         public LastFormClosingApplicationContext(Form mainForm) : base(mainForm) { }
+
+        /// <summary>
+        /// Handles the MainForm's Closed event to check if there are any other open forms.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected override void OnMainFormClosed(object sender, EventArgs e)
         {
             for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
@@ -22,6 +35,10 @@ namespace SmartPack
         }
     }
 
+
+    /// <summary>
+    /// Main entry point for the application.
+    /// </summary>
     static class Program
     {
         [STAThread]

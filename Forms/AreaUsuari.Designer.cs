@@ -105,7 +105,6 @@
             this.observacions_usuari.Name = "observacions_usuari";
             this.observacions_usuari.Size = new System.Drawing.Size(199, 20);
             this.observacions_usuari.TabIndex = 66;
-            this.observacions_usuari.TextChanged += new System.EventHandler(this.observacions_usuari_TextChanged);
             // 
             // observacions_u
             // 
@@ -179,7 +178,6 @@
             this.email_u.TabIndex = 55;
             this.email_u.Text = "Email";
             this.email_u.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.email_u.Click += new System.EventHandler(this.email_u_Click);
             // 
             // bGuardar
             // 
@@ -213,7 +211,6 @@
             this.poblacio_usuari.Name = "poblacio_usuari";
             this.poblacio_usuari.Size = new System.Drawing.Size(199, 20);
             this.poblacio_usuari.TabIndex = 49;
-            this.poblacio_usuari.TextChanged += new System.EventHandler(this.poblacio_usuari_TextChanged);
             // 
             // cp_usuari
             // 
@@ -493,8 +490,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.title);
             this.Name = "AreaUsuari";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.AreaUsuari_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

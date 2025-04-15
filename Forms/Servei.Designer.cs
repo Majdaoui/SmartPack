@@ -159,6 +159,7 @@
             this.Controls.Add(this.title);
             this.Controls.Add(this.AddServei);
             this.Name = "Servei";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Servei";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

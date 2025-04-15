@@ -150,6 +150,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(621, 224);
             this.Controls.Add(this.labelID);
             this.Controls.Add(this.update_v);
@@ -161,6 +163,7 @@
             this.Controls.Add(this.t_marca);
             this.Controls.Add(this.nom_u);
             this.Name = "Vehicle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vehicle";
             this.ResumeLayout(false);
             this.PerformLayout();

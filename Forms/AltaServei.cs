@@ -1,5 +1,7 @@
 ﻿using SmartPack.Classes;
 using System;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace SmartPack.Forms
 {
@@ -11,7 +13,9 @@ namespace SmartPack.Forms
         }
 
         /// <summary>
-        /// 
+        /// Mètode que s'executa quan es fa clic al botó de registre servei
+        /// Verifica que tots els camps obligatoris estiguin omplerts
+        /// </summary>
         private async void bRegistre_Click(object sender, EventArgs e)
         {
             string detallas = t_detalls.Text;
@@ -31,13 +35,8 @@ namespace SmartPack.Forms
             string planta = t_planta.Text;
             string porta = t_porta.Text;
 
-            // Validar que no hi hagi camps buits
 
-            if (string.IsNullOrEmpty(detallas) || string.IsNullOrEmpty(pes) || string.IsNullOrEmpty(altura) ||
-                string.IsNullOrEmpty(amplada) || string.IsNullOrEmpty(profunditat) || string.IsNullOrEmpty(nomdestinatari) ||
-                string.IsNullOrEmpty(tipusVia) || string.IsNullOrEmpty(telefonDestinatari) || string.IsNullOrEmpty(codiPostal) 
-                || string.IsNullOrWhiteSpace(poblacio) || string.IsNullOrWhiteSpace(provincia) || string.IsNullOrWhiteSpace(nomVia)
-                 || string.IsNullOrWhiteSpace(numero))
+            if (!TotsElsCampsOmplerts(detallas, pes, altura, amplada, profunditat, nomdestinatari, tipusVia, telefonDestinatari, codiPostal, poblacio, provincia, nomVia, numero))
             {
                 using (Message message1 = new Message("Si us plau, ompliu tots els camps.", "error"))
                 {
@@ -45,47 +44,196 @@ namespace SmartPack.Forms
                     return;
                 }
             }
+
+            // Validació de números decimals (coma o punt)
+            if (!EsDecimalValid(pes) ||
+                !EsDecimalValid(altura) ||
+                !EsDecimalValid(amplada) ||
+                !EsDecimalValid(profunditat))
+            {
+                using (Message msg = new Message("Els valors de pes, altura, amplada i profunditat han de ser numèrics (poden tenir coma o punt decimal).", "error"))
+                {
+                    msg.ShowDialog();
+                    return;
+                }
+            }
+
+            // Validació de codi postal
+            if (!EsCodiPostalValid(codiPostal)){
+                using (Message msg = new Message("El codi postal no és vàlid. Ha de tenir 5 dígits.", "error"))
+                {
+                    msg.ShowDialog();
+                    return;
+                }
+            }
+
+            // Validació de telèfon
+            if (!EsTelefonValid(telefonDestinatari))
+            {
+                using (Message msg = new Message("El telèfon no és vàlid. Ha de tenir entre 9 i 15 dígits.", "error"))
+                {
+                    msg.ShowDialog();
+                    return;
+                }
+            }
+
+            // Validació de nom i cognom
+            if (!EsNomOCognomValid(nomdestinatari))
+            {
+                using (Message msg = new Message("El nom del destinatari no és vàlid. Només es permeten lletres i espais.", "error"))
+                {
+                    msg.ShowDialog();
+                    return;
+                }
+            }
+            if (!EsNomOCognomValid(tipusVia))
+            {
+                using (Message msg = new Message("El tipus de via no és vàlid. Només es permeten lletres i espais.", "error"))
+                {
+                    msg.ShowDialog();
+                    return;
+                }
+            }
+
+            if (!EsNomOCognomValid(nomVia))
+            {
+                using (Message msg = new Message("El nom de la via no és vàlid. Només es permeten lletres i espais.", "error"))
+                {
+                    msg.ShowDialog();
+                    return;
+                }
+            }
+
+            // Validació de població
+            if (!EsNomOCognomValid(poblacio))
+            {
+                using (Message msg = new Message("La població no és vàlida. Només es permeten lletres i espais.", "error"))
+                {
+                    msg.ShowDialog();
+                    return;
+                }
+            }
+
+            // Validació de provincia
+            if (!EsNomOCognomValid(provincia))
+            {
+                using (Message msg = new Message("La provincia no és vàlida. Només es permeten lletres i espais.", "error"))
+                {
+                    msg.ShowDialog();
+                    return;
+                }
+            }
+
+
+            // Convertir valors a float (amb punt com separador decimal)
+            float pesFloat = float.Parse(pes.Replace(',', '.'), System.Globalization.CultureInfo.InvariantCulture);
+            string mida = string.Join(", ",
+                float.Parse(altura.Replace(',', '.'), System.Globalization.CultureInfo.InvariantCulture),
+                float.Parse(amplada.Replace(',', '.'), System.Globalization.CultureInfo.InvariantCulture),
+                float.Parse(profunditat.Replace(',', '.'), System.Globalization.CultureInfo.InvariantCulture)
+            );
+
+
+            // Crear l'objecte servei
+            object servei = new
+            {
+                estat = "ORDENAT",
+                usuariId = int.Parse(GestioSessins.id),
+                transportistaId = 2,
+                paquet = new
+                {
+                    detalls = detallas,
+                    pes = float.Parse(pes),
+                    mida = altura + ", " + amplada + ", " + profunditat,
+                    nomDestinatari = nomdestinatari,
+                    adreçadestinatari = tipusVia + ", " + nomVia + ", " + numero + ", " + planta + ", " + porta + ", " + codiPostal + ", " + poblacio + ", " + provincia,
+                    telefondestinatari = telefonDestinatari,
+                    codiQR = codiqr
+                }
+            };
+
+            // Cridar a l'API per crear el servei
+            // Aquí hauries d'afegir el codi per cridar a l'API i passar-li l'objecte servei
+            string resultat = await dbAPI.crearServei(servei, GestioSessins.token);
+            if (resultat != "0")
+            {
+                using (Message message2 = new Message("Servei registrat correctament.", "info"))
+                {
+                    message2.ShowDialog();
+                    return;
+                }
+            }
             else
             {
-                // Crear l'objecte servei
-                object servei = new
+                using (Message message3 = new Message("Error al registrar el servei.", "error"))
                 {
-                    estat = "ORDENAT",
-                    usuariId = int.Parse(GestioSessins.id),
-                    transportistaId = 2,
-                    paquet = new
-                    {
-                        detalls = detallas,
-                        pes = float.Parse(pes),
-                        mida = altura + ", " + amplada + ", " + profunditat,
-                        nomDestinatari = nomdestinatari,
-                        adreçadestinatari = tipusVia + ", " + nomVia + ", " + numero + ", " + planta + ", " + porta + ", " + codiPostal + ", " + poblacio + ", " + provincia,
-                        telefondestinatari = telefonDestinatari,
-                        codiQR = codiqr
-                    }
-                };
-
-                // Cridar a l'API per crear el servei
-                // Aquí hauries d'afegir el codi per cridar a l'API i passar-li l'objecte servei
-                string resultat = await dbAPI.crearServei(servei, GestioSessins.token);
-                if (resultat != "0")
-                {
-                    using (Message message2 = new Message("Servei registrat correctament.", "info"))
-                    {
-                        message2.ShowDialog();
-                        return;
-                    }
-                }
-                else
-                {
-                    using (Message message3 = new Message("Error al registrar el servei.", "error"))
-                    {
-                        message3.ShowDialog();
-                        return;
-                    }
+                    message3.ShowDialog();
+                    return;
                 }
             }
         }
-      
+
+
+        /// <summary>
+        /// Funció per validar si un text és un número decimal vàlid
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static bool EsDecimalValid(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text)) return false;
+
+            // Accepta tant coma com punt com a separador decimal
+            return double.TryParse(text.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out _);
+        }
+
+        /// <summary>
+        /// Funció per validar si un text és un codi postal vàlid
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static bool EsCodiPostalValid(string text)
+        {
+            return Regex.IsMatch(text, @"^\d{5}$");
+        }
+
+
+        /// <summary>
+        /// Funció per validar si un text és un telèfon vàlid
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static bool EsTelefonValid(string text)
+        {
+            return Regex.IsMatch(text, @"^\d{9,15}$");
+        }
+
+
+        /// <summary>
+        /// Funció per validar si un text és un nom o cognom vàlid
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static bool EsNomOCognomValid(string text)
+        {
+            return Regex.IsMatch(text, @"^[a-zA-Zà-ÿÀ-ßñÑ\s]+$");
+        }
+
+
+        /// <summary>
+        /// Funció per validar si un camp obligatori està omplert
+        /// </summary>
+        /// <param name="camps"></param>
+        /// <returns></returns>
+        public static bool TotsElsCampsOmplerts(params string[] camps)
+        {
+            foreach (var camp in camps)
+            {
+                if (string.IsNullOrWhiteSpace(camp))
+                    return false;
+            }
+            return true;
+        }
+
     }
 }

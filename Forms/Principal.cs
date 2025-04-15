@@ -11,8 +11,19 @@ namespace SmartPack.Forms
     {
         public Principal()
         {
-            InitializeComponent();
-           
+            InitializeComponent();           
+        }
+
+        private bool justClosed = false;
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            if(!justClosed)
+            {
+                GestioSessins.Logout();
+                var session = new Sessio();
+                session.Show();
+            }            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -24,6 +35,7 @@ namespace SmartPack.Forms
         {
             Servei servei = new Servei();
             servei.Show();
+            justClosed = true;
             this.Close();
         }
 
@@ -31,6 +43,7 @@ namespace SmartPack.Forms
         {
             AreaUsuari areaUsuari = new AreaUsuari();
             areaUsuari.Show();
+            justClosed = true;
             this.Close();
         }
     }

@@ -21,12 +21,16 @@ namespace SmartPack.Forms
         }
 
         /// Aquest mètode es crida quan es fa clic al botó "close"
-        /// Tanca la finestra actual i obre la finestra principal
+        /// Tanca la finestra actual i obre la finestra AreaUsuari
+        private bool justClosed = false;
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            Principal principal = new Principal();
-            principal.Show();            
+            if (!justClosed)
+            {
+                var areaUsuari = new AreaUsuari();
+                areaUsuari.Show();
+            }
         }
 
         /// Aquest mètode es crida quan es carrega la finestra
@@ -89,7 +93,16 @@ namespace SmartPack.Forms
 
             string id = labelID.Text;
             var response = await dbAPI.PutVehicleUpdate(vehicle_update, id, GestioSessins.token);
-            Console.WriteLine("Response Body: " + response);
+            if(response != null)
+            {
+                Message msg = new Message("S'ha actualitzat les dades del vehicle correctament", "info");
+                msg.ShowDialog();
+            }else
+            {
+                Message msg = new Message("No s'ha pogut actualitzar les dades del vehicle", "error");
+                msg.ShowDialog();
+            }
+           
         }
 
 
@@ -98,7 +111,19 @@ namespace SmartPack.Forms
         {
             string id = labelID.Text;
             var response = await dbAPI.DesactivarVehicle(id, GestioSessins.token);
-            Console.WriteLine("Response Body: " + response);
+            if (response != null)
+            {
+                Message msg = new Message("S'ha desactivat el vehicle correctament", "info");
+                msg.ShowDialog();
+                var areaUsuari = new AreaUsuari();
+                areaUsuari.Show();
+                this.Close();
+            }
+            else
+            {
+                Message msg = new Message("No s'ha pogut desactivar el vehicle", "error");
+                msg.ShowDialog();
+            }
         }
     }
 }
