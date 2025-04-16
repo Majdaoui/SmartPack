@@ -1,5 +1,6 @@
 ﻿using SmartPack.Classes;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -549,12 +550,121 @@ namespace SmartPack
                 {
                     using (JsonDocument doc = JsonDocument.Parse(responseBody))
                     {
-                        ClassServei.idServei = doc.RootElement.GetProperty("id").GetInt32().ToString();
-                        return ClassServei.idServei;
+                        return doc.RootElement.GetProperty("id").GetInt32().ToString();
                     }
                 }
             }
             return "0";
+        }
+
+        /// ORDENAT, ENVIAT, TRANSIT, ENTREGAT, NO_ENTREGAT, RETORNAT
+        /// 
+
+        public static async Task<string> canviEstatServei(this string id, string _estat, string token)
+        {
+            string url = "http://localhost:8080/servei/" + id + "/" + "estat";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var jsonBody = JsonSerializer.Serialize(new { estat = _estat });
+
+                var request = new HttpRequestMessage
+                {
+                    Method = new HttpMethod("PATCH"),
+                    RequestUri = new Uri(url),
+                    Headers = { { "Accept", "*/*" } },
+                    Content = new StringContent(jsonBody, Encoding.UTF8, "application/json")
+                };
+                HttpResponseMessage response = await client.SendAsync(request);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"responseBody: {responseBody}");
+                if (response.IsSuccessStatusCode)
+                {
+                    if (responseBody.Contains("\"id\":"))
+                    {
+                        return "correctament";
+                    }
+                }
+            }
+            return "0";
+        }
+
+        public static async Task<List<ClassServei>> getServeiPerId(string id)
+        {
+            List<ClassServei> serveis = null;
+            string url = "http://localhost:8080/servei/usuari/" + id;
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GestioSessins.token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"responseBody: {responseBody}");
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    if(!string.IsNullOrEmpty(responseBody) && responseBody != "[]")
+                    {
+
+                        serveis = JsonSerializer.Deserialize<List<ClassServei>>(responseBody, new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        });
+
+
+                        return serveis;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static async Task<string> PutUpdateServeiPerId(object user, string id, string token)
+        {
+            string url = "http://localhost:8080/servei/" + id;
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(user);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PutAsync(url, content);
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
+
+
+        /// <summary>
+        /// Funció per obtenir els serveis d'un transportista
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+
+        public static async Task<List<ClassServei>> getServeiTransportista(string id)
+        {
+            List<ClassServei> serveis = null;
+            string url = "http://localhost:8080/servei/transportista/" + id;
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GestioSessins.token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"responseBody: {responseBody}");
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    if (!string.IsNullOrEmpty(responseBody) && responseBody != "[]")
+                    {
+
+                        serveis = JsonSerializer.Deserialize<List<ClassServei>>(responseBody, new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        });
+                        return serveis;
+                    }
+                }
+            }
+            return null;
         }
 
         /// <summary>

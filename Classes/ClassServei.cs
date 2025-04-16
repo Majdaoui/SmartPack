@@ -1,54 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
+using static SmartPack.dbAPI;
 
 namespace SmartPack.Classes
 {
-    internal class ClassServei
+    public class ClassServeiOLD
     {
-        public ClassServei() { }
-        public static string idServei { get; set; }
-        public static string detalls { get; set; }
-        public static float pes { get; set; }
-        public static string mida { get; set; }
-        public static string amplada { get; set; }
-        public static string alçada { get; set; }
-        public static string profunditat { get; set; }
-        public static string nomDestinatari { get; set; }
-        public static string adreçaDestinatari { get; set; }
-        public static string telefonDestinatari { get; set; }
-        public static string codiQR { get; set; }
-        public static string tipusVia { get; set; }
-        public static string nomVia { get; set; }
-        public static string numero { get; set; }
-        public static string planta { get; set; }
-        public static string porta { get; set; }
-        public static string codiPostal { get; set; }
-        public static string poblacio { get; set; }
-        public static string provincia { get; set; }
-        public static string estat { get; set; }
-        public static string usuariId { get; set; }
-        public static string transportistaId { get; set; }
+        [JsonConverter(typeof(IntToStringConverter))]
+        public string idServei { get; set; }
+        public string detalls { get; set; }
+        public float pes { get; set; }
+        public string mida { get; set; }
+        public string amplada { get; set; }
+        public string alçada { get; set; }
+        public string profunditat { get; set; }
+        public string nomDestinatari { get; set; }
+        public string adreçaDestinatari { get; set; }
+        public string telefonDestinatari { get; set; }
+        public string codiQR { get; set; }
+        public string tipusVia { get; set; }
+        public string nomVia { get; set; }
+        public string numero { get; set; }
+        public string planta { get; set; }
+        public string porta { get; set; }
+        public string codiPostal { get; set; }
+        public string poblacio { get; set; }
+        public string provincia { get; set; }
+        public string estat { get; set; }
+        public string usuariId { get; set; }
+        public string transportistaId { get; set; }
 
     }
 
-    /*
-      estat = "ORDENAT",
-                usuariId = int.Parse(GestioSessins.id),
-                transportistaId = 2,
-                paquet = new
-                {
-                    detalls = detallas,
-                    pes = float.Parse(pes),
-                    mida = altura + ", " + amplada + ", " + profunditat,
-                    nomDestinatari = nomdestinatari,
-                    adreçadestinatari = tipusVia + ", " + nomVia + ", " + numero + ", " + planta + ", " + porta + ", " + codiPostal + ", " + poblacio + ", " + provincia,
-                    telefondestinatari = telefonDestinatari,
-                    codiQR = codiqr
-                }
-     
-     
-     */
+
+    public class Paquet
+    {
+        public int id { get; set; }
+        public string detalls { get; set; }
+        public float pes { get; set; }
+        public string mida { get; set; }
+        public string nomDestinatari { get; set; }
+        public string adreçadestinatari { get; set; }
+        public string telefondestinatari { get; set; }
+        public string codiqr { get; set; }
+    }
+
+    public class ClassServei
+    {
+        public int id { get; set; }
+        public string estat { get; set; }
+        public int usuariId { get; set; }
+        public int transportistaId { get; set; }
+        public Paquet paquet { get; set; }
+    }
+
+
+
 }

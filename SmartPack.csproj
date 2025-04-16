@@ -161,6 +161,7 @@
     <Compile Include="Classes\GestioSessins.cs" />
     <Compile Include="Classes\mysqlAPI.cs" />
     <Compile Include="Classes\Transportista.cs" />
+    <Compile Include="Classes\VisualServei.cs" />
     <Compile Include="Forms\AltaServei.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +179,12 @@
     </Compile>
     <Compile Include="Forms\Administracio.Designer.cs">
       <DependentUpon>Administracio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConsultaServei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConsultaServei.Designer.cs">
+      <DependentUpon>ConsultaServei.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Message.cs">
       <SubType>Form</SubType>
@@ -223,6 +230,12 @@
     </Compile>
     <Compile Include="Forms\TestAttribute.cs" />
     <Compile Include="Forms\TestFixtureAttribute.cs" />
+    <Compile Include="Forms\Transportista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transportista.Designer.cs">
+      <DependentUpon>Transportista.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Vehicle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +279,10 @@
     <EmbeddedResource Include="Forms\Administracio.resx">
       <DependentUpon>Administracio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConsultaServei.resx">
+      <DependentUpon>ConsultaServei.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Message.resx">
       <DependentUpon>Message.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RecuperarContrasenya.resx">
       <DependentUpon>RecuperarContrasenya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transportista.resx">
+      <DependentUpon>Transportista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Vehicle.resx">
       <DependentUpon>Vehicle.cs</DependentUpon>
@@ -347,6 +367,8 @@
   <ItemGroup>
     <None Include="Resources\account_username_people_avatar_profile_person_user_icon_258905.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

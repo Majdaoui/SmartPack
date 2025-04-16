@@ -244,6 +244,7 @@ namespace SmartPack
                     }
                     return;
                 }
+
                 // Mètode que gestiona la selecció de usuari com a empresa
                 // Si es chequea la opció de empresa, es redirigeix al formulari d'alta d'empresa
                 // i es tanca el formulari d'alta d'usuari

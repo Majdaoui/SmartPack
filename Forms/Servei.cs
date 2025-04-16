@@ -9,6 +9,16 @@ namespace SmartPack.Forms
         {
             InitializeComponent();
         }
+        private bool justClosed = false;
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            if (!justClosed)
+            {
+                var principal = new Principal();
+                principal.Show();
+            }
+        }
 
         private void title_Click(object sender, EventArgs e)
         {
@@ -22,14 +32,18 @@ namespace SmartPack.Forms
 
         private void AddServei_Click(object sender, EventArgs e)
         {
+            justClosed = true;
             AltaServei altaservei = new AltaServei();
             altaservei.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void consult_Click(object sender, EventArgs e)
         {
-
+            justClosed = true;
+            ConsultaServei consultaservei = new ConsultaServei();
+            consultaservei.Show();
+            this.Close();
         }
 
         private void ConsultAll_Click(object sender, EventArgs e)

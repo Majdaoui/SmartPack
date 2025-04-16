@@ -12,6 +12,17 @@ namespace SmartPack.Forms
             InitializeComponent();
         }
 
+        private bool justClosed = false;
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            if (!justClosed)
+            {
+                var servei = new Servei();
+                servei.Show();
+            }
+        }
+
         /// <summary>
         /// Mètode que s'executa quan es fa clic al botó de registre servei
         /// Verifica que tots els camps obligatoris estiguin omplerts
@@ -154,14 +165,18 @@ namespace SmartPack.Forms
 
             // Cridar a l'API per crear el servei
             // Aquí hauries d'afegir el codi per cridar a l'API i passar-li l'objecte servei
-            string resultat = await dbAPI.crearServei(servei, GestioSessins.token);
-            if (resultat != "0")
+            string id = await dbAPI.crearServei(servei, GestioSessins.token);
+            if (id != "0")
             {
                 using (Message message2 = new Message("Servei registrat correctament.", "info"))
                 {
                     message2.ShowDialog();
-                    return;
                 }
+                justClosed = true;
+                Servei servei_ = new Servei();
+                servei_.Show();
+                this.Close();
+
             }
             else
             {
@@ -235,5 +250,24 @@ namespace SmartPack.Forms
             return true;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            t_detalls.Text = "Roba";
+            t_pes.Text = "120";
+            t_altura.Text = "25";
+            t_amplada.Text = "25";
+            t_profunditat.Text = "25";
+            t_nomDestinatari.Text = "Loubna Majdaoui";
+            t_telefonDestinatari.Text = "603207702";
+            t_codiQR.Text = "";
+            t_tVia.Text = "Carrer";
+            t_nomVia.Text = "Dom Bosco";
+            t_num.Text = "146";
+            t_codipostal.Text = "08224";
+            t_poblacio.Text = "Terrassa";
+            t_provincia.Text = "Barcelona";
+            t_planta.Text = "0";
+            t_porta.Text = "0";
+        }
     }
 }

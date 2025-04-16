@@ -66,6 +66,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.t_provincia = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,7 +108,7 @@
             this.t_detalls.Location = new System.Drawing.Point(232, 162);
             this.t_detalls.Name = "t_detalls";
             this.t_detalls.Size = new System.Drawing.Size(160, 20);
-            this.t_detalls.TabIndex = 40;
+            this.t_detalls.TabIndex = 1;
             // 
             // l_detalls
             // 
@@ -127,7 +128,7 @@
             this.t_pes.Location = new System.Drawing.Point(232, 188);
             this.t_pes.Name = "t_pes";
             this.t_pes.Size = new System.Drawing.Size(160, 20);
-            this.t_pes.TabIndex = 42;
+            this.t_pes.TabIndex = 2;
             // 
             // l_pes
             // 
@@ -159,7 +160,7 @@
             this.t_amplada.Location = new System.Drawing.Point(232, 214);
             this.t_amplada.Name = "t_amplada";
             this.t_amplada.Size = new System.Drawing.Size(160, 20);
-            this.t_amplada.TabIndex = 44;
+            this.t_amplada.TabIndex = 4;
             // 
             // t_altura
             // 
@@ -167,7 +168,7 @@
             this.t_altura.Location = new System.Drawing.Point(589, 188);
             this.t_altura.Name = "t_altura";
             this.t_altura.Size = new System.Drawing.Size(160, 20);
-            this.t_altura.TabIndex = 46;
+            this.t_altura.TabIndex = 3;
             // 
             // l_altura
             // 
@@ -187,7 +188,7 @@
             this.t_profunditat.Location = new System.Drawing.Point(589, 214);
             this.t_profunditat.Name = "t_profunditat";
             this.t_profunditat.Size = new System.Drawing.Size(160, 20);
-            this.t_profunditat.TabIndex = 48;
+            this.t_profunditat.TabIndex = 5;
             // 
             // l_profunditat
             // 
@@ -207,7 +208,7 @@
             this.t_telefonDestinatari.Location = new System.Drawing.Point(589, 293);
             this.t_telefonDestinatari.Name = "t_telefonDestinatari";
             this.t_telefonDestinatari.Size = new System.Drawing.Size(160, 20);
-            this.t_telefonDestinatari.TabIndex = 54;
+            this.t_telefonDestinatari.TabIndex = 7;
             // 
             // tefdestinatari
             // 
@@ -227,7 +228,7 @@
             this.t_tVia.Location = new System.Drawing.Point(232, 319);
             this.t_tVia.Name = "t_tVia";
             this.t_tVia.Size = new System.Drawing.Size(160, 20);
-            this.t_tVia.TabIndex = 52;
+            this.t_tVia.TabIndex = 8;
             // 
             // adress
             // 
@@ -247,7 +248,7 @@
             this.t_nomDestinatari.Location = new System.Drawing.Point(232, 293);
             this.t_nomDestinatari.Name = "t_nomDestinatari";
             this.t_nomDestinatari.Size = new System.Drawing.Size(160, 20);
-            this.t_nomDestinatari.TabIndex = 50;
+            this.t_nomDestinatari.TabIndex = 6;
             // 
             // nomdestinatari
             // 
@@ -328,7 +329,7 @@
             this.t_nomVia.Location = new System.Drawing.Point(589, 322);
             this.t_nomVia.Name = "t_nomVia";
             this.t_nomVia.Size = new System.Drawing.Size(160, 20);
-            this.t_nomVia.TabIndex = 61;
+            this.t_nomVia.TabIndex = 9;
             // 
             // label3
             // 
@@ -348,7 +349,7 @@
             this.t_num.Location = new System.Drawing.Point(232, 345);
             this.t_num.Name = "t_num";
             this.t_num.Size = new System.Drawing.Size(160, 20);
-            this.t_num.TabIndex = 63;
+            this.t_num.TabIndex = 10;
             // 
             // label4
             // 
@@ -368,7 +369,7 @@
             this.t_planta.Location = new System.Drawing.Point(589, 348);
             this.t_planta.Name = "t_planta";
             this.t_planta.Size = new System.Drawing.Size(160, 20);
-            this.t_planta.TabIndex = 65;
+            this.t_planta.TabIndex = 11;
             // 
             // label5
             // 
@@ -388,7 +389,7 @@
             this.t_porta.Location = new System.Drawing.Point(232, 371);
             this.t_porta.Name = "t_porta";
             this.t_porta.Size = new System.Drawing.Size(160, 20);
-            this.t_porta.TabIndex = 67;
+            this.t_porta.TabIndex = 12;
             // 
             // label6
             // 
@@ -408,7 +409,7 @@
             this.t_codipostal.Location = new System.Drawing.Point(589, 374);
             this.t_codipostal.Name = "t_codipostal";
             this.t_codipostal.Size = new System.Drawing.Size(160, 20);
-            this.t_codipostal.TabIndex = 69;
+            this.t_codipostal.TabIndex = 13;
             // 
             // label7
             // 
@@ -428,7 +429,7 @@
             this.t_poblacio.Location = new System.Drawing.Point(232, 397);
             this.t_poblacio.Name = "t_poblacio";
             this.t_poblacio.Size = new System.Drawing.Size(160, 20);
-            this.t_poblacio.TabIndex = 71;
+            this.t_poblacio.TabIndex = 14;
             // 
             // label8
             // 
@@ -448,7 +449,7 @@
             this.t_provincia.Location = new System.Drawing.Point(589, 400);
             this.t_provincia.Name = "t_provincia";
             this.t_provincia.Size = new System.Drawing.Size(160, 20);
-            this.t_provincia.TabIndex = 73;
+            this.t_provincia.TabIndex = 15;
             // 
             // label9
             // 
@@ -462,6 +463,23 @@
             this.label9.Text = "Provincia";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(64, 473);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(64, 44);
+            this.button1.TabIndex = 75;
+            this.button1.Text = "Auto";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AltaServei
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -469,6 +487,7 @@
             this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 544);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.t_provincia);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.t_poblacio);
@@ -556,5 +575,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox t_provincia;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button1;
     }
 }
