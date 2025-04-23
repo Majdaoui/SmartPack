@@ -1,6 +1,8 @@
 ﻿using SmartPack.Classes;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 
 namespace SmartPack.Forms
@@ -36,7 +38,7 @@ namespace SmartPack.Forms
             string profunditat = t_profunditat.Text;
             string nomdestinatari = t_nomDestinatari.Text;
             string telefonDestinatari = t_telefonDestinatari.Text;
-            string codiqr = t_codiQR.Text;
+            string _codiqr = t_codiQR.Text;
             string tipusVia = t_tVia.Text;
             string nomVia = t_nomVia.Text;
             string numero = t_num.Text;
@@ -145,12 +147,33 @@ namespace SmartPack.Forms
             );
 
 
+            string _transportistaId = "0";
+            string response = await dbAPI.GetTransportistaPerUsuari(GestioSessins.id, GestioSessins.token);
+            
+            if(string.IsNullOrEmpty(response) || response == "0")
+            {
+                using (Message message = new Message("No s'ha pogut obtenir el transportista.", "error"))
+                {
+                    message.ShowDialog();
+                    return;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(response))
+            {
+                using (JsonDocument doc = JsonDocument.Parse(response))
+                {
+                    JsonElement root = doc.RootElement;
+                    _transportistaId = root.GetProperty("id").GetInt32().ToString();
+                }
+            }
+
             // Crear l'objecte servei
             object servei = new
             {
                 estat = "ORDENAT",
-                usuariId = int.Parse(GestioSessins.id),
-                transportistaId = 2,
+                usuariId = 21,
+                transportistaId = 4,
                 paquet = new
                 {
                     detalls = detallas,
@@ -159,7 +182,7 @@ namespace SmartPack.Forms
                     nomDestinatari = nomdestinatari,
                     adreçadestinatari = tipusVia + ", " + nomVia + ", " + numero + ", " + planta + ", " + porta + ", " + codiPostal + ", " + poblacio + ", " + provincia,
                     telefondestinatari = telefonDestinatari,
-                    codiQR = codiqr
+                    codiqr = _codiqr
                 }
             };
 

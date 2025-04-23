@@ -26,17 +26,25 @@ namespace SmartPack
             }
         }
 
-
         public TitleForm()
         {
             this.FormBorderStyle = FormBorderStyle.None;
             this.DoubleBuffered = true;
             this.BackColor = Color.White;
-
             this.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.MouseMove += new MouseEventHandler(Form_MouseMove);
             this.MouseUp += new MouseEventHandler(Form_MouseUp);
             this.MouseClick += new MouseEventHandler(Form_MouseClick);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if(!DesignMode)
+            {
+                this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
+                this.BackgroundImageLayout = ImageLayout.Stretch;
+            }            
         }
 
         protected override void OnPaint(PaintEventArgs e)

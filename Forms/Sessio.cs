@@ -68,6 +68,7 @@ namespace SmartPack
                 string id = usuari.id;
                 if (!string.IsNullOrEmpty(id) && id != "0")
                 {
+                    GestioSessins.usuariId = id;
                     GestioSessins.id = id;
                     GestioSessins.email = temail;
                     GestioSessins.password = tcontrasenya;

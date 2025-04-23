@@ -1,6 +1,7 @@
 ﻿using SmartPack.Classes;
 using System;
 using System.Text.Json;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SmartPack.Forms
 {
@@ -42,6 +43,10 @@ namespace SmartPack.Forms
             listEmpreses.Items.Clear();
             update_e.Visible = false;
             desctivate_e.Visible = false;
+            bModificarUsuari.Visible = false;
+            desassignar_u.Visible = false;
+            assignar_u.Visible = false;
+            bDesactivarUser.Visible = false;
             object user = new
             {
                 email = GestioSessins.email,
@@ -80,6 +85,10 @@ namespace SmartPack.Forms
             listUsauris.Items.Clear();
             update_e.Visible = false;
             desctivate_e.Visible = false;
+            bModificarUsuari.Visible = true;
+            desassignar_u.Visible = true;
+            assignar_u.Visible = true;
+            bDesactivarUser.Visible = true;
             object user = new
             {
                 email = GestioSessins.email,
@@ -131,7 +140,7 @@ namespace SmartPack.Forms
                             if (_id == id)
                             {
                                 listUsauris.SelectedIndex = -1;
-                                lID.Text = id;
+                                lIDEmpresa.Text = id;
                                 NOM_T.Text = item.GetProperty("nom").ToString();
                                 COGNOMS_T.Text = "";
                                 EMAIL_T.Text = item.GetProperty("email").ToString();
@@ -169,7 +178,7 @@ namespace SmartPack.Forms
                             if (_id == id)
                             {
                                 listEmpreses.SelectedIndex = -1;
-                                lID.Text = id;
+                                lIDUser.Text = id;
                                 NOM_T.Text = item.GetProperty("nom").ToString();
                                 COGNOMS_T.Text = item.GetProperty("cognom").ToString();
                                 EMAIL_T.Text = item.GetProperty("email").ToString();
@@ -194,8 +203,15 @@ namespace SmartPack.Forms
                 email = EMAIL_T.Text,
                 telefon = TELEFON_T.Text,
             };
-            var response = await dbAPI.PutEmpresaUpdate(empresa_update, lID.Text, GestioSessins.token);
+            var response = await dbAPI.PutEmpresaUpdate(empresa_update, lIDUser.Text, GestioSessins.token);
             Console.WriteLine("Response Body: " + response);
+            if (response.Contains("\"id\":"))
+            {
+                using (Message message1 = new Message("Empresa actualitzada correctament.", "info"))
+                {
+                    message1.ShowDialog();
+                }
+            }
         }
 
         /// <summary>
@@ -203,7 +219,7 @@ namespace SmartPack.Forms
         /// </summary>
         public async void desctivate_e_Click(object sender, EventArgs e)
         {
-            var response = await dbAPI.DeactivateEmpresa(lID.Text, GestioSessins.token);
+            var response = await dbAPI.DeactivateEmpresa(lIDUser.Text, GestioSessins.token);
             if (string.IsNullOrEmpty(response)) return;
             Console.WriteLine("Response Body: " + response);
             if (response.Contains("correctament"))
@@ -213,6 +229,111 @@ namespace SmartPack.Forms
                     message1.ShowDialog();
                 }
             }
+        }
+
+        private void bAltaEmpresa_Click(object sender, EventArgs e)
+        {
+            AltaEmpresa altaEmpresa = new AltaEmpresa();
+            altaEmpresa.Option = 1;
+            altaEmpresa.Show();
+            this.Close();
+        }
+
+        private async void bModificarUsuari_Click(object sender, EventArgs e)
+        {
+            object userUpdate = new
+            {
+                email = EMAIL_T.Text,
+                telefon = TELEFON_T.Text,
+            };
+            string response = await dbAPI.PutUserUpdate(userUpdate, lIDUser.Text, GestioSessins.token);
+            if (response != null)
+            {
+                using (Message messatge = new Message("S'han actualitzat les dades correctament", "info"))
+                {
+                    Console.WriteLine("Response Body: " + response);
+                    messatge.ShowDialog();
+                }
+            }
+            else
+            {
+                using (Message messatge = new Message("Error al actualitzar les dades", "error"))
+                {
+                    Console.WriteLine("Response Body: " + response);
+                    messatge.ShowDialog();
+                }
+            }
+        }
+
+        private async void desassignar_u_Click(object sender, EventArgs e)
+        {
+            var msg = await dbAPI.EmpresaDesassignarUsuari(lIDUser.Text, GestioSessins.token);
+            if(msg == "correctament")
+            {
+                using (Message message1 = new Message("Usuari desassignat correctament.", "info"))
+                {
+                    message1.ShowDialog();
+                }
+            }
+            else
+            {
+                using (Message message1 = new Message("Aquest usuari no está assignat a cap empresa.", "error"))
+                {
+                    message1.ShowDialog();
+                }
+            }
+        }
+
+        private async void assignar_u_Click(object sender, EventArgs e)
+        {
+            object assignar = new
+            {
+                usuariId = lIDUser.Text,
+                empresaId = lIDEmpresa.Text,
+            };
+            string message = await dbAPI.assignarUsuari(assignar, GestioSessins.token);
+            if (message.Contains("correctament"))
+            {
+                Console.WriteLine("Empresa Message: " + message);
+                using (Message messatgel = new Message("empresa registrada correctament", "info"))
+                {
+                    messatgel.ShowDialog();
+                }
+            }
+            else
+            {
+
+            } 
+
+        }
+
+        private async void bDesactivarUser_Click(object sender, EventArgs e)
+        {
+            string message = await dbAPI.DesactivateUsuari(lIDUser.Text, GestioSessins.token);
+            if (message == "correctament")
+            {
+                Console.WriteLine("correctament: " + message);
+                using (Message messatge = new Message("El seu compte s'ha desactivat correctament", "info"))
+                {
+                    messatge.ShowDialog();
+                }
+            }
+            else
+            {
+                Console.WriteLine("message: " + message);
+                using (Message messatge = new Message("No s'ha pogut desactivar el Compte", "error"))
+                {
+                    messatge.ShowDialog();
+                }
+            }
+        }
+
+        private void bServeis_Click(object sender, EventArgs e)
+        {
+            Servei servei = new Servei();
+            servei.Open = new Administracio();
+            servei.Show();
+            this.Close();
         }
     }
 }

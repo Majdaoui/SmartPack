@@ -46,7 +46,7 @@ namespace SmartPack
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LastFormClosingApplicationContext(new Sessio())); //Sessio
+            Application.Run(new LastFormClosingApplicationContext(new SplashScreen()));
         }
     }
 }

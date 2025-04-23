@@ -48,7 +48,7 @@
             this.AddServei.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AddServei.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddServei.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.AddServei.Location = new System.Drawing.Point(93, 162);
+            this.AddServei.Location = new System.Drawing.Point(107, 154);
             this.AddServei.Name = "AddServei";
             this.AddServei.Size = new System.Drawing.Size(186, 72);
             this.AddServei.TabIndex = 0;
@@ -100,7 +100,7 @@
             this.consult.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.consult.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.consult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.consult.Location = new System.Drawing.Point(301, 162);
+            this.consult.Location = new System.Drawing.Point(315, 154);
             this.consult.Name = "consult";
             this.consult.Size = new System.Drawing.Size(186, 72);
             this.consult.TabIndex = 37;
@@ -118,7 +118,7 @@
             this.ConsultAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ConsultAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConsultAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.ConsultAll.Location = new System.Drawing.Point(93, 253);
+            this.ConsultAll.Location = new System.Drawing.Point(107, 245);
             this.ConsultAll.Name = "ConsultAll";
             this.ConsultAll.Size = new System.Drawing.Size(186, 72);
             this.ConsultAll.TabIndex = 38;
@@ -136,7 +136,7 @@
             this.update.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.update.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.update.Location = new System.Drawing.Point(301, 253);
+            this.update.Location = new System.Drawing.Point(315, 245);
             this.update.Name = "update";
             this.update.Size = new System.Drawing.Size(186, 72);
             this.update.TabIndex = 39;
@@ -148,9 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(611, 450);
+            this.ClientSize = new System.Drawing.Size(611, 373);
             this.Controls.Add(this.update);
             this.Controls.Add(this.ConsultAll);
             this.Controls.Add(this.consult);

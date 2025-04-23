@@ -11,6 +11,8 @@ namespace SmartPack
     /// </summary>
     public partial class AltaEmpresa : TitleForm
     {
+        public int Option { get; set; } = 0;
+
         /// <summary>
         /// Constructor de la classe AltaEmpresa
         /// </summary>
@@ -158,12 +160,26 @@ namespace SmartPack
                         empresaId = GestioSessins.empresaId,
                     };
                     string message = await dbAPI.assignarUsuari(assignar, GestioSessins.token);
-                    if (message == "correctament")
+                    if (message.Contains("correctament"))
                     {
                         Console.WriteLine("Empresa Message: " + message);
-                        Sessio sessio = new Sessio();
-                        sessio.Show();
-                        this.Close();
+                        using (Message messatgel = new Message("empresa registrada correctament", "info"))
+                        {
+                            messatgel.ShowDialog();
+                        }
+
+                        if (Option == 0)
+                        {
+                            Sessio sessio = new Sessio();
+                            sessio.Show();
+                            this.Close();
+                        }
+                        else if (Option == 1)
+                        {
+                            Administracio administracio = new Administracio();
+                            administracio.Show();
+                            this.Close();
+                        }
                     }
                     else
                     {
@@ -240,6 +256,22 @@ namespace SmartPack
         {
             var regexEmail = new Regex(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
             return regexEmail.IsMatch(email);
+        }
+
+        private void bAuto_Click(object sender, EventArgs e)
+        {
+            cif_e.Text = "A12345678";
+            nom_e.Text = "Luna";
+            email_e.Text = "luna@luna.com";
+            tef_e.Text = "603207702";
+            t_via_e.Text = "Carrer";
+            nom_via_e.Text = "Dom Bosco";
+            cp_e.Text = "08224";
+            poblacio_e.Text = "Terrassa";
+            provincia_e.Text = "Barcelona";
+            porta_e.Text = "2";
+            planta_e.Text = "2";
+            num_e.Text = "146";
         }
     }
 }

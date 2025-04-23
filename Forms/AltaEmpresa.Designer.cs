@@ -56,6 +56,7 @@
             this.email_e = new System.Windows.Forms.TextBox();
             this.email_l = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bAuto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -346,14 +347,29 @@
             this.pictureBox1.TabIndex = 50;
             this.pictureBox1.TabStop = false;
             // 
+            // bAuto
+            // 
+            this.bAuto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bAuto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bAuto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bAuto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAuto.Location = new System.Drawing.Point(40, 392);
+            this.bAuto.Name = "bAuto";
+            this.bAuto.Size = new System.Drawing.Size(96, 33);
+            this.bAuto.TabIndex = 51;
+            this.bAuto.Text = "Auto";
+            this.bAuto.UseVisualStyleBackColor = true;
+            this.bAuto.Click += new System.EventHandler(this.bAuto_Click);
+            // 
             // AltaEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImage = null;
             this.BorderColor = System.Drawing.Color.Blue;
             this.ClientSize = new System.Drawing.Size(843, 517);
+            this.Controls.Add(this.bAuto);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.email_e);
@@ -422,5 +438,6 @@
         private System.Windows.Forms.TextBox email_e;
         private System.Windows.Forms.Label email_l;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button bAuto;
     }
 }

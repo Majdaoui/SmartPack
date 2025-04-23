@@ -151,6 +151,7 @@ namespace SmartPack
             // no_t
             // 
             this.no_t.BackColor = System.Drawing.Color.Transparent;
+            this.no_t.Checked = true;
             this.no_t.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.no_t.ForeColor = System.Drawing.Color.Black;
             this.no_t.Location = new System.Drawing.Point(695, 143);
@@ -170,7 +171,6 @@ namespace SmartPack
             this.si_t.Name = "si_t";
             this.si_t.Size = new System.Drawing.Size(56, 24);
             this.si_t.TabIndex = 1;
-            this.si_t.TabStop = true;
             this.si_t.Text = "SI";
             this.si_t.UseVisualStyleBackColor = false;
             // 
@@ -607,9 +607,8 @@ namespace SmartPack
             this.AcceptButton = this.bRegistre;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = null;
             this.BorderColor = System.Drawing.Color.MediumBlue;
             this.ClientSize = new System.Drawing.Size(843, 517);
             this.Controls.Add(this.button1);

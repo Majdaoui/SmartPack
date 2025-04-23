@@ -85,7 +85,7 @@ namespace SmartPack
             this.contrasenya_is.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.contrasenya_is.Size = new System.Drawing.Size(337, 35);
             this.contrasenya_is.TabIndex = 54;
-            this.contrasenya_is.Text = "Luna*123";
+            this.contrasenya_is.Text = "Luna*1234";
             // 
             // email_is
             // 
@@ -268,8 +268,7 @@ namespace SmartPack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImage = null;
             this.ClientSize = new System.Drawing.Size(846, 519);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

@@ -30,7 +30,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -159,6 +159,7 @@
     <Compile Include="Classes\dbAPI.cs" />
     <Compile Include="Classes\dbAPIHelpers.cs" />
     <Compile Include="Classes\GestioSessins.cs" />
+    <Compile Include="Classes\HistorialServei.cs" />
     <Compile Include="Classes\mysqlAPI.cs" />
     <Compile Include="Classes\Transportista.cs" />
     <Compile Include="Classes\VisualServei.cs" />
@@ -186,6 +187,12 @@
     <Compile Include="Forms\ConsultaServei.Designer.cs">
       <DependentUpon>ConsultaServei.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Facturacio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Facturacio.Designer.cs">
+      <DependentUpon>Facturacio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Message.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +204,12 @@
     </Compile>
     <Compile Include="Forms\CanviContrasenya.Designer.cs">
       <DependentUpon>CanviContrasenya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ModificarServei.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ModificarServei.Designer.cs">
+      <DependentUpon>ModificarServei.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NewPassword.cs">
       <SubType>Form</SubType>
@@ -216,6 +229,12 @@
     <Compile Include="Forms\Servei.Designer.cs">
       <DependentUpon>Servei.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ServeisFinalitzats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ServeisFinalitzats.Designer.cs">
+      <DependentUpon>ServeisFinalitzats.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Sessio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +246,12 @@
     </Compile>
     <Compile Include="Forms\RecuperarContrasenya.Designer.cs">
       <DependentUpon>RecuperarContrasenya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TestAttribute.cs" />
     <Compile Include="Forms\TestFixtureAttribute.cs" />
@@ -283,6 +308,9 @@
       <DependentUpon>ConsultaServei.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Facturacio.resx">
+      <DependentUpon>Facturacio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Message.resx">
       <DependentUpon>Message.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,6 +326,9 @@
     <EmbeddedResource Include="Forms\CanviContrasenya.resx">
       <DependentUpon>CanviContrasenya.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ModificarServei.resx">
+      <DependentUpon>ModificarServei.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewPassword.resx">
       <DependentUpon>NewPassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,11 +338,17 @@
     <EmbeddedResource Include="Forms\Servei.resx">
       <DependentUpon>Servei.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServeisFinalitzats.resx">
+      <DependentUpon>ServeisFinalitzats.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Sessio.resx">
       <DependentUpon>Sessio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RecuperarContrasenya.resx">
       <DependentUpon>RecuperarContrasenya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transportista.resx">
       <DependentUpon>Transportista.cs</DependentUpon>
@@ -369,6 +406,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconError.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconAdvertence.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconConfirm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contrasena.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\internet_locked_padlock_password_secure_security_unlock_icon_127083.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

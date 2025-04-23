@@ -137,9 +137,8 @@ namespace SmartPack.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.CadetBlue;
-            this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = null;
             this.ClientSize = new System.Drawing.Size(827, 478);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Serveis);

@@ -34,6 +34,7 @@ namespace SmartPack.Forms
         private void bservei_Click(object sender, EventArgs e)
         {
             Servei servei = new Servei();
+            servei.Open = new Principal();
             servei.Show();
             justClosed = true;
             this.Close();

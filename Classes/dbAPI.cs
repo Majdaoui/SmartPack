@@ -545,7 +545,7 @@ namespace SmartPack
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"responseBody: {responseBody}");
+                Console.WriteLine($"CrearServei.ResponseBody: {responseBody}");
                 if (responseBody.Contains("\"id\":"))
                 {
                     using (JsonDocument doc = JsonDocument.Parse(responseBody))
@@ -629,7 +629,9 @@ namespace SmartPack
                 string json = JsonSerializer.Serialize(user);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PutAsync(url, content);
-                return await response.Content.ReadAsStringAsync();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Response: {responseBody}");
+                return responseBody;
             }
         }
 
@@ -851,7 +853,7 @@ namespace SmartPack
                 client.DefaultRequestHeaders.Add("Accept", "*/*");
                 HttpResponseMessage response = await client.GetAsync(url);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                //Console.WriteLine($"responseBody: {responseBody}");
+                Console.WriteLine($"GetTransportistaPerUsuari.ResponseBody: {responseBody}");
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     return responseBody;
             }
@@ -896,6 +898,90 @@ namespace SmartPack
             }
             return "0";
         }
+
+        public static async Task<string> EmpresaDesassignarUsuari(this string id, string token)
+        {
+            string url = "http://localhost:8080/empresa/desassignar-usuari/" + id;
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var request = new HttpRequestMessage
+                {
+                    Method = new HttpMethod("PATCH"),
+                    RequestUri = new Uri(url),
+                    Headers = { { "Accept", "*/*" } }
+                };
+                HttpResponseMessage response = await client.SendAsync(request);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    if (responseBody.Contains("\"message\":"))
+                    {
+                        using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                        {
+                            var ret = doc.RootElement.GetProperty("message").GetString();
+                            if (ret.Contains("correctament."))
+                            {
+                                return "correctament";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if(responseBody.Contains("no està assignat"))
+                    {
+                        return "no-assignat";
+                    }
+                }
+            }
+            return "0";
+        }
+
+        public static async Task<List<HistorialServei>> getServeiHistorial(this string id, string token)
+        {
+            string url = "http://localhost:8080/servei/" + id + "/historial";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"responseBody: {responseBody}");
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    if (responseBody.Contains("\"id\":"))
+                    {
+                        List<HistorialServei> historial = JsonSerializer.Deserialize<List<HistorialServei>>(responseBody);
+                        return historial;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static async Task<List<ClassServei>> getServeiLlist(string token)
+        {
+            string url = "http://localhost:8080/servei/list";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"responseBody: {responseBody}");
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    if (responseBody.Contains("\"id\":"))
+                    {
+                        List<ClassServei> vs = JsonSerializer.Deserialize<List<ClassServei>>(responseBody);
+                        return vs;
+                    }
+                }
+            }
+            return null;
+        }
+
 
     }
 }

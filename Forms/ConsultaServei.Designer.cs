@@ -31,13 +31,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.title = new System.Windows.Forms.Label();
-            this.bConsulta = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.l_rol = new System.Windows.Forms.Label();
             this.cbEstado = new System.Windows.Forms.ComboBox();
             this.bCambiarEstado = new System.Windows.Forms.Button();
+            this.dataGridHistorial = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridHistorial)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -72,30 +73,13 @@
             this.title.Text = "Consultar Servei un Servei";
             this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // bConsulta
-            // 
-            this.bConsulta.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.bConsulta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.bConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.bConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.bConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bConsulta.ForeColor = System.Drawing.Color.Black;
-            this.bConsulta.Location = new System.Drawing.Point(12, 440);
-            this.bConsulta.Name = "bConsulta";
-            this.bConsulta.Size = new System.Drawing.Size(180, 44);
-            this.bConsulta.TabIndex = 113;
-            this.bConsulta.Text = "Consultar";
-            this.bConsulta.UseVisualStyleBackColor = false;
-            this.bConsulta.Click += new System.EventHandler(this.bConsulta_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 142);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(765, 240);
+            this.dataGridView1.Size = new System.Drawing.Size(765, 171);
             this.dataGridView1.TabIndex = 114;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -104,7 +88,7 @@
             this.l_rol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.l_rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_rol.ForeColor = System.Drawing.Color.White;
-            this.l_rol.Location = new System.Drawing.Point(12, 389);
+            this.l_rol.Location = new System.Drawing.Point(10, 517);
             this.l_rol.Name = "l_rol";
             this.l_rol.Size = new System.Drawing.Size(128, 25);
             this.l_rol.TabIndex = 116;
@@ -126,7 +110,7 @@
             "ENTREGAT",
             "NO_ENTREGAT",
             "RETORNAT"});
-            this.cbEstado.Location = new System.Drawing.Point(144, 388);
+            this.cbEstado.Location = new System.Drawing.Point(142, 516);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(199, 26);
             this.cbEstado.TabIndex = 115;
@@ -141,7 +125,7 @@
             this.bCambiarEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bCambiarEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bCambiarEstado.ForeColor = System.Drawing.Color.Black;
-            this.bCambiarEstado.Location = new System.Drawing.Point(597, 389);
+            this.bCambiarEstado.Location = new System.Drawing.Point(597, 507);
             this.bCambiarEstado.Name = "bCambiarEstado";
             this.bCambiarEstado.Size = new System.Drawing.Size(180, 44);
             this.bCambiarEstado.TabIndex = 117;
@@ -149,25 +133,33 @@
             this.bCambiarEstado.UseVisualStyleBackColor = false;
             this.bCambiarEstado.Click += new System.EventHandler(this.bCambiarEstado_Click);
             // 
+            // dataGridHistorial
+            // 
+            this.dataGridHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridHistorial.Location = new System.Drawing.Point(12, 319);
+            this.dataGridHistorial.Name = "dataGridHistorial";
+            this.dataGridHistorial.Size = new System.Drawing.Size(765, 182);
+            this.dataGridHistorial.TabIndex = 118;
+            // 
             // ConsultaServei
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(789, 506);
+            this.ClientSize = new System.Drawing.Size(789, 563);
+            this.Controls.Add(this.dataGridHistorial);
             this.Controls.Add(this.bCambiarEstado);
             this.Controls.Add(this.l_rol);
             this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.bConsulta);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.title);
             this.Controls.Add(this.pictureBox1);
             this.Name = "ConsultaServei";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultaServei";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridHistorial)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -179,7 +171,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn destinatariDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn adreçaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telèfonDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button bConsulta;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomDestinatariDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn adreçadestinatariDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefondestinatariDataGridViewTextBoxColumn;
@@ -188,5 +179,6 @@
         private System.Windows.Forms.Label l_rol;
         private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Button bCambiarEstado;
+        private System.Windows.Forms.DataGridView dataGridHistorial;
     }
 }

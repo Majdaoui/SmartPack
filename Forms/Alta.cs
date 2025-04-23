@@ -1,4 +1,5 @@
-﻿using SmartPack.Classes;
+﻿using MySqlX.XDevAPI;
+using SmartPack.Classes;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -132,7 +133,7 @@ namespace SmartPack
                 
             }
 
-            if (!EsCodiPostalValid(ttelefon))
+            if (!EsTelefonValid(ttelefon))
             {
                 using (Message message1 = new Message("El telèfono ha de tenir només números i tenir entre 9 y 15 dígits", "error"))
                 { 
@@ -281,6 +282,12 @@ namespace SmartPack
                             this.Close();
                         }
                     }
+                }
+                else if (role == "ROLE_USER")
+                {
+                    Sessio sessio = new Sessio();
+                    sessio.Show();
+                    this.Close();
                 }
             }
         }

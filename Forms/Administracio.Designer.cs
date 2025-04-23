@@ -50,13 +50,21 @@ namespace SmartPack.Forms
             this.COGNOMS_T = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lIDEmpresa = new System.Windows.Forms.Label();
+            this.lIDUser = new System.Windows.Forms.Label();
             this.TELEFON_T = new System.Windows.Forms.TextBox();
             this.EMAIL_T = new System.Windows.Forms.TextBox();
             this.lTipusdeCompte = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.lID = new System.Windows.Forms.Label();
+            this.bAltaEmpresa = new System.Windows.Forms.Button();
+            this.bDesactivarUser = new System.Windows.Forms.Button();
+            this.bModificarUsuari = new System.Windows.Forms.Button();
+            this.bServeis = new System.Windows.Forms.Button();
+            this.bTransportistes = new System.Windows.Forms.Button();
+            this.bVehicles = new System.Windows.Forms.Button();
+            this.bFactures = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -72,14 +80,14 @@ namespace SmartPack.Forms
             this.assignar_u.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.assignar_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.assignar_u.ForeColor = System.Drawing.Color.Black;
-            this.assignar_u.Location = new System.Drawing.Point(335, 598);
+            this.assignar_u.Location = new System.Drawing.Point(184, 627);
             this.assignar_u.Name = "assignar_u";
             this.assignar_u.Size = new System.Drawing.Size(164, 45);
             this.assignar_u.TabIndex = 22;
             this.assignar_u.Text = "Assignar un usuari a una empresa";
             this.assignar_u.UseVisualStyleBackColor = false;
             this.assignar_u.Visible = false;
-            this.assignar_u.Click += new System.EventHandler(this.button1_Click);
+            this.assignar_u.Click += new System.EventHandler(this.assignar_u_Click);
             // 
             // llist_u
             // 
@@ -107,13 +115,14 @@ namespace SmartPack.Forms
             this.desassignar_u.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.desassignar_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desassignar_u.ForeColor = System.Drawing.Color.Black;
-            this.desassignar_u.Location = new System.Drawing.Point(165, 599);
+            this.desassignar_u.Location = new System.Drawing.Point(12, 628);
             this.desassignar_u.Name = "desassignar_u";
             this.desassignar_u.Size = new System.Drawing.Size(164, 44);
             this.desassignar_u.TabIndex = 25;
             this.desassignar_u.Text = "Desassignar usuari a empresa";
             this.desassignar_u.UseVisualStyleBackColor = false;
             this.desassignar_u.Visible = false;
+            this.desassignar_u.Click += new System.EventHandler(this.desassignar_u_Click);
             // 
             // panel1
             // 
@@ -204,7 +213,7 @@ namespace SmartPack.Forms
             this.desctivate_e.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.desctivate_e.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desctivate_e.ForeColor = System.Drawing.Color.Black;
-            this.desctivate_e.Location = new System.Drawing.Point(675, 599);
+            this.desctivate_e.Location = new System.Drawing.Point(423, 576);
             this.desctivate_e.Name = "desctivate_e";
             this.desctivate_e.Size = new System.Drawing.Size(164, 44);
             this.desctivate_e.TabIndex = 29;
@@ -222,12 +231,13 @@ namespace SmartPack.Forms
             this.update_e.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.update_e.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.update_e.ForeColor = System.Drawing.Color.Black;
-            this.update_e.Location = new System.Drawing.Point(505, 598);
+            this.update_e.Location = new System.Drawing.Point(593, 576);
             this.update_e.Name = "update_e";
             this.update_e.Size = new System.Drawing.Size(164, 45);
             this.update_e.TabIndex = 28;
             this.update_e.Text = "Modificar Empresa";
             this.update_e.UseVisualStyleBackColor = false;
+            this.update_e.Visible = false;
             this.update_e.Click += new System.EventHandler(this.update_e_Click);
             // 
             // panel5
@@ -312,7 +322,8 @@ namespace SmartPack.Forms
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.lID);
+            this.panel3.Controls.Add(this.lIDEmpresa);
+            this.panel3.Controls.Add(this.lIDUser);
             this.panel3.Controls.Add(this.TELEFON_T);
             this.panel3.Controls.Add(this.EMAIL_T);
             this.panel3.Controls.Add(this.lTipusdeCompte);
@@ -327,6 +338,32 @@ namespace SmartPack.Forms
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(354, 352);
             this.panel3.TabIndex = 36;
+            // 
+            // lIDEmpresa
+            // 
+            this.lIDEmpresa.BackColor = System.Drawing.Color.Transparent;
+            this.lIDEmpresa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lIDEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lIDEmpresa.Location = new System.Drawing.Point(169, 10);
+            this.lIDEmpresa.Name = "lIDEmpresa";
+            this.lIDEmpresa.Size = new System.Drawing.Size(166, 30);
+            this.lIDEmpresa.TabIndex = 47;
+            this.lIDEmpresa.Text = "ID";
+            this.lIDEmpresa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lIDEmpresa.Visible = false;
+            // 
+            // lIDUser
+            // 
+            this.lIDUser.BackColor = System.Drawing.Color.Transparent;
+            this.lIDUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lIDUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lIDUser.Location = new System.Drawing.Point(6, 10);
+            this.lIDUser.Name = "lIDUser";
+            this.lIDUser.Size = new System.Drawing.Size(157, 30);
+            this.lIDUser.TabIndex = 46;
+            this.lIDUser.Text = "ID";
+            this.lIDUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lIDUser.Visible = false;
             // 
             // TELEFON_T
             // 
@@ -389,26 +426,142 @@ namespace SmartPack.Forms
             this.label6.Text = "Email";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lID
+            // bAltaEmpresa
             // 
-            this.lID.BackColor = System.Drawing.Color.Transparent;
-            this.lID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lID.Location = new System.Drawing.Point(6, 10);
-            this.lID.Name = "lID";
-            this.lID.Size = new System.Drawing.Size(329, 30);
-            this.lID.TabIndex = 46;
-            this.lID.Text = "ID";
-            this.lID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lID.Visible = false;
+            this.bAltaEmpresa.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bAltaEmpresa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bAltaEmpresa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bAltaEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bAltaEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bAltaEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAltaEmpresa.ForeColor = System.Drawing.Color.Black;
+            this.bAltaEmpresa.Location = new System.Drawing.Point(763, 576);
+            this.bAltaEmpresa.Name = "bAltaEmpresa";
+            this.bAltaEmpresa.Size = new System.Drawing.Size(164, 45);
+            this.bAltaEmpresa.TabIndex = 37;
+            this.bAltaEmpresa.Text = "Alta Empresa";
+            this.bAltaEmpresa.UseVisualStyleBackColor = false;
+            this.bAltaEmpresa.Click += new System.EventHandler(this.bAltaEmpresa_Click);
+            // 
+            // bDesactivarUser
+            // 
+            this.bDesactivarUser.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bDesactivarUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bDesactivarUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bDesactivarUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bDesactivarUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bDesactivarUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bDesactivarUser.ForeColor = System.Drawing.Color.Black;
+            this.bDesactivarUser.Location = new System.Drawing.Point(184, 576);
+            this.bDesactivarUser.Name = "bDesactivarUser";
+            this.bDesactivarUser.Size = new System.Drawing.Size(164, 45);
+            this.bDesactivarUser.TabIndex = 39;
+            this.bDesactivarUser.Text = "Desactivar Usuari";
+            this.bDesactivarUser.UseVisualStyleBackColor = false;
+            this.bDesactivarUser.Visible = false;
+            this.bDesactivarUser.Click += new System.EventHandler(this.bDesactivarUser_Click);
+            // 
+            // bModificarUsuari
+            // 
+            this.bModificarUsuari.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bModificarUsuari.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bModificarUsuari.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bModificarUsuari.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bModificarUsuari.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bModificarUsuari.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bModificarUsuari.ForeColor = System.Drawing.Color.Black;
+            this.bModificarUsuari.Location = new System.Drawing.Point(12, 576);
+            this.bModificarUsuari.Name = "bModificarUsuari";
+            this.bModificarUsuari.Size = new System.Drawing.Size(164, 45);
+            this.bModificarUsuari.TabIndex = 38;
+            this.bModificarUsuari.Text = "Modificar Usuari";
+            this.bModificarUsuari.UseVisualStyleBackColor = false;
+            this.bModificarUsuari.Visible = false;
+            this.bModificarUsuari.Click += new System.EventHandler(this.bModificarUsuari_Click);
+            // 
+            // bServeis
+            // 
+            this.bServeis.BackColor = System.Drawing.Color.Transparent;
+            this.bServeis.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bServeis.FlatAppearance.BorderSize = 5;
+            this.bServeis.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bServeis.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bServeis.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bServeis.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bServeis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.bServeis.Location = new System.Drawing.Point(12, 139);
+            this.bServeis.Name = "bServeis";
+            this.bServeis.Size = new System.Drawing.Size(186, 45);
+            this.bServeis.TabIndex = 40;
+            this.bServeis.Text = "Serveis";
+            this.bServeis.UseVisualStyleBackColor = false;
+            this.bServeis.Click += new System.EventHandler(this.bServeis_Click);
+            // 
+            // bTransportistes
+            // 
+            this.bTransportistes.BackColor = System.Drawing.Color.Transparent;
+            this.bTransportistes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bTransportistes.FlatAppearance.BorderSize = 5;
+            this.bTransportistes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bTransportistes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bTransportistes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bTransportistes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bTransportistes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.bTransportistes.Location = new System.Drawing.Point(204, 139);
+            this.bTransportistes.Name = "bTransportistes";
+            this.bTransportistes.Size = new System.Drawing.Size(186, 45);
+            this.bTransportistes.TabIndex = 40;
+            this.bTransportistes.Text = "Transportistes";
+            this.bTransportistes.UseVisualStyleBackColor = false;
+            // 
+            // bVehicles
+            // 
+            this.bVehicles.BackColor = System.Drawing.Color.Transparent;
+            this.bVehicles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bVehicles.FlatAppearance.BorderSize = 5;
+            this.bVehicles.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bVehicles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bVehicles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bVehicles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.bVehicles.Location = new System.Drawing.Point(396, 139);
+            this.bVehicles.Name = "bVehicles";
+            this.bVehicles.Size = new System.Drawing.Size(186, 45);
+            this.bVehicles.TabIndex = 40;
+            this.bVehicles.Text = "Vehicles";
+            this.bVehicles.UseVisualStyleBackColor = false;
+            // 
+            // bFactures
+            // 
+            this.bFactures.BackColor = System.Drawing.Color.Transparent;
+            this.bFactures.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bFactures.FlatAppearance.BorderSize = 5;
+            this.bFactures.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bFactures.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bFactures.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bFactures.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bFactures.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.bFactures.Location = new System.Drawing.Point(588, 139);
+            this.bFactures.Name = "bFactures";
+            this.bFactures.Size = new System.Drawing.Size(186, 45);
+            this.bFactures.TabIndex = 40;
+            this.bFactures.Text = "Factures";
+            this.bFactures.UseVisualStyleBackColor = false;
             // 
             // Administracio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SmartPack.Properties.Resources.freepik__retouch__32632;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(950, 700);
+            this.Controls.Add(this.bFactures);
+            this.Controls.Add(this.bVehicles);
+            this.Controls.Add(this.bTransportistes);
+            this.Controls.Add(this.bServeis);
+            this.Controls.Add(this.bDesactivarUser);
+            this.Controls.Add(this.bModificarUsuari);
+            this.Controls.Add(this.bAltaEmpresa);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.desctivate_e);
@@ -434,6 +587,7 @@ namespace SmartPack.Forms
         }
 
         #endregion
+
         private System.Windows.Forms.Button assignar_u;
         private System.Windows.Forms.Button llist_u;
         private System.Windows.Forms.Button desassignar_u;
@@ -460,7 +614,15 @@ namespace SmartPack.Forms
         private System.Windows.Forms.Label lTipusdeCompte;
         private System.Windows.Forms.TextBox EMAIL_T;
         private System.Windows.Forms.TextBox TELEFON_T;
-        private System.Windows.Forms.Label lID;
+        private System.Windows.Forms.Label lIDUser;
+        private Button bAltaEmpresa;
+        private Button bDesactivarUser;
+        private Button bModificarUsuari;
+        private Label lIDEmpresa;
+        private Button bServeis;
+        private Button bTransportistes;
+        private Button bVehicles;
+        private Button bFactures;
         //public ListBox LlistaEmpreses => listEmpreses;
     }
 }
