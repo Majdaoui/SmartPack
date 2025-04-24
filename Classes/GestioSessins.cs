@@ -15,7 +15,7 @@ namespace SmartPack.Classes
         public static string empresaId { get; set; } = "0";
         public static string usuariId { get; set; } = "0";
         public static string id { get; set; } = "0";
-        public static string user { get; set; } = "";
+        public static string user { get; set; } = "0";
         public static string email { get; set; } = "";
         public static string password { get; set; } = "";
         public static string token { get; set; } = "";

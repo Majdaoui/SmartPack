@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Formulari de serveis
+    /// </summary>
     public partial class Servei : TitleForm
     {
         public TitleForm Open { get; set; } = null;
@@ -13,6 +16,10 @@ namespace SmartPack.Forms
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Carrega el formulari i les dades del servei en el datagrid
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -27,6 +34,11 @@ namespace SmartPack.Forms
         }
 
         private bool justClosed = false;
+
+        /// <summary>
+        /// Al tancar el formulari, obre el formulari de Administrador
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -34,9 +46,21 @@ namespace SmartPack.Forms
             {
                 if(Open != null)
                 {
+                    /*
+                    if (GestioSessins.role == "ROLE_ADMIN")
+                    {
+                        Administracio admin = new Administracio();
+                        admin.Show();
+                    }
+                    else
+                    {
+                        Principal principal = new Principal();
+                        principal.Show();
+                    }*/
                     Open.Show();
                 }
             }
+            
         }
 
         private void title_Click(object sender, EventArgs e)
@@ -49,6 +73,11 @@ namespace SmartPack.Forms
 
         }
 
+        /// <summary>
+        /// Obre el formulari d'alta de servei
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddServei_Click(object sender, EventArgs e)
         {
             justClosed = true;
@@ -57,6 +86,11 @@ namespace SmartPack.Forms
             this.Close();
         }
 
+        /// <summary>
+        /// Obre el formulari de consulta de serveis
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void consult_Click(object sender, EventArgs e)
         {
             justClosed = true;
@@ -66,6 +100,11 @@ namespace SmartPack.Forms
             this.Close();
         }
 
+        /// <summary>
+        /// Obre el formulari de consulta de serveis finalitzats
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ConsultAll_Click(object sender, EventArgs e)
         {
             justClosed = true;
@@ -74,6 +113,11 @@ namespace SmartPack.Forms
             this.Close();            
         }
 
+        /// <summary>
+        /// Obre el formulari de modificació de servei
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void update_Click(object sender, EventArgs e)
         {
             justClosed = true;

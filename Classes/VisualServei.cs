@@ -8,7 +8,7 @@ namespace SmartPack.Classes
 {
     public class VisualServei
     {
-        public string ID { get; set; }
+        public int ID { get; set; }
         public string Estat { get; set; }
         public string Detalls { get; set; }
         public float Pes { get; set; }
@@ -17,6 +17,8 @@ namespace SmartPack.Classes
         public string Adreça { get; set; }
         public string Telefon { get; set; }
         public string QR { get; set; }
+        public int transportistaID { get; set; }
+        public int usuariID { get; set; }
     }
 
 }

@@ -36,6 +36,7 @@
             this.cbEstado = new System.Windows.Forms.ComboBox();
             this.bCambiarEstado = new System.Windows.Forms.Button();
             this.dataGridHistorial = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHistorial)).BeginInit();
@@ -129,7 +130,7 @@
             this.bCambiarEstado.Name = "bCambiarEstado";
             this.bCambiarEstado.Size = new System.Drawing.Size(180, 44);
             this.bCambiarEstado.TabIndex = 117;
-            this.bCambiarEstado.Text = "Cambiar Estado";
+            this.bCambiarEstado.Text = "Canviar Estat";
             this.bCambiarEstado.UseVisualStyleBackColor = false;
             this.bCambiarEstado.Click += new System.EventHandler(this.bCambiarEstado_Click);
             // 
@@ -141,11 +142,29 @@
             this.dataGridHistorial.Size = new System.Drawing.Size(765, 182);
             this.dataGridHistorial.TabIndex = 118;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(411, 507);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(180, 44);
+            this.button1.TabIndex = 119;
+            this.button1.Text = "Pagar Servei";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ConsultaServei
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 563);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridHistorial);
             this.Controls.Add(this.bCambiarEstado);
             this.Controls.Add(this.l_rol);
@@ -180,5 +199,6 @@
         private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Button bCambiarEstado;
         private System.Windows.Forms.DataGridView dataGridHistorial;
+        private System.Windows.Forms.Button button1;
     }
 }

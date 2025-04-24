@@ -83,7 +83,7 @@ namespace SmartPack.Forms
         private async void bDesactivar_Click(object sender, EventArgs e)
         {
             string id = GestioSessins.id;
-            if (!string.IsNullOrEmpty(id) && id != "0")
+            if (id != "0")
             {
                 string message = await dbAPI.DesactivateUsuari(id, GestioSessins.token);
                 if (message == "correctament")

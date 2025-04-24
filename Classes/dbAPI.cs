@@ -1,4 +1,5 @@
 ﻿using SmartPack.Classes;
+using SmartPack.Forms;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -533,7 +534,6 @@ namespace SmartPack
         /// <param name="servei"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-
         public static async Task<string> crearServei(object servei, string token)
         {
             string url = "http://localhost:8080/servei/crear";
@@ -618,6 +618,8 @@ namespace SmartPack
             }
             return null;
         }
+
+        
 
         public static async Task<string> PutUpdateServeiPerId(object user, string id, string token)
         {
@@ -899,6 +901,12 @@ namespace SmartPack
             return "0";
         }
 
+        /// <summary>
+        /// Funció per desassignar un usuari d'una empresa
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<string> EmpresaDesassignarUsuari(this string id, string token)
         {
             string url = "http://localhost:8080/empresa/desassignar-usuari/" + id;
@@ -938,6 +946,12 @@ namespace SmartPack
             return "0";
         }
 
+        /// <summary>
+        /// Funció per obtenir el historial d'un servei
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<List<HistorialServei>> getServeiHistorial(this string id, string token)
         {
             string url = "http://localhost:8080/servei/" + id + "/historial";
@@ -960,6 +974,11 @@ namespace SmartPack
             return null;
         }
 
+        /// <summary>
+        /// Funció per obtenir tots els serveis
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<List<ClassServei>> getServeiLlist(string token)
         {
             string url = "http://localhost:8080/servei/list";
@@ -982,6 +1001,116 @@ namespace SmartPack
             return null;
         }
 
+        /// <summary>
+        /// Funció per obtenir tots els vehicles
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static async Task<List<ClassVehicle>> getVehicleLlist(string token)
+        {
+            string url = "http://localhost:8080/vehicle";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"responseBody: {responseBody}");
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    if (responseBody.Contains("\"id\":"))
+                    {
+                        List<ClassVehicle> vehicle = JsonSerializer.Deserialize<List<ClassVehicle>>(responseBody, new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        });
+                        return vehicle;
+                    }
+                }
+            }
+            return null;
+        }
 
+        /// <summary>
+        /// Funció per generar una factura
+        /// </summary>
+        /// <param name="factura"></param>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static async Task<string> generarFactura(this object factura,string id, string token)
+        {
+            string url = "http://localhost:8080/factura/generar/" + id;
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                string json = JsonSerializer.Serialize(factura);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"CrearServei.ResponseBody: {responseBody}");
+                if (responseBody.Contains("\"id\":"))
+                {
+                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                    {
+                        return doc.RootElement.GetProperty("id").GetInt32().ToString();
+                    }
+                }
+            }
+            return "0";
+        }
+
+        /// <summary>
+        /// Funció per obtenir totes les factures
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static async Task<List<Factura>> getFactures(string id)
+        {
+            List<Factura> factures = null;
+            string url = "http://localhost:8080/factura/list";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GestioSessins.token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"responseBody: {responseBody}");
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    if (!string.IsNullOrEmpty(responseBody) && responseBody != "[]")
+                    {
+                        factures = JsonSerializer.Deserialize<List<Factura>>(responseBody, new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        });
+                        return factures;
+                    }
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Funció per pagar una factura
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static async Task<string> facturaPagar(string id, string token)
+        {
+            string url = $"http://localhost:8080/factura/{id}/pagar"; // URL con el ID del usuario
+            using (HttpClient client = new HttpClient())
+            {
+                // Añadir token en el header
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.PutAsync(url, null);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Response: {responseBody}");
+                return responseBody;
+            }
+        }
     }
 }

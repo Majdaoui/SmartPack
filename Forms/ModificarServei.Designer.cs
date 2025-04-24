@@ -111,11 +111,11 @@
             this.title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.title.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.title.Location = new System.Drawing.Point(142, 32);
+            this.title.Location = new System.Drawing.Point(150, 32);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(463, 76);
+            this.title.Size = new System.Drawing.Size(626, 76);
             this.title.TabIndex = 119;
-            this.title.Text = "Consultar Servei un Servei";
+            this.title.Text = "Modificar un Servei";
             this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
@@ -462,7 +462,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.ClientSize = new System.Drawing.Size(788, 579);
             this.Controls.Add(this.tbID);
             this.Controls.Add(this.u_provincia);

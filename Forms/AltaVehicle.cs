@@ -40,6 +40,7 @@ namespace SmartPack
         /// <param name="e"></param>
         private async void guardar_e_Click(object sender, EventArgs e)
         {
+
             // Obtenir i netejar les dades dels camps del formulari
             string tmatricula = matricula_t.Text;
             string tmodel = model_t.Text;
@@ -56,7 +57,7 @@ namespace SmartPack
             }
             // Comprovar que la matrícula sigui vàlida
             // Si alguna dada no és correcta, mostra un missatge d'error
-            if (!EsMatriculaValida(tmatricula))
+            if (!GlobalAPI.EsMatriculaValida(tmatricula))
             {
                 Message message = new Message("La matrícula no és vàlida. Format acceptat: '1234ABC', 'B1234AB' o 'BA1234AB'", "Error");
                 message.ShowDialog();
@@ -104,17 +105,16 @@ namespace SmartPack
             else if (!string.IsNullOrEmpty(GestioSessins.token) && GestioSessins.token != "0")
             {
                 Console.WriteLine("Token: " + GestioSessins.token);
-                string response = await dbAPI.crearVehicle(vehicle, GestioSessins.token);
-                if (!string.IsNullOrEmpty(response) && response != "0")
+                string id = await dbAPI.crearVehicle(vehicle, GestioSessins.token);
+                if (!string.IsNullOrEmpty(id) && id != "0")
                 {
-                    Console.WriteLine("Response Body vehicle : " + response);
-                    ClassVehicle.id = response;
+                    Console.WriteLine("Response Body vehicle : " + id);
                     object assignar = new
                     {
                         transportistaId = Transportista.id,
-                        vehicleId = response,
+                        vehicleId = id,
                     };
-                    string message = await dbAPI.assignarVehicleTransportista(Transportista.id, ClassVehicle.id, GestioSessins.token);
+                    string message = await dbAPI.assignarVehicleTransportista(Transportista.id, id, GestioSessins.token);
                     Console.WriteLine("Vehicle Message 123 : " + message);
                     if (message == "OK")
                     {
@@ -132,30 +132,6 @@ namespace SmartPack
                         Console.WriteLine("Error " + message);
                     }
                 }
-            }
-        }
-
-
-        /// <summary>
-        /// Comprova si la matrícula és vàlida
-        /// Mètode que comprova si la matrícula és vàlida ha de tenir 4 números i 3 lletres
-        /// Si la matrícula és vàlida retorna true, si no, retorna false
-        /// tambe valida la matricula antiga de 2 lletres 4 numeros i 2 lletres
-        /// </summary>
-        /// <param name="tmatricula"></param>
-        /// <returns></returns>
-        public static bool EsMatriculaValida(string tmatricula)
-        {
-            string matricula = tmatricula.Trim().ToUpper();
-            string modernaPattern = @"^\d{4}[A-Z]{3}$";
-            string antigaPattern = @"^[A-Z]{1,2}\d{4}[A-Z]{2}$";
-            if (Regex.IsMatch(matricula, modernaPattern) || Regex.IsMatch(matricula, antigaPattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
 

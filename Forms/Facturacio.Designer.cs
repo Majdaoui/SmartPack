@@ -55,7 +55,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.panel5.Location = new System.Drawing.Point(-3, 77);
+            this.panel5.Location = new System.Drawing.Point(3, 101);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(675, 7);
             this.panel5.TabIndex = 33;
@@ -64,7 +64,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::SmartPack.Properties.Resources.logo_transparent;
-            this.pictureBox1.Location = new System.Drawing.Point(-3, -30);
+            this.pictureBox1.Location = new System.Drawing.Point(3, -6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(160, 125);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -77,7 +77,7 @@
             this.title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.title.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.title.Location = new System.Drawing.Point(157, -1);
+            this.title.Location = new System.Drawing.Point(163, 23);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(349, 75);
             this.title.TabIndex = 32;
@@ -100,7 +100,7 @@
             this.groupBox1.Controls.Add(this.Dades_Client);
             this.groupBox1.Controls.Add(this.Dades_Empresa);
             this.groupBox1.Controls.Add(this.logo);
-            this.groupBox1.Location = new System.Drawing.Point(12, 101);
+            this.groupBox1.Location = new System.Drawing.Point(12, 121);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(660, 444);
             this.groupBox1.TabIndex = 35;
@@ -258,8 +258,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
-            this.ClientSize = new System.Drawing.Size(684, 557);
+            this.ClientSize = new System.Drawing.Size(701, 604);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.pictureBox1);

@@ -335,5 +335,12 @@ namespace SmartPack.Forms
             servei.Show();
             this.Close();
         }
+
+        private void bVehicles_Click(object sender, EventArgs e)
+        {
+            Vehicles vehicle = new Vehicles();
+            vehicle.Show();
+            this.Close();
+        }
     }
 }

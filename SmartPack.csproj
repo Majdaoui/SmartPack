@@ -158,10 +158,13 @@
     <Compile Include="Classes\ClassUsuari.cs" />
     <Compile Include="Classes\dbAPI.cs" />
     <Compile Include="Classes\dbAPIHelpers.cs" />
+    <Compile Include="Classes\Factura.cs" />
     <Compile Include="Classes\GestioSessins.cs" />
+    <Compile Include="Classes\GlobalAPI.cs" />
     <Compile Include="Classes\HistorialServei.cs" />
     <Compile Include="Classes\mysqlAPI.cs" />
     <Compile Include="Classes\Transportista.cs" />
+    <Compile Include="Classes\VisualFactura.cs" />
     <Compile Include="Classes\VisualServei.cs" />
     <Compile Include="Forms\AltaServei.cs">
       <SubType>Form</SubType>
@@ -217,6 +220,12 @@
     <Compile Include="Forms\NewPassword.Designer.cs">
       <DependentUpon>NewPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Factures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Factures.Designer.cs">
+      <DependentUpon>Factures.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,11 +264,11 @@
     </Compile>
     <Compile Include="Forms\TestAttribute.cs" />
     <Compile Include="Forms\TestFixtureAttribute.cs" />
-    <Compile Include="Forms\Transportista.cs">
+    <Compile Include="Forms\Vehicles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Transportista.Designer.cs">
-      <DependentUpon>Transportista.cs</DependentUpon>
+    <Compile Include="Forms\Vehicles.Designer.cs">
+      <DependentUpon>Vehicles.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Vehicle.cs">
       <SubType>Form</SubType>
@@ -332,6 +341,9 @@
     <EmbeddedResource Include="Forms\NewPassword.resx">
       <DependentUpon>NewPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Factures.resx">
+      <DependentUpon>Factures.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -350,8 +362,8 @@
     <EmbeddedResource Include="Forms\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Transportista.resx">
-      <DependentUpon>Transportista.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Vehicles.resx">
+      <DependentUpon>Vehicles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Vehicle.resx">
       <DependentUpon>Vehicle.cs</DependentUpon>

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SmartPack.Classes
 {
-    class ClassVehicle
+    public class ClassVehicle
     {
-        public static string id { get; set; }
-        public string matricula { get; set; }
-        public string model { get; set; }
+        public int id { get; set; }
         public string marca { get; set; }
+        public string model { get; set; }
+        public string matricula { get; set; }
     }
 }

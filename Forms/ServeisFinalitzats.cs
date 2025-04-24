@@ -48,7 +48,7 @@ namespace SmartPack.Forms
             }
             else if (GestioSessins.role == "ROLE_ADMIN")
             {
-                list = await dbAPI.getServeiPerId(GestioSessins.id);
+                list = await dbAPI.getServeiLlist(GestioSessins.token);
             }
             if (list != null)
             {
@@ -59,7 +59,7 @@ namespace SmartPack.Forms
                     {
                         VisualServei vs = new VisualServei
                         {
-                            ID = servei.id.ToString(),
+                            ID = servei.id,
                             Estat = servei.estat,
                             Detalls = servei.paquet?.detalls,
                             Pes = servei.paquet?.pes ?? 0,

@@ -52,7 +52,4 @@ namespace SmartPack.Classes
         public int transportistaId { get; set; }
         public Paquet paquet { get; set; }
     }
-
-
-
 }

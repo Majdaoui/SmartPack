@@ -530,6 +530,7 @@ namespace SmartPack.Forms
             this.bVehicles.TabIndex = 40;
             this.bVehicles.Text = "Vehicles";
             this.bVehicles.UseVisualStyleBackColor = false;
+            this.bVehicles.Click += new System.EventHandler(this.bVehicles_Click);
             // 
             // bFactures
             // 

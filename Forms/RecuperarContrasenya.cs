@@ -1,14 +1,12 @@
-﻿using SmartPack.Classes;
-using System;
-using System.Net.Http;
-using System.Text.Json;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 using SmartPack.Forms;
 
 namespace SmartPack
 {
+    /// <summary>
+    /// Classe que representa el formulari de recuperació de contrasenya.
+    /// </summary>
     public partial class RecuperarContrasenya : TitleForm
     {
         public RecuperarContrasenya()

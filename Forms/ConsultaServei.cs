@@ -1,17 +1,16 @@
 ﻿using SmartPack.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Formulari de consulta de serveis
+    /// </summary>
     public partial class ConsultaServei : TitleForm
     {
         public TitleForm Open { get; set; } = null;
@@ -21,8 +20,11 @@ namespace SmartPack.Forms
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Carrega el formulari i les dades del servei en el datagrid
+        /// </summary>
+        /// <param name="e"></param>
 
-        
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -36,6 +38,11 @@ namespace SmartPack.Forms
         }
 
         private bool justClosed = false;
+
+        /// <summary>
+        /// Al tancar el formulari, obre el formulari de Principal
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -48,6 +55,10 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Carrega les dades del servei en el datagrid i les mostra
+        /// Nomes si el role es ROLE_DELIVERYMAN o ROLE_ADMIN
+        /// </summary>
         private async void LoadDB()
         {
             if (GestioSessins.role == "ROLE_DELIVERYMAN")
@@ -63,7 +74,7 @@ namespace SmartPack.Forms
                     {
                         List<VisualServei> viewModels = list.Select(s => new VisualServei
                         {
-                            ID = s.id.ToString(),
+                            ID = s.id,
                             Estat = s.estat,
                             Detalls = s.paquet?.detalls,
                             Pes = s.paquet?.pes ?? 0,
@@ -85,7 +96,7 @@ namespace SmartPack.Forms
                 {
                     VisualServei vs = new VisualServei
                     {
-                        ID = classServei.id.ToString(),
+                        ID = classServei.id,
                         Estat = classServei.estat,
                         Detalls = classServei.paquet?.detalls,
                         Pes = classServei.paquet?.pes ?? 0,
@@ -102,6 +113,13 @@ namespace SmartPack.Forms
             }
             
         }
+
+        /// <summary>
+        /// Canvia l'estat del servei seleccionat
+        /// Nomes si el role es ROLE_DELIVERYMAN o ROLE_ADMIN
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private async void bCambiarEstado_Click(object sender, EventArgs e)
         {
@@ -121,6 +139,13 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Carrega l'historial del servei seleccionat
+        /// Amb tots els canvis realitzats al servei
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private async void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -138,6 +163,51 @@ namespace SmartPack.Forms
                 dataGridHistorial.Columns["tranpostistaId"].Visible = false;
                 dataGridHistorial.Refresh();
             }
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+            var novaFactura = new Factura
+            {
+                numFactura = GeneraNumeroFactura(),
+                preu = GenerarPreu(),
+                iva = 21,
+                data = DateTime.Now,
+                serveiId = Convert.ToInt32(selectedRow.Cells["ID"].Value),
+                usuariId = Convert.ToInt32(GestioSessins.usuariId),
+                pagat = true,
+                metodePagament = "Transferència"
+            };
+
+            var factura = await dbAPI.generarFactura(novaFactura, novaFactura.serveiId.ToString(), GestioSessins.token);
+            if (factura != null)
+            {
+                using (Message message1 = new Message("Factura generada correctament", "info"))
+                {
+                    message1.ShowDialog();
+                }
+            }
+            else
+            {
+                using (Message message1 = new Message("Error al generar la factura", "error"))
+                {
+                    message1.ShowDialog();
+                }
+            }
+        }
+
+        private string GeneraNumeroFactura()
+        {
+            return $"SPK-{DateTime.Now:yyyyMMdd-HHmmss}";
+        }
+
+        private decimal GenerarPreu()
+        {
+            Random rnd = new Random();
+            double preu = rnd.NextDouble() * (10 - 7) + 7;
+            return Math.Round((decimal)preu, 2);
         }
 
     }

@@ -25,25 +25,59 @@ namespace SmartPack.Forms
             LoadDB();
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Servei servei = new Servei();
+            servei.Show();
+        }
+
         private async void LoadDB()
         {
-            var list = await dbAPI.getServeiPerId(GestioSessins.id);
-            if (list != null)
+            if (GestioSessins.role == "ROLE_DELIVERYMAN")
             {
-                List<VisualServei> viewModels = list.Select(s => new VisualServei
+                var list = await dbAPI.getServeiPerId(GestioSessins.id);
+                if (list != null)
                 {
-                    ID = s.id.ToString(),
-                    Estat = s.estat,
-                    Detalls = s.paquet?.detalls,
-                    Pes = s.paquet?.pes ?? 0,
-                    Mida = s.paquet?.mida,
-                    Destinatari = s.paquet?.nomDestinatari,
-                    Adreça = s.paquet?.adreçadestinatari,
-                    Telefon = s.paquet?.telefondestinatari
-                }).ToList();
+                    List<VisualServei> viewModels = list.Select(s => new VisualServei
+                    {
+                        ID = s.id,
+                        usuariID = s.usuariId,
+                        transportistaID = s.transportistaId,
+                        Estat = s.estat,
+                        Detalls = s.paquet?.detalls,
+                        Pes = s.paquet?.pes ?? 0,
+                        Mida = s.paquet?.mida,
+                        Destinatari = s.paquet?.nomDestinatari,
+                        Adreça = s.paquet?.adreçadestinatari,
+                        Telefon = s.paquet?.telefondestinatari
+                    }).ToList();
 
-                dataGridView1.DataSource = viewModels;
-                dataGridView1.Refresh();
+                    dataGridView1.DataSource = viewModels;
+                    dataGridView1.Columns["usuariId"].Visible = false;
+                    dataGridView1.Columns["transportistaId"].Visible = false;
+                    dataGridView1.Refresh();
+                }
+            }
+            else if (GestioSessins.role == "ROLE_ADMIN")
+            {
+                var list = await dbAPI.getServeiLlist(GestioSessins.token);
+                if (list != null)
+                {
+                    List<VisualServei> viewModels = list.Select(s => new VisualServei
+                    {
+                        ID = s.id,
+                        Estat = s.estat,
+                        Detalls = s.paquet?.detalls,
+                        Pes = s.paquet?.pes ?? 0,
+                        Mida = s.paquet?.mida,
+                        Destinatari = s.paquet?.nomDestinatari,
+                        Adreça = s.paquet?.adreçadestinatari,
+                        Telefon = s.paquet?.telefondestinatari
+                    }).ToList();
+                    dataGridView1.DataSource = viewModels;
+                    dataGridView1.Refresh();
+                }
             }
         }
 
@@ -60,7 +94,6 @@ namespace SmartPack.Forms
                 string Telefon = row.Cells["Telefon"].Value.ToString();
                 string Mida = row.Cells["Mida"].Value.ToString();
                 string Adreça = row.Cells["Adreça"].Value.ToString();
-
                 if (Estat == "ENTREGAT" || Estat == "RETORNAT" || Estat == "ENVIAT")
                 {
                     using (Message msg = new Message("No es pot modificar les dades d`aquest paquet.", "info"))
@@ -69,13 +102,10 @@ namespace SmartPack.Forms
                     }
                     return;
                 }
-
-                Console.WriteLine($"ID: {ID}, Detalls: {Detalls}");
                 tbID.Text = ID;
                 u_detall.Text = Detalls;
                 u_pes.Text = Pes;
                 u_codiQR.Text = "";
-
                 if (Mida.Contains(","))
                 {
                     var array = Mida.Split(',');
@@ -86,10 +116,8 @@ namespace SmartPack.Forms
                         u_amplada.Text = array[2].Trim();
                     }
                 }
-
                 u_nomDestinatari.Text = Destinatari;
                 u_telefonDestinatari.Text = Telefon;
-
                 if (Adreça.Contains(","))
                 {
                     var array = Adreça.Split(',');
@@ -110,7 +138,7 @@ namespace SmartPack.Forms
 
         private async void UpdateServei_Click(object sender, EventArgs e)
         {
-
+            ClassServei servei = new ClassServei();
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 var adreça = u_tVia.Text.Trim() + ", " + u_nomVia.Text.Trim() + ", " + 
@@ -119,13 +147,11 @@ namespace SmartPack.Forms
                     u_porta.Text.Trim() + ", " +
                     u_codipostal.Text.Trim() + ", " + u_poblacio.Text.Trim() + ", " +
                     u_provincia.Text.Trim();
-
-
                 var update = new
                 {
                     //estat = "ORDENAT",
-                    usuariId = "2",
-                    transportistaId = "2",
+                    usuariId = servei.usuariId,
+                    transportistaId = servei.transportistaId,
                     paquet = new
                     {
                         detalls = u_detall.Text,
@@ -156,10 +182,11 @@ namespace SmartPack.Forms
             }
             else
             {
-                MessageBox.Show("Please select a row first.");
+                using (Message msg = new Message("Si us plau selecciona el servei a modificar.", "error"))
+                {
+                    msg.ShowDialog();
+                }
             }
-
-            
         }
     }
 }
