@@ -3,6 +3,9 @@ using static SmartPack.dbAPI;
 
 namespace SmartPack.Classes
 {
+    /// <summary>
+    /// Classe que representa un servei
+    /// </summary>
     public class ClassServeiOLD
     {
         [JsonConverter(typeof(IntToStringConverter))]
@@ -31,7 +34,9 @@ namespace SmartPack.Classes
 
     }
 
-
+    /// <summary>
+    /// Classe que representa un paquet
+    /// </summary>
     public class Paquet
     {
         public int id { get; set; }
@@ -44,6 +49,9 @@ namespace SmartPack.Classes
         public string codiqr { get; set; }
     }
 
+    /// <summary>
+    /// Classe que representa un servei
+    /// </summary>
     public class ClassServei
     {
         public int id { get; set; }

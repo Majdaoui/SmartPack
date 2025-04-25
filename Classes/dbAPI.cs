@@ -590,6 +590,11 @@ namespace SmartPack
             return "0";
         }
 
+        /// <summary>
+        /// Funció per obtenir un servei per id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static async Task<List<ClassServei>> getServeiPerId(string id)
         {
             List<ClassServei> serveis = null;
@@ -619,16 +624,22 @@ namespace SmartPack
             return null;
         }
 
-        
 
-        public static async Task<string> PutUpdateServeiPerId(object user, string id, string token)
+        /// <summary>
+        /// Funció per actualitzar un servei
+        /// </summary>
+        /// <param name="servei"></param>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static async Task<string> PutUpdateServeiPerId(object servei, string id, string token)
         {
             string url = "http://localhost:8080/servei/" + id;
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                 client.DefaultRequestHeaders.Add("Accept", "*/*");
-                string json = JsonSerializer.Serialize(user);
+                string json = JsonSerializer.Serialize(servei);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PutAsync(url, content);
                 string responseBody = await response.Content.ReadAsStringAsync();

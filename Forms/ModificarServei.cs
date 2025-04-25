@@ -1,30 +1,39 @@
 ﻿using SmartPack.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Class Modificar Un Servei
+    /// </summary>
     public partial class ModificarServei : TitleForm
     {
+        /// <summary>
+        /// Constructor de la classe ModificarServei
+        /// </summary>
         public ModificarServei()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Carrega el formulari i les dades del servei en el datagrid
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             LoadDB();
         }
 
+        /// <summary>
+        /// Al tancar el formulari, obre el formulari de Servei
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -32,6 +41,9 @@ namespace SmartPack.Forms
             servei.Show();
         }
 
+        /// <summary>
+        /// Carrega les dades del servei en el datagrid
+        /// </summary>
         private async void LoadDB()
         {
             if (GestioSessins.role == "ROLE_DELIVERYMAN")
@@ -67,6 +79,8 @@ namespace SmartPack.Forms
                     List<VisualServei> viewModels = list.Select(s => new VisualServei
                     {
                         ID = s.id,
+                        usuariID = s.usuariId,
+                        transportistaID = s.transportistaId,
                         Estat = s.estat,
                         Detalls = s.paquet?.detalls,
                         Pes = s.paquet?.pes ?? 0,
@@ -76,17 +90,26 @@ namespace SmartPack.Forms
                         Telefon = s.paquet?.telefondestinatari
                     }).ToList();
                     dataGridView1.DataSource = viewModels;
+                    dataGridView1.Columns["usuariId"].Visible = false;
+                    dataGridView1.Columns["transportistaId"].Visible = false;
                     dataGridView1.Refresh();
                 }
             }
         }
 
+        /// <summary>
+        /// Carrega les dades del servei seleccionat en els camps de text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 string ID = row.Cells["ID"].Value.ToString();
+                string UsuariID = row.Cells["usuariID"].Value.ToString();
+                string TransportistaID = row.Cells["transportistaID"].Value.ToString();
                 string Estat = row.Cells["Estat"].Value.ToString();
                 string Detalls = row.Cells["Detalls"].Value.ToString();
                 string Pes = row.Cells["Pes"].Value.ToString();
@@ -136,11 +159,18 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Actualitza les dades del servei seleccionat
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void UpdateServei_Click(object sender, EventArgs e)
         {
-            ClassServei servei = new ClassServei();
             if (dataGridView1.SelectedRows.Count > 0)
             {
+                DataGridViewRow fila = dataGridView1.SelectedRows[0];
+                string usuariId = fila.Cells["usuariId"].Value.ToString();
+                string transportistaId = fila.Cells["transportistaId"].Value.ToString();
                 var adreça = u_tVia.Text.Trim() + ", " + u_nomVia.Text.Trim() + ", " + 
                     u_num.Text.Trim() + ", " +
                     u_planta.Text.Trim() + ", " +
@@ -150,8 +180,8 @@ namespace SmartPack.Forms
                 var update = new
                 {
                     //estat = "ORDENAT",
-                    usuariId = servei.usuariId,
-                    transportistaId = servei.transportistaId,
+                    usuariId = usuariId,
+                    transportistaId = transportistaId,
                     paquet = new
                     {
                         detalls = u_detall.Text,

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace SmartPack.Forms
 {
@@ -46,9 +47,9 @@ namespace SmartPack.Forms
                     {
                         Id = factura.id,
                         Numero = factura.numFactura,
-                        Preu = factura.preu,
-                        IVA = factura.iva,
-                        Data = factura.data,
+                        Preu = factura.preu.ToString(),
+                        IVA = factura.iva.ToString(),
+                        Data = factura.data.ToString(),
                         Servei = factura.serveiId,
                         Usuari = factura.usuariId,
                         Pagat = factura.pagat,
@@ -105,6 +106,21 @@ namespace SmartPack.Forms
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 string ID = row.Cells["id"].Value.ToString();
+                Factura factura = new Factura
+                {
+                    /*
+                    Codi = row.Cells["id"].Value.ToString(),
+                    TotalSenseIVA ="",
+                    Preu = "",
+                    Data = "",
+                    Numero = "",
+                    IVA = "",
+                    Descripcio = "",
+                    TotalAmbIVA = "",
+                    DadesClient = "",
+                    */
+                };
+                //Facturacio vistaFactura = new Facturacio(factura);
             }
         }
     }

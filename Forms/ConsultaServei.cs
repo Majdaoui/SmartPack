@@ -131,11 +131,28 @@ namespace SmartPack.Forms
                 string Detalls = selectedRow.Cells["Detalls"].Value.ToString();
                 Console.WriteLine($"Estat: {Estat}, Detalls: {Detalls}");
                 var r = await dbAPI.canviEstatServei(ID, cbEstado.Text, GestioSessins.token);
+                if (r != "0")
+                {
+                    using (Message message1 = new Message("Estat canviat correctament", "info"))
+                    {
+                        message1.ShowDialog();
+                    }
+                }
+                else
+                {
+                    using (Message message1 = new Message("Error al canviar l'estat", "error"))
+                    {
+                        message1.ShowDialog();
+                    }
+                }
                 LoadDB();
             }
             else
             {
-                MessageBox.Show("Please select a row first.");
+                using (Message message1 = new Message("Si us plau selecciona el servei", "error"))
+                {
+                    message1.ShowDialog();
+                }
             }
         }
 
