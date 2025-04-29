@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Windows.Forms;
@@ -87,6 +89,7 @@ namespace SmartPack.Forms
                         dataGridView1.Refresh();
                     }
                 }
+                ImageQR.Visible = false;
             }
             else if (GestioSessins.role == "ROLE_ADMIN")
             {
@@ -180,6 +183,7 @@ namespace SmartPack.Forms
                 dataGridHistorial.Columns["tranpostistaId"].Visible = false;
                 dataGridHistorial.Refresh();
             }
+            ImageQR.Visible = false;
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -225,6 +229,53 @@ namespace SmartPack.Forms
             Random rnd = new Random();
             double preu = rnd.NextDouble() * (10 - 7) + 7;
             return Math.Round((decimal)preu, 2);
+        }
+
+        private async void bQR_Click(object sender, EventArgs e)
+        {
+            ImageQR.Visible = true;
+            ImageQR.SizeMode = PictureBoxSizeMode.CenterImage;
+            DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+            string ID = selectedRow.Cells["ID"].Value.ToString();
+            string jsonResponse = await dbAPI.generarQR(ID);
+
+            Console.WriteLine("Response Body QR: " + jsonResponse);
+
+            if (jsonResponse != null)
+            {
+                var json = System.Text.Json.JsonDocument.Parse(jsonResponse);
+
+                if (json.RootElement.TryGetProperty("paquet", out var paquetProperty) &&
+                    paquetProperty.TryGetProperty("codiqr", out var qrProperty))
+                {
+                    string base64Image = qrProperty.GetString();
+                    Console.WriteLine("Base64 image (first 100 chars): " + base64Image.Substring(0, 100));
+
+                    try
+                    {
+                        byte[] imageBytes = Convert.FromBase64String(base64Image);
+                        using (var ms = new MemoryStream(imageBytes))
+                        {
+                            using (var tempImage = Image.FromStream(ms))
+                            {
+                                ImageQR.Image = new Bitmap(tempImage);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error en carregar la imatge del QR: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No s'ha trobat el camp 'codiqr'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error al generar el QR.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

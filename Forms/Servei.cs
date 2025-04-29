@@ -23,7 +23,7 @@ namespace SmartPack.Forms
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            if (GestioSessins.role == "ROLE_USER" || GestioSessins.role == "ROLE_DELIVERYMAN")
+            if (GestioSessins.role == "ROLE_USER" || GestioSessins.role == "ROLE_DELIVERYMAN" || GestioSessins.role == "ROLE_ADMIN")
             {
                 AddServei.Visible = true;
             }

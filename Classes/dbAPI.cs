@@ -51,7 +51,7 @@ namespace SmartPack
             return "0";
         }
 
-       
+
         /// <summary>
         /// Funció per a fer login a la base de dades
         /// Retorna el token de l'usuari si s'ha fet login correctament
@@ -82,7 +82,7 @@ namespace SmartPack
                             count++;
                         }
                     }
-                    
+
                     if (responseBody.Contains("\"role\":"))
                     {
                         using (JsonDocument doc = JsonDocument.Parse(responseBody))
@@ -100,7 +100,7 @@ namespace SmartPack
                         return false;
                     }
                 }
-            }            
+            }
             return (count >= 2);
         }
 
@@ -181,7 +181,7 @@ namespace SmartPack
                             count++;
                         }
                     }
-                    if(count >= 7)
+                    if (count >= 7)
                     {
                         return usuari;
                     }
@@ -608,7 +608,7 @@ namespace SmartPack
                 Console.WriteLine($"responseBody: {responseBody}");
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    if(!string.IsNullOrEmpty(responseBody) && responseBody != "[]")
+                    if (!string.IsNullOrEmpty(responseBody) && responseBody != "[]")
                     {
 
                         serveis = JsonSerializer.Deserialize<List<ClassServei>>(responseBody, new JsonSerializerOptions
@@ -948,7 +948,7 @@ namespace SmartPack
                 }
                 else
                 {
-                    if(responseBody.Contains("no està assignat"))
+                    if (responseBody.Contains("no està assignat"))
                     {
                         return "no-assignat";
                     }
@@ -1049,7 +1049,7 @@ namespace SmartPack
         /// <param name="id"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static async Task<string> generarFactura(this object factura,string id, string token)
+        public static async Task<string> generarFactura(this object factura, string id, string token)
         {
             string url = "http://localhost:8080/factura/generar/" + id;
             using (HttpClient client = new HttpClient())
@@ -1123,5 +1123,36 @@ namespace SmartPack
                 return responseBody;
             }
         }
+
+        /// <summary>
+        /// Funció per obtenir el QR d'un servei
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static async Task<string> generarQR(string id)
+        {
+            string url = $"http://localhost:8080/servei/{id}/regenerar-qr";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GestioSessins.token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+
+                // POST, no GET!
+                HttpResponseMessage response = await client.PostAsync(url, null);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"QR generat: {responseBody}");
+                    return responseBody;
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode}");
+                    return null;
+                }
+            }
+        }
+
     }
 }

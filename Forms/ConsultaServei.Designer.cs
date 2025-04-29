@@ -37,9 +37,12 @@
             this.bCambiarEstado = new System.Windows.Forms.Button();
             this.dataGridHistorial = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.bQR = new System.Windows.Forms.Button();
+            this.ImageQR = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHistorial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageQR)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -126,9 +129,9 @@
             this.bCambiarEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bCambiarEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bCambiarEstado.ForeColor = System.Drawing.Color.Black;
-            this.bCambiarEstado.Location = new System.Drawing.Point(597, 507);
+            this.bCambiarEstado.Location = new System.Drawing.Point(372, 506);
             this.bCambiarEstado.Name = "bCambiarEstado";
-            this.bCambiarEstado.Size = new System.Drawing.Size(180, 44);
+            this.bCambiarEstado.Size = new System.Drawing.Size(133, 44);
             this.bCambiarEstado.TabIndex = 117;
             this.bCambiarEstado.Text = "Canviar Estat";
             this.bCambiarEstado.UseVisualStyleBackColor = false;
@@ -151,19 +154,51 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(411, 507);
+            this.button1.Location = new System.Drawing.Point(511, 506);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 44);
+            this.button1.Size = new System.Drawing.Size(130, 44);
             this.button1.TabIndex = 119;
             this.button1.Text = "Pagar Servei";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // bQR
+            // 
+            this.bQR.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bQR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bQR.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bQR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bQR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bQR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bQR.ForeColor = System.Drawing.Color.Black;
+            this.bQR.Location = new System.Drawing.Point(647, 506);
+            this.bQR.Name = "bQR";
+            this.bQR.Size = new System.Drawing.Size(130, 44);
+            this.bQR.TabIndex = 120;
+            this.bQR.Text = "Codi QR";
+            this.bQR.UseVisualStyleBackColor = false;
+            this.bQR.Click += new System.EventHandler(this.bQR_Click);
+            // 
+            // ImageQR
+            // 
+            this.ImageQR.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ImageQR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ImageQR.Location = new System.Drawing.Point(337, 142);
+            this.ImageQR.Name = "ImageQR";
+            this.ImageQR.Size = new System.Drawing.Size(178, 171);
+            this.ImageQR.TabIndex = 121;
+            this.ImageQR.TabStop = false;
+            this.ImageQR.Visible = false;
             // 
             // ConsultaServei
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 563);
+            this.Controls.Add(this.ImageQR);
+            this.Controls.Add(this.bQR);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridHistorial);
             this.Controls.Add(this.bCambiarEstado);
@@ -179,6 +214,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHistorial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageQR)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -200,5 +236,7 @@
         private System.Windows.Forms.Button bCambiarEstado;
         private System.Windows.Forms.DataGridView dataGridHistorial;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bQR;
+        private System.Windows.Forms.PictureBox ImageQR;
     }
 }
