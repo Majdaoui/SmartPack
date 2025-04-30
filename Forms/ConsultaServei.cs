@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -15,11 +16,20 @@ namespace SmartPack.Forms
     /// </summary>
     public partial class ConsultaServei : TitleForm
     {
+        /// <summary>
+        /// Element que conté la imatge a imprimir
+        /// </summary>
+        private PrintDocument printDocument = new PrintDocument();
+        private Image imageToPrint;
         public TitleForm Open { get; set; } = null;
 
+        /// <summary>
+        /// Constructor del formulari consulta servei
+        /// </summary>
         public ConsultaServei()
         {
             InitializeComponent();
+            printDocument.PrintPage += PrintDocument_PrintPage;
         }
 
         /// <summary>
@@ -123,7 +133,6 @@ namespace SmartPack.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private async void bCambiarEstado_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -165,7 +174,6 @@ namespace SmartPack.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private async void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -186,10 +194,15 @@ namespace SmartPack.Forms
             ImageQR.Visible = false;
         }
 
+
+        /// <summary>
+        /// Genera la factura del servei seleccionat
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void button1_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-
             var novaFactura = new Factura
             {
                 numFactura = GeneraNumeroFactura(),
@@ -201,7 +214,6 @@ namespace SmartPack.Forms
                 pagat = true,
                 metodePagament = "Transferència"
             };
-
             var factura = await dbAPI.generarFactura(novaFactura, novaFactura.serveiId.ToString(), GestioSessins.token);
             if (factura != null)
             {
@@ -219,11 +231,20 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Genera un numero de factura aleatori
+        /// </summary>
+        /// <returns></returns>
         private string GeneraNumeroFactura()
         {
             return $"SPK-{DateTime.Now:yyyyMMdd-HHmmss}";
         }
 
+
+        /// <summary>
+        /// Genera un preu aleatori entre 7 i 10
+        /// </summary>
+        /// <returns></returns>
         private decimal GenerarPreu()
         {
             Random rnd = new Random();
@@ -231,6 +252,11 @@ namespace SmartPack.Forms
             return Math.Round((decimal)preu, 2);
         }
 
+        /// <summary>
+        /// Genera el QR del servei seleccionat
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void bQR_Click(object sender, EventArgs e)
         {
             ImageQR.Visible = true;
@@ -250,7 +276,6 @@ namespace SmartPack.Forms
                 {
                     string base64Image = qrProperty.GetString();
                     Console.WriteLine("Base64 image (first 100 chars): " + base64Image.Substring(0, 100));
-
                     try
                     {
                         byte[] imageBytes = Convert.FromBase64String(base64Image);
@@ -278,5 +303,71 @@ namespace SmartPack.Forms
             }
         }
 
+
+        /// <summary>
+        /// Genera l'etiqueta del servei seleccionat
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void bEtiqueta_Click(object sender, EventArgs e)
+        {
+            ImageLabel.Visible = true;
+            ImageLabel.SizeMode = PictureBoxSizeMode.CenterImage;
+            ImageLabel.SizeMode = PictureBoxSizeMode.AutoSize;
+            DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+            string ID = selectedRow.Cells["ID"].Value.ToString();
+            Image etiquetaImage = await dbAPI.ServeiEtiqueta(ID);
+            if (etiquetaImage != null)
+            {
+                ImageLabel.Image = etiquetaImage;
+            }
+            else
+            {
+                MessageBox.Show("Error al generar l'etiqueta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        /// <summary>
+        /// Dibuixa la imatge seleccionada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            if (imageToPrint != null)
+            {
+                int x = (e.PageBounds.Width - imageToPrint.Width) / 2;
+                int y = (e.PageBounds.Height - imageToPrint.Height) / 2;
+
+                e.Graphics.DrawImage(imageToPrint, x, y);
+            }
+        }
+
+
+        /// <summary>
+        /// Imprimeix l'etiqueta del servei seleccionat
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bPrint_Click(object sender, EventArgs e)
+        {
+            if (ImageLabel.Image != null)
+            {
+                imageToPrint = ImageLabel.Image;
+
+                PrintDialog printDialog = new PrintDialog();
+                printDialog.Document = printDocument;
+
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    printDocument.Print();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hi ha cap imatge per imprimir.");
+            }
+        }
     }
 }

@@ -2,11 +2,14 @@
 using SmartPack.Forms;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SmartPack
 {
@@ -1153,6 +1156,46 @@ namespace SmartPack
                 }
             }
         }
+
+
+        /// <summary>
+        /// Funció per mostrar l'etiqueta d'un servei
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static async Task<Image> ServeiEtiqueta(string id)
+        {
+            string url = $"http://localhost:8080/servei/{id}/etiqueta";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GestioSessins.token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    try
+                    {
+                        byte[] imageBytes = await response.Content.ReadAsByteArrayAsync();
+                        using (var ms = new MemoryStream(imageBytes))
+                        {
+                            return Image.FromStream(ms);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error en llegir la imatge: {ex.Message}");
+                        return null;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode}");
+                    return null;
+                }
+            }
+        }
+
 
     }
 }
