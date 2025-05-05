@@ -54,8 +54,8 @@ namespace SmartPack.Forms
                     List<VisualServei> viewModels = list.Select(s => new VisualServei
                     {
                         ID = s.id,
-                        usuariID = s.usuariId,
-                        transportistaID = s.transportistaId,
+                        UsuariID = s.usuariId,
+                        TransportistaID = s.transportistaId,
                         Estat = s.estat,
                         Detalls = s.paquet?.detalls,
                         Pes = s.paquet?.pes ?? 0,
@@ -79,8 +79,8 @@ namespace SmartPack.Forms
                     List<VisualServei> viewModels = list.Select(s => new VisualServei
                     {
                         ID = s.id,
-                        usuariID = s.usuariId,
-                        transportistaID = s.transportistaId,
+                        UsuariID = s.usuariId,
+                        TransportistaID = s.transportistaId,
                         Estat = s.estat,
                         Detalls = s.paquet?.detalls,
                         Pes = s.paquet?.pes ?? 0,

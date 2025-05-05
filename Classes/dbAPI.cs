@@ -36,6 +36,7 @@ namespace SmartPack
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"altaUser: {responseBody}");
                 if (responseBody.Contains("\"description\":"))
                 {
                     using (JsonDocument doc = JsonDocument.Parse(responseBody))
@@ -74,7 +75,7 @@ namespace SmartPack
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"responseBody: {responseBody}");
+                Console.WriteLine($"Login: {responseBody}");
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     if (responseBody.Contains("\"token\":"))
@@ -123,7 +124,7 @@ namespace SmartPack
                 client.DefaultRequestHeaders.Add("Accept", "*/*");
                 HttpResponseMessage response = await client.GetAsync(url);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"responseBody: {responseBody}");
+                Console.WriteLine($"getCurrentUser: {responseBody}");
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     ClassUsuari usuari = new ClassUsuari();
@@ -211,6 +212,7 @@ namespace SmartPack
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"forgotPassword: {responseBody}");
                 if (responseBody.Contains("\"tokenRecovery\":"))
                 {
                     using (JsonDocument doc = JsonDocument.Parse(responseBody))
@@ -240,6 +242,7 @@ namespace SmartPack
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"resetPassword: {responseBody}");
                 if (responseBody.Contains("\"message\":"))
                 {
                     using (JsonDocument doc = JsonDocument.Parse(responseBody))
@@ -273,7 +276,7 @@ namespace SmartPack
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"responseBody: {responseBody}");
+                Console.WriteLine($"CreateEmpresa: {responseBody}");
                 if (responseBody.Contains("\"description\":"))
                 {
                     using (JsonDocument doc = JsonDocument.Parse(responseBody))
@@ -316,6 +319,7 @@ namespace SmartPack
                 };
                 HttpResponseMessage response = await client.SendAsync(request);
                 string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"DesactivateUsuari: {responseBody}");
                 if (response.IsSuccessStatusCode)
                 {
                     if (responseBody.Contains("\"message\":"))
@@ -348,6 +352,7 @@ namespace SmartPack
                 client.DefaultRequestHeaders.Add("Accept", "*/*");
                 HttpResponseMessage response = await client.GetAsync(url);
                 string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"GetUserByID: {responseBody}");
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     ClassUsuari usuari = JsonSerializer.Deserialize<ClassUsuari>(responseBody, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
@@ -375,17 +380,11 @@ namespace SmartPack
                 // Añadir token en el header
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                 client.DefaultRequestHeaders.Add("Accept", "*/*");
-
-                // Serializar el objeto usuario a JSON
                 string json = JsonSerializer.Serialize(user);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                // Enviar la petición PUT
                 HttpResponseMessage response = await client.PutAsync(url, content);
                 string responseBody = await response.Content.ReadAsStringAsync();
-
-                Console.WriteLine($"Response: {responseBody}");
-
+                Console.WriteLine($"UpdateUser: {responseBody}");
                 if (response.IsSuccessStatusCode)
                 {
                     Console.WriteLine("Response: successfully " + responseBody);
@@ -412,6 +411,7 @@ namespace SmartPack
                 client.DefaultRequestHeaders.Add("Accept", "*/*");
                 HttpResponseMessage response = await client.GetAsync(url);
                 string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"getAllEmpresas: {responseBody}");
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     return responseBody;
             }
@@ -571,7 +571,6 @@ namespace SmartPack
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
                 var jsonBody = JsonSerializer.Serialize(new { estat = _estat });
-
                 var request = new HttpRequestMessage
                 {
                     Method = new HttpMethod("PATCH"),
@@ -592,6 +591,8 @@ namespace SmartPack
             }
             return "0";
         }
+
+
 
         /// <summary>
         /// Funció per obtenir un servei per id
@@ -1016,6 +1017,59 @@ namespace SmartPack
         }
 
         /// <summary>
+        /// Funció per obtenir els serveis d'un usuari
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static async Task<List<ClassServei>> GetServeiPerUsuari(string id, string token)
+        {
+            string url = "http://localhost:8080/servei/usuari/" + id;
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"GetServeiPerUsuari.ResponseBody: {responseBody}");
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    if (responseBody.Contains("\"id\":"))
+                    {
+                        List<ClassServei> vs = JsonSerializer.Deserialize<List<ClassServei>>(responseBody);
+                        Console.WriteLine($"GetServeiPerUsuari: {vs}");
+                        return vs;
+                    }
+                }
+            }
+            return null;
+        }
+
+
+        public static async Task<string> DeleteServei(string id, string token)
+        {
+            string url = "http://localhost:8080/servei/" + id;
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var request = new HttpRequestMessage
+                {
+                    Method = new HttpMethod("DELETE"),
+                    RequestUri = new Uri(url),
+                    Headers = { { "Accept", "*/*" } }
+                };
+                HttpResponseMessage response = await client.SendAsync(request);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine($"DeleteServei: {responseBody}");
+                    return responseBody;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Funció per obtenir tots els vehicles
         /// </summary>
         /// <param name="token"></param>
@@ -1038,6 +1092,7 @@ namespace SmartPack
                         {
                             PropertyNameCaseInsensitive = true
                         });
+                        Console.WriteLine($"GetVehicleLlist: {vehicle}");
                         return vehicle;
                     }
                 }
@@ -1063,7 +1118,7 @@ namespace SmartPack
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"CrearServei.ResponseBody: {responseBody}");
+                Console.WriteLine($"generarFactura: {responseBody}");
                 if (responseBody.Contains("\"id\":"))
                 {
                     using (JsonDocument doc = JsonDocument.Parse(responseBody))
@@ -1090,7 +1145,7 @@ namespace SmartPack
                 client.DefaultRequestHeaders.Add("Accept", "*/*");
                 HttpResponseMessage response = await client.GetAsync(url);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"responseBody: {responseBody}");
+                Console.WriteLine($"getFactures: {responseBody}");
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     if (!string.IsNullOrEmpty(responseBody) && responseBody != "[]")
@@ -1122,7 +1177,7 @@ namespace SmartPack
                 client.DefaultRequestHeaders.Add("Accept", "*/*");
                 HttpResponseMessage response = await client.PutAsync(url, null);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Response: {responseBody}");
+                Console.WriteLine($"facturaPagar: {responseBody}");
                 return responseBody;
             }
         }
@@ -1195,7 +1250,6 @@ namespace SmartPack
                 }
             }
         }
-
 
     }
 }

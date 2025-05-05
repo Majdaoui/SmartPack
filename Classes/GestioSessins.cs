@@ -21,6 +21,7 @@ namespace SmartPack.Classes
         public static string token { get; set; } = "";
         public static string role { get; set; } = "";
         public static bool desactivat { get; set; } = false;
+        public static string transportistaId { get; set; } = "";
         public static void Logout()
         {
             GestioSessins.user = null;

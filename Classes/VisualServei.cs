@@ -16,9 +16,8 @@ namespace SmartPack.Classes
         public string Destinatari { get; set; }
         public string Adreça { get; set; }
         public string Telefon { get; set; }
-        public string QR { get; set; }
-        public int transportistaID { get; set; }
-        public int usuariID { get; set; }
+        public int? TransportistaID { get; set; }
+        public int UsuariID { get; set; }
     }
 
 }

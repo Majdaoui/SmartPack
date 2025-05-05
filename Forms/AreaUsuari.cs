@@ -32,6 +32,10 @@ namespace SmartPack.Forms
 
         private void test(ClassUsuari usuari)
         {
+            if (GestioSessins.role == "ROLE_USER")
+            {
+                bVehicle.Visible = false;
+            }
             nom_usuari.Text = usuari.nom;
             usuari.separarCognom();
             cognom_p_usuari.Text = usuari.pcognom;

@@ -50,8 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.bRegistre = new System.Windows.Forms.Button();
-            this.t_codiQR = new System.Windows.Forms.TextBox();
-            this.qr = new System.Windows.Forms.Label();
             this.t_nomVia = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.t_num = new System.Windows.Forms.TextBox();
@@ -139,7 +137,7 @@
             this.l_pes.Name = "l_pes";
             this.l_pes.Size = new System.Drawing.Size(148, 20);
             this.l_pes.TabIndex = 43;
-            this.l_pes.Text = "Pes en grams";
+            this.l_pes.Text = "Pes en Kg";
             this.l_pes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // l_aplada
@@ -147,7 +145,7 @@
             this.l_aplada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.l_aplada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_aplada.ForeColor = System.Drawing.Color.White;
-            this.l_aplada.Location = new System.Drawing.Point(64, 214);
+            this.l_aplada.Location = new System.Drawing.Point(421, 162);
             this.l_aplada.Name = "l_aplada";
             this.l_aplada.Size = new System.Drawing.Size(148, 20);
             this.l_aplada.TabIndex = 45;
@@ -157,7 +155,7 @@
             // t_amplada
             // 
             this.t_amplada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_amplada.Location = new System.Drawing.Point(232, 214);
+            this.t_amplada.Location = new System.Drawing.Point(589, 162);
             this.t_amplada.Name = "t_amplada";
             this.t_amplada.Size = new System.Drawing.Size(160, 20);
             this.t_amplada.TabIndex = 4;
@@ -302,26 +300,6 @@
             this.bRegistre.Text = "Registrar el paquet";
             this.bRegistre.UseVisualStyleBackColor = false;
             this.bRegistre.Click += new System.EventHandler(this.bRegistre_Click);
-            // 
-            // t_codiQR
-            // 
-            this.t_codiQR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_codiQR.Location = new System.Drawing.Point(589, 162);
-            this.t_codiQR.Name = "t_codiQR";
-            this.t_codiQR.Size = new System.Drawing.Size(160, 20);
-            this.t_codiQR.TabIndex = 59;
-            // 
-            // qr
-            // 
-            this.qr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.qr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.qr.ForeColor = System.Drawing.Color.White;
-            this.qr.Location = new System.Drawing.Point(421, 162);
-            this.qr.Name = "qr";
-            this.qr.Size = new System.Drawing.Size(148, 20);
-            this.qr.TabIndex = 60;
-            this.qr.Text = "Codi QR";
-            this.qr.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // t_nomVia
             // 
@@ -484,7 +462,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.ClientSize = new System.Drawing.Size(800, 544);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.t_provincia);
@@ -501,8 +478,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.t_nomVia);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.t_codiQR);
-            this.Controls.Add(this.qr);
             this.Controls.Add(this.bRegistre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -558,8 +533,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button bRegistre;
-        private System.Windows.Forms.TextBox t_codiQR;
-        private System.Windows.Forms.Label qr;
         private System.Windows.Forms.TextBox t_nomVia;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox t_num;

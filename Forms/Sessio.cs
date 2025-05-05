@@ -1,6 +1,7 @@
 ﻿using SmartPack.Classes;
 using SmartPack.Forms;
 using System;
+using System.Text.Json;
 
 namespace SmartPack
 {
@@ -75,6 +76,18 @@ namespace SmartPack
                     if (GestioSessins.role != "ROLE_ADMIN")
                     {
                         Console.WriteLine("id: " + GestioSessins.id);
+                        if (GestioSessins.role == "ROLE_DELIVERYMAN")
+                        {
+                            string response = await dbAPI.GetTransportistaPerUsuari(GestioSessins.id, GestioSessins.token);
+                            if (!string.IsNullOrEmpty(response))
+                            {
+                                using (JsonDocument doc = JsonDocument.Parse(response))
+                                {
+                                    JsonElement root = doc.RootElement;
+                                    GestioSessins.transportistaId = root.GetProperty("id").GetInt32().ToString();
+                                }
+                            }
+                        }
                         Principal principal = new Principal();
                         principal.Show();
                         this.Close();
@@ -86,7 +99,7 @@ namespace SmartPack
                         se.Show();
                         this.Close();
                     }
-                }                
+                }
             }
             else
             {

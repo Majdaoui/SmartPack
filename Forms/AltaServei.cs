@@ -9,6 +9,9 @@ namespace SmartPack.Forms
 {
     public partial class AltaServei : TitleForm
     {
+        /// <summary>
+        /// Constructor de la classe Crear un servei
+        /// </summary>
         public AltaServei()
         {
             InitializeComponent();
@@ -38,7 +41,6 @@ namespace SmartPack.Forms
             string profunditat = t_profunditat.Text;
             string nomdestinatari = t_nomDestinatari.Text;
             string telefonDestinatari = t_telefonDestinatari.Text;
-            string _codiqr = t_codiQR.Text;
             string tipusVia = t_tVia.Text;
             string nomVia = t_nomVia.Text;
             string numero = t_num.Text;
@@ -145,7 +147,7 @@ namespace SmartPack.Forms
                 float.Parse(amplada.Replace(',', '.'), System.Globalization.CultureInfo.InvariantCulture),
                 float.Parse(profunditat.Replace(',', '.'), System.Globalization.CultureInfo.InvariantCulture)
             );
-
+            /*
 
             string _transportistaId = "0";
             string response = await dbAPI.GetTransportistaPerUsuari(GestioSessins.id, GestioSessins.token);
@@ -166,14 +168,14 @@ namespace SmartPack.Forms
                     JsonElement root = doc.RootElement;
                     _transportistaId = root.GetProperty("id").GetInt32().ToString();
                 }
-            }
+            }*/
 
             // Crear l'objecte servei
             object servei = new
             {
                 estat = "ORDENAT",
-                usuariId = 21,
-                transportistaId = 4,
+                usuariId = GestioSessins.id,
+                transportistaId = 0,
                 paquet = new
                 {
                     detalls = detallas,
@@ -182,7 +184,7 @@ namespace SmartPack.Forms
                     nomDestinatari = nomdestinatari,
                     adreçadestinatari = tipusVia + ", " + nomVia + ", " + numero + ", " + planta + ", " + porta + ", " + codiPostal + ", " + poblacio + ", " + provincia,
                     telefondestinatari = telefonDestinatari,
-                    codiqr = _codiqr
+                    codiqr = "",
                 }
             };
 
@@ -282,7 +284,6 @@ namespace SmartPack.Forms
             t_profunditat.Text = "25";
             t_nomDestinatari.Text = "Loubna Majdaoui";
             t_telefonDestinatari.Text = "603207702";
-            t_codiQR.Text = "";
             t_tVia.Text = "Carrer";
             t_nomVia.Text = "Dom Bosco";
             t_num.Text = "146";

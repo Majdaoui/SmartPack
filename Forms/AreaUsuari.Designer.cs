@@ -61,7 +61,7 @@
             this.p_cognom_u = new System.Windows.Forms.Label();
             this.nom_u = new System.Windows.Forms.Label();
             this.bDesactivar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bVehicle = new System.Windows.Forms.Button();
             this.Bcanvi_contrasenya = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -413,22 +413,22 @@
             this.bDesactivar.UseVisualStyleBackColor = false;
             this.bDesactivar.Click += new System.EventHandler(this.bDesactivar_Click);
             // 
-            // button1
+            // bVehicle
             // 
-            this.button1.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(636, 439);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(169, 44);
-            this.button1.TabIndex = 76;
-            this.button1.Text = "Vehicle";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bVehicle.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bVehicle.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bVehicle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bVehicle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bVehicle.ForeColor = System.Drawing.Color.Black;
+            this.bVehicle.Location = new System.Drawing.Point(636, 439);
+            this.bVehicle.Name = "bVehicle";
+            this.bVehicle.Size = new System.Drawing.Size(169, 44);
+            this.bVehicle.TabIndex = 76;
+            this.bVehicle.Text = "Vehicle";
+            this.bVehicle.UseVisualStyleBackColor = false;
+            this.bVehicle.Click += new System.EventHandler(this.button1_Click);
             // 
             // Bcanvi_contrasenya
             // 
@@ -451,9 +451,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.ClientSize = new System.Drawing.Size(857, 512);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bVehicle);
             this.Controls.Add(this.Bcanvi_contrasenya);
             this.Controls.Add(this.bDesactivar);
             this.Controls.Add(this.observacions_usuari);
@@ -532,7 +531,7 @@
         private System.Windows.Forms.Label p_cognom_u;
         private System.Windows.Forms.Label nom_u;
         private System.Windows.Forms.Button bDesactivar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bVehicle;
         private System.Windows.Forms.Button Bcanvi_contrasenya;
     }
 }

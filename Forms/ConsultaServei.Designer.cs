@@ -43,6 +43,7 @@
             this.ImageLabel = new System.Windows.Forms.PictureBox();
             this.printEtiqueta = new System.Drawing.Printing.PrintDocument();
             this.bPrint = new System.Windows.Forms.Button();
+            this.bDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHistorial)).BeginInit();
@@ -66,7 +67,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.panel1.Location = new System.Drawing.Point(2, 106);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(775, 10);
+            this.panel1.Size = new System.Drawing.Size(1008, 10);
             this.panel1.TabIndex = 111;
             // 
             // title
@@ -77,7 +78,7 @@
             this.title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.title.Location = new System.Drawing.Point(142, 28);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(463, 76);
+            this.title.Size = new System.Drawing.Size(619, 76);
             this.title.TabIndex = 110;
             this.title.Text = "Consultar Servei un Servei";
             this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -192,7 +193,7 @@
             this.ImageQR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ImageQR.Location = new System.Drawing.Point(767, 122);
             this.ImageQR.Name = "ImageQR";
-            this.ImageQR.Size = new System.Drawing.Size(216, 195);
+            this.ImageQR.Size = new System.Drawing.Size(243, 254);
             this.ImageQR.TabIndex = 121;
             this.ImageQR.TabStop = false;
             this.ImageQR.Visible = false;
@@ -222,14 +223,10 @@
             this.ImageLabel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ImageLabel.Location = new System.Drawing.Point(303, 227);
             this.ImageLabel.Name = "ImageLabel";
-            this.ImageLabel.Size = new System.Drawing.Size(216, 195);
+            this.ImageLabel.Size = new System.Drawing.Size(243, 254);
             this.ImageLabel.TabIndex = 123;
             this.ImageLabel.TabStop = false;
             this.ImageLabel.Visible = false;
-            // 
-            // printEtiqueta
-            // 
-            //this.printEtiqueta.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // bPrint
             // 
@@ -240,7 +237,7 @@
             this.bPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bPrint.ForeColor = System.Drawing.Color.Black;
-            this.bPrint.Location = new System.Drawing.Point(853, 527);
+            this.bPrint.Location = new System.Drawing.Point(466, 577);
             this.bPrint.Name = "bPrint";
             this.bPrint.Size = new System.Drawing.Size(130, 44);
             this.bPrint.TabIndex = 124;
@@ -248,11 +245,29 @@
             this.bPrint.UseVisualStyleBackColor = false;
             this.bPrint.Click += new System.EventHandler(this.bPrint_Click);
             // 
+            // bDelete
+            // 
+            this.bDelete.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bDelete.ForeColor = System.Drawing.Color.Black;
+            this.bDelete.Location = new System.Drawing.Point(602, 577);
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(130, 44);
+            this.bDelete.TabIndex = 125;
+            this.bDelete.Text = "Eliminar Servei";
+            this.bDelete.UseVisualStyleBackColor = false;
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
+            // 
             // ConsultaServei
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 587);
+            this.ClientSize = new System.Drawing.Size(1022, 646);
+            this.Controls.Add(this.bDelete);
             this.Controls.Add(this.bPrint);
             this.Controls.Add(this.ImageLabel);
             this.Controls.Add(this.bEtiqueta);
@@ -302,5 +317,6 @@
         private System.Windows.Forms.PictureBox ImageLabel;
         private System.Drawing.Printing.PrintDocument printEtiqueta;
         private System.Windows.Forms.Button bPrint;
+        private System.Windows.Forms.Button bDelete;
     }
 }

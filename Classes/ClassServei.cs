@@ -57,7 +57,7 @@ namespace SmartPack.Classes
         public int id { get; set; }
         public string estat { get; set; }
         public int usuariId { get; set; }
-        public int transportistaId { get; set; }
+        public int? transportistaId { get; set; }
         public Paquet paquet { get; set; }
     }
 }

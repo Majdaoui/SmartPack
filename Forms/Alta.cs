@@ -196,6 +196,7 @@ namespace SmartPack
             {
                 email = temail,
                 password = tpassword,
+                dni = tdni,
                 role = trol,
                 nom = tnom,
                 cognom = tcognom_p + ", "+ tcognom_s,
@@ -210,6 +211,14 @@ namespace SmartPack
             
         }
 
+        /// <summary>
+        /// Mètode que crea un nou usuari
+        /// </summary>
+        /// <param name="user_account"></param>
+        /// <param name="role"></param>
+        /// <param name="licencia"></param>
+        /// <param name="is_empresa"></param>
+        /// <returns></returns>
         public async Task createNewUser(object user_account, string role, string licencia, bool is_empresa = false)
         {
             if (user_account == null) return;
