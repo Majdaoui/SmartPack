@@ -15,6 +15,16 @@ namespace SmartPack.Classes
         public static string usuariId { get; set; }
         public static string usuariEmail { get; set; }
         public static string llicencia { get; set; }
-        public static string vehicle_id { get; set; }
+        public vehicle vehicle { get; set; }
+    }
+
+    public class vehicle
+    {
+        public static string id { get; set; }
+        public static string marca { get; set; }
+        public static string model { get; set; }
+        public static string matricula { get; set; }
+        public static string color { get; set; }
+        public static string tipus { get; set; }
     }
 }

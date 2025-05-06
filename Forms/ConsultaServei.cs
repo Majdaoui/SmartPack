@@ -140,6 +140,18 @@ namespace SmartPack.Forms
             else if (GestioSessins.role == "ROLE_USER")
             {
                 List<ClassServei> list = await dbAPI.GetServeiPerUsuari(GestioSessins.usuariId, GestioSessins.token);
+                if(list == null)
+                {
+                    using (Message message1 = new Message("No hi ha serveis assignats", "error"))
+                    {
+                        message1.ShowDialog();
+                    }
+                    dataGridView1.DataSource = null;
+                    dataGridView1.Refresh();
+                    dataGridHistorial.DataSource = null;
+                    dataGridHistorial.Refresh();
+                    return;
+                }
                 List<VisualServei> listvs = new List<VisualServei>();
                 foreach (ClassServei classServei in list)
                 {
@@ -475,6 +487,22 @@ namespace SmartPack.Forms
                     message1.ShowDialog();
                 }
             }
+        }
+
+        private void ImageLabel_DoubleClick(object sender, EventArgs e)
+        {
+            ImageLabel.Image.Dispose();
+            ImageLabel.Image = null;
+            ImageLabel.Refresh();
+            ImageLabel.Visible = false;
+        }
+
+        private void ImageQR_DoubleClick(object sender, EventArgs e)
+        {
+            ImageQR.Image.Dispose();
+            ImageQR.Image = null;
+            ImageQR.Refresh();
+            ImageQR.Visible = false;
         }
     }
 }

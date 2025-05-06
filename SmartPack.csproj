@@ -164,6 +164,7 @@
     <Compile Include="Classes\HistorialServei.cs" />
     <Compile Include="Classes\mysqlAPI.cs" />
     <Compile Include="Classes\Transportista.cs" />
+    <Compile Include="Classes\TransportistaVisual.cs" />
     <Compile Include="Classes\VisualFactura.cs" />
     <Compile Include="Classes\VisualServei.cs" />
     <Compile Include="Forms\AltaServei.cs">
@@ -243,6 +244,12 @@
     </Compile>
     <Compile Include="Forms\ServeisFinalitzats.Designer.cs">
       <DependentUpon>ServeisFinalitzats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ServeisTransportistes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ServeisTransportistes.Designer.cs">
+      <DependentUpon>ServeisTransportistes.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Sessio.cs">
       <SubType>Form</SubType>
@@ -352,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ServeisFinalitzats.resx">
       <DependentUpon>ServeisFinalitzats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServeisTransportistes.resx">
+      <DependentUpon>ServeisTransportistes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Sessio.resx">
       <DependentUpon>Sessio.cs</DependentUpon>

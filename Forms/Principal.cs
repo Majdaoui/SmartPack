@@ -29,6 +29,7 @@ namespace SmartPack.Forms
         private void bfactures_Click(object sender, EventArgs e)
         {
             Factures factures = new Factures();
+            factures.Open = new Principal();
             factures.Show();
             justClosed = true;
             this.Close();

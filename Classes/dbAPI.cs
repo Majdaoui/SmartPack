@@ -1251,5 +1251,60 @@ namespace SmartPack
             }
         }
 
+        /// <summary>
+        /// Funció per obtenir totes les factures
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static async Task<List<Factura>> getFacturesPerUsari(string id)
+        {
+            List<Factura> factures = null;
+            string url = $"http://localhost:8080/factura/list?usuariId={id}";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GestioSessins.token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"getFactures: {responseBody}");
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    if (!string.IsNullOrEmpty(responseBody) && responseBody != "[]")
+                    {
+                        factures = JsonSerializer.Deserialize<List<Factura>>(responseBody, new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        });
+                        return factures;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static async Task<List<Transportista>> getTransportisteslist(string token)
+        {
+            string url = "http://localhost:8080/transportista/list";
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.GetAsync(url);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Transportista: {responseBody}");
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    if (responseBody.Contains("\"id\":"))
+                    {
+                        List<Transportista> vs = JsonSerializer.Deserialize<List<Transportista>>(responseBody);
+                        return vs;
+                    }
+                }
+            }
+            return null;
+        }
+
+
+
     }
 }

@@ -513,6 +513,7 @@ namespace SmartPack.Forms
             this.bTransportistes.TabIndex = 40;
             this.bTransportistes.Text = "Transportistes";
             this.bTransportistes.UseVisualStyleBackColor = false;
+            this.bTransportistes.Click += new System.EventHandler(this.bTransportistes_Click);
             // 
             // bVehicles
             // 
@@ -548,6 +549,7 @@ namespace SmartPack.Forms
             this.bFactures.TabIndex = 40;
             this.bFactures.Text = "Factures";
             this.bFactures.UseVisualStyleBackColor = false;
+            this.bFactures.Click += new System.EventHandler(this.bFactures_Click);
             // 
             // Administracio
             // 

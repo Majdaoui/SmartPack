@@ -18,6 +18,18 @@ namespace SmartPack.Forms
             InitializeComponent();
         }
 
+        private bool FullClosed = true;
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            if (FullClosed)
+            {
+                GestioSessins.Logout();
+                var session = new Sessio();
+                session.Show();
+            }
+        }
+
         private void usuari_a_Click(object sender, EventArgs e)
         {
             // Acció pendent d'implementació
@@ -333,6 +345,7 @@ namespace SmartPack.Forms
             Servei servei = new Servei();
             servei.Open = new Administracio();
             servei.Show();
+            FullClosed = false;
             this.Close();
         }
 
@@ -341,6 +354,19 @@ namespace SmartPack.Forms
             Vehicles vehicle = new Vehicles();
             vehicle.Show();
             this.Close();
+        }
+
+        private void bFactures_Click(object sender, EventArgs e)
+        {
+            Factures factures = new Factures();
+            factures.Open = new Administracio();
+            factures.Show();
+            this.Close();
+        }
+
+        private void bTransportistes_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

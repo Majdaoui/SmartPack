@@ -76,11 +76,11 @@
             this.title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.title.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.title.Location = new System.Drawing.Point(142, 28);
+            this.title.Location = new System.Drawing.Point(159, 27);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(619, 76);
             this.title.TabIndex = 110;
-            this.title.Text = "Consultar Servei un Servei";
+            this.title.Text = "Consultar Servei ";
             this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridView1
@@ -197,6 +197,7 @@
             this.ImageQR.TabIndex = 121;
             this.ImageQR.TabStop = false;
             this.ImageQR.Visible = false;
+            this.ImageQR.DoubleClick += new System.EventHandler(this.ImageQR_DoubleClick);
             // 
             // bEtiqueta
             // 
@@ -227,6 +228,7 @@
             this.ImageLabel.TabIndex = 123;
             this.ImageLabel.TabStop = false;
             this.ImageLabel.Visible = false;
+            this.ImageLabel.DoubleClick += new System.EventHandler(this.ImageLabel_DoubleClick);
             // 
             // bPrint
             // 
@@ -295,6 +297,7 @@
         }
 
         #endregion
+
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label title;

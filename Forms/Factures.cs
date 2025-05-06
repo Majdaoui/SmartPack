@@ -1,6 +1,7 @@
 ﻿using SmartPack.Classes;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -12,6 +13,7 @@ namespace SmartPack.Forms
     /// </summary>
     public partial class Factures : TitleForm
     {
+        public TitleForm Open { get; set; } = null;
         /// <summary>
         /// Constructor del formulari de factures i carrega les factures en el datagridview
         /// </summary>
@@ -28,8 +30,10 @@ namespace SmartPack.Forms
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            Principal principal = new Principal();
-            principal.Show();
+            if (Open != null)
+            {
+                Open.Show();
+            }
         }
 
         /// <summary>
@@ -37,30 +41,40 @@ namespace SmartPack.Forms
         /// </summary>
         public async void LoadFactures()
         {
-            if (GestioSessins.role == "ROLE_DELIVERYMAN" || GestioSessins.role == "ROLE_USER")
+            List<Factura> list = null;
+            if (GestioSessins.role == "ROLE_ADMIN")
             {
-                List<Factura> list = await dbAPI.getFactures(GestioSessins.id);
-                List<VisualFactura> listvs = new List<VisualFactura>();
-                foreach (Factura factura in list)
+                list = await dbAPI.getFactures(GestioSessins.id);
+            }
+            else if (GestioSessins.role == "ROLE_USER")
+            {
+                list = await dbAPI.getFacturesPerUsari(GestioSessins.id);
+            }
+            
+            if (GestioSessins.role == "ROLE_ADMIN" || GestioSessins.role == "ROLE_USER")
+            {
+                if(list != null)
                 {
-                    VisualFactura vs = new VisualFactura()
+                    List<VisualFactura> listvs = new List<VisualFactura>();
+                    foreach (Factura factura in list)
                     {
-                        Id = factura.id,
-                        Numero = factura.numFactura,
-                        Preu = factura.preu.ToString(),
-                        IVA = factura.iva.ToString(),
-                        Data = factura.data.ToString(),
-                        Servei = factura.serveiId,
-                        Usuari = factura.usuariId,
-                        Pagat = factura.pagat,
-                        Metode = factura.metodePagament
-                    };
-                    
-                    listvs.Add(vs);
+                        VisualFactura vs = new VisualFactura()
+                        {
+                            Id = factura.id,
+                            Numero = factura.numFactura,
+                            Preu = factura.preu.ToString(),
+                            IVA = factura.iva.ToString(),
+                            Data = factura.data.ToString(),
+                            Servei = factura.serveiId,
+                            Usuari = factura.usuariId,
+                            Pagat = factura.pagat,
+                            Metode = factura.metodePagament
+                        };
+                        listvs.Add(vs);
+                    }
+                    dataGridView1.DataSource = listvs;
+                    dataGridView1.Refresh();
                 }
-
-                dataGridView1.DataSource = listvs;
-                dataGridView1.Refresh();
             }
         }
 
