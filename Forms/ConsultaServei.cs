@@ -280,7 +280,7 @@ namespace SmartPack.Forms
                 metodePagament = "Transferència"
             };
             var factura = await dbAPI.generarFactura(novaFactura, novaFactura.serveiId.ToString(), GestioSessins.token);
-            if (factura != null)
+            if (factura != "0")
             {
                 using (Message message1 = new Message("Factura generada correctament", "info"))
                 {
@@ -289,7 +289,7 @@ namespace SmartPack.Forms
             }
             else
             {
-                using (Message message1 = new Message("Error al generar la factura", "error"))
+                using (Message message1 = new Message("El servei encara no esta entregat, no es pot generar la factura", "error"))
                 {
                     message1.ShowDialog();
                 }

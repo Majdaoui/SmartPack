@@ -35,8 +35,8 @@ namespace SmartPack.Forms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.title = new System.Windows.Forms.Label();
             this.Serveis = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bFactures = new System.Windows.Forms.Button();
+            this.bAreaPersonal = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -90,37 +90,37 @@ namespace SmartPack.Forms
             this.Serveis.UseVisualStyleBackColor = false;
             this.Serveis.Click += new System.EventHandler(this.bservei_Click);
             // 
-            // button2
+            // bFactures
             // 
-            this.button2.BackColor = System.Drawing.Color.OldLace;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(70, 325);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 73);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "Facturació";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.bFactures.BackColor = System.Drawing.Color.OldLace;
+            this.bFactures.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bFactures.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bFactures.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bFactures.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bFactures.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bFactures.Location = new System.Drawing.Point(70, 325);
+            this.bFactures.Name = "bFactures";
+            this.bFactures.Size = new System.Drawing.Size(153, 73);
+            this.bFactures.TabIndex = 35;
+            this.bFactures.Text = "Facturació";
+            this.bFactures.UseVisualStyleBackColor = false;
+            this.bFactures.Click += new System.EventHandler(this.bfactures_Click);
             // 
-            // button3
+            // bAreaPersonal
             // 
-            this.button3.BackColor = System.Drawing.Color.OldLace;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(70, 232);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(153, 73);
-            this.button3.TabIndex = 36;
-            this.button3.Text = "Area Personal";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.personal_Click);
+            this.bAreaPersonal.BackColor = System.Drawing.Color.OldLace;
+            this.bAreaPersonal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bAreaPersonal.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bAreaPersonal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bAreaPersonal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bAreaPersonal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAreaPersonal.Location = new System.Drawing.Point(70, 232);
+            this.bAreaPersonal.Name = "bAreaPersonal";
+            this.bAreaPersonal.Size = new System.Drawing.Size(153, 73);
+            this.bAreaPersonal.TabIndex = 36;
+            this.bAreaPersonal.Text = "Area Personal";
+            this.bAreaPersonal.UseVisualStyleBackColor = false;
+            this.bAreaPersonal.Click += new System.EventHandler(this.personal_Click);
             // 
             // pictureBox2
             // 
@@ -138,12 +138,11 @@ namespace SmartPack.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = null;
             this.ClientSize = new System.Drawing.Size(827, 478);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Serveis);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bAreaPersonal);
+            this.Controls.Add(this.bFactures);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.title);
@@ -163,8 +162,8 @@ namespace SmartPack.Forms
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label title;
         private Button Serveis;
-        private Button button2;
-        private Button button3;
+        private Button bFactures;
+        private Button bAreaPersonal;
         private PictureBox pictureBox2;
     }
 }

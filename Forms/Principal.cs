@@ -26,7 +26,7 @@ namespace SmartPack.Forms
             }            
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void bfactures_Click(object sender, EventArgs e)
         {
             Factures factures = new Factures();
             factures.Show();

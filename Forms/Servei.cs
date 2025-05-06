@@ -46,17 +46,6 @@ namespace SmartPack.Forms
             {
                 if(Open != null)
                 {
-                    /*
-                    if (GestioSessins.role == "ROLE_ADMIN")
-                    {
-                        Administracio admin = new Administracio();
-                        admin.Show();
-                    }
-                    else
-                    {
-                        Principal principal = new Principal();
-                        principal.Show();
-                    }*/
                     Open.Show();
                 }
             }

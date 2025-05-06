@@ -37,7 +37,7 @@ namespace SmartPack.Forms
         /// </summary>
         public async void LoadFactures()
         {
-            if (GestioSessins.role == "ROLE_DELIVERYMAN")
+            if (GestioSessins.role == "ROLE_DELIVERYMAN" || GestioSessins.role == "ROLE_USER")
             {
                 List<Factura> list = await dbAPI.getFactures(GestioSessins.id);
                 List<VisualFactura> listvs = new List<VisualFactura>();

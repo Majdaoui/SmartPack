@@ -46,7 +46,7 @@ namespace SmartPack.Forms
         /// </summary>
         private async void LoadDB()
         {
-            if (GestioSessins.role == "ROLE_DELIVERYMAN")
+            if (GestioSessins.role == "ROLE_DELIVERYMAN" || GestioSessins.role == "ROLE_USER")
             {
                 var list = await dbAPI.getServeiPerId(GestioSessins.id);
                 if (list != null)
@@ -109,7 +109,7 @@ namespace SmartPack.Forms
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 string ID = row.Cells["ID"].Value.ToString();
                 string UsuariID = row.Cells["usuariID"].Value.ToString();
-                string TransportistaID = row.Cells["transportistaID"].Value.ToString();
+                string TransportistaID = row?.Cells["transportistaID"]?.Value?.ToString() ?? "0";
                 string Estat = row.Cells["Estat"].Value.ToString();
                 string Detalls = row.Cells["Detalls"].Value.ToString();
                 string Pes = row.Cells["Pes"].Value.ToString();
@@ -170,7 +170,8 @@ namespace SmartPack.Forms
             {
                 DataGridViewRow fila = dataGridView1.SelectedRows[0];
                 string usuariId = fila.Cells["usuariId"].Value.ToString();
-                string transportistaId = fila.Cells["transportistaId"].Value.ToString();
+                string TransportistaID = fila?.Cells["transportistaID"]?.Value?.ToString() ?? "0";
+                string stat = fila.Cells["Estat"].Value.ToString();
                 var adreça = u_tVia.Text.Trim() + ", " + u_nomVia.Text.Trim() + ", " + 
                     u_num.Text.Trim() + ", " +
                     u_planta.Text.Trim() + ", " +
@@ -179,9 +180,9 @@ namespace SmartPack.Forms
                     u_provincia.Text.Trim();
                 var update = new
                 {
-                    //estat = "ORDENAT",
+                    estat = stat,
                     usuariId = usuariId,
-                    transportistaId = transportistaId,
+                    transportistaId = TransportistaID,
                     paquet = new
                     {
                         detalls = u_detall.Text,
@@ -190,7 +191,7 @@ namespace SmartPack.Forms
                         nomDestinatari = u_nomDestinatari.Text,
                         adreçadestinatari = adreça,
                         telefondestinatari = u_telefonDestinatari.Text,
-                        codiqr = "123456789"
+                        codiqr = ""
                     }
                 };
                 var r = await dbAPI.PutUpdateServeiPerId(update, tbID.Text, GestioSessins.token);
