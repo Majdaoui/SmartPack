@@ -22,6 +22,10 @@ namespace SmartPack.Classes
         public static string role { get; set; } = "";
         public static bool desactivat { get; set; } = false;
         public static string transportistaId { get; set; } = "";
+
+        /// <summary>
+        /// Mètode per tancar la sessió de l'usuari
+        /// </summary>
         public static void Logout()
         {
             GestioSessins.user = null;

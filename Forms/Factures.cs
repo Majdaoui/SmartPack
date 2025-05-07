@@ -1,9 +1,8 @@
 ﻿using SmartPack.Classes;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
+using System.Linq;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace SmartPack.Forms
 {
@@ -44,7 +43,7 @@ namespace SmartPack.Forms
             List<Factura> list = null;
             if (GestioSessins.role == "ROLE_ADMIN")
             {
-                list = await dbAPI.getFactures(GestioSessins.id);
+                list = await dbAPI.getFactures(GestioSessins.token);
             }
             else if (GestioSessins.role == "ROLE_USER")
             {
@@ -62,13 +61,17 @@ namespace SmartPack.Forms
                         {
                             Id = factura.id,
                             Numero = factura.numFactura,
-                            Preu = factura.preu.ToString(),
-                            IVA = factura.iva.ToString(),
-                            Data = factura.data.ToString(),
-                            Servei = factura.serveiId,
-                            Usuari = factura.usuariId,
-                            Pagat = factura.pagat,
-                            Metode = factura.metodePagament
+                            Preu = factura.preu.ToString("0.00") + " €",
+                            IVA = factura.iva.ToString("0.00") + " %",
+                            Total = factura.total.ToString("0.00") + " €",
+                            Data = factura.data.ToShortDateString(),
+                            ServeiId = factura.serveiId,
+                            UsuariId = factura.usuariId,
+                            UsuariDNI = factura.usuariDni,
+                            NomComplet = factura.usuariNomComplet,
+                            Adreça = factura.usuariAdreça,
+                            EstatPagament = factura.pagat ? "Pagada" : "Pendent",
+                            MetodePagament = factura.metodePagament
                         };
                         listvs.Add(vs);
                     }
@@ -89,21 +92,32 @@ namespace SmartPack.Forms
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-                string ID = selectedRow.Cells["Id"].Value.ToString();
+                string ID = selectedRow.Cells["id"].Value.ToString();
+                Console.WriteLine("GestioSessins.token: " + GestioSessins.token);
                 var responseBody = await dbAPI.facturaPagar(ID, GestioSessins.token);
                 if (responseBody.Contains("marcada"))
                 {
-                    MessageBox.Show("La factura ja està marcada com a pagada");
+                    using (Message messatge = new Message("La factura ja està marcada com a pagada", "info"))
+                    {
+                        messatge.ShowDialog();
+                    }
                     LoadFactures();
                 }
                 else if (responseBody.Contains("pagada"))
                 {
-                    MessageBox.Show("Factura pagada correctament");
+                    using (Message messatge = new Message("Factura pagada correctament", "info"))
+                    {
+                        messatge.ShowDialog();
+                    }
                     LoadFactures();
                 }
                 else
                 {
-                    MessageBox.Show("Error al pagar la factura");
+                    using (Message messatge = new Message("Error al pagar la factura", "error"))
+                    {
+                        messatge.ShowDialog();
+                    }
+                    LoadFactures();
                 }
             }
         }
@@ -122,19 +136,36 @@ namespace SmartPack.Forms
                 string ID = row.Cells["id"].Value.ToString();
                 Factura factura = new Factura
                 {
-                    /*
-                    Codi = row.Cells["id"].Value.ToString(),
-                    TotalSenseIVA ="",
-                    Preu = "",
-                    Data = "",
-                    Numero = "",
-                    IVA = "",
-                    Descripcio = "",
-                    TotalAmbIVA = "",
-                    DadesClient = "",
-                    */
+                   
+
                 };
                 //Facturacio vistaFactura = new Facturacio(factura);
+            }
+        }
+
+        private async void btnVeureFactura_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                string idFactura = selectedRow.Cells["Id"].Value.ToString();
+
+                List<Factura> factures = await dbAPI.getFactures(GestioSessins.token);
+                Factura factura = factures.FirstOrDefault(f => f.id.ToString() == idFactura);
+
+                if (factura != null)
+                {
+                    Facturacio vistaFactura = new Facturacio(factura);
+                    vistaFactura.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No s'ha trobat la factura.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona una factura.");
             }
         }
     }

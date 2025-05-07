@@ -33,6 +33,7 @@
             this.title = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bPagarFactura = new System.Windows.Forms.Button();
+            this.btnVeureFactura = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -96,11 +97,29 @@
             this.bPagarFactura.UseVisualStyleBackColor = false;
             this.bPagarFactura.Click += new System.EventHandler(this.bPagarFactura_Click);
             // 
+            // btnVeureFactura
+            // 
+            this.btnVeureFactura.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.btnVeureFactura.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnVeureFactura.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnVeureFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnVeureFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVeureFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVeureFactura.ForeColor = System.Drawing.Color.Black;
+            this.btnVeureFactura.Location = new System.Drawing.Point(288, 381);
+            this.btnVeureFactura.Name = "btnVeureFactura";
+            this.btnVeureFactura.Size = new System.Drawing.Size(180, 44);
+            this.btnVeureFactura.TabIndex = 121;
+            this.btnVeureFactura.Text = "Veure  Factura";
+            this.btnVeureFactura.UseVisualStyleBackColor = false;
+            this.btnVeureFactura.Click += new System.EventHandler(this.btnVeureFactura_Click);
+            // 
             // Factures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(666, 442);
+            this.Controls.Add(this.btnVeureFactura);
             this.Controls.Add(this.bPagarFactura);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
@@ -122,5 +141,6 @@
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button bPagarFactura;
+        private System.Windows.Forms.Button btnVeureFactura;
     }
 }

@@ -37,6 +37,10 @@
             this.desactivar_v = new System.Windows.Forms.Button();
             this.update_v = new System.Windows.Forms.Button();
             this.labelID = new System.Windows.Forms.Label();
+            this.t_tipus = new System.Windows.Forms.TextBox();
+            this.ltipus = new System.Windows.Forms.Label();
+            this.t_color = new System.Windows.Forms.TextBox();
+            this.lcolor = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // t_marca
@@ -146,12 +150,55 @@
             this.labelID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.labelID.Visible = false;
             // 
+            // t_tipus
+            // 
+            this.t_tipus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.t_tipus.Location = new System.Drawing.Point(164, 212);
+            this.t_tipus.Name = "t_tipus";
+            this.t_tipus.Size = new System.Drawing.Size(199, 20);
+            this.t_tipus.TabIndex = 75;
+            // 
+            // ltipus
+            // 
+            this.ltipus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.ltipus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ltipus.ForeColor = System.Drawing.Color.White;
+            this.ltipus.Location = new System.Drawing.Point(31, 212);
+            this.ltipus.Name = "ltipus";
+            this.ltipus.Size = new System.Drawing.Size(128, 20);
+            this.ltipus.TabIndex = 74;
+            this.ltipus.Text = "Tipus";
+            this.ltipus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // t_color
+            // 
+            this.t_color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.t_color.Location = new System.Drawing.Point(164, 182);
+            this.t_color.Name = "t_color";
+            this.t_color.Size = new System.Drawing.Size(199, 20);
+            this.t_color.TabIndex = 73;
+            // 
+            // lcolor
+            // 
+            this.lcolor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.lcolor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lcolor.ForeColor = System.Drawing.Color.White;
+            this.lcolor.Location = new System.Drawing.Point(31, 182);
+            this.lcolor.Name = "lcolor";
+            this.lcolor.Size = new System.Drawing.Size(128, 20);
+            this.lcolor.TabIndex = 72;
+            this.lcolor.Text = "Color";
+            this.lcolor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Vehicle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
-            this.ClientSize = new System.Drawing.Size(621, 224);
+            this.ClientSize = new System.Drawing.Size(621, 265);
+            this.Controls.Add(this.t_tipus);
+            this.Controls.Add(this.ltipus);
+            this.Controls.Add(this.t_color);
+            this.Controls.Add(this.lcolor);
             this.Controls.Add(this.labelID);
             this.Controls.Add(this.update_v);
             this.Controls.Add(this.desactivar_v);
@@ -180,5 +227,9 @@
         private System.Windows.Forms.Button desactivar_v;
         private System.Windows.Forms.Button update_v;
         private System.Windows.Forms.Label labelID;
+        private System.Windows.Forms.TextBox t_tipus;
+        private System.Windows.Forms.Label ltipus;
+        private System.Windows.Forms.TextBox t_color;
+        private System.Windows.Forms.Label lcolor;
     }
 }

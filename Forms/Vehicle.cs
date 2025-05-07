@@ -1,12 +1,5 @@
 ﻿using SmartPack.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -60,11 +53,15 @@ namespace SmartPack.Forms
                 string marca = vehicle.GetProperty("marca").GetString();
                 string model = vehicle.GetProperty("model").GetString();
                 string matricula = vehicle.GetProperty("matricula").GetString();
+                string color = vehicle.GetProperty("color").GetString();
+                string tipus = vehicle.GetProperty("tipus").GetString();
 
                 labelID.Text = id.ToString();
                 t_marca.Text = marca;
                 t_model.Text = model;
                 t_matricula.Text = matricula;
+                t_color.Text = color;
+                t_tipus.Text = tipus;
 
                 Console.WriteLine($"Usuari ID: {usuariId}, Email: {email}");
                 Console.WriteLine($"Vehicle: {marca} {model} ({matricula})");
@@ -89,6 +86,8 @@ namespace SmartPack.Forms
                 marca = t_marca.Text,
                 model = t_model.Text,
                 matricula = t_matricula.Text,
+                color = t_color.Text,
+                tipus = t_tipus.Text
             };
 
             string id = labelID.Text;

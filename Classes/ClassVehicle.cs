@@ -12,5 +12,7 @@ namespace SmartPack.Classes
         public string marca { get; set; }
         public string model { get; set; }
         public string matricula { get; set; }
+        public string color { get; set; }
+        public string tipus { get; set; }
     }
 }

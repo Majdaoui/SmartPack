@@ -271,6 +271,12 @@
     </Compile>
     <Compile Include="Forms\TestAttribute.cs" />
     <Compile Include="Forms\TestFixtureAttribute.cs" />
+    <Compile Include="Forms\Transportistes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transportistes.Designer.cs">
+      <DependentUpon>Transportistes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Vehicles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -371,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transportistes.resx">
+      <DependentUpon>Transportistes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Vehicles.resx">
       <DependentUpon>Vehicles.cs</DependentUpon>

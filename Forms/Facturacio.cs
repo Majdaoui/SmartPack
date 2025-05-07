@@ -8,29 +8,35 @@ namespace SmartPack.Forms
     /// </summary>
     public partial class Facturacio : TitleForm
     {
+        private Factura _factura;
         //VisualFactura _factura = new VisualFactura();
         /// <summary>
         /// Constructor del formulari de facturacio
         /// </summary>
-        public Facturacio()
+        public Facturacio(Factura factura)
         {
             InitializeComponent();
+            _factura = factura;
         }
 
+        /// <summary>
+        /// Carrega les dades de la factura i les mostra en el formulari
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            if (!DesignMode)
-            {/*
-                tCodi.Text = _factura.Codi;
-                tTotal_u.Text = _factura.TotalSenseIVA;
-                tPreu.Text = _factura.Preu;
-                tdata.Text = _factura.Data;
-                tNumero.Text = _factura.Numero;
-                tIVA.Text = _factura.IVA;
-                tDescripcio.Text = _factura.Descripcio;
-                tTotal_IVA.Text = _factura.TotalAmbIVA;
-                Dades_Client.Text = _factura.DadesClient;*/
+            if (!DesignMode && _factura != null)
+            {
+                tCodi.Text = _factura.numFactura;
+                tTotal_u.Text = _factura.preu.ToString("F2"); // Total sense IVA
+                tPreu.Text = _factura.preu.ToString("F2");
+                tdata.Text = _factura.data.ToShortDateString(); // O format que vulguis
+                tNumero.Text = _factura.id.ToString();
+                tIVA.Text = _factura.iva.ToString("F2");
+                tTotal_IVA.Text = _factura.total.ToString("F2");
+                tDescripcio.Text = $"Servei #{_factura.serveiId}";
+                Dades_Client.Text = $"{_factura.usuariNomComplet}\n{_factura.usuariDni}\n{_factura.usuariAdreça}";
             }
         }
     }

@@ -21,6 +21,15 @@ namespace SmartPack.Forms
             LoadTransportista();
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            if (Open != null)
+            {
+                Open.Show();
+            }
+        }
+
         private async void LoadServei()
         {
             if (GestioSessins.role == "ROLE_ADMIN")
@@ -59,19 +68,55 @@ namespace SmartPack.Forms
                 {
                     TransportistaVisual vt = new TransportistaVisual
                     {
-                        
+                        Email = transportista.usuariEmail,
+                        Llicencia = transportista.llicencia,
+                        Id = transportista.id,
+                        Marca = transportista.vehicle?.marca,
+                        Model = transportista.vehicle?.model,
+                        Matricula = transportista.vehicle?.matricula,
+                        Color = transportista.vehicle?.color,
+                        Tipus = transportista.vehicle?.tipus
+
                     };
                     listvt.Add(vt);
                 }
-                dataGridViewServei.DataSource = listvt;
-                dataGridViewServei.Refresh();
+                dataGridViewTrans.DataSource = listvt;
+                dataGridViewTrans.Refresh();
             }
         }
 
 
         private void dataGridViewServei_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+           
+        }
 
+        private async void bAssignarServie_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewServei.SelectedRows.Count > 0 && dataGridViewTrans.SelectedRows.Count > 0)
+            {
+                string ServeiID = dataGridViewServei.SelectedRows[0].Cells["ID"].Value.ToString();
+                string TransID = dataGridViewTrans.SelectedRows[0].Cells["ID"].Value.ToString();
+                Console.WriteLine($"ServeiID: {ServeiID}, TransID: {TransID}");
+                var response = await dbAPI.assignarServeiTransportista(ServeiID, TransID, GestioSessins.token);
+                Console.WriteLine($"response: {response}");
+                if (response.Contains("\"id\":"))
+                {
+                    using (Message msg = new Message("Servei assignat correctament.", "info"))
+                    {
+                        msg.ShowDialog();
+                    }
+                }
+                else
+                {
+                    using (Message msg = new Message("Error al assignar el servei.", "error"))
+                    {
+                        msg.ShowDialog();
+                    }
+                }
+                LoadServei();
+                LoadTransportista();
+            }
         }
     }
 }

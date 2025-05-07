@@ -522,8 +522,8 @@ namespace SmartPack
                 {
                     using (JsonDocument doc = JsonDocument.Parse(responseBody))
                     {
-                        Transportista.id = doc.RootElement.GetProperty("id").GetInt32().ToString();
-                        return Transportista.id;
+                        GestioSessins.transportistaId = doc.RootElement.GetProperty("id").GetInt32().ToString();
+                        return GestioSessins.transportistaId;
                     }
                 }
             }
@@ -753,7 +753,7 @@ namespace SmartPack
                 }
             }
         }
-
+        
 
         /// <summary>
         /// Funció per actualitzar un usuari
@@ -1135,13 +1135,13 @@ namespace SmartPack
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static async Task<List<Factura>> getFactures(string id)
+        public static async Task<List<Factura>> getFactures(string token)
         {
             List<Factura> factures = null;
             string url = "http://localhost:8080/factura/list";
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GestioSessins.token);
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                 client.DefaultRequestHeaders.Add("Accept", "*/*");
                 HttpResponseMessage response = await client.GetAsync(url);
                 string responseBody = await response.Content.ReadAsStringAsync();
@@ -1282,6 +1282,11 @@ namespace SmartPack
             return null;
         }
 
+        /// <summary>
+        /// Funció per obtenir tots els transportistes
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static async Task<List<Transportista>> getTransportisteslist(string token)
         {
             string url = "http://localhost:8080/transportista/list";
@@ -1304,7 +1309,34 @@ namespace SmartPack
             return null;
         }
 
-
-
+        /// <summary>
+        /// Funció per assignar un servei a un transportista
+        /// </summary>
+        /// <param name="serveiId"></param>
+        /// <param name="transportistaId"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static async Task<string> assignarServeiTransportista(string serveiId, string transportistaId, string token)
+        {
+            string url = $"http://localhost:8080/servei/{serveiId}/assignar-transportista/{transportistaId}";
+            using (HttpClient client = new HttpClient())
+            {
+                // Añadir token en el header
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Add("Accept", "*/*");
+                HttpResponseMessage response = await client.PutAsync(url, null);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                //Console.WriteLine($"UpdateUser: {responseBody}");
+                if (response.IsSuccessStatusCode)
+                {
+                    //Console.WriteLine("Response: successfully " + responseBody);
+                    return responseBody;
+                }
+                else
+                {
+                    return "0";
+                }
+            }
+        }
     }
 }

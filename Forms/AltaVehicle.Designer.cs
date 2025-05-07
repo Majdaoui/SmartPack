@@ -38,6 +38,10 @@
             this.marca_l = new System.Windows.Forms.Label();
             this.guardar_e = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tColor = new System.Windows.Forms.TextBox();
+            this.lColor = new System.Windows.Forms.Label();
+            this.tTipus = new System.Windows.Forms.TextBox();
+            this.lTipus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +49,7 @@
             // 
             this.model_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.model_t.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.model_t.Location = new System.Drawing.Point(267, 215);
+            this.model_t.Location = new System.Drawing.Point(267, 184);
             this.model_t.Name = "model_t";
             this.model_t.Size = new System.Drawing.Size(199, 24);
             this.model_t.TabIndex = 8;
@@ -54,7 +58,7 @@
             // 
             this.matricula_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.matricula_t.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.matricula_t.Location = new System.Drawing.Point(267, 185);
+            this.matricula_t.Location = new System.Drawing.Point(267, 154);
             this.matricula_t.Name = "matricula_t";
             this.matricula_t.Size = new System.Drawing.Size(199, 24);
             this.matricula_t.TabIndex = 7;
@@ -64,7 +68,7 @@
             this.model_l.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.model_l.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model_l.ForeColor = System.Drawing.Color.White;
-            this.model_l.Location = new System.Drawing.Point(134, 215);
+            this.model_l.Location = new System.Drawing.Point(134, 184);
             this.model_l.Name = "model_l";
             this.model_l.Size = new System.Drawing.Size(128, 24);
             this.model_l.TabIndex = 5;
@@ -76,7 +80,7 @@
             this.matricula_l.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.matricula_l.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matricula_l.ForeColor = System.Drawing.Color.White;
-            this.matricula_l.Location = new System.Drawing.Point(133, 185);
+            this.matricula_l.Location = new System.Drawing.Point(133, 154);
             this.matricula_l.Name = "matricula_l";
             this.matricula_l.Size = new System.Drawing.Size(128, 24);
             this.matricula_l.TabIndex = 6;
@@ -108,7 +112,7 @@
             // 
             this.marca_t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.marca_t.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.marca_t.Location = new System.Drawing.Point(267, 245);
+            this.marca_t.Location = new System.Drawing.Point(267, 214);
             this.marca_t.Name = "marca_t";
             this.marca_t.Size = new System.Drawing.Size(199, 24);
             this.marca_t.TabIndex = 10;
@@ -118,7 +122,7 @@
             this.marca_l.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.marca_l.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.marca_l.ForeColor = System.Drawing.Color.White;
-            this.marca_l.Location = new System.Drawing.Point(133, 244);
+            this.marca_l.Location = new System.Drawing.Point(133, 213);
             this.marca_l.Name = "marca_l";
             this.marca_l.Size = new System.Drawing.Size(128, 24);
             this.marca_l.TabIndex = 46;
@@ -137,7 +141,7 @@
             this.guardar_e.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.guardar_e.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.guardar_e.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guardar_e.Location = new System.Drawing.Point(232, 299);
+            this.guardar_e.Location = new System.Drawing.Point(232, 318);
             this.guardar_e.Name = "guardar_e";
             this.guardar_e.Size = new System.Drawing.Size(124, 46);
             this.guardar_e.TabIndex = 11;
@@ -156,13 +160,58 @@
             this.pictureBox1.TabIndex = 49;
             this.pictureBox1.TabStop = false;
             // 
+            // tColor
+            // 
+            this.tColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tColor.Location = new System.Drawing.Point(267, 244);
+            this.tColor.Name = "tColor";
+            this.tColor.Size = new System.Drawing.Size(199, 24);
+            this.tColor.TabIndex = 50;
+            // 
+            // lColor
+            // 
+            this.lColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.lColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lColor.ForeColor = System.Drawing.Color.White;
+            this.lColor.Location = new System.Drawing.Point(133, 243);
+            this.lColor.Name = "lColor";
+            this.lColor.Size = new System.Drawing.Size(128, 24);
+            this.lColor.TabIndex = 51;
+            this.lColor.Text = "Color";
+            this.lColor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tTipus
+            // 
+            this.tTipus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tTipus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tTipus.Location = new System.Drawing.Point(267, 274);
+            this.tTipus.Name = "tTipus";
+            this.tTipus.Size = new System.Drawing.Size(199, 24);
+            this.tTipus.TabIndex = 52;
+            // 
+            // lTipus
+            // 
+            this.lTipus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.lTipus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTipus.ForeColor = System.Drawing.Color.White;
+            this.lTipus.Location = new System.Drawing.Point(133, 273);
+            this.lTipus.Name = "lTipus";
+            this.lTipus.Size = new System.Drawing.Size(128, 24);
+            this.lTipus.TabIndex = 53;
+            this.lTipus.Text = "Tipus";
+            this.lTipus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // AltaVehicle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = null;
             this.ClientSize = new System.Drawing.Size(619, 393);
+            this.Controls.Add(this.tTipus);
+            this.Controls.Add(this.lTipus);
+            this.Controls.Add(this.tColor);
+            this.Controls.Add(this.lColor);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.guardar_e);
@@ -193,5 +242,9 @@
         private System.Windows.Forms.Label marca_l;
         private System.Windows.Forms.Button guardar_e;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox tColor;
+        private System.Windows.Forms.Label lColor;
+        private System.Windows.Forms.TextBox tTipus;
+        private System.Windows.Forms.Label lTipus;
     }
 }

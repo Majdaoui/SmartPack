@@ -281,7 +281,7 @@ namespace SmartPack.Forms
         {
             DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
             var novaFactura = new Factura
-            {
+            {/*
                 numFactura = GeneraNumeroFactura(),
                 preu = GenerarPreu(),
                 iva = 21,
@@ -289,7 +289,7 @@ namespace SmartPack.Forms
                 serveiId = Convert.ToInt32(selectedRow.Cells["ID"].Value),
                 usuariId = Convert.ToInt32(GestioSessins.usuariId),
                 pagat = true,
-                metodePagament = "Transferència"
+                metodePagament = "Transferència"*/
             };
             var factura = await dbAPI.generarFactura(novaFactura, novaFactura.serveiId.ToString(), GestioSessins.token);
             if (factura != "0")

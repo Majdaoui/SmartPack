@@ -65,6 +65,7 @@ namespace SmartPack.Forms
             this.bTransportistes = new System.Windows.Forms.Button();
             this.bVehicles = new System.Windows.Forms.Button();
             this.bFactures = new System.Windows.Forms.Button();
+            this.bAssiST = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -80,7 +81,7 @@ namespace SmartPack.Forms
             this.assignar_u.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.assignar_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.assignar_u.ForeColor = System.Drawing.Color.Black;
-            this.assignar_u.Location = new System.Drawing.Point(184, 627);
+            this.assignar_u.Location = new System.Drawing.Point(184, 518);
             this.assignar_u.Name = "assignar_u";
             this.assignar_u.Size = new System.Drawing.Size(164, 45);
             this.assignar_u.TabIndex = 22;
@@ -115,7 +116,7 @@ namespace SmartPack.Forms
             this.desassignar_u.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.desassignar_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desassignar_u.ForeColor = System.Drawing.Color.Black;
-            this.desassignar_u.Location = new System.Drawing.Point(12, 628);
+            this.desassignar_u.Location = new System.Drawing.Point(12, 519);
             this.desassignar_u.Name = "desassignar_u";
             this.desassignar_u.Size = new System.Drawing.Size(164, 44);
             this.desassignar_u.TabIndex = 25;
@@ -133,7 +134,7 @@ namespace SmartPack.Forms
             this.panel1.Controls.Add(this.llist_u);
             this.panel1.Location = new System.Drawing.Point(372, 197);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(269, 352);
+            this.panel1.Size = new System.Drawing.Size(269, 251);
             this.panel1.TabIndex = 27;
             // 
             // listUsauris
@@ -141,7 +142,7 @@ namespace SmartPack.Forms
             this.listUsauris.FormattingEnabled = true;
             this.listUsauris.Location = new System.Drawing.Point(7, 86);
             this.listUsauris.Name = "listUsauris";
-            this.listUsauris.Size = new System.Drawing.Size(255, 251);
+            this.listUsauris.Size = new System.Drawing.Size(255, 160);
             this.listUsauris.TabIndex = 33;
             this.listUsauris.SelectedIndexChanged += new System.EventHandler(this.listUsauris_SelectedIndexChanged);
             // 
@@ -154,7 +155,6 @@ namespace SmartPack.Forms
             this.usuari_a.Size = new System.Drawing.Size(131, 18);
             this.usuari_a.TabIndex = 25;
             this.usuari_a.Text = "Gestió d\'usuaris";
-            this.usuari_a.Click += new System.EventHandler(this.usuari_a_Click);
             // 
             // panel2
             // 
@@ -165,7 +165,7 @@ namespace SmartPack.Forms
             this.panel2.Controls.Add(this.list_e);
             this.panel2.Location = new System.Drawing.Point(647, 197);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(280, 352);
+            this.panel2.Size = new System.Drawing.Size(280, 251);
             this.panel2.TabIndex = 28;
             // 
             // listEmpreses
@@ -173,7 +173,7 @@ namespace SmartPack.Forms
             this.listEmpreses.FormattingEnabled = true;
             this.listEmpreses.Location = new System.Drawing.Point(8, 86);
             this.listEmpreses.Name = "listEmpreses";
-            this.listEmpreses.Size = new System.Drawing.Size(263, 251);
+            this.listEmpreses.Size = new System.Drawing.Size(263, 160);
             this.listEmpreses.TabIndex = 32;
             this.listEmpreses.SelectedIndexChanged += new System.EventHandler(this.listEmpreses_SelectedIndexChanged);
             // 
@@ -213,7 +213,7 @@ namespace SmartPack.Forms
             this.desctivate_e.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.desctivate_e.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desctivate_e.ForeColor = System.Drawing.Color.Black;
-            this.desctivate_e.Location = new System.Drawing.Point(423, 576);
+            this.desctivate_e.Location = new System.Drawing.Point(423, 467);
             this.desctivate_e.Name = "desctivate_e";
             this.desctivate_e.Size = new System.Drawing.Size(164, 44);
             this.desctivate_e.TabIndex = 29;
@@ -231,7 +231,7 @@ namespace SmartPack.Forms
             this.update_e.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.update_e.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.update_e.ForeColor = System.Drawing.Color.Black;
-            this.update_e.Location = new System.Drawing.Point(593, 576);
+            this.update_e.Location = new System.Drawing.Point(593, 467);
             this.update_e.Name = "update_e";
             this.update_e.Size = new System.Drawing.Size(164, 45);
             this.update_e.TabIndex = 28;
@@ -336,7 +336,7 @@ namespace SmartPack.Forms
             this.panel3.Controls.Add(this.label5);
             this.panel3.Location = new System.Drawing.Point(12, 197);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(354, 352);
+            this.panel3.Size = new System.Drawing.Size(354, 251);
             this.panel3.TabIndex = 36;
             // 
             // lIDEmpresa
@@ -435,7 +435,7 @@ namespace SmartPack.Forms
             this.bAltaEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bAltaEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bAltaEmpresa.ForeColor = System.Drawing.Color.Black;
-            this.bAltaEmpresa.Location = new System.Drawing.Point(763, 576);
+            this.bAltaEmpresa.Location = new System.Drawing.Point(763, 467);
             this.bAltaEmpresa.Name = "bAltaEmpresa";
             this.bAltaEmpresa.Size = new System.Drawing.Size(164, 45);
             this.bAltaEmpresa.TabIndex = 37;
@@ -452,7 +452,7 @@ namespace SmartPack.Forms
             this.bDesactivarUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bDesactivarUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bDesactivarUser.ForeColor = System.Drawing.Color.Black;
-            this.bDesactivarUser.Location = new System.Drawing.Point(184, 576);
+            this.bDesactivarUser.Location = new System.Drawing.Point(184, 467);
             this.bDesactivarUser.Name = "bDesactivarUser";
             this.bDesactivarUser.Size = new System.Drawing.Size(164, 45);
             this.bDesactivarUser.TabIndex = 39;
@@ -470,7 +470,7 @@ namespace SmartPack.Forms
             this.bModificarUsuari.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bModificarUsuari.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bModificarUsuari.ForeColor = System.Drawing.Color.Black;
-            this.bModificarUsuari.Location = new System.Drawing.Point(12, 576);
+            this.bModificarUsuari.Location = new System.Drawing.Point(12, 467);
             this.bModificarUsuari.Name = "bModificarUsuari";
             this.bModificarUsuari.Size = new System.Drawing.Size(164, 45);
             this.bModificarUsuari.TabIndex = 38;
@@ -491,7 +491,7 @@ namespace SmartPack.Forms
             this.bServeis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.bServeis.Location = new System.Drawing.Point(12, 139);
             this.bServeis.Name = "bServeis";
-            this.bServeis.Size = new System.Drawing.Size(186, 45);
+            this.bServeis.Size = new System.Drawing.Size(140, 45);
             this.bServeis.TabIndex = 40;
             this.bServeis.Text = "Serveis";
             this.bServeis.UseVisualStyleBackColor = false;
@@ -507,9 +507,9 @@ namespace SmartPack.Forms
             this.bTransportistes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bTransportistes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bTransportistes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.bTransportistes.Location = new System.Drawing.Point(204, 139);
+            this.bTransportistes.Location = new System.Drawing.Point(158, 139);
             this.bTransportistes.Name = "bTransportistes";
-            this.bTransportistes.Size = new System.Drawing.Size(186, 45);
+            this.bTransportistes.Size = new System.Drawing.Size(140, 45);
             this.bTransportistes.TabIndex = 40;
             this.bTransportistes.Text = "Transportistes";
             this.bTransportistes.UseVisualStyleBackColor = false;
@@ -525,9 +525,9 @@ namespace SmartPack.Forms
             this.bVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bVehicles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bVehicles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.bVehicles.Location = new System.Drawing.Point(396, 139);
+            this.bVehicles.Location = new System.Drawing.Point(456, 139);
             this.bVehicles.Name = "bVehicles";
-            this.bVehicles.Size = new System.Drawing.Size(186, 45);
+            this.bVehicles.Size = new System.Drawing.Size(140, 45);
             this.bVehicles.TabIndex = 40;
             this.bVehicles.Text = "Vehicles";
             this.bVehicles.UseVisualStyleBackColor = false;
@@ -543,13 +543,31 @@ namespace SmartPack.Forms
             this.bFactures.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bFactures.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bFactures.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.bFactures.Location = new System.Drawing.Point(588, 139);
+            this.bFactures.Location = new System.Drawing.Point(602, 139);
             this.bFactures.Name = "bFactures";
-            this.bFactures.Size = new System.Drawing.Size(186, 45);
+            this.bFactures.Size = new System.Drawing.Size(140, 45);
             this.bFactures.TabIndex = 40;
             this.bFactures.Text = "Factures";
             this.bFactures.UseVisualStyleBackColor = false;
             this.bFactures.Click += new System.EventHandler(this.bFactures_Click);
+            // 
+            // bAssiST
+            // 
+            this.bAssiST.BackColor = System.Drawing.Color.Transparent;
+            this.bAssiST.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bAssiST.FlatAppearance.BorderSize = 5;
+            this.bAssiST.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bAssiST.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bAssiST.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bAssiST.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAssiST.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.bAssiST.Location = new System.Drawing.Point(304, 139);
+            this.bAssiST.Name = "bAssiST";
+            this.bAssiST.Size = new System.Drawing.Size(146, 45);
+            this.bAssiST.TabIndex = 41;
+            this.bAssiST.Text = "Assignar Servei Transportista";
+            this.bAssiST.UseVisualStyleBackColor = false;
+            this.bAssiST.Click += new System.EventHandler(this.bAssiST_Click);
             // 
             // Administracio
             // 
@@ -557,7 +575,8 @@ namespace SmartPack.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(950, 700);
+            this.ClientSize = new System.Drawing.Size(941, 577);
+            this.Controls.Add(this.bAssiST);
             this.Controls.Add(this.bFactures);
             this.Controls.Add(this.bVehicles);
             this.Controls.Add(this.bTransportistes);
@@ -626,6 +645,7 @@ namespace SmartPack.Forms
         private Button bTransportistes;
         private Button bVehicles;
         private Button bFactures;
+        private Button bAssiST;
         //public ListBox LlistaEmpreses => listEmpreses;
     }
 }

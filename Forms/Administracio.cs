@@ -1,4 +1,5 @@
-﻿using SmartPack.Classes;
+﻿using Org.BouncyCastle.Bcpg.Sig;
+using SmartPack.Classes;
 using System;
 using System.Text.Json;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -30,21 +31,9 @@ namespace SmartPack.Forms
             }
         }
 
-        private void usuari_a_Click(object sender, EventArgs e)
-        {
-            // Acció pendent d'implementació
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Acció pendent d'implementació
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            // Acció pendent d'implementació
-        }
-
+        /// <summary>
+        /// Conté la resposta de l'API amb les empreses disponibles.
+        /// </summary>
         public string responseEmpresas { get; set; } = "";
 
         /// <summary>
@@ -243,6 +232,11 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Obre el formulari d'alta d'empresa.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bAltaEmpresa_Click(object sender, EventArgs e)
         {
             AltaEmpresa altaEmpresa = new AltaEmpresa();
@@ -251,6 +245,11 @@ namespace SmartPack.Forms
             this.Close();
         }
 
+        /// <summary>
+        /// Actualitza les dades de l'usuari seleccionat.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void bModificarUsuari_Click(object sender, EventArgs e)
         {
             object userUpdate = new
@@ -277,6 +276,11 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Desassigna l'usuari seleccionat de l'empresa.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void desassignar_u_Click(object sender, EventArgs e)
         {
             var msg = await dbAPI.EmpresaDesassignarUsuari(lIDUser.Text, GestioSessins.token);
@@ -296,6 +300,11 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Assigna l'usuari seleccionat a l'empresa seleccionada.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void assignar_u_Click(object sender, EventArgs e)
         {
             object assignar = new
@@ -319,6 +328,11 @@ namespace SmartPack.Forms
 
         }
 
+        /// <summary>
+        /// Desactiva l'usuari seleccionat.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void bDesactivarUser_Click(object sender, EventArgs e)
         {
             string message = await dbAPI.DesactivateUsuari(lIDUser.Text, GestioSessins.token);
@@ -340,6 +354,11 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Obre el formulari de serveis.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bServeis_Click(object sender, EventArgs e)
         {
             Servei servei = new Servei();
@@ -349,6 +368,11 @@ namespace SmartPack.Forms
             this.Close();
         }
 
+        /// <summary>
+        /// Obre el formulari de vehicles.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bVehicles_Click(object sender, EventArgs e)
         {
             Vehicles vehicle = new Vehicles();
@@ -356,17 +380,46 @@ namespace SmartPack.Forms
             this.Close();
         }
 
+        /// <summary>
+        /// Obre el formulari de factures.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bFactures_Click(object sender, EventArgs e)
         {
             Factures factures = new Factures();
             factures.Open = new Administracio();
+            FullClosed = false;
             factures.Show();
             this.Close();
         }
 
+        /// <summary>
+        /// Obre el formulari de transportistes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bTransportistes_Click(object sender, EventArgs e)
         {
+            Transportistes transportistes = new Transportistes();
+            transportistes.Open = new Administracio();
+            transportistes.Show();
+            FullClosed = false;
+            this.Close();
+        }
 
+        /// <summary>
+        /// Obre el formulari d'assignar servei a transportistes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bAssiST_Click(object sender, EventArgs e)
+        {
+            ServeisTransportistes serveisTransportistes = new ServeisTransportistes();
+            serveisTransportistes.Open = new Administracio();
+            serveisTransportistes.Show();
+            FullClosed = false;
+            this.Close();
         }
     }
 }

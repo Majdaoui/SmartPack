@@ -33,6 +33,7 @@
             this.title = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridViewTrans = new System.Windows.Forms.DataGridView();
+            this.bAssignarServie = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewServei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTrans)).BeginInit();
@@ -42,9 +43,9 @@
             // 
             this.dataGridViewServei.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewServei.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewServei.Location = new System.Drawing.Point(41, 137);
+            this.dataGridViewServei.Location = new System.Drawing.Point(12, 132);
             this.dataGridViewServei.Name = "dataGridViewServei";
-            this.dataGridViewServei.Size = new System.Drawing.Size(921, 150);
+            this.dataGridViewServei.Size = new System.Drawing.Size(943, 150);
             this.dataGridViewServei.TabIndex = 0;
             this.dataGridViewServei.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewServei_CellContentClick);
             // 
@@ -84,22 +85,42 @@
             // 
             this.dataGridViewTrans.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewTrans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTrans.Location = new System.Drawing.Point(41, 293);
+            this.dataGridViewTrans.Location = new System.Drawing.Point(12, 288);
             this.dataGridViewTrans.Name = "dataGridViewTrans";
-            this.dataGridViewTrans.Size = new System.Drawing.Size(921, 150);
+            this.dataGridViewTrans.Size = new System.Drawing.Size(943, 150);
             this.dataGridViewTrans.TabIndex = 115;
+            // 
+            // bAssignarServie
+            // 
+            this.bAssignarServie.BackColor = System.Drawing.Color.Transparent;
+            this.bAssignarServie.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bAssignarServie.FlatAppearance.BorderSize = 5;
+            this.bAssignarServie.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bAssignarServie.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bAssignarServie.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bAssignarServie.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAssignarServie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.bAssignarServie.Location = new System.Drawing.Point(817, 457);
+            this.bAssignarServie.Name = "bAssignarServie";
+            this.bAssignarServie.Size = new System.Drawing.Size(138, 45);
+            this.bAssignarServie.TabIndex = 116;
+            this.bAssignarServie.Text = "Assignar Servie";
+            this.bAssignarServie.UseVisualStyleBackColor = false;
+            this.bAssignarServie.Click += new System.EventHandler(this.bAssignarServie_Click);
             // 
             // ServeisTransportistes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 658);
+            this.ClientSize = new System.Drawing.Size(967, 564);
+            this.Controls.Add(this.bAssignarServie);
             this.Controls.Add(this.dataGridViewTrans);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.title);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridViewServei);
             this.Name = "ServeisTransportistes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ServeisTransportistes";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewServei)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -115,5 +136,6 @@
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridViewTrans;
+        private System.Windows.Forms.Button bAssignarServie;
     }
 }

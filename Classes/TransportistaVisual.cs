@@ -8,16 +8,14 @@ namespace SmartPack.Classes
 {
     public class TransportistaVisual
     {
-        public static string Email { get; set; }
-        public static string Llicencia { get; set; }
+        public string Email { get; set; }
+        public string Llicencia { get; set; }
+        public int Id { get; set; }
+        public string Marca { get; set; }
+        public string Model { get; set; }
+        public string Matricula { get; set; }
+        public string Color { get; set; }
+        public string Tipus { get; set; }
     }
-    public class vehicleVisual
-    {
-        public static string id { get; set; }
-        public static string Marca { get; set; }
-        public static string Model { get; set; }
-        public static string Matricula { get; set; }
-        public static string Color { get; set; }
-        public static string Tipus { get; set; }
-    }
+   
 }

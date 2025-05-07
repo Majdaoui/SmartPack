@@ -45,6 +45,8 @@ namespace SmartPack
             string tmatricula = matricula_t.Text;
             string tmodel = model_t.Text;
             string tmarca = marca_t.Text;
+            string tcolor = tColor.Text;
+            string ttipus = tTipus.Text;
             // Comprovar que els camps obligatoris no estiguin buits
             // Si ho estan, mostra un missatge d'error
             if (string.IsNullOrWhiteSpace(tmatricula) || string.IsNullOrWhiteSpace(tmodel)
@@ -89,7 +91,9 @@ namespace SmartPack
             {
                 marca = tmarca,
                 model = tmodel,
-                matricula = tmatricula
+                matricula = tmatricula,
+                color = tcolor,
+                tipus = ttipus,
             };
 
             object user = new
@@ -111,10 +115,10 @@ namespace SmartPack
                     Console.WriteLine("Response Body vehicle : " + id);
                     object assignar = new
                     {
-                        transportistaId = Transportista.id,
+                        transportistaId = GestioSessins.transportistaId,
                         vehicleId = id,
                     };
-                    string message = await dbAPI.assignarVehicleTransportista(Transportista.id, id, GestioSessins.token);
+                    string message = await dbAPI.assignarVehicleTransportista(GestioSessins.transportistaId, id, GestioSessins.token);
                     Console.WriteLine("Vehicle Message 123 : " + message);
                     if (message == "OK")
                     {
@@ -136,11 +140,6 @@ namespace SmartPack
         }
 
         private void AltaVehicle_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tipus_t_TextChanged()
         {
 
         }
