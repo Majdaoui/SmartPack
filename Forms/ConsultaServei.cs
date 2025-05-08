@@ -213,7 +213,6 @@ namespace SmartPack.Forms
                         codiqr = "",
                     }
                 };
-
                 string _update =  await dbAPI.PutUpdateServeiPerId(update, ID, GestioSessins.token);
                 Console.WriteLine("Response Body: " + _update);
                 if (_update != null)
@@ -280,16 +279,32 @@ namespace SmartPack.Forms
         private async void button1_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+            if (selectedRow == null)
+            {
+                using (Message message1 = new Message("Si us plau selecciona un servei", "error"))
+                {
+                    message1.ShowDialog();
+                    return;
+                }
+            }
+            string ID = selectedRow.Cells["ID"].Value.ToString();
+            string Estat = selectedRow.Cells["Estat"].Value.ToString();
+            if(Estat != "ENTREGAT")
+            {
+                using (Message message1 = new Message("El servei no esta entregat, no es pot generar la factura", "error"))
+                {
+                    message1.ShowDialog();
+                    return;
+                }
+            }
             var novaFactura = new Factura
-            {/*
-                numFactura = GeneraNumeroFactura(),
-                preu = GenerarPreu(),
+            {
                 iva = 21,
                 data = DateTime.Now,
                 serveiId = Convert.ToInt32(selectedRow.Cells["ID"].Value),
                 usuariId = Convert.ToInt32(GestioSessins.usuariId),
                 pagat = true,
-                metodePagament = "Transferència"*/
+                metodePagament = "Transferència"
             };
             var factura = await dbAPI.generarFactura(novaFactura, novaFactura.serveiId.ToString(), GestioSessins.token);
             if (factura != "0")
@@ -301,32 +316,12 @@ namespace SmartPack.Forms
             }
             else
             {
-                using (Message message1 = new Message("El servei encara no esta entregat, no es pot generar la factura", "error"))
+                using (Message message1 = new Message("Error al generar la factura", "error"))
                 {
                     message1.ShowDialog();
                 }
             }
-        }
-
-        /// <summary>
-        /// Genera un numero de factura aleatori
-        /// </summary>
-        /// <returns></returns>
-        private string GeneraNumeroFactura()
-        {
-            return $"SPK-{DateTime.Now:yyyyMMdd-HHmmss}";
-        }
-
-
-        /// <summary>
-        /// Genera un preu aleatori entre 7 i 10
-        /// </summary>
-        /// <returns></returns>
-        private decimal GenerarPreu()
-        {
-            Random rnd = new Random();
-            double preu = rnd.NextDouble() * (10 - 7) + 7;
-            return Math.Round((decimal)preu, 2);
+           
         }
 
         /// <summary>
@@ -341,16 +336,13 @@ namespace SmartPack.Forms
                 MessageBox.Show("Si us plau selecciona un servei", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             ImageQR.Visible = true;
             ImageLabel.Visible = false;
             ImageQR.SizeMode = PictureBoxSizeMode.CenterImage;
             DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
             string ID = selectedRow.Cells["ID"].Value.ToString();
             string jsonResponse = await dbAPI.generarQR(ID);
-
             Console.WriteLine("Response Body QR: " + jsonResponse);
-
             if (jsonResponse != null)
             {
                 var json = System.Text.Json.JsonDocument.Parse(jsonResponse);
@@ -427,7 +419,6 @@ namespace SmartPack.Forms
             {
                 int x = (e.PageBounds.Width - imageToPrint.Width) / 2;
                 int y = (e.PageBounds.Height - imageToPrint.Height) / 2;
-
                 e.Graphics.DrawImage(imageToPrint, x, y);
             }
         }
@@ -457,6 +448,11 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Elimina el servei seleccionat
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void bDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -489,6 +485,11 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Elimina la etiqueta del ImageBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ImageLabel_DoubleClick(object sender, EventArgs e)
         {
             ImageLabel.Image.Dispose();
@@ -497,6 +498,11 @@ namespace SmartPack.Forms
             ImageLabel.Visible = false;
         }
 
+        /// <summary>
+        /// Elimina la imatge del QR
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ImageQR_DoubleClick(object sender, EventArgs e)
         {
             ImageQR.Image.Dispose();

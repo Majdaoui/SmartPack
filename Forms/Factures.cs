@@ -13,6 +13,7 @@ namespace SmartPack.Forms
     public partial class Factures : TitleForm
     {
         public TitleForm Open { get; set; } = null;
+
         /// <summary>
         /// Constructor del formulari de factures i carrega les factures en el datagridview
         /// </summary>

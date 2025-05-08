@@ -16,6 +16,7 @@ namespace SmartPack.Classes
         public string Matricula { get; set; }
         public string Color { get; set; }
         public string Tipus { get; set; }
+        public string IdVehicle { get; set; }
     }
    
 }

@@ -1076,7 +1076,7 @@ namespace SmartPack
         /// <returns></returns>
         public static async Task<List<ClassVehicle>> getVehicleLlist(string token)
         {
-            string url = "http://localhost:8080/vehicle";
+            string url = "http://localhost:8080/vehicle/list";
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
@@ -1109,7 +1109,7 @@ namespace SmartPack
         /// <returns></returns>
         public static async Task<string> generarFactura(this object factura, string id, string token)
         {
-            string url = "http://localhost:8080/factura/generar/" + id;
+            string url = "http://localhost:8080/factura/generar/" +id;
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
@@ -1337,6 +1337,44 @@ namespace SmartPack
                     return "0";
                 }
             }
+        }
+        /// <summary>
+        /// Funció per desactivar un transportista
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static async Task<string> desactivarTransportista(string id, string token)
+        {
+            string url = $"http://localhost:8080/transportista/{id}/desactivate"; // URL con el ID del usuario
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var request = new HttpRequestMessage
+                {
+                    Method = new HttpMethod("PATCH"),
+                    RequestUri = new Uri(url),
+                    Headers = { { "Accept", "*/*" } }
+                };
+                HttpResponseMessage response = await client.SendAsync(request);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"DesactivateUsuari: {responseBody}");
+                if (response.IsSuccessStatusCode)
+                {
+                    if (responseBody.Contains("\"message\":"))
+                    {
+                        using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                        {
+                            var ret = doc.RootElement.GetProperty("message").GetString();
+                            if (ret.Contains("correctament."))
+                            {
+                                return "correctament";
+                            }
+                        }
+                    }
+                }
+            }
+            return "0";
         }
     }
 }

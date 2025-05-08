@@ -1,35 +1,34 @@
 ﻿using SmartPack.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
     public partial class Vehicles : TitleForm
     {
+        public TitleForm Open { get; set; } = null;
         public Vehicles()
         {
             InitializeComponent();
             LoadDBVehicle();
+            LoadTransportistes();
 
         }
 
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            Administracio administracio = new Administracio();
-            administracio.Show();
+            if (Open != null)
+            {
+                Open.Show();
+            }
         }
 
-
+        /// <summary>
+        /// Carrega la llista de vehicles
+        /// </summary>
         private async void LoadDBVehicle()
         {
             if (GestioSessins.role == "ROLE_ADMIN")
@@ -37,9 +36,9 @@ namespace SmartPack.Forms
                 try
                 {
                     var list = await dbAPI.getVehicleLlist(GestioSessins.token);
-                    dataGridView1.DataSource = null;
-                    dataGridView1.DataSource = list;
-                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    dataGridViewV.DataSource = null;
+                    dataGridViewV.DataSource = list;
+                    dataGridViewV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 }
                 catch (Exception ex)
                 {
@@ -50,7 +49,7 @@ namespace SmartPack.Forms
 
         private async void desctivate_vehicle_Click(object sender, EventArgs e)
         {
-            var id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            var id = dataGridViewV.CurrentRow.Cells[0].Value.ToString();
             var res = await dbAPI.DesactivarVehicle(id, GestioSessins.token);
             if (res != null)
             {
@@ -65,23 +64,37 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Carrega les dades del vehicle seleccionat a la taula
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridViewV.Rows[e.RowIndex];
                 string id = row.Cells["id"].Value.ToString();
                 string marca = row.Cells["marca"].Value.ToString();
                 string model = row.Cells["model"].Value.ToString();
                 string matricula = row.Cells["matricula"].Value.ToString();
+                string color = row?.Cells["color"]?.Value?.ToString() ?? string.Empty;
+                string tipus = row?.Cells["tipus"]?.Value?.ToString() ?? string.Empty;
 
                 labelID.Text = id;
                 t_marca.Text = marca;
                 t_model.Text = model;
                 t_matricula.Text = matricula;
+                t_color.Text = color;
+                t_tipus.Text = tipus;
             }
         }
 
+        /// <summary>
+        /// Actualitza el vehicle seleccionat
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void update_v_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(t_marca.Text) || string.IsNullOrEmpty(t_model.Text) || string.IsNullOrEmpty(t_matricula.Text))
@@ -95,6 +108,8 @@ namespace SmartPack.Forms
                 marca = t_marca.Text,
                 model = t_model.Text,
                 matricula = t_matricula.Text,
+                color = t_color.Text,
+                tipus = t_tipus.Text
             };
 
             string id = labelID.Text;
@@ -111,14 +126,58 @@ namespace SmartPack.Forms
             }
 
             LoadDBVehicle();
+            LoadTransportistes();
         }
 
+        /// <summary>
+        /// Carrega la llista de transportistes
+        /// </summary>
+        public async void LoadTransportistes()
+        {
+            List<Transportista> list = await dbAPI.getTransportisteslist(GestioSessins.token);
+            if (list == null)
+            {
+                using (Message message1 = new Message("No hi ha Transportistes", "error"))
+                {
+                    message1.ShowDialog();
+                }
+                dataGridViewTT.DataSource = null;
+                dataGridViewTT.Refresh();
+                return;
+            }
+            List<TransportistaVisual> listvs = new List<TransportistaVisual>();
+            foreach (Transportista transportista in list)
+            {
+                TransportistaVisual vs = new TransportistaVisual
+                {
+                    Id = transportista.id,
+                    Email = transportista.usuariEmail,
+                    Llicencia = transportista.llicencia,
+                    Marca = transportista.vehicle.marca,
+                    Model = transportista.vehicle.model,
+                    Matricula = transportista.vehicle.matricula,
+                    Color = transportista.vehicle.color,
+                    Tipus = transportista.vehicle.tipus
+                };
+                listvs.Add(vs);
+            }
+            dataGridViewTT.DataSource = listvs;
+            dataGridViewTT.Refresh();
+        }
+
+        /// <summary>
+        /// Crea un vehicle nou
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void bCrearVehicle_Click(object sender, EventArgs e)
         {
             // Obtenir i netejar les dades dels camps del formulari
             string tmatricula = t_matricula.Text;
             string tmodel = t_model.Text;
             string tmarca = t_marca.Text;
+            string tcolor = t_color.Text;
+            string ttipus = t_tipus.Text;
             // Comprovar que els camps obligatoris no estiguin buits
             // Si ho estan, mostra un missatge d'error
             if (string.IsNullOrWhiteSpace(tmatricula) || string.IsNullOrWhiteSpace(tmodel)
@@ -162,7 +221,10 @@ namespace SmartPack.Forms
             {
                 marca = tmarca,
                 model = tmodel,
-                matricula = tmatricula
+                matricula = tmatricula,
+                color = tcolor,
+                tipus = ttipus
+
             };
 
             string id = await dbAPI.crearVehicle(vehicle, GestioSessins.token);
@@ -172,6 +234,37 @@ namespace SmartPack.Forms
             }
 
             LoadDBVehicle();
+            LoadTransportistes();
+        }
+
+        private async void bAssVehiTrans_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewV.SelectedRows.Count > 0 && dataGridViewTT.SelectedRows.Count > 0)
+            {
+                string ServeiID = dataGridViewV.SelectedRows[0].Cells["ID"].Value.ToString();
+                string TransID = dataGridViewTT.SelectedRows[0].Cells["ID"].Value.ToString();
+                Console.WriteLine($"ServeiID: {ServeiID}, TransID: {TransID}");
+                var response = await dbAPI.assignarVehicleTransportista(TransID, ServeiID, GestioSessins.token);
+                Console.WriteLine($"response: {response}");
+                if (response.Contains("\"OK\":") || response != "error")
+                {
+                    using (Message msg = new Message("Servei assignat correctament.", "info"))
+                    {
+                        msg.ShowDialog();
+                    }
+                }
+                else
+                {
+                    using (Message msg = new Message("Error al assignar el servei.", "error"))
+                    {
+                        msg.ShowDialog();
+                    }
+                }
+                LoadDBVehicle();
+                LoadTransportistes();
+            }
+
+
         }
     }
 }

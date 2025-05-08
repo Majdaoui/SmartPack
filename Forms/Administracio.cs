@@ -377,7 +377,10 @@ namespace SmartPack.Forms
         {
             Vehicles vehicle = new Vehicles();
             vehicle.Show();
+            vehicle.Open = new Administracio();
+            FullClosed = false;
             this.Close();
+
         }
 
         /// <summary>

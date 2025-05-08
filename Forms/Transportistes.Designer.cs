@@ -32,7 +32,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.title = new System.Windows.Forms.Label();
             this.dataGridViewT = new System.Windows.Forms.DataGridView();
-            this.bVehicles = new System.Windows.Forms.Button();
+            this.bDesactiveTrans = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewT)).BeginInit();
             this.SuspendLayout();
@@ -79,29 +79,30 @@
             this.dataGridViewT.TabIndex = 35;
             this.dataGridViewT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewT_CellContentClick);
             // 
-            // bVehicles
+            // bDesactiveTrans
             // 
-            this.bVehicles.BackColor = System.Drawing.Color.Transparent;
-            this.bVehicles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.bVehicles.FlatAppearance.BorderSize = 5;
-            this.bVehicles.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.bVehicles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.bVehicles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bVehicles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bVehicles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.bVehicles.Location = new System.Drawing.Point(650, 388);
-            this.bVehicles.Name = "bVehicles";
-            this.bVehicles.Size = new System.Drawing.Size(138, 45);
-            this.bVehicles.TabIndex = 41;
-            this.bVehicles.Text = "Desactivar Transportista";
-            this.bVehicles.UseVisualStyleBackColor = false;
+            this.bDesactiveTrans.BackColor = System.Drawing.Color.Transparent;
+            this.bDesactiveTrans.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bDesactiveTrans.FlatAppearance.BorderSize = 5;
+            this.bDesactiveTrans.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bDesactiveTrans.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.bDesactiveTrans.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bDesactiveTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bDesactiveTrans.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.bDesactiveTrans.Location = new System.Drawing.Point(650, 388);
+            this.bDesactiveTrans.Name = "bDesactiveTrans";
+            this.bDesactiveTrans.Size = new System.Drawing.Size(138, 45);
+            this.bDesactiveTrans.TabIndex = 41;
+            this.bDesactiveTrans.Text = "Desactivar Transportista";
+            this.bDesactiveTrans.UseVisualStyleBackColor = false;
+            this.bDesactiveTrans.Click += new System.EventHandler(this.bDesactiveTrans_Click);
             // 
             // Transportistes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.bVehicles);
+            this.Controls.Add(this.bDesactiveTrans);
             this.Controls.Add(this.dataGridViewT);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.pictureBox1);
@@ -121,6 +122,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.DataGridView dataGridViewT;
-        private System.Windows.Forms.Button bVehicles;
+        private System.Windows.Forms.Button bDesactiveTrans;
     }
 }

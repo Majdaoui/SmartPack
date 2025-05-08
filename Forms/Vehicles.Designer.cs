@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewV = new System.Windows.Forms.DataGridView();
             this.desctivate_vehicle = new System.Windows.Forms.Button();
             this.bCrearVehicle = new System.Windows.Forms.Button();
             this.labelID = new System.Windows.Forms.Label();
@@ -44,19 +44,27 @@
             this.title = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.t_color = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.t_tipus = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.bAssVehiTrans = new System.Windows.Forms.Button();
+            this.lTransportista = new System.Windows.Forms.Label();
+            this.dataGridViewTT = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTT)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewV
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(345, 208);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(443, 117);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridViewV.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridViewV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewV.Location = new System.Drawing.Point(7, 365);
+            this.dataGridViewV.Name = "dataGridViewV";
+            this.dataGridViewV.Size = new System.Drawing.Size(381, 151);
+            this.dataGridViewV.TabIndex = 0;
+            this.dataGridViewV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // desctivate_vehicle
             // 
@@ -67,7 +75,7 @@
             this.desctivate_vehicle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.desctivate_vehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desctivate_vehicle.ForeColor = System.Drawing.Color.Black;
-            this.desctivate_vehicle.Location = new System.Drawing.Point(240, 347);
+            this.desctivate_vehicle.Location = new System.Drawing.Point(388, 209);
             this.desctivate_vehicle.Name = "desctivate_vehicle";
             this.desctivate_vehicle.Size = new System.Drawing.Size(179, 44);
             this.desctivate_vehicle.TabIndex = 30;
@@ -84,7 +92,7 @@
             this.bCrearVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bCrearVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bCrearVehicle.ForeColor = System.Drawing.Color.Black;
-            this.bCrearVehicle.Location = new System.Drawing.Point(610, 348);
+            this.bCrearVehicle.Location = new System.Drawing.Point(587, 149);
             this.bCrearVehicle.Name = "bCrearVehicle";
             this.bCrearVehicle.Size = new System.Drawing.Size(179, 44);
             this.bCrearVehicle.TabIndex = 31;
@@ -97,7 +105,7 @@
             this.labelID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelID.ForeColor = System.Drawing.Color.White;
-            this.labelID.Location = new System.Drawing.Point(7, 208);
+            this.labelID.Location = new System.Drawing.Point(7, 170);
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(128, 20);
             this.labelID.TabIndex = 80;
@@ -114,7 +122,7 @@
             this.update_v.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.update_v.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.update_v.ForeColor = System.Drawing.Color.Black;
-            this.update_v.Location = new System.Drawing.Point(425, 347);
+            this.update_v.Location = new System.Drawing.Point(388, 149);
             this.update_v.Name = "update_v";
             this.update_v.Size = new System.Drawing.Size(179, 45);
             this.update_v.TabIndex = 79;
@@ -125,7 +133,7 @@
             // t_matricula
             // 
             this.t_matricula.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_matricula.Location = new System.Drawing.Point(140, 305);
+            this.t_matricula.Location = new System.Drawing.Point(140, 248);
             this.t_matricula.Name = "t_matricula";
             this.t_matricula.Size = new System.Drawing.Size(199, 20);
             this.t_matricula.TabIndex = 77;
@@ -135,7 +143,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(7, 305);
+            this.label2.Location = new System.Drawing.Point(7, 248);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 20);
             this.label2.TabIndex = 76;
@@ -145,7 +153,7 @@
             // t_model
             // 
             this.t_model.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_model.Location = new System.Drawing.Point(140, 275);
+            this.t_model.Location = new System.Drawing.Point(140, 220);
             this.t_model.Name = "t_model";
             this.t_model.Size = new System.Drawing.Size(199, 20);
             this.t_model.TabIndex = 75;
@@ -155,7 +163,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(7, 275);
+            this.label1.Location = new System.Drawing.Point(7, 220);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 20);
             this.label1.TabIndex = 74;
@@ -165,7 +173,7 @@
             // t_marca
             // 
             this.t_marca.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_marca.Location = new System.Drawing.Point(140, 243);
+            this.t_marca.Location = new System.Drawing.Point(140, 194);
             this.t_marca.Name = "t_marca";
             this.t_marca.Size = new System.Drawing.Size(199, 20);
             this.t_marca.TabIndex = 73;
@@ -175,7 +183,7 @@
             this.nom_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.nom_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nom_u.ForeColor = System.Drawing.Color.White;
-            this.nom_u.Location = new System.Drawing.Point(7, 243);
+            this.nom_u.Location = new System.Drawing.Point(7, 194);
             this.nom_u.Name = "nom_u";
             this.nom_u.Size = new System.Drawing.Size(128, 20);
             this.nom_u.TabIndex = 72;
@@ -219,9 +227,9 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(345, 175);
+            this.label3.Location = new System.Drawing.Point(7, 342);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(443, 20);
+            this.label3.Size = new System.Drawing.Size(381, 20);
             this.label3.TabIndex = 84;
             this.label3.Text = "Llista de Vehicles";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -231,18 +239,103 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(7, 175);
+            this.label4.Location = new System.Drawing.Point(7, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(332, 20);
             this.label4.TabIndex = 85;
             this.label4.Text = "Crear Un Nou Vehicle";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // t_color
+            // 
+            this.t_color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.t_color.Location = new System.Drawing.Point(140, 274);
+            this.t_color.Name = "t_color";
+            this.t_color.Size = new System.Drawing.Size(199, 20);
+            this.t_color.TabIndex = 87;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(7, 274);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(128, 20);
+            this.label5.TabIndex = 86;
+            this.label5.Text = "Color";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // t_tipus
+            // 
+            this.t_tipus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.t_tipus.Location = new System.Drawing.Point(140, 303);
+            this.t_tipus.Name = "t_tipus";
+            this.t_tipus.Size = new System.Drawing.Size(199, 20);
+            this.t_tipus.TabIndex = 89;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(7, 303);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(128, 20);
+            this.label6.TabIndex = 88;
+            this.label6.Text = "Tipus";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // bAssVehiTrans
+            // 
+            this.bAssVehiTrans.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bAssVehiTrans.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bAssVehiTrans.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bAssVehiTrans.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bAssVehiTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bAssVehiTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAssVehiTrans.ForeColor = System.Drawing.Color.Black;
+            this.bAssVehiTrans.Location = new System.Drawing.Point(587, 206);
+            this.bAssVehiTrans.Name = "bAssVehiTrans";
+            this.bAssVehiTrans.Size = new System.Drawing.Size(179, 44);
+            this.bAssVehiTrans.TabIndex = 90;
+            this.bAssVehiTrans.Text = "Assignar Vehicle a Transportista";
+            this.bAssVehiTrans.UseVisualStyleBackColor = false;
+            this.bAssVehiTrans.Click += new System.EventHandler(this.bAssVehiTrans_Click);
+            // 
+            // lTransportista
+            // 
+            this.lTransportista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.lTransportista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTransportista.ForeColor = System.Drawing.Color.White;
+            this.lTransportista.Location = new System.Drawing.Point(394, 342);
+            this.lTransportista.Name = "lTransportista";
+            this.lTransportista.Size = new System.Drawing.Size(381, 20);
+            this.lTransportista.TabIndex = 92;
+            this.lTransportista.Text = "Llista de Transportistes";
+            this.lTransportista.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dataGridViewTT
+            // 
+            this.dataGridViewTT.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridViewTT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTT.Location = new System.Drawing.Point(394, 365);
+            this.dataGridViewTT.Name = "dataGridViewTT";
+            this.dataGridViewTT.Size = new System.Drawing.Size(381, 151);
+            this.dataGridViewTT.TabIndex = 91;
+            // 
             // Vehicles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 423);
+            this.ClientSize = new System.Drawing.Size(800, 533);
+            this.Controls.Add(this.lTransportista);
+            this.Controls.Add(this.dataGridViewTT);
+            this.Controls.Add(this.bAssVehiTrans);
+            this.Controls.Add(this.t_tipus);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.t_color);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
@@ -258,12 +351,13 @@
             this.Controls.Add(this.nom_u);
             this.Controls.Add(this.bCrearVehicle);
             this.Controls.Add(this.desctivate_vehicle);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewV);
             this.Name = "Vehicles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transportista";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTT)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,7 +365,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewV;
         private System.Windows.Forms.Button desctivate_vehicle;
         private System.Windows.Forms.Button bCrearVehicle;
         private System.Windows.Forms.Label labelID;
@@ -287,5 +381,12 @@
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox t_color;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox t_tipus;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button bAssVehiTrans;
+        private System.Windows.Forms.Label lTransportista;
+        private System.Windows.Forms.DataGridView dataGridViewTT;
     }
 }

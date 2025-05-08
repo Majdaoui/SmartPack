@@ -103,7 +103,7 @@ namespace SmartPack
             }
             else
             {
-                using (Message messatge = new Message("No s'ha pogut iniciar sessió correctament, ententa'ho de nou més tard.", "error"))
+                using (Message messatge = new Message("El usuari o contrasenya és incorrecta", "error"))
                 {
                     messatge.ShowDialog();
                     return;
