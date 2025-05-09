@@ -156,7 +156,8 @@ namespace SmartPack.Forms
 
                 if (factura != null)
                 {
-                    Facturacio vistaFactura = new Facturacio(factura);
+                    Facturacio vistaFactura = new Facturacio();
+                    vistaFactura._factura = factura;
                     vistaFactura.ShowDialog();
                 }
                 else

@@ -52,6 +52,7 @@
             this.Dades_Client = new System.Windows.Forms.Label();
             this.Dades_Empresa = new System.Windows.Forms.Label();
             this.logo = new System.Windows.Forms.PictureBox();
+            this.bImprimirF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -61,9 +62,9 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.panel5.Location = new System.Drawing.Point(3, 101);
+            this.panel5.Location = new System.Drawing.Point(12, 101);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(675, 7);
+            this.panel5.Size = new System.Drawing.Size(666, 7);
             this.panel5.TabIndex = 33;
             // 
             // pictureBox1
@@ -87,7 +88,7 @@
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(349, 75);
             this.title.TabIndex = 32;
-            this.title.Text = "Facturació";
+            this.title.Text = "Factura";
             this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
@@ -103,7 +104,7 @@
             this.groupBox1.Controls.Add(this.logo);
             this.groupBox1.Location = new System.Drawing.Point(12, 121);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(660, 444);
+            this.groupBox1.Size = new System.Drawing.Size(666, 444);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Factura";
@@ -261,7 +262,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 23);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Total Unitat";
+            this.label5.Text = "Total Sense IVA";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // l_data
@@ -321,11 +322,29 @@
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
             // 
+            // bImprimirF
+            // 
+            this.bImprimirF.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bImprimirF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bImprimirF.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bImprimirF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bImprimirF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bImprimirF.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bImprimirF.ForeColor = System.Drawing.Color.Black;
+            this.bImprimirF.Location = new System.Drawing.Point(514, 571);
+            this.bImprimirF.Name = "bImprimirF";
+            this.bImprimirF.Size = new System.Drawing.Size(164, 45);
+            this.bImprimirF.TabIndex = 38;
+            this.bImprimirF.Text = "Imprimir";
+            this.bImprimirF.UseVisualStyleBackColor = false;
+            this.bImprimirF.Click += new System.EventHandler(this.bImprimirF_Click);
+            // 
             // Facturacio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 648);
+            this.Controls.Add(this.bImprimirF);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.pictureBox1);
@@ -368,5 +387,6 @@
         private System.Windows.Forms.TextBox tIVA;
         private System.Windows.Forms.TextBox tDescripcio;
         private System.Windows.Forms.TextBox tTotal_IVA;
+        private System.Windows.Forms.Button bImprimirF;
     }
 }

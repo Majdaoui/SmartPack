@@ -65,8 +65,10 @@ namespace SmartPack.Forms
                 };
                 listvs.Add(vs);
             }
-
             dataGridViewT.DataSource = listvs;
+            dataGridViewT.Columns["IdVehicle"].Visible = false;
+            dataGridViewT.Columns["Color"].Visible = false;
+            dataGridViewT.Columns["Tipus"].Visible = false;
             dataGridViewT.Refresh();
         }
 
@@ -76,7 +78,8 @@ namespace SmartPack.Forms
             {
                 string TransID = dataGridViewT.SelectedRows[0].Cells["ID"].Value.ToString();
                 Console.WriteLine("TransID: {TransID}");
-                 var response = await dbAPI.desactivarTransportista(TransID, GestioSessins.token);
+
+                var response = await dbAPI.desactivarTransportista(TransID, GestioSessins.token);
                 Console.WriteLine($"response: {response}");
                 if (response.Contains("\"id\":"))
                 {
@@ -121,7 +124,20 @@ namespace SmartPack.Forms
                 LoadTransportistes();
             }
         }
+
+        //crearTransportista
+
+        private void bCrearTrans_Click_1(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void bModificarTrans_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
-    
+
 }

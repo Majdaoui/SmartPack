@@ -75,9 +75,9 @@
             this.desctivate_vehicle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.desctivate_vehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desctivate_vehicle.ForeColor = System.Drawing.Color.Black;
-            this.desctivate_vehicle.Location = new System.Drawing.Point(388, 209);
+            this.desctivate_vehicle.Location = new System.Drawing.Point(439, 283);
             this.desctivate_vehicle.Name = "desctivate_vehicle";
-            this.desctivate_vehicle.Size = new System.Drawing.Size(179, 44);
+            this.desctivate_vehicle.Size = new System.Drawing.Size(165, 44);
             this.desctivate_vehicle.TabIndex = 30;
             this.desctivate_vehicle.Text = "Desactivar Vehicle";
             this.desctivate_vehicle.UseVisualStyleBackColor = false;
@@ -92,9 +92,9 @@
             this.bCrearVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bCrearVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bCrearVehicle.ForeColor = System.Drawing.Color.Black;
-            this.bCrearVehicle.Location = new System.Drawing.Point(587, 149);
+            this.bCrearVehicle.Location = new System.Drawing.Point(610, 234);
             this.bCrearVehicle.Name = "bCrearVehicle";
-            this.bCrearVehicle.Size = new System.Drawing.Size(179, 44);
+            this.bCrearVehicle.Size = new System.Drawing.Size(165, 44);
             this.bCrearVehicle.TabIndex = 31;
             this.bCrearVehicle.Text = "Crear Vehicle";
             this.bCrearVehicle.UseVisualStyleBackColor = false;
@@ -122,9 +122,9 @@
             this.update_v.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.update_v.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.update_v.ForeColor = System.Drawing.Color.Black;
-            this.update_v.Location = new System.Drawing.Point(388, 149);
+            this.update_v.Location = new System.Drawing.Point(439, 234);
             this.update_v.Name = "update_v";
-            this.update_v.Size = new System.Drawing.Size(179, 45);
+            this.update_v.Size = new System.Drawing.Size(165, 45);
             this.update_v.TabIndex = 79;
             this.update_v.Text = "Modificar Vehicle";
             this.update_v.UseVisualStyleBackColor = false;
@@ -295,9 +295,9 @@
             this.bAssVehiTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bAssVehiTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bAssVehiTrans.ForeColor = System.Drawing.Color.Black;
-            this.bAssVehiTrans.Location = new System.Drawing.Point(587, 206);
+            this.bAssVehiTrans.Location = new System.Drawing.Point(610, 284);
             this.bAssVehiTrans.Name = "bAssVehiTrans";
-            this.bAssVehiTrans.Size = new System.Drawing.Size(179, 44);
+            this.bAssVehiTrans.Size = new System.Drawing.Size(165, 44);
             this.bAssVehiTrans.TabIndex = 90;
             this.bAssVehiTrans.Text = "Assignar Vehicle a Transportista";
             this.bAssVehiTrans.UseVisualStyleBackColor = false;

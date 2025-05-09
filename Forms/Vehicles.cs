@@ -231,6 +231,17 @@ namespace SmartPack.Forms
             if (!string.IsNullOrEmpty(id) && id != "0")
             {
                 Console.WriteLine("Response Body vehicle : " + id);
+                using (Message msg = new Message("Vehicle Creat correctament", "info"))
+                {
+                    msg.ShowDialog();
+                }
+            }
+            else
+            {
+                using (Message mms = new Message("Error en la creació del vehicle", "error"))
+                {
+                    mms.ShowDialog();
+                }
             }
 
             LoadDBVehicle();
@@ -248,14 +259,14 @@ namespace SmartPack.Forms
                 Console.WriteLine($"response: {response}");
                 if (response.Contains("\"OK\":") || response != "error")
                 {
-                    using (Message msg = new Message("Servei assignat correctament.", "info"))
+                    using (Message msg = new Message("Vehicle assignat correctament", "info"))
                     {
                         msg.ShowDialog();
                     }
                 }
                 else
                 {
-                    using (Message msg = new Message("Error al assignar el servei.", "error"))
+                    using (Message msg = new Message("Error al assignar el Vehicle.", "error"))
                     {
                         msg.ShowDialog();
                     }

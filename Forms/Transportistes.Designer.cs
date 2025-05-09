@@ -40,10 +40,11 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.panel5.Location = new System.Drawing.Point(6, 104);
+            this.panel5.Location = new System.Drawing.Point(12, 104);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(782, 10);
+            this.panel5.Size = new System.Drawing.Size(671, 10);
             this.panel5.TabIndex = 33;
+            this.panel5.UseWaitCursor = true;
             // 
             // pictureBox1
             // 
@@ -55,6 +56,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 34;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.UseWaitCursor = true;
             // 
             // title
             // 
@@ -68,40 +70,42 @@
             this.title.TabIndex = 32;
             this.title.Text = "Transportistes";
             this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.title.UseWaitCursor = true;
             // 
             // dataGridViewT
             // 
             this.dataGridViewT.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewT.Location = new System.Drawing.Point(30, 155);
+            this.dataGridViewT.Location = new System.Drawing.Point(12, 131);
             this.dataGridViewT.Name = "dataGridViewT";
-            this.dataGridViewT.Size = new System.Drawing.Size(758, 227);
+            this.dataGridViewT.Size = new System.Drawing.Size(663, 227);
             this.dataGridViewT.TabIndex = 35;
+            this.dataGridViewT.UseWaitCursor = true;
             this.dataGridViewT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewT_CellContentClick);
             // 
             // bDesactiveTrans
             // 
-            this.bDesactiveTrans.BackColor = System.Drawing.Color.Transparent;
-            this.bDesactiveTrans.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.bDesactiveTrans.FlatAppearance.BorderSize = 5;
+            this.bDesactiveTrans.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bDesactiveTrans.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.bDesactiveTrans.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.bDesactiveTrans.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.bDesactiveTrans.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bDesactiveTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bDesactiveTrans.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bDesactiveTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bDesactiveTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bDesactiveTrans.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.bDesactiveTrans.Location = new System.Drawing.Point(650, 388);
+            this.bDesactiveTrans.Location = new System.Drawing.Point(267, 364);
             this.bDesactiveTrans.Name = "bDesactiveTrans";
-            this.bDesactiveTrans.Size = new System.Drawing.Size(138, 45);
+            this.bDesactiveTrans.Size = new System.Drawing.Size(155, 45);
             this.bDesactiveTrans.TabIndex = 41;
             this.bDesactiveTrans.Text = "Desactivar Transportista";
             this.bDesactiveTrans.UseVisualStyleBackColor = false;
+            this.bDesactiveTrans.UseWaitCursor = true;
             this.bDesactiveTrans.Click += new System.EventHandler(this.bDesactiveTrans_Click);
             // 
             // Transportistes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(695, 430);
             this.Controls.Add(this.bDesactiveTrans);
             this.Controls.Add(this.dataGridViewT);
             this.Controls.Add(this.panel5);
@@ -110,6 +114,7 @@
             this.Name = "Transportistes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transportistes";
+            this.UseWaitCursor = true;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewT)).EndInit();
             this.ResumeLayout(false);

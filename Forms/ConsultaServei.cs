@@ -38,7 +38,6 @@ namespace SmartPack.Forms
         /// Carrega el formulari i les dades del servei en el datagrid
         /// </summary>
         /// <param name="e"></param>
-
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -47,6 +46,12 @@ namespace SmartPack.Forms
                 bCambiarEstado.Visible = false;
                 cbEstado.Visible = false;
                 l_rol.Visible = false;
+            }
+            else if (GestioSessins.role == "ROLE_DELIVERYMAN")
+            {
+                bCambiarEstado.Visible = true;
+                cbEstado.Visible = true;
+                bGenerarF.Visible = false;
             }
             LoadDB();
         }
@@ -97,6 +102,8 @@ namespace SmartPack.Forms
                     listvs.Add(vs);
                 }
                 dataGridView1.DataSource = listvs;
+                dataGridView1.Columns["UsuariID"].Visible = false;
+                dataGridView1.Columns["TransportistaID"].Visible = false;
                 dataGridView1.Refresh();
             }
             else if (GestioSessins.role == "ROLE_DELIVERYMAN")
@@ -121,6 +128,8 @@ namespace SmartPack.Forms
                             Telefon = s.paquet?.telefondestinatari
                         }).ToList();
                         dataGridView1.DataSource = viewModels;
+                        dataGridView1.Columns["UsuariID"].Visible = false;
+                        dataGridView1.Columns["TransportistaID"].Visible = false;
                         dataGridView1.Refresh();
                     }
                     if (dataGridView1.SelectedRows.Count > 0)
@@ -170,6 +179,8 @@ namespace SmartPack.Forms
                 }
 
                 dataGridView1.DataSource = listvs;
+                dataGridView1.Columns["UsuariID"].Visible = false;
+                dataGridView1.Columns["TransportistaID"].Visible = false;
                 dataGridView1.Refresh();
             }
         }
@@ -276,7 +287,7 @@ namespace SmartPack.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void button1_Click(object sender, EventArgs e)
+        private async void bGenerarF_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
             if (selectedRow == null)

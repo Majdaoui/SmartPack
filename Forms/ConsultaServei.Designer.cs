@@ -36,7 +36,7 @@
             this.cbEstado = new System.Windows.Forms.ComboBox();
             this.bCambiarEstado = new System.Windows.Forms.Button();
             this.dataGridHistorial = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bGenerarF = new System.Windows.Forms.Button();
             this.bQR = new System.Windows.Forms.Button();
             this.ImageQR = new System.Windows.Forms.PictureBox();
             this.bEtiqueta = new System.Windows.Forms.Button();
@@ -151,22 +151,22 @@
             this.dataGridHistorial.Size = new System.Drawing.Size(749, 164);
             this.dataGridHistorial.TabIndex = 118;
             // 
-            // button1
+            // bGenerarF
             // 
-            this.button1.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(466, 527);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 44);
-            this.button1.TabIndex = 119;
-            this.button1.Text = "Generar Factura";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bGenerarF.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bGenerarF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.bGenerarF.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bGenerarF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bGenerarF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bGenerarF.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bGenerarF.ForeColor = System.Drawing.Color.Black;
+            this.bGenerarF.Location = new System.Drawing.Point(466, 527);
+            this.bGenerarF.Name = "bGenerarF";
+            this.bGenerarF.Size = new System.Drawing.Size(130, 44);
+            this.bGenerarF.TabIndex = 119;
+            this.bGenerarF.Text = "Generar Factura";
+            this.bGenerarF.UseVisualStyleBackColor = false;
+            this.bGenerarF.Click += new System.EventHandler(this.bGenerarF_Click);
             // 
             // bQR
             // 
@@ -239,9 +239,9 @@
             this.bPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bPrint.ForeColor = System.Drawing.Color.Black;
-            this.bPrint.Location = new System.Drawing.Point(466, 577);
+            this.bPrint.Location = new System.Drawing.Point(738, 576);
             this.bPrint.Name = "bPrint";
-            this.bPrint.Size = new System.Drawing.Size(130, 44);
+            this.bPrint.Size = new System.Drawing.Size(109, 44);
             this.bPrint.TabIndex = 124;
             this.bPrint.Text = "Imprimir";
             this.bPrint.UseVisualStyleBackColor = false;
@@ -275,7 +275,7 @@
             this.Controls.Add(this.bEtiqueta);
             this.Controls.Add(this.ImageQR);
             this.Controls.Add(this.bQR);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bGenerarF);
             this.Controls.Add(this.dataGridHistorial);
             this.Controls.Add(this.bCambiarEstado);
             this.Controls.Add(this.l_rol);
@@ -313,7 +313,7 @@
         private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Button bCambiarEstado;
         private System.Windows.Forms.DataGridView dataGridHistorial;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bGenerarF;
         private System.Windows.Forms.Button bQR;
         private System.Windows.Forms.PictureBox ImageQR;
         private System.Windows.Forms.Button bEtiqueta;

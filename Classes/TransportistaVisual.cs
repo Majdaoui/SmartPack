@@ -8,9 +8,9 @@ namespace SmartPack.Classes
 {
     public class TransportistaVisual
     {
+        public int Id { get; set; }
         public string Email { get; set; }
         public string Llicencia { get; set; }
-        public int Id { get; set; }
         public string Marca { get; set; }
         public string Model { get; set; }
         public string Matricula { get; set; }

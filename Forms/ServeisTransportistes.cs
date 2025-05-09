@@ -80,7 +80,11 @@ namespace SmartPack.Forms
                     };
                     listvt.Add(vt);
                 }
+
                 dataGridViewTrans.DataSource = listvt;
+                dataGridViewTrans.Columns["IdVehicle"].Visible = false;
+                dataGridViewTrans.Columns["Color"].Visible = false;
+                dataGridViewTrans.Columns["Tipus"].Visible = false;
                 dataGridViewTrans.Refresh();
             }
         }

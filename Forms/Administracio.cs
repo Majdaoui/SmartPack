@@ -111,7 +111,7 @@ namespace SmartPack.Forms
                             var nom = item.GetProperty("nom").ToString();
                             var email = item.GetProperty("email").ToString();
                             Console.WriteLine("email: " + email);
-                            listUsauris.Items.Add(id + ":" + "Nom: " + nom + ", " + " Email: " + email);
+                            listUsauris.Items.Add(id + ": " + nom + ", " + " Email: " + email);
                         }
                     }
                 }
@@ -316,7 +316,7 @@ namespace SmartPack.Forms
             if (message.Contains("correctament"))
             {
                 Console.WriteLine("Empresa Message: " + message);
-                using (Message messatgel = new Message("empresa registrada correctament", "info"))
+                using (Message messatgel = new Message("Usuari assignat a l'empresa correctament", "info"))
                 {
                     messatgel.ShowDialog();
                 }
@@ -339,7 +339,7 @@ namespace SmartPack.Forms
             if (message == "correctament")
             {
                 Console.WriteLine("correctament: " + message);
-                using (Message messatge = new Message("El seu compte s'ha desactivat correctament", "info"))
+                using (Message messatge = new Message("Usuari desactivat correctament", "info"))
                 {
                     messatge.ShowDialog();
                 }

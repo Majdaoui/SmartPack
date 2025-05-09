@@ -54,18 +54,18 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.panel1.Location = new System.Drawing.Point(12, 105);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(982, 10);
+            this.panel1.Size = new System.Drawing.Size(943, 10);
             this.panel1.TabIndex = 114;
             // 
             // title
             // 
             this.title.BackColor = System.Drawing.Color.Transparent;
             this.title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.title.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Font = new System.Drawing.Font("Segoe UI", 38F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.title.Location = new System.Drawing.Point(141, 27);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(834, 76);
+            this.title.Size = new System.Drawing.Size(814, 76);
             this.title.TabIndex = 113;
             this.title.Text = "Assignar Serveis a Transportista";
             this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -92,19 +92,18 @@
             // 
             // bAssignarServie
             // 
-            this.bAssignarServie.BackColor = System.Drawing.Color.Transparent;
-            this.bAssignarServie.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.bAssignarServie.FlatAppearance.BorderSize = 5;
+            this.bAssignarServie.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.bAssignarServie.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.bAssignarServie.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.bAssignarServie.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.bAssignarServie.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bAssignarServie.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAssignarServie.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bAssignarServie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bAssignarServie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bAssignarServie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.bAssignarServie.Location = new System.Drawing.Point(817, 457);
+            this.bAssignarServie.Location = new System.Drawing.Point(421, 453);
             this.bAssignarServie.Name = "bAssignarServie";
-            this.bAssignarServie.Size = new System.Drawing.Size(138, 45);
+            this.bAssignarServie.Size = new System.Drawing.Size(145, 45);
             this.bAssignarServie.TabIndex = 116;
-            this.bAssignarServie.Text = "Assignar Servie";
+            this.bAssignarServie.Text = "Assignar Servie a Transportista";
             this.bAssignarServie.UseVisualStyleBackColor = false;
             this.bAssignarServie.Click += new System.EventHandler(this.bAssignarServie_Click);
             // 
@@ -112,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 564);
+            this.ClientSize = new System.Drawing.Size(967, 509);
             this.Controls.Add(this.bAssignarServie);
             this.Controls.Add(this.dataGridViewTrans);
             this.Controls.Add(this.panel1);
