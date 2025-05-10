@@ -41,12 +41,16 @@
             this.ltipus = new System.Windows.Forms.Label();
             this.t_color = new System.Windows.Forms.TextBox();
             this.lcolor = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.title = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // t_marca
             // 
             this.t_marca.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_marca.Location = new System.Drawing.Point(164, 94);
+            this.t_marca.Location = new System.Drawing.Point(148, 181);
             this.t_marca.Name = "t_marca";
             this.t_marca.Size = new System.Drawing.Size(199, 20);
             this.t_marca.TabIndex = 49;
@@ -56,7 +60,7 @@
             this.nom_u.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.nom_u.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nom_u.ForeColor = System.Drawing.Color.White;
-            this.nom_u.Location = new System.Drawing.Point(31, 94);
+            this.nom_u.Location = new System.Drawing.Point(15, 181);
             this.nom_u.Name = "nom_u";
             this.nom_u.Size = new System.Drawing.Size(128, 20);
             this.nom_u.TabIndex = 48;
@@ -66,7 +70,7 @@
             // t_model
             // 
             this.t_model.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_model.Location = new System.Drawing.Point(164, 126);
+            this.t_model.Location = new System.Drawing.Point(148, 213);
             this.t_model.Name = "t_model";
             this.t_model.Size = new System.Drawing.Size(199, 20);
             this.t_model.TabIndex = 51;
@@ -76,7 +80,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(31, 126);
+            this.label1.Location = new System.Drawing.Point(15, 213);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 20);
             this.label1.TabIndex = 50;
@@ -86,7 +90,7 @@
             // t_matricula
             // 
             this.t_matricula.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_matricula.Location = new System.Drawing.Point(164, 156);
+            this.t_matricula.Location = new System.Drawing.Point(148, 243);
             this.t_matricula.Name = "t_matricula";
             this.t_matricula.Size = new System.Drawing.Size(199, 20);
             this.t_matricula.TabIndex = 53;
@@ -96,7 +100,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(31, 156);
+            this.label2.Location = new System.Drawing.Point(15, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 20);
             this.label2.TabIndex = 52;
@@ -112,7 +116,7 @@
             this.desactivar_v.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.desactivar_v.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desactivar_v.ForeColor = System.Drawing.Color.Black;
-            this.desactivar_v.Location = new System.Drawing.Point(401, 132);
+            this.desactivar_v.Location = new System.Drawing.Point(385, 275);
             this.desactivar_v.Name = "desactivar_v";
             this.desactivar_v.Size = new System.Drawing.Size(179, 44);
             this.desactivar_v.TabIndex = 69;
@@ -129,7 +133,7 @@
             this.update_v.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.update_v.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.update_v.ForeColor = System.Drawing.Color.Black;
-            this.update_v.Location = new System.Drawing.Point(401, 79);
+            this.update_v.Location = new System.Drawing.Point(385, 222);
             this.update_v.Name = "update_v";
             this.update_v.Size = new System.Drawing.Size(179, 45);
             this.update_v.TabIndex = 70;
@@ -142,7 +146,7 @@
             this.labelID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelID.ForeColor = System.Drawing.Color.White;
-            this.labelID.Location = new System.Drawing.Point(31, 59);
+            this.labelID.Location = new System.Drawing.Point(15, 146);
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(128, 20);
             this.labelID.TabIndex = 71;
@@ -153,7 +157,7 @@
             // t_tipus
             // 
             this.t_tipus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_tipus.Location = new System.Drawing.Point(164, 212);
+            this.t_tipus.Location = new System.Drawing.Point(148, 299);
             this.t_tipus.Name = "t_tipus";
             this.t_tipus.Size = new System.Drawing.Size(199, 20);
             this.t_tipus.TabIndex = 75;
@@ -163,7 +167,7 @@
             this.ltipus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.ltipus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ltipus.ForeColor = System.Drawing.Color.White;
-            this.ltipus.Location = new System.Drawing.Point(31, 212);
+            this.ltipus.Location = new System.Drawing.Point(15, 299);
             this.ltipus.Name = "ltipus";
             this.ltipus.Size = new System.Drawing.Size(128, 20);
             this.ltipus.TabIndex = 74;
@@ -173,7 +177,7 @@
             // t_color
             // 
             this.t_color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.t_color.Location = new System.Drawing.Point(164, 182);
+            this.t_color.Location = new System.Drawing.Point(148, 269);
             this.t_color.Name = "t_color";
             this.t_color.Size = new System.Drawing.Size(199, 20);
             this.t_color.TabIndex = 73;
@@ -183,18 +187,56 @@
             this.lcolor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.lcolor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lcolor.ForeColor = System.Drawing.Color.White;
-            this.lcolor.Location = new System.Drawing.Point(31, 182);
+            this.lcolor.Location = new System.Drawing.Point(15, 269);
             this.lcolor.Name = "lcolor";
             this.lcolor.Size = new System.Drawing.Size(128, 20);
             this.lcolor.TabIndex = 72;
             this.lcolor.Text = "Color";
             this.lcolor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.panel5.Location = new System.Drawing.Point(6, 103);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(589, 10);
+            this.panel5.TabIndex = 77;
+            this.panel5.UseWaitCursor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::SmartPack.Properties.Resources.logo_transparent;
+            this.pictureBox1.Location = new System.Drawing.Point(-3, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(160, 125);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 78;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.UseWaitCursor = true;
+            // 
+            // title
+            // 
+            this.title.BackColor = System.Drawing.Color.Transparent;
+            this.title.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.title.Font = new System.Drawing.Font("Segoe UI", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.title.Location = new System.Drawing.Point(148, 28);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(444, 75);
+            this.title.TabIndex = 76;
+            this.title.Text = "Gestió Vehicle";
+            this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.title.UseWaitCursor = true;
+            // 
             // Vehicle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 265);
+            this.ClientSize = new System.Drawing.Size(605, 343);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.title);
             this.Controls.Add(this.t_tipus);
             this.Controls.Add(this.ltipus);
             this.Controls.Add(this.t_color);
@@ -211,6 +253,8 @@
             this.Name = "Vehicle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vehicle";
+            this.Load += new System.EventHandler(this.Vehicle_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,5 +275,8 @@
         private System.Windows.Forms.Label ltipus;
         private System.Windows.Forms.TextBox t_color;
         private System.Windows.Forms.Label lcolor;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label title;
     }
 }

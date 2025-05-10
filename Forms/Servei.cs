@@ -11,6 +11,9 @@ namespace SmartPack.Forms
     {
         public TitleForm Open { get; set; } = null;
 
+        /// <summary>
+        /// Constructor del formulari de serveis
+        /// </summary>
         public Servei()
         {
             InitializeComponent();
@@ -50,16 +53,6 @@ namespace SmartPack.Forms
                 }
             }
             
-        }
-
-        private void title_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         /// <summary>

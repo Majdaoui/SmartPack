@@ -63,7 +63,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(587, 7);
             this.panel1.TabIndex = 35;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
@@ -88,7 +87,6 @@
             this.title.TabIndex = 34;
             this.title.Text = "Gestió de serveis";
             this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.title.Click += new System.EventHandler(this.title_Click);
             // 
             // consult
             // 

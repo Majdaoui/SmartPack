@@ -101,6 +101,7 @@ namespace SmartPack.Forms
                     return;
                 }
             }
+            //Validacio de tipus de via que nomes es permeten lletres i espais
             if (!EsNomOCognomValid(tipusVia))
             {
                 using (Message msg = new Message("El tipus de via no és vàlid. Només es permeten lletres i espais.", "error"))
@@ -109,7 +110,7 @@ namespace SmartPack.Forms
                     return;
                 }
             }
-
+            // Validació de nom de via que nomes es permeten lletres i espais
             if (!EsNomOCognomValid(nomVia))
             {
                 using (Message msg = new Message("El nom de la via no és vàlid. Només es permeten lletres i espais.", "error"))
@@ -119,7 +120,7 @@ namespace SmartPack.Forms
                 }
             }
 
-            // Validació de població
+            // Validació de població que nomes es permeten lletres i espais
             if (!EsNomOCognomValid(poblacio))
             {
                 using (Message msg = new Message("La població no és vàlida. Només es permeten lletres i espais.", "error"))
@@ -129,7 +130,7 @@ namespace SmartPack.Forms
                 }
             }
 
-            // Validació de provincia
+            // Validació de provincia que nomes es permeten lletres i espais
             if (!EsNomOCognomValid(provincia))
             {
                 using (Message msg = new Message("La provincia no és vàlida. Només es permeten lletres i espais.", "error"))
@@ -139,7 +140,6 @@ namespace SmartPack.Forms
                 }
             }
 
-
             // Convertir valors a float (amb punt com separador decimal)
             float pesFloat = float.Parse(pes.Replace(',', '.'), System.Globalization.CultureInfo.InvariantCulture);
             string mida = string.Join(", ",
@@ -148,7 +148,6 @@ namespace SmartPack.Forms
                 float.Parse(profunditat.Replace(',', '.'), System.Globalization.CultureInfo.InvariantCulture)
             );
             /*
-
             string _transportistaId = "0";
             string response = await dbAPI.GetTransportistaPerUsuari(GestioSessins.id, GestioSessins.token);
             
@@ -222,7 +221,6 @@ namespace SmartPack.Forms
         public static bool EsDecimalValid(string text)
         {
             if (string.IsNullOrWhiteSpace(text)) return false;
-
             // Accepta tant coma com punt com a separador decimal
             return double.TryParse(text.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out _);
         }
@@ -274,7 +272,11 @@ namespace SmartPack.Forms
             }
             return true;
         }
-
+        /// <summary>
+        /// Funció per omplir els camps de prova amb dades de test
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             t_detalls.Text = "Roba";

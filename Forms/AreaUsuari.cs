@@ -6,15 +6,25 @@ using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Formulari AreaUsuari
+    /// </summary>
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public partial class AreaUsuari : TitleForm
     {
+        /// <summary>
+        /// Constructor de la classe AreaUsuari
+        /// </summary>
         public AreaUsuari()
         {
             InitializeComponent();
         }
 
         private bool justClosed = false;
+        /// <summary>
+        /// Mètode que s'executa quan es tanca la finestra
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -25,11 +35,14 @@ namespace SmartPack.Forms
             }            
         }
 
-        //Per a mostrar les dades de l'usuari a la finestra
-        //Aquest mètode recull les dades de l'usuari i les mostra a la finestra
-        //El mètode utilitza la classe ClassUsuari per separar el nom i els cognoms
-        //El mètode utilitza la classe dbAPI per obtenir les dades de l'usuari
 
+        /// <summary>
+        /// Mètode que mostra les dades de l'usuari a la finestra
+        /// Aquest mètode recull les dades de l'usuari i les mostra a la finestra
+        /// El mètode utilitza la classe ClassUsuari per separar el nom i els cognoms
+        /// El mètode utilitza la classe dbAPI per obtenir les dades de l'usuari
+        /// </summary>
+        /// <param name="usuari"></param>
         private void test(ClassUsuari usuari)
         {
             if (GestioSessins.role == "ROLE_USER")
@@ -56,8 +69,11 @@ namespace SmartPack.Forms
             //Rol_Usuari.Text = usuari.rol;
         }
 
-        //Aquest metoda es crida quan es carrega la finestra
-        //Carrega les dades de l'usuari actual i les mostra a la finestra
+        /// <summary>
+        /// Mètode que s'executa quan es carrega la finestra
+        /// Carrega les dades de l'usuari actual i les mostra a la finestra
+        /// </summary>
+        /// <param name="e"></param>
         protected async override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -78,12 +94,16 @@ namespace SmartPack.Forms
             //Application.Exit();
         }
 
-        //Aquest mètode es crida quan es fa clic al botó "Desactivar usuari"
-        //Desactiva l'usuari actual i tanca la finestra
-        //Si l'usuari s'ha desactivat correctament, mostra un missatge d'informació
-        //Si l'usuari no s'ha desactivat correctament, mostra un missatge d'error
-        //El mètode utilitza la classe dbAPI per enviar les dades a la base de dades
-        //El mètode utilitza la classe GestioSessins per obtenir l'id i el token de l'usuari
+        /// <summary>
+        /// Mètode que s'executa quan es fa clic al botó "Desactivar usuari"
+        /// Desactiva l'usuari actual i tanca la finestra
+        /// Si l'usuari s'ha desactivat correctament, mostra un missatge d'informació
+        /// Si l'usuari no s'ha desactivat correctament, mostra un missatge d'error
+        /// El mètode utilitza la classe GestioSessins per obtenir l'id i el token de l'usuari
+        /// El mètode utilitza la classe dbAPI per enviar les dades a la base de dades
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void bDesactivar_Click(object sender, EventArgs e)
         {
             string id = GestioSessins.id;
@@ -113,9 +133,13 @@ namespace SmartPack.Forms
             }
         }
 
-        //Aquest mètode es crida quan es fa clic al botó "Canvi contrasenya"
-        //Obre la finestra de canvi de contrasenya
-        //Tanca la finestra actual
+        /// <summary>
+        /// Mètode que s'executa quan es fa clic al botó "Canvi contrasenya"
+        /// Obre la finestra per canviar la contrasenya de l'usuari actual
+        /// Tanca la finestra actual un cop s'ha obert la nova
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Bcanvi_contrasenya_Click_1(object sender, EventArgs e)
         {
             CanviContrasenya canviContrasenya = new CanviContrasenya();
@@ -130,11 +154,16 @@ namespace SmartPack.Forms
         }
 
 
-        //Aquest mètode recull les dades dels camps i les envia a la base de dades
-        //Si les dades s'han actualitzat correctament, mostra un missatge d'informació
-        //Si les dades no s'han actualitzat correctament, mostra un missatge d'error
-        //El mètode utilitza la classe dbAPI per enviar les dades a la base de dades
-        //El mètode utilitza la classe GestioSessins per obtenir l'id i el token de l'usuari
+        /// <summary>
+        /// Mètode que recull les dades dels camps del formulari i les envia a la base de dades
+        /// Si les dades s'han actualitzat correctament, mostra un missatge d'informació
+        /// Si hi ha hagut un error en l'actualització, mostra un missatge d'error
+        /// El mètode utilitza la classe dbAPI per fer la petició a la base de dades
+        /// També utilitza la classe GestioSessins per obtenir l'id i el token de l'usuari actual
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private async void bGuardar_Click(object sender, EventArgs e)
         {
             var email = email_usuari.Text;
@@ -178,9 +207,13 @@ namespace SmartPack.Forms
             }
         }
 
-        //Aquest mètode es crida quan es fa clic al botó "Vehicle"
-        //Obre la finestra de vehicle
-        //Tanca la finestra actual
+        /// <summary>
+        /// Mètode que s'executa quan es fa clic al botó "Vehicle"
+        /// Obre la finestra de gestió de vehicles
+        /// Tanca la finestra actual
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             Vehicle vehicle = new Vehicle();

@@ -20,6 +20,11 @@ namespace SmartPack.Forms
         }
 
         private bool FullClosed = true;
+
+        /// <summary>
+        /// Al tancar el formulari, es fa logout de la sessió actual i es torna a la pantalla d'inici de sessió.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -34,12 +39,12 @@ namespace SmartPack.Forms
         /// <summary>
         /// Conté la resposta de l'API amb les empreses disponibles.
         /// </summary>
-        public string responseEmpresas { get; set; } = "";
+        public string ResponseEmpresas { get; set; } = "";
 
         /// <summary>
         /// Fa la petició a l'API i llista totes les empreses disponibles.
         /// </summary>
-        public async void list_e_Click(object sender, EventArgs e)
+        public async void List_e_Click(object sender, EventArgs e)
         {
             listEmpreses.Items.Clear();
             update_e.Visible = false;
@@ -56,9 +61,9 @@ namespace SmartPack.Forms
             var state = await dbAPI.Login(user);
             if (state)
             {
-                responseEmpresas = await dbAPI.getAllEmpresas(GestioSessins.token);
-                Console.WriteLine("Response Body: " + responseEmpresas);
-                using (JsonDocument doc = JsonDocument.Parse(responseEmpresas))
+                ResponseEmpresas = await dbAPI.getAllEmpresas(GestioSessins.token);
+                Console.WriteLine("Response Body: " + ResponseEmpresas);
+                using (JsonDocument doc = JsonDocument.Parse(ResponseEmpresas))
                 {
                     if (doc.RootElement.GetArrayLength() > 0)
                     {
@@ -76,6 +81,9 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Conté la resposta de l'API amb els usuaris disponibles.
+        /// </summary>
         public string responseUsauris { get; set; } = "";
 
         /// <summary>
@@ -130,7 +138,7 @@ namespace SmartPack.Forms
                 string[] parts = selectedItem.Split(new[] { ":" }, StringSplitOptions.None);
                 string _id = parts[0];
                 Console.WriteLine("ID: " + _id);
-                using (JsonDocument doc = JsonDocument.Parse(responseEmpresas))
+                using (JsonDocument doc = JsonDocument.Parse(ResponseEmpresas))
                 {
                     if (doc.RootElement.GetArrayLength() > 0)
                     {
@@ -241,7 +249,9 @@ namespace SmartPack.Forms
         {
             AltaEmpresa altaEmpresa = new AltaEmpresa();
             altaEmpresa.Option = 1;
+            altaEmpresa.Open = new Administracio();
             altaEmpresa.Show();
+            FullClosed = false;
             this.Close();
         }
 
@@ -312,6 +322,7 @@ namespace SmartPack.Forms
                 usuariId = lIDUser.Text,
                 empresaId = lIDEmpresa.Text,
             };
+            Console.WriteLine("Assignar: " + assignar);
             string message = await dbAPI.assignarUsuari(assignar, GestioSessins.token);
             if (message.Contains("correctament"))
             {
@@ -323,8 +334,12 @@ namespace SmartPack.Forms
             }
             else
             {
-
-            } 
+                Console.WriteLine("Empresa Message: " + message);
+                using (Message messatgel = new Message("L'usuari ja esta assignada a aquesta l'empresa", "error"))
+                {
+                    messatgel.ShowDialog();
+                }
+            }
 
         }
 
@@ -336,6 +351,7 @@ namespace SmartPack.Forms
         private async void bDesactivarUser_Click(object sender, EventArgs e)
         {
             string message = await dbAPI.DesactivateUsuari(lIDUser.Text, GestioSessins.token);
+            Console.WriteLine("Desactivar: " + message);
             if (message == "correctament")
             {
                 Console.WriteLine("correctament: " + message);

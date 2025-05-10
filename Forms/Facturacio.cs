@@ -12,12 +12,13 @@ namespace SmartPack.Forms
     /// </summary>
     public partial class Facturacio : TitleForm
     {
-
         /// <summary>
         /// Constructor del formulari de facturacio
         /// </summary>
         public Factura _factura { get; set; }
-
+        /// <summary>
+        /// Impressora per imprimir la factura
+        /// </summary>
         private System.Drawing.Printing.PrintDocument printDocument = new System.Drawing.Printing.PrintDocument();
 
         //public Facturacio() : this(null) { }
@@ -27,12 +28,19 @@ namespace SmartPack.Forms
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// Comprova si el formulari es troba en mode disseny
+        /// </summary>
+        /// <returns></returns>
         private bool EsModeDisseny()
         {
             return LicenseManager.UsageMode == LicenseUsageMode.Designtime || DesignMode;
         }
 
+        /// <summary>
+        /// Carrega la informació de la factura al formulari si el formulari no es troba en mode disseny
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -56,11 +64,19 @@ namespace SmartPack.Forms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error carregant la factura: " + ex.Message);
+                    using (Message message1 = new Message("Error carregant la factura: " + ex.Message, "error"))
+                    {
+                        message1.ShowDialog();
+                    }
                 }
             }
         }
 
+        /// <summary>
+        /// Imprimeix la factura actual
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bImprimirF_Click(object sender, EventArgs e)
         {
             PrintDialog printDialog = new PrintDialog();

@@ -40,7 +40,6 @@ namespace SmartPack
         /// <param name="e"></param>
         private async void guardar_e_Click(object sender, EventArgs e)
         {
-
             // Obtenir i netejar les dades dels camps del formulari
             string tmatricula = matricula_t.Text;
             string tmodel = model_t.Text;
@@ -85,8 +84,7 @@ namespace SmartPack
                 //MessageBox.Show("El color només pot tenir lletres ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-
+            
             var vehicle = new
             {
                 marca = tmarca,

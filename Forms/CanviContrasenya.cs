@@ -29,7 +29,6 @@ namespace SmartPack.Forms
 
         /// <summary>
         /// Mètode per guardar la nova contrasenya de l'usuari.
-        /// 
         /// Comprova que la contrasenya compleixi els requisits de seguretat, coincideixi amb la repetició i actualitza l'usuari via API.
         /// Mostra missatges en funció del resultat del procés.
         /// </summary>

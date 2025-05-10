@@ -1,19 +1,20 @@
 ﻿using SmartPack.Classes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Classe ServeisTransportistes
+    /// </summary>
     public partial class ServeisTransportistes : TitleForm
     {
+        /// <summary>
+        /// Formulari de ServeisTransportistes.
+        /// </summary>
         public TitleForm Open { get; set; } = null;
+
         public ServeisTransportistes()
         {
             InitializeComponent();
@@ -21,6 +22,10 @@ namespace SmartPack.Forms
             LoadTransportista();
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es tanca el formulari.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -30,6 +35,9 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Mètode que carrega la llista de serveis.
+        /// </summary>
         private async void LoadServei()
         {
             if (GestioSessins.role == "ROLE_ADMIN")
@@ -58,6 +66,9 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Mètode que carrega la llista de transportistes.
+        /// </summary>
         private async void LoadTransportista()
         {
             if (GestioSessins.role == "ROLE_ADMIN")
@@ -95,6 +106,14 @@ namespace SmartPack.Forms
            
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es fa clic al botó d'assignar servei a un transportista.
+        /// Despres de fer clic, es comprova si hi ha un servei i un transportista seleccionats.
+        /// Actualitza la base de dades assignant el servei al transportista seleccionat.
+        /// Actualitza dataGridViewServei i dataGridViewTrans per mostrar els serveis i transportistes actualitzats.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void bAssignarServie_Click(object sender, EventArgs e)
         {
             if (dataGridViewServei.SelectedRows.Count > 0 && dataGridViewTrans.SelectedRows.Count > 0)

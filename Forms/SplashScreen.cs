@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Formulari SplashScreen
+    /// </summary>
     public partial class SplashScreen : Form
     {
         [DllImport("user32.dll")]
@@ -23,6 +26,9 @@ namespace SmartPack.Forms
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HTCAPTION = 0x2;
 
+        /// <summary>
+        /// Constructor del formulari de SplashScreen.
+        /// </summary>
         public SplashScreen()
         {
             InitializeComponent();
@@ -44,7 +50,17 @@ namespace SmartPack.Forms
             timerLoad.Start();
         }
 
+    
         int i = 0;
+
+        /// <summary>
+        /// Després d'un temps determinat, es tanca el formulari de SplashScreen i s'obre el formulari de Sessio.
+        /// amb un efecte de puntets que apareixen a la part superior del formulari.
+        /// dona una sensació de càrrega.
+        /// per carregar el formulari de sessió.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timerLoad_Tick(object sender, EventArgs e)
         {
             title.Text += ".";

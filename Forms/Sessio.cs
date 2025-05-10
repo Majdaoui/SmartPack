@@ -5,18 +5,39 @@ using System.Text.Json;
 
 namespace SmartPack
 {
+    /// <summary>
+    /// Formulari Sessio
+    /// </summary>
     public partial class Sessio : TitleForm
     {
+        /// <summary>
+        /// Constructor del formulari de sessió.
+        /// </summary>
         public Sessio()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es tanca el formulari de sessió.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es fa clic al botó d'iniciar sessió.
+        /// Comprova si els camps d'email i contrasenya estan buits.
+        /// Si ho estan, mostra un missatge d'error.
+        /// Si no, intenta iniciar sessió amb les dades proporcionades.
+        /// Si el rol es admin, obre el formulari d'administració.
+        /// Si el rol és deliveryman o usuari, obre el formulari Principal.
+        /// Si l'usuari no existeix, mostra un missatge d'error.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Iniciar_sessio_Click(object sender, EventArgs e)
         {
             string temail = email_is.Text.Trim();
@@ -111,6 +132,12 @@ namespace SmartPack
             }
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es fa clic al botó de recuperar contrasenya.
+        /// Obre el formulari de recuperació de contrasenya.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pregunta_b_Click(object sender, EventArgs e)
         {
             RecuperarContrasenya formRContrasenya = new RecuperarContrasenya();
@@ -118,6 +145,12 @@ namespace SmartPack
             this.Close();
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es fa clic al botó de registre.
+        /// Obre el formulari d'alta d'usuari.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void registrer_b_Click(object sender, EventArgs e)
         {
             Alta formAlta = new Alta();

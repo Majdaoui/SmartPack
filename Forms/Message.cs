@@ -4,9 +4,14 @@ using System.Windows.Forms;
 
 namespace SmartPack
 {
+    /// <summary>
+    /// Classe que representa un formulari de missatge personalitzat.
+    /// </summary>
     public partial class Message: TitleForm
     {
-
+        /// <summary>
+        /// Inicialitza els components del formulari Message.
+        /// </summary>
         private void Init()
         {
             InitializeComponent();
@@ -16,6 +21,11 @@ namespace SmartPack
             this.DoubleBuffered = true;
             picIcono.SizeMode = PictureBoxSizeMode.StretchImage;
         }
+        /// <summary>
+        /// Constructor del formulari Message.
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="tipy"></param>
         public Message(string msg, string tipy)
         {
             Init();
@@ -25,6 +35,11 @@ namespace SmartPack
             }
         }
 
+        /// <summary>
+        /// Estableix el missatge i el tipus de missatge a mostrar al formulari.
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="tipy"></param>
         public void SetMessage(string msg, string tipy)
         {
             this.message_l.Text = msg;
@@ -70,12 +85,23 @@ namespace SmartPack
                     break;
             }
         }
+
+        /// <summary>
+        /// Maneja l'esdeveniment de clic del botó "Aceptar".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void acceptar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
+        /// <summary>
+        /// Maneja l'esdeveniment de clic del botó "Cancelar".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

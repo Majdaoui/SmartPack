@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Formulari Vehicle
+    /// </summary>
     public partial class Vehicle : TitleForm
     {
         public Vehicle()
@@ -13,8 +16,10 @@ namespace SmartPack.Forms
             InitializeComponent();
         }
 
+        /// <summary>
         /// Aquest mètode es crida quan es fa clic al botó "close"
         /// Tanca la finestra actual i obre la finestra AreaUsuari
+        /// </summary>
         private bool justClosed = false;
         protected override void OnClosed(EventArgs e)
         {
@@ -26,15 +31,18 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
         /// Aquest mètode es crida quan es carrega la finestra
         /// carrega les dades del vehicle actual
+        /// </summary>
         protected async override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             string id = await GetVehicleId();
         }
-
+        /// <summary>
         /// Aquest mètode que retorna les dades del vehicle assignat a un usuari"
+        /// </summary>
         private async Task<string> GetVehicleId()
         {
             string response = await dbAPI.GetTransportistaPerUsuari(GestioSessins.id, GestioSessins.token);
@@ -70,9 +78,12 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
         /// Aquest mètode es crida quan es fa clic al botó "actualitzar vehicle"
         /// Actualitza les dades del vehicle actual
-        /// 
+        /// En casa d'error, mostra un missatge d'error
+        /// Si les dades s'actualitzen correctament, mostra un missatge d'informació
+        /// </summary>
         private async void update_v_Click(object sender, EventArgs e)
         {
             if(string.IsNullOrEmpty(t_marca.Text) || string.IsNullOrEmpty(t_model.Text) || string.IsNullOrEmpty(t_matricula.Text))
@@ -104,8 +115,11 @@ namespace SmartPack.Forms
            
         }
 
-
+        /// <summary>
         /// Aquest mètode es crida quan es fa clic al botó "desactivar vehicle"
+        /// En casa d'error, mostra un missatge d'error
+        /// Si el vehicle es desactiva correctament, mostra un missatge d'informació
+        /// </summary>
         private async void desactivar_v_Click(object sender, EventArgs e)
         {
             string id = labelID.Text;
@@ -123,6 +137,11 @@ namespace SmartPack.Forms
                 Message msg = new Message("No s'ha pogut desactivar el vehicle", "error");
                 msg.ShowDialog();
             }
+        }
+
+        private void Vehicle_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

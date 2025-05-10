@@ -7,15 +7,31 @@ using System.Threading.Tasks;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Classe NewPassword
+    /// </summary>
     public partial class NewPassword : TitleForm
     {
+        /// <summary>
+        /// Token rebut del correu electrònic
+        /// </summary>
         private string tokenRecibido;
+
+        /// <summary>
+        /// Constructor de la classe NewPassword
+        /// </summary>
+        /// <param name="token"></param>
         public NewPassword(string token)
         {
             InitializeComponent();
             this.tokenRecibido = token;
         }
 
+        /// <summary>
+        /// Carrega el formulari i inicialitza els components
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void R_password_Click(object sender, EventArgs e)
         {
             string password_n = npassword.Text.Trim();
@@ -29,7 +45,6 @@ namespace SmartPack.Forms
                     return;
                 }
             }
-
             if (password_n != password_r)
             {
                 using (Message msg = new Message("La repitició de la contrasenya no concideix.", "error"))

@@ -55,7 +55,9 @@ namespace SmartPack.Forms
             }
             LoadDB();
         }
-
+        /// <summary>
+        /// Variable per controlar si el formulari s'ha tancat
+        /// </summary>
         private bool justClosed = false;
 
         /// <summary>
@@ -207,7 +209,6 @@ namespace SmartPack.Forms
                 string Telefon = selectedRow.Cells["Telefon"].Value.ToString();
 
                 Console.WriteLine($"Estat: {Estat}, Detalls: {Detalls}");
-
                 object update = new
                 {
                     estat = cbEstado.Text,
@@ -357,7 +358,6 @@ namespace SmartPack.Forms
             if (jsonResponse != null)
             {
                 var json = System.Text.Json.JsonDocument.Parse(jsonResponse);
-
                 if (json.RootElement.TryGetProperty("paquet", out var paquetProperty) &&
                     paquetProperty.TryGetProperty("codiqr", out var qrProperty))
                 {
@@ -376,17 +376,26 @@ namespace SmartPack.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error en carregar la imatge del QR: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        using (Message message1 = new Message("Error en carregar la imatge del QR", "error"))
+                        {
+                            message1.ShowDialog();
+                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No s'ha trobat el camp 'codiqr'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    using (Message message1 = new Message("No s'ha trobat el camp 'codiqr", "error"))
+                    {
+                        message1.ShowDialog();
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Error al generar el QR.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (Message message1 = new Message("Error al generar el QR.", "error"))
+                {
+                    message1.ShowDialog();
+                }
             }
         }
 
@@ -413,7 +422,10 @@ namespace SmartPack.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Error al generar l'etiqueta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    using (Message message1 = new Message("Error al generar l'etiqueta.", "error"))
+                    {
+                        message1.ShowDialog();
+                    }
                 }
             }             
         }
@@ -455,7 +467,10 @@ namespace SmartPack.Forms
             }
             else
             {
-                MessageBox.Show("No hi ha cap imatge per imprimir.");
+                using (Message message1 = new Message("No hi ha cap imatge per imprimir.", "error"))
+                {
+                    message1.ShowDialog();
+                }
             }
         }
 

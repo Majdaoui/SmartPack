@@ -9,6 +9,9 @@ namespace SmartPack
     /// </summary>
     public partial class RecuperarContrasenya : TitleForm
     {
+        /// <summary>
+        /// Constructor del formulari de recuperació de contrasenya.
+        /// </summary>
         public RecuperarContrasenya()
         {
             InitializeComponent();
@@ -18,6 +21,11 @@ namespace SmartPack
             this.DoubleBuffered = true;
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es fa clic al botó de recuperar contrasenya.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void R_contrasenya_Click(object sender, EventArgs e)
         {
             string temail_rc = email_rc.Text.Trim();
@@ -30,6 +38,7 @@ namespace SmartPack
                     return;
                 }
             }
+            // Comprovació del format de l'email
             bool isValidFormat = System.Text.RegularExpressions.Regex.IsMatch(temail_rc, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
 
             if (!isValidFormat)
@@ -56,7 +65,7 @@ namespace SmartPack
             }
             else
             {
-                using (Message msg = new Message("El camp Email o prula secreta es incorrecte", "error"))
+                using (Message msg = new Message("El camp Email o la paraula secreta és incorrecte", "error"))
                 {
                     msg.ShowDialog();
                     return;

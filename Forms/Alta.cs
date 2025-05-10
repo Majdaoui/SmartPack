@@ -42,7 +42,6 @@ namespace SmartPack
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private async void bRegistre_Click(object sender, EventArgs e)
         {
             // Obtenir i netejar les dades dels camps del formulari
@@ -87,7 +86,6 @@ namespace SmartPack
                     return; 
                 }
             }
-
 
             if (trol == "ROLE_DELIVERYMAN")
             {
@@ -329,7 +327,6 @@ namespace SmartPack
         /// </summary>
         /// <param name="doc"></param>
         /// <returns></returns>
-
         public static bool EsDniNieValido(string doc)
         {
             if (Regex.IsMatch(doc, @"^\d{8}[A-Za-z]{1}$"))
@@ -389,7 +386,6 @@ namespace SmartPack
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void button1_Click(object sender, EventArgs e)
         {
             nom.Text = "Luna";

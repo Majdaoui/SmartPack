@@ -12,13 +12,23 @@ using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Class ServeisFinalitzats
+    /// </summary>
     public partial class ServeisFinalitzats : TitleForm
     {
+        /// <summary>
+        /// Constructor del formulari de serveis finalitzats
+        /// </summary>
         public ServeisFinalitzats()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es tanca el formulari
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -26,12 +36,19 @@ namespace SmartPack.Forms
             servei.Show();
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es carrega el formulari
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             LoadDB();
-        }   
+        }
 
+        /// <summary>
+        /// Carrega les dades del servei en el datagrid
+        /// </summary>
         private async void LoadDB()
         {
             List<ClassServei> list = null;

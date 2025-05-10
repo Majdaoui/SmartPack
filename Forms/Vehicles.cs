@@ -6,8 +6,14 @@ using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Formulari Vehicles
+    /// </summary>
     public partial class Vehicles : TitleForm
     {
+        /// <summary>
+        /// Propietat que representa el formulari obert.
+        /// </summary>
         public TitleForm Open { get; set; } = null;
         public Vehicles()
         {
@@ -17,6 +23,10 @@ namespace SmartPack.Forms
 
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es tanca el formulari.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -28,6 +38,8 @@ namespace SmartPack.Forms
 
         /// <summary>
         /// Carrega la llista de vehicles
+        /// Es fa una crida a l'API per obtenir la llista de vehicles i es mostra a la dataGridView.
+        /// Si hi ha un error, es mostra un missatge d'error.
         /// </summary>
         private async void LoadDBVehicle()
         {
@@ -47,6 +59,14 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Desactiva el vehicle seleccionat
+        /// se fa una crida a l'API per desactivar el vehicle seleccionat
+        /// Si hi ha un error, es mostra un missatge d'error
+        /// Si s'ha desactivat correctament, es mostra un missatge d'informació
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void desctivate_vehicle_Click(object sender, EventArgs e)
         {
             var id = dataGridViewV.CurrentRow.Cells[0].Value.ToString();
@@ -92,6 +112,10 @@ namespace SmartPack.Forms
 
         /// <summary>
         /// Actualitza el vehicle seleccionat
+        /// Comprova que els camps obligatoris no estiguin buits
+        /// Si hi ha un error, es mostra un missatge d'error
+        /// Si s'ha actualitzat correctament, es mostra un missatge d'informació
+        /// Actualitza la llista de vehicles i transportistes
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -99,7 +123,8 @@ namespace SmartPack.Forms
         {
             if (string.IsNullOrEmpty(t_marca.Text) || string.IsNullOrEmpty(t_model.Text) || string.IsNullOrEmpty(t_matricula.Text))
             {
-                MessageBox.Show("Tots els camps són obligatoris.");
+                Message msg = new Message("Tots els camps són obligatoris.", "error");
+                msg.ShowDialog();
                 return;
             }
 
@@ -131,6 +156,8 @@ namespace SmartPack.Forms
 
         /// <summary>
         /// Carrega la llista de transportistes
+        /// Si no hi ha transportistes, es mostra un missatge d'error
+        /// Si hi ha transportistes, es mostra la llista a la dataGridView
         /// </summary>
         public async void LoadTransportistes()
         {
@@ -167,6 +194,11 @@ namespace SmartPack.Forms
 
         /// <summary>
         /// Crea un vehicle nou
+        /// Comprova que els camps obligatoris no estiguin buits
+        /// Verifica que la matrícula sigui vàlida
+        /// Si hi ha un error, es mostra un missatge d'error
+        /// Si s'ha creat correctament, es mostra un missatge d'informació
+        /// Actualitza la llista de vehicles i transportistes
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -248,6 +280,18 @@ namespace SmartPack.Forms
             LoadTransportistes();
         }
 
+
+        /// <summary>
+        /// Assigna un vehicle a un transportista
+        /// Se selecciona un vehicle i un transportista
+        /// Se fa una crida a l'API per assignar el vehicle al transportista seleccionat
+        /// Si hi ha un error, es mostra un missatge d'error
+        /// Si s'ha assignat correctament, es mostra un missatge d'informació
+        /// Si no hi ha cap vehicle o transportista seleccionat, es mostra un missatge d'error
+        /// Actualitza la llista de vehicles i transportistes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void bAssVehiTrans_Click(object sender, EventArgs e)
         {
             if (dataGridViewV.SelectedRows.Count > 0 && dataGridViewTT.SelectedRows.Count > 0)
@@ -274,8 +318,13 @@ namespace SmartPack.Forms
                 LoadDBVehicle();
                 LoadTransportistes();
             }
-
-
+            else
+            {
+                using (Message msg = new Message("No hi ha cap vehicle o transportista seleccionat", "error"))
+                {
+                    msg.ShowDialog();
+                }
+            }
         }
     }
 }

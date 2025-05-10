@@ -202,7 +202,7 @@ namespace SmartPack.Forms
             this.list_e.TabIndex = 24;
             this.list_e.Text = "Llista d\'empreses";
             this.list_e.UseVisualStyleBackColor = false;
-            this.list_e.Click += new System.EventHandler(this.list_e_Click);
+            this.list_e.Click += new System.EventHandler(this.List_e_Click);
             // 
             // desctivate_e
             // 

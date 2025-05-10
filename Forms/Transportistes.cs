@@ -11,16 +11,29 @@ using System.Windows.Forms;
 
 namespace SmartPack.Forms
 {
+    /// <summary>
+    /// Formulari Transportistes
+    /// </summary>
     public partial class Transportistes : TitleForm
     {
+        /// <summary>
+        /// Propietat que representa el formulari obert.
+        /// </summary>
         public TitleForm Open { get; set; } = null;
 
+        /// <summary>
+        /// Constructor del formulari Transportistes.
+        /// </summary>
         public Transportistes()
         {
             InitializeComponent();
             LoadTransportistes();
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es tanca el formulari.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -30,11 +43,18 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Mètode que retorna el DataGridView de transportistes.
+        /// </summary>
+        /// <returns></returns>
         public DataGridView GetDataGridViewT()
         {
             return dataGridViewT;
         }
 
+        /// <summary>
+        /// Mètode que carrega la llista de transportistes.
+        /// </summary>
         public async void LoadTransportistes()
         {
             List<Transportista> list = await dbAPI.getTransportisteslist(GestioSessins.token);
@@ -72,6 +92,11 @@ namespace SmartPack.Forms
             dataGridViewT.Refresh();
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es fa clic a la cel·la del DataGridView de transportistes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void dataGridViewT_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridViewT.SelectedRows.Count > 0)
@@ -99,6 +124,14 @@ namespace SmartPack.Forms
             }
         }
 
+        /// <summary>
+        /// Mètode que s'executa quan es fa clic al botó de desactivar transportista.
+        /// agafa la selecció del transportista seleccionat i el desactiva.
+        /// Si no hi ha cap transportista seleccionat, mostra un missatge d'error.
+        /// Si el transportista es desactiva correctament, mostra un missatge d'informació.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void bDesactiveTrans_Click(object sender, EventArgs e)
         {
             if (dataGridViewT.SelectedRows.Count > 0)
@@ -122,6 +155,13 @@ namespace SmartPack.Forms
                     }
                 }
                 LoadTransportistes();
+            }
+            else
+            {
+                using (Message msg = new Message("No hi ha cap transportista seleccionat.", "error"))
+                {
+                    msg.ShowDialog();
+                }
             }
         }
 

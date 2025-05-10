@@ -11,7 +11,14 @@ namespace SmartPack
     /// </summary>
     public partial class AltaEmpresa : TitleForm
     {
+        /// <summary>
+        /// Propietat que conté el valor de l'entrada si es un registre nou o un registre d'usuari admin
+        /// </summary>
         public int Option { get; set; } = 0;
+        /// <summary>
+        /// Propietat que conté el formulari obert
+        /// </summary>
+        public TitleForm Open { get; set; } = null;
 
         /// <summary>
         /// Constructor de la classe AltaEmpresa
@@ -136,7 +143,6 @@ namespace SmartPack
                 adreça = t_tvia + ", " + tnom_via + ", " + t_cp + ", " + tpoble + ", " + tprovincia
             };
 
-
             object user = new
             {
                 email = GestioSessins.email,
@@ -176,6 +182,7 @@ namespace SmartPack
                         }
                         else if (Option == 1)
                         {
+                            // Redirigir a l'empresa desde l'area administració amb usuari admin
                             Administracio administracio = new Administracio();
                             administracio.Show();
                             this.Close();
@@ -257,12 +264,16 @@ namespace SmartPack
             var regexEmail = new Regex(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
             return regexEmail.IsMatch(email);
         }
-
+        /// <summary>
+        /// Mètode que omble automàticament els camps del formulari amb dades de prova
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bAuto_Click(object sender, EventArgs e)
         {
             cif_e.Text = "A12345678";
             nom_e.Text = "Luna";
-            email_e.Text = "luna@luna.com";
+            email_e.Text = "eyesight_vista@msn.com";
             tef_e.Text = "603207702";
             t_via_e.Text = "Carrer";
             nom_via_e.Text = "Dom Bosco";
